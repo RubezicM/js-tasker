@@ -6,6 +6,8 @@ const fs = require('fs');
 const hbs = require('express-hbs');
 const axios = require('axios');
 
+const dummy_db = require('./utils/dummy_db');
+
 const app = express();
 
 const publicPath = path.join(__dirname, '../public');
@@ -35,31 +37,22 @@ app.get('/register', (req, res) => {
 
 app.post('/users', (req, res) => {
     let user = req.body;
-    fs.readFile('./dummy_db/users.json', (err, data) => {
-        if (err) {
-            return res.send(err);
-        };
-        let users = JSON.parse(data);
-        if (users.filter((element) => element.username === user.username).length > 0) {
-            return res.status(400).send('Username already exists!');
-        }
-        users.push(user);
-        fs.writeFile('./dummy_db/users.json', JSON.stringify(users), (err) => {
-            if (err) {
-                return res.send(err);
-            };
 
-            res.send(user);
-        });
-    });
+    dummy_db.getUsers().then((users) => {
+        if (dummy_db.userExists(user, users)) {
+            res.status(400).send('Username already exists!');
+        };
+        users.push(user);
+        dummy_db.writeUsers(users);
+        res.send(user);
+    }).catch((err) => res.status(400).send(err)) ;
 });
 
 app.get('/users', (req, res) => {
-    fs.readFile('./dummy_db/users.json', (err, data) => {
-        if (err) {
-            res.send(err);
-        };
-        res.send(JSON.parse(data));
+    dummy_db.getUsers().then((users) => {
+        res.send(users);
+    }).catch((err) => {
+        res.status(400).send(err);
     });
 });
 
@@ -77,17 +70,13 @@ app.get('/login', (req, res) => {
 
 app.post('/login', (req, res) => {
     let user = req.body;
-    fs.readFile('./dummy_db/users.json', (err, data) => {
-        if (err) {
-            return res.send(err);
+
+    dummy_db.getUsers().then((users) => {
+        if (dummy_db.userLogin(user, users)) {
+            res.send(user);
         };
-        let users = JSON.parse(data);
-        if (users.find((element) => element.username === user.username && element.password === user.password)) {
-            res.cookie(user.username, user.password);
-            return res.send(user.username);
-        }
-        res.status(404).send('Username or password incorrect.');
-    });
+        res.status(404).send('user not found');
+    }).catch((err) => res.status(404).send(err));
 });
 
 
