@@ -7,6 +7,10 @@ let authenticate = (req, res, next) => {
         users = new Users(data);
 
         let token = req.cookies['x-auth-token'];
+        
+        if (!token) {
+            return res.status(401).render('not-logged');
+        };
 
         let user = users.findByToken(token);
 
