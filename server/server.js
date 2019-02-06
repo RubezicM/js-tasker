@@ -70,6 +70,18 @@ app.get('/users', (req, res) => {
     res.send(users.users);
 });
 
+app.delete('/users', (req, res) => {
+    let user = req.body;
+
+    if (users.removeUser(user.username)) {
+        users.writeUsers().then((data) => {
+            return res.send(user);
+        }).catch((err) => res.status(400).send(err));
+    } else {
+        res.status(404).send('User not found');
+    };
+});
+
 app.post('/login', (req, res) => {
     let user = req.body;
 
@@ -79,6 +91,7 @@ app.post('/login', (req, res) => {
         res.status(401).send('Username or password incorrect!');
     };
 });
+
 
 
 
