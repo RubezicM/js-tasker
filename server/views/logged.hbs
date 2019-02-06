@@ -6,26 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/style.css">
-    <title>Register</title>
+    <title>Login</title>
 </head>
 
 <body>
     {{>navigation}}
 
-    <h1>Logged in as {{user}}</h1>
-
-    <p>Logg out?</p>
-    <button id="logout">Yes</button><br><br>
-    <button id="back">No</button>
-
-
-    <p id="register-response"></p>
-
-
+    <h2>Already {{message}} as {{user}}!</h2>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
-    <script src="/js/logout.js"></script>
 </body>
 
 </html>

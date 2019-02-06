@@ -6,20 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/style.css">
-    <title>Profile</title>
+    <title>Login</title>
 </head>
 
 <body>
     {{>navigation}}
 
-    <h1>Profile Page for {{user}}</h1>
+    <h1>Hello {{user}}!</h1>
 
-    <p><a href="/register">Register</a> || <a href="/main">Main</a> || <a href="/profile">Profile</a>
-        <a href="/login">Login</a> || <a href="/logout">Logout</a></p>
+    <p>Username: {{user}}</p>
+    <p>Password: {{password}}</p>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
-    <script src="/js/profile.js"></script>
 </body>
 
 </html>

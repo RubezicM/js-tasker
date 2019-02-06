@@ -1,20 +1,15 @@
-document.getElementById('register-form').addEventListener('submit', (event) => {
-    event.preventDefault();
+document.getElementById('back').addEventListener("click", (event) => {
+    window.location.assign('/main');
+});
 
-    let username = document.getElementById('username');
-    let password = document.getElementById('password');
-    let responseField = document.getElementById('register-response');
+let responseField = document.getElementById('register-response');
 
-    console.log('username: ', username.value, 'password: ', password.value);
-
-    axios.post('/users', {
-        username: username.value,
-        password: password.value
-    })
+document.getElementById('logout').addEventListener("click", (event) => {
+    axios.post('/logout')
         .then((response) => {
-            responseField.innerHTML = 'Registered successfully.';
+            responseField.innerHTML = 'Logged out successfully';
             setTimeout(() => {
-                window.location.assign('/test.html');
+                window.location.assign('/');
             }, 1000);
         })
         .catch((err) => {
