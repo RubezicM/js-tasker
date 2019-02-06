@@ -13,6 +13,8 @@ getUsers().then((data) => {
     users = new Users(data);
 }).catch((err) => console.log(err));
 
+const port = process.env.PORT || 3000;
+
 const app = express();
 
 const publicPath = path.join(__dirname, '../public');
@@ -158,28 +160,11 @@ app.post('/logout', authenticate, (req, res) => {
 
 /////////////////////////////////////////////////////////////
 
-app.listen(3000, () => {
-    console.log(`Started listenning on port 3000`);
+app.listen(port, () => {
+    console.log(`Started listenning on port ${port}`);
 });
 
 module.exports = { app };
-
-
-
-
-
-/////////////////// Other
-
-// app.get('/login', function (req, res, next) {
-//     let pass = '123';
-//     res.cookie('pass', pass);
-//     res.send('ok');
-// });
-
-// app.use((req, res, next) => {
-//     console.log('radi');
-//     next();
-// });
 
 
 

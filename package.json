@@ -8,6 +8,9 @@
     "start": "node server/server.js",
     "startmon": "nodemon server/server.js"
   },
+  "engines": {
+    "node": "10.14.0"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
