@@ -10,7 +10,7 @@ let loggedIn = (req, res, next) => {
         let token = req.cookies['x-auth-token'];
 
         if (token !== undefined) {
-            let user = users.findByToken(token);
+            user = users.findByToken(token);
         }
 
         if (!user) {
