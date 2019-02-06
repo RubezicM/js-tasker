@@ -5,8 +5,6 @@ document.getElementById('register-form').addEventListener('submit', (event) => {
     let password = document.getElementById('password');
     let responseField = document.getElementById('register-response');
 
-    console.log('username: ', username.value, 'password: ', password.value);
-
     axios.post('/users', {
         username: username.value,
         password: password.value
