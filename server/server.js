@@ -35,7 +35,7 @@ app.get('/register', (req, res) => {
 
 app.post('/users', (req, res) => {
     let user = req.body;
-    fs.readFile('./dummyDB/users.json', (err, data) => {
+    fs.readFile('./dummy_db/users.json', (err, data) => {
         if (err) {
             return res.send(err);
         };
@@ -44,7 +44,7 @@ app.post('/users', (req, res) => {
             return res.status(400).send('Username already exists!');
         }
         users.push(user);
-        fs.writeFile('./dummyDB/users.json', JSON.stringify(users), (err) => {
+        fs.writeFile('./dummy_db/users.json', JSON.stringify(users), (err) => {
             if (err) {
                 return res.send(err);
             };
@@ -55,7 +55,7 @@ app.post('/users', (req, res) => {
 });
 
 app.get('/users', (req, res) => {
-    fs.readFile('./dummyDB/users.json', (err, data) => {
+    fs.readFile('./dummy_db/users.json', (err, data) => {
         if (err) {
             res.send(err);
         };
@@ -77,7 +77,7 @@ app.get('/login', (req, res) => {
 
 app.post('/login', (req, res) => {
     let user = req.body;
-    fs.readFile('./dummyDB/users.json', (err, data) => {
+    fs.readFile('./dummy_db/users.json', (err, data) => {
         if (err) {
             return res.send(err);
         };
