@@ -7,8 +7,10 @@ let authenticate = (req, res, next) => {
         users = new Users(data);
 
         let token = req.cookies['x-auth-token'];
+        console.log(token);
 
-        if (token === '') {
+        if (token === undefined) {
+            console.log('radiii');
             return res.status(401).render('not-logged');
         };
 
