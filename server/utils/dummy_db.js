@@ -11,38 +11,51 @@ const getUsers = () => {
     });
 };
 
-
-const userExists = (user, users) => {
-    if (users.filter((element) => element.username === user.username).length > 0) {
-        return true;
-    };
-    return false;
-};
-
-const userLogin = (user, users) => {
-    if (users.filter((element) => element.username === user.username &&
-    element.password === user.password).length > 0) {
-        return true;
-    };
-    return false;
-};
-
-const writeUsers = (users) => {
-    return new Promise((resolve, reject) => {
-        fs.writeFile('./dummy_db/users.json', JSON.stringify(users), (err) => {
-            if (err) {
-                reject(err);
-            };
-            resolve(users);
+class Users {
+    constructor(users) {
+        this.users = users;
+    }
+    userExists (username) {
+        if (this.users.filter((element) => element.username === username).length > 0) {
+            return true;
+        };
+        return false;
+    }
+    userLogin (user) {
+        if (this.users.filter((element) => element.username === user.username &&
+        element.password === user.password).length > 0) {
+            return true;
+        };
+        return false;
+    }
+    writeUsers () {
+        return new Promise((resolve, reject) => {
+            fs.writeFile('./dummy_db/users.json', JSON.stringify(this.users), (err) => {
+                if (err) {
+                    reject(err);
+                };
+                resolve(this.users);
+            });
         });
-    });
+    }
+    addUser (user) {
+        if (!this.userExists(user.username)) {
+            this.users.push(user);
+            return user;
+        }
+    }
+    removeUser (username) {
+        let user = this.users.find((element) => element.username === username);
+        if (user) {
+            this.users = this.users.filter((element) => element.username !== username);
+            return user;
+        };
+    }
 };
 
 module.exports = {
-    getUsers,
-    userExists,
-    writeUsers,
-    userLogin
+    Users,
+    getUsers
 };
 
 

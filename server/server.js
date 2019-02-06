@@ -6,7 +6,12 @@ const fs = require('fs');
 const hbs = require('express-hbs');
 const axios = require('axios');
 
-const dummy_db = require('./utils/dummy_db');
+const { Users, getUsers } = require('./utils/dummy_db');
+
+let users;
+getUsers().then((data) => {
+    users = new Users(data);
+}).catch((err) => console.log(err));
 
 const app = express();
 
@@ -35,27 +40,6 @@ app.get('/register', (req, res) => {
     res.render('register.hbs');
 });
 
-app.post('/users', (req, res) => {
-    let user = req.body;
-
-    dummy_db.getUsers().then((users) => {
-        if (dummy_db.userExists(user, users)) {
-            res.status(400).send('Username already exists!');
-        };
-        users.push(user);
-        dummy_db.writeUsers(users);
-        res.send(user);
-    }).catch((err) => res.status(400).send(err)) ;
-});
-
-app.get('/users', (req, res) => {
-    dummy_db.getUsers().then((users) => {
-        res.send(users);
-    }).catch((err) => {
-        res.status(400).send(err);
-    });
-});
-
 app.get('/main', (req, res) => {
     res.render('main.hbs', {
         user: 'User'
@@ -68,18 +52,38 @@ app.get('/login', (req, res) => {
     });
 });
 
+///////////////////////////////////////////////////////
+
+app.post('/users', (req, res) => {
+    let user = req.body;
+
+    if (users.addUser(user)) {
+        users.writeUsers().then((data) => {
+            return res.send(user);
+        }).catch((err) => res.status(400).res.send(err));
+    } else {
+        res.status(400).send('Username already exists!');
+    }
+});
+
+app.get('/users', (req, res) => {
+    res.send(users.users);
+});
+
 app.post('/login', (req, res) => {
     let user = req.body;
 
-    dummy_db.getUsers().then((users) => {
-        if (dummy_db.userLogin(user, users)) {
-            res.send(user);
-        };
-        res.status(404).send('user not found');
-    }).catch((err) => res.status(404).send(err));
+    if (users.userLogin(user)) {
+        return res.send(`${user.username} logged in successfully.`);
+    } else {
+        res.status(401).send('Username or password incorrect!');
+    };
 });
 
 
+
+
+/////////////////////////////////////////////////////////////
 
 app.listen(3000, () => {
     console.log(`Started listenning on port 3000`);
