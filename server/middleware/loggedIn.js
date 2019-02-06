@@ -2,13 +2,16 @@ const { Users, getUsers } = require('../utils/dummy_db');
 const cookieParser = require('cookie-parser');
 
 let loggedIn = (req, res, next) => {
-    let users;
+    let users,
+    user;
     getUsers().then((data) => {
         users = new Users(data);
 
         let token = req.cookies['x-auth-token'];
 
-        let user = users.findByToken(token);
+        if (token !== undefined) {
+            let user = users.findByToken(token);
+        }
 
         if (!user) {
             req.loggedIn = false;

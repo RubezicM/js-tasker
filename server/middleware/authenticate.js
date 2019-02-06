@@ -7,22 +7,20 @@ let authenticate = (req, res, next) => {
         users = new Users(data);
 
         let token = req.cookies['x-auth-token'];
-        console.log(token);
 
         if (token === undefined) {
-            console.log('radiii');
             return res.status(401).render('not-logged');
-        };
-
-        let user = users.findByToken(token);
-
-        if (user) {
-            req.user = user;
-            req.token = token;
-            next();
         } else {
-            res.status(401).render('not-logged');
-        };
+            let user = users.findByToken(token);
+
+            if (user) {
+                req.user = user;
+                req.token = token;
+                next();
+            } else {
+                res.status(401).render('not-logged');
+            };
+        }
     }).catch((err) => console.log(err));
 };
 
