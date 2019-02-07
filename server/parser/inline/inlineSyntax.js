@@ -1,6 +1,6 @@
 // const methods = require("./methods");
 // const helpers = require("./helpers");
-const assigments = require("./assigments");
+const { assigment } = require("./assigments");
 const { variableNames, dataTypes } = require("./main-object");
 
 function inlineSyntax() {
@@ -17,15 +17,15 @@ function inlineSyntax() {
     return getObjKeyValuesInArray(keysArr, keyNames);
   };
   function getObjKeyValuesInArray(obj, keys) {
-    var arr = [];
-    for (var i = 0; i < keys.length; i++) {
+    let arr = [];
+    for (let i = 0; i < keys.length; i++) {
       arr.push(obj[keys[i]]);
     }
     return arr;
   };
 
   let index = random(0, variableNames.length - 1);
-  var task = new Challenge(variableNames[index]);
+  let task = new Challenge(variableNames[index]);
   task.usableVarNames = task.getKeyNames(task.varNames);
 
   function random(min, max) {
@@ -64,15 +64,16 @@ function inlineSyntax() {
   }
 
   function declareRandomVars(match, p1, p2, offset, string) {
-    let nameVar;
-    rnd = random(0, task.usableVarNames.length - 1);
+    let nameVar,
+    rnd = random(0, task.usableVarNames.length - 1),
+    infoVar;
     if (p2 == undefined) {
       let type = p1;
       nameVar = task.usableVarNames[rnd];
-      var infoVar = storeVarInfo(nameVar, type);
+      infoVar = storeVarInfo(nameVar, type);
     } else {
       nameVar = task.usableVarNames[rnd];
-      var infoVar = storeVarInfo(nameVar);
+      infoVar = storeVarInfo(nameVar);
     }
     checkAndAddToUsedKeys(infoVar);
     return nameVar;
@@ -88,8 +89,8 @@ function inlineSyntax() {
   }
 
   function getObjKeyValuesInArray(obj, keys) {
-    var arr = [];
-    for (var i = 0; i < keys.length; i++) {
+    let arr = [];
+    for (let i = 0; i < keys.length; i++) {
       arr.push(obj[keys[i]]);
     }
     return arr;
@@ -101,8 +102,8 @@ function inlineSyntax() {
   function storeVarInfo(name, type, key) {
     let typeArray = [];
     if (key == undefined) {
-      var keys = Object.keys(task.varNames);
-      for (var i = 0; i < keys.length; i++) {
+      let keys = Object.keys(task.varNames);
+      for (let i = 0; i < keys.length; i++) {
         if (task.varNames[keys[i]] == name) {
           key = keys[i][0];
         }
@@ -110,7 +111,7 @@ function inlineSyntax() {
     }
     if (type != undefined && type.length > 1) {
       let tmpArr = type.split("");
-      for (var i = 0; i < tmpArr.length; i++) {
+      for (let i = 0; i < tmpArr.length; i++) {
         typeArray.push(dataTypes[tmpArr[i]]);
       }
     } else if (type != undefined && type.length == 1) {
@@ -125,7 +126,7 @@ function inlineSyntax() {
     };
   }
   function checkAndAddToUsedKeys(obj) {
-    var found = task.usedVarNames.some(function (el) {
+    let found = task.usedVarNames.some(function (el) {
       return el.key === obj.key;
     });
     if (!found) {
@@ -135,7 +136,7 @@ function inlineSyntax() {
   }
 
   function getProperty(arr, key) {
-    for (var i = 0; i < arr.length; i++) {
+    for (let i = 0; i < arr.length; i++) {
       if (arr[i].key == key) {
         return arr[i].name;
       }
@@ -145,7 +146,7 @@ function inlineSyntax() {
 
 
   function getUsedVar(arr, key) {
-    for (var i = 0; i < arr.length; i++) {
+    for (let i = 0; i < arr.length; i++) {
       if (arr[i].key == key) {
         return arr[i];
       }
@@ -169,18 +170,8 @@ function inlineSyntax() {
 
   //////////////////////////////////////////////////////
 
-
-
-  // To-Do : Randomizacija pozicija unutar niza
-
-  // funkcija za cuvanje rezultata u browserskom konzol log
-  let result = "";
-  function logResult(...params) {
-    result += params.join(" ") + "\n";
-  }
-
   // assigment 
-  let jScript = assigments.currentAssigment;
+  let jScript = assigment();
   //console.log("skripta", jScript);
 
   /////////// VAR NAME DISTRIBUTION ////////////
