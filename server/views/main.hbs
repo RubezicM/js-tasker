@@ -14,7 +14,13 @@
 
     <h1>Hello {{user}}</h1>
 
-    <div id="game-area">This is game area</div>
+    <button id="start">Start</button>
+    <div id="game-area">This is game area</div><br>
+    <form action="post" id="form-game">
+        <input type="text" name="answer" id="answer" placeholder="Answer goes here"><br>
+        <input type="submit" value="Submit" autocomplete="off">
+    </form>
+    
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 

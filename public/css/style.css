@@ -9,3 +9,11 @@ body {
     background-color: gainsboro;
     margin: auto;
 }
+
+#answer-area {
+    width: 500px;
+    height: 500px;
+    border: 5px solid gray;
+    background-color: gainsboro;
+    margin: auto;
+}

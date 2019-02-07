@@ -155,11 +155,10 @@ app.post('/logout', authenticate, (req, res) => {
     };
 });
 
-
 app.get('/parser',(req,res)=>{
     let task = inlineSyntax();
     res.send(task);
-})
+});
 
 
 /////////////////////////////////////////////////////////////
