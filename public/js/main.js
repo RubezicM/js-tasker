@@ -32,9 +32,7 @@ document.getElementById('start').addEventListener("click", (event) => {
             
             if(gameHolder.childElementCount > 0){
                 gameHolder.removeChild(gameHolder.firstChild);
-            } else {
-
-            }
+            } 
             gameHolder.appendChild(image);
             // console.log(taskFunction);
             
