@@ -33,19 +33,20 @@ function commentsSyntax() {
             string: `
         var x, y;
         if (true) { // # if2-0
-            var x = 1;
+            x = 3;
             var y = 2;
-        } else if (false) { // # if3-0
-            var x = 1;
+        } else if (true) { // # if3-0
+            x = 11;
             var y = 2;
             var z = 3;
         } else if (1) { // # if3-0
-            var xxx = 1;
+            x = 1;
             var yyy = 2;
             var zzz = 3;
         } else {
-            console.log("x");
-        }
+            var x = 10;
+        };
+        console.log(x);
         `
         },
         {
@@ -201,7 +202,7 @@ function commentsSyntax() {
     // console.log(finalFunction());
 
     return {
-        code: jScriptOriginal,
+        function: jScriptOriginal,
         result: finalFunction()
     }
 };

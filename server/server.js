@@ -157,7 +157,8 @@ app.post('/logout', authenticate, (req, res) => {
 });
 
 app.get('/parser', (req, res) => {
-    let task = inlineSyntax();
+    let task = commentsSyntax();
+    console.log(task);
     res.send(task);
 });
 
