@@ -157,8 +157,8 @@ app.post('/logout', authenticate, (req, res) => {
 });
 
 app.get('/parser', (req, res) => {
-    let task = commentsSyntax();
-    console.log(task);
+    let commentsRandomization = commentsSyntax().function;
+    let task = inlineSyntax(commentsRandomization);
     res.send(task);
 });
 

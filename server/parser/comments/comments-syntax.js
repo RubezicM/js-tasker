@@ -31,6 +31,17 @@ function commentsSyntax() {
     let jsPatterns = [
         {
             string: `
+        var $a_λS = "str"; // # r0
+        var $b_λN = 8; // # r0
+        var $c_λN = 8; // # r0
+        function $c_λF(){
+            var $a = 5;
+            var $rnd_λN = 5;
+        }
+        console.log($a);
+        `},
+        {
+            string: `
         var x, y;
         if (true) { // # if2-0
             x = 3;
@@ -202,8 +213,8 @@ function commentsSyntax() {
     // console.log(finalFunction());
 
     return {
-        function: jScriptOriginal,
-        result: finalFunction()
+        function: jScriptOriginal
+        // result: finalFunction()
     }
 };
 
