@@ -3,7 +3,7 @@
 const { assigment } = require("./assigments");
 const { variableNames, dataTypes } = require("./main-object");
 
-function inlineSyntax() {
+function inlineSyntax(str) {
 
   /////////////// constructor //////////////////////////
 
@@ -171,7 +171,7 @@ function inlineSyntax() {
   //////////////////////////////////////////////////////
 
   // assigment 
-  let jScript = assigment();
+  let jScript = str;
   //console.log("skripta", jScript);
 
   /////////// VAR NAME DISTRIBUTION ////////////
