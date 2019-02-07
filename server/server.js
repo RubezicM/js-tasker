@@ -7,7 +7,8 @@ const hbs = require('express-hbs');
 const { Users, getUsers } = require('./utils/dummy_db');
 const { authenticate } = require('./middleware/authenticate');
 const { loggedIn } = require('./middleware/loggedIn');
-const { inlineSyntax } = require('./parser/inline/inlineSyntax');
+const { inlineSyntax } = require('./parser/inline/inline-syntax');
+const { commentsSyntax } = require('./parser/comments/comments-syntax');
 
 let users;
 getUsers().then((data) => {
@@ -155,11 +156,11 @@ app.post('/logout', authenticate, (req, res) => {
     };
 });
 
-
-app.get('/parser',(req,res)=>{
-    let task = inlineSyntax();
+app.get('/parser', (req, res) => {
+    let task = commentsSyntax();
+    console.log(task);
     res.send(task);
-})
+});
 
 
 /////////////////////////////////////////////////////////////
