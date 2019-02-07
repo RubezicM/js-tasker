@@ -26,11 +26,20 @@ document.getElementById('start').addEventListener("click", (event) => {
     axios.get('/parser')
         .then((response) => {
             let taskFunction = response.data.function;
+            let image = converter(taskFunction);
+            let gameHolder = document.getElementById('game-area');
             taskResponse = response.data.result.trim();
-            console.log(taskResponse);
-            document.getElementById('game-area').innerHTML = `<pre>${taskFunction}</pre>`;
+            
+            if(gameHolder.childElementCount > 0){
+                gameHolder.removeChild(gameHolder.firstChild);
+            } else {
+
+            }
+            gameHolder.appendChild(image);
+            // console.log(taskFunction);
+            
         })
         .catch((err) => {
-            responseField.innerHTML = err.response.data;
+            document.getElementById('game-area').innerHTML = err;
         });
 });
