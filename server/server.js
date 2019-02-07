@@ -7,7 +7,7 @@ const hbs = require('express-hbs');
 const { Users, getUsers } = require('./utils/dummy_db');
 const { authenticate } = require('./middleware/authenticate');
 const { loggedIn } = require('./middleware/loggedIn');
-const { inlineSyntax } = require('./parser/inlineSyntax');
+const { inlineSyntax } = require('./parser/inline/inlineSyntax');
 
 let users;
 getUsers().then((data) => {
