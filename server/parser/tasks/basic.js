@@ -28,7 +28,7 @@ let assignments = [
     var $b_ºA = ['b', '2']; // []
     var $c_ºA = ['c', '3']; // []
     console.log($used_ºA.concat($used_ºA));
-    `,`
+    `, `
     var $a_ºO = {   // # b3-0
         $b_ºK: 'x',
         $c_ºK: 'y'
@@ -38,7 +38,7 @@ let assignments = [
         $c_ºK: 2
     };
     console.log($used_ºO.$used_ºK);
-    `,`
+    `, `
     var $a_ºN = $num;
     var $b_ºN = $num;
     var $c = 0;
@@ -49,18 +49,25 @@ let assignments = [
         };
     };
     console.log($c);
-    `,`
+    `, `
     var $a_ºN = '$num';
     var $b_ºN = $num;
     var $c_ºN = $num;
     $var_$used_ºN = 5;
-    `,`
+    `, `
     function $a($b_ºP, $c_ºP) {
         console.log($used_ºP);
     };
     $a(1, 3);
+    `, `
+    function test() {
+        return // # ret0-n-O
+    };
+
+    console.log(test());
+    `,`
+    var $rnd_ºN = $num;
     `
-    
 
 ];
 

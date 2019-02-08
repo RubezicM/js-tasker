@@ -5,7 +5,7 @@ const global = require('./global');
 const objects = [
     `{
         x: "ff"
-    };`
+    }`
     /*
     `{
         s: "ppppp",
@@ -18,16 +18,9 @@ const objects = [
 ];
 
 const arrays = [
-    `[function test1() { 
-        var lorem = 99;
-        var ipsum = 100;
-        console.log("lorem", lorem, "ipsum", ipsum);
-    }];`,
-    `[function test2() { 
-        lorem = 9; // var
-        console.log("lorem", lorem);
-    }];`
-]
+    `[1, 2, 3]`,
+    `["a", "b", "c"]`
+];
 
 /////////////// global variables ////////////////////////
 
@@ -152,14 +145,15 @@ function applyReturnRandomization(returnBlock, mainArr, i) {
     if (returnBlock.fade === "y") {
         options.push("");
     };
-    if (returnBlock.type !== "X") {
+    if (returnBlock.type === "X") {
         options.push("original");
     };
     let codeBlock = global.makeCodeArray(options[global.random(0, options.length - 1)]);
     if (codeBlock[0].code === "original") {
         return mainArr;
     };
-    codeBlock[0].code = "return " + codeBlock[0].code;
+    codeBlock[0].code = (codeBlock.length === 1) ? `return ${codeBlock[0].code};` : `return ${codeBlock[0].code}`;
+    codeBlock[codeBlock.length - 1].code += ";";
     let indent = mainArr[i].code.match(/^ */);
     codeBlock = global.indentCode(codeBlock, indent[0]);
     mainArr.splice(i, returnBlock.height + 1, ...codeBlock);
