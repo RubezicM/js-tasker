@@ -35,7 +35,7 @@ document.getElementById('start').addEventListener("click", (event) => {
                 gameHolder.removeChild(gameHolder.firstChild);
             } 
             gameHolder.appendChild(image);
-            // console.log(taskFunction);
+             console.log(taskFunction);
             
         })
         .catch((err) => {
