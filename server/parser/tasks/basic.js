@@ -50,7 +50,7 @@ let assignments = [
     };
     console.log($c);
     `,`
-    var $a_ºN = $num;
+    var $a_ºN = '$num';
     var $b_ºN = $num;
     var $c_ºN = $num;
     $var_$used_ºN = 5;
@@ -59,6 +59,12 @@ let assignments = [
         console.log($used_ºP);
     };
     $a(1, 3);`,
+    `
+    function $a($b_ºP, $c_ºP) {
+        console.log($used_ºP);
+    };
+    $a(1, 3);
+    `,
     `var $rnd_ºN = $num;
     var $rnd_ºN = $num;
     var $a_ºA = [$num_4];
