@@ -24,12 +24,13 @@ let variableNames = [
 ];
 let dataTypes = {
   O: "object",
-  K: "object_key",
   N: "number",
   S: "string",
   A: "array",
   F: "function",
-  B: "boolean"
+  B: "boolean",
+  K: "object_key",
+  P: "parametar"
 };
 
 module.exports = {

@@ -1,16 +1,6 @@
 const { variableNames, dataTypes } = require("./main-object");
 const _ = require('lodash');
 
-////////////////////// helpers /////////////////////////////
-
-// function getObjKeyValuesInArray(obj, keys) {
-//   let arr = [];
-//   for (let i = 0; i < keys.length; i++) {
-//     arr.push(obj[keys[i]]);
-//   }
-//   return arr;
-// };
-
 function inlineSyntax(str) {
 
   let variableNamesLocal = _.cloneDeep(variableNames);
@@ -111,16 +101,17 @@ function inlineSyntax(str) {
         }
       }
     }
-    if (type != undefined && type.length > 1) {
+    if (type !== undefined && type.length > 1) {
       let tmpArr = type.split("");
       for (let i = 0; i < tmpArr.length; i++) {
         typeArray.push(dataTypes[tmpArr[i]]);
       }
-    } else if (type != undefined && type.length === 1) {
+    } else if (type !== undefined && type.length === 1) {
       typeArray = dataTypes[type];
     } else {
       typeArray = "random";
-    }
+    };
+
     return {
       key,
       name,
@@ -148,10 +139,14 @@ function inlineSyntax(str) {
 
   function getSpecificVarTypes(arr, type) {
     let names = {
-      N: 'number',
-      A: 'array',
-      O: 'object',
-      S: 'string'
+      O: "object",
+      N: "number",
+      S: "string",
+      A: "array",
+      F: "function",
+      B: "boolean",
+      K: "object_key",
+      P: "parametar"
     };
 
 
