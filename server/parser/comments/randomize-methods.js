@@ -293,7 +293,7 @@ function shuffleArrayElements(mainArr) {
     for (let i = 0; i < mainArr.length; i++) {
         if (mainArr[i].inline && mainArr[i].inline.match(/\[\]/)) {
             mainArr[i].code = mainArr[i].code.replace(/\[(.*)\]/g, (match, p1, offset, string) => {
-                let arr = p1.split(",");
+                let arr = p1.split(" ,");
                 global.shuffle(arr);
                 arr = arr.map(element => element.trim());
                 return "[" + arr.join() + "]";
