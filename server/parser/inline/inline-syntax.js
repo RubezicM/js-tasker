@@ -3,13 +3,13 @@ const _ = require('lodash');
 
 ////////////////////// helpers /////////////////////////////
 
-function getObjKeyValuesInArray(obj, keys) {
-  let arr = [];
-  for (let i = 0; i < keys.length; i++) {
-    arr.push(obj[keys[i]]);
-  }
-  return arr;
-};
+// function getObjKeyValuesInArray(obj, keys) {
+//   let arr = [];
+//   for (let i = 0; i < keys.length; i++) {
+//     arr.push(obj[keys[i]]);
+//   }
+//   return arr;
+// };
 
 function inlineSyntax(str) {
 
@@ -150,7 +150,8 @@ function inlineSyntax(str) {
     let names = {
       N: 'number',
       A: 'array',
-      O: 'object'
+      O: 'object',
+      S: 'string'
     };
 
 
@@ -226,7 +227,7 @@ function inlineSyntax(str) {
 
   let finalFunction = new Function(jScript);
 
-  // console.log('function:', jScriptOriginal);
+  console.log('function:', jScriptOriginal);
   // console.log('result:', finalFunction());
 
   return {

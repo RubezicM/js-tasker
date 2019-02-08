@@ -158,7 +158,7 @@ app.post('/logout', authenticate, (req, res) => {
 });
 
 app.get('/parser', (req, res) => {
-    let assignment = pickTask(1);
+    let assignment = pickTask(4);
     let commentsRandomization = commentsSyntax(assignment).function;
     let task = inlineSyntax(commentsRandomization);
     res.send(task);
