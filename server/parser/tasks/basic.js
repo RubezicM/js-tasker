@@ -12,6 +12,12 @@ let pickTask = (index = _.random(0, assignments.length - 1)) => {
             var $rnd_λN = 5;
         }
         console.log($a);
+        `,
+        `
+        var $a_λN = $num;
+        var $b_λN = $num;
+        var $c_λN = $num;
+        console.log($used_λN);
         `
     ];
 

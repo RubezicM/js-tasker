@@ -1,7 +1,18 @@
 const { variableNames, dataTypes } = require("./main-object");
 const _ = require('lodash');
 
+// let str = `
+// var $a_λN = $num;
+//   var $b_λN = $num;
+//   var $c_λN = $num;
+//   console.log($used_λN);
+// `
+// inlineSyntax(str);
+
+
 function inlineSyntax(str) {
+
+  let variableNamesLocal = _.cloneDeep(variableNames);
 
   /////////////// constructor //////////////////////////
 
@@ -23,8 +34,8 @@ function inlineSyntax(str) {
     return arr;
   };
 
-  let index = random(0, variableNames.length - 1);
-  let task = new Challenge(variableNames[index]);
+  let index = random(0, variableNamesLocal.length - 1);
+  let task = new Challenge(variableNamesLocal[index]);
   task.usableVarNames = task.getKeyNames(task.varNames);
 
   ///////////////// methods ///////////////////////////////
@@ -41,20 +52,19 @@ function inlineSyntax(str) {
       key = p1;
       let objectKeys = Object.keys(task.varNames);
       let randomKey = objectKeys[_.random(0, objectKeys.length - 1)];
-      
+
       nameVar = task.varNames[randomKey];
       usedVarTags.push({ key, nameVar });
       delete task.varNames[randomKey];
+
+      let infoVar = storeVarInfo(nameVar, type, key);
+      checkAndAddToUsedKeys(infoVar);
+      if (p1 === "g" || p2 === "$g") {
+        //////// ??
+      };
     } else {
       key = varObject.key;
       nameVar = varObject.nameVar;
-    };
-
-    let infoVar = storeVarInfo(nameVar, type, key);
-
-    checkAndAddToUsedKeys(infoVar);
-    if (p1 === "g" || p2 === "$g") {
-      //////// ??
     };
 
     return nameVar;
@@ -76,7 +86,7 @@ function inlineSyntax(str) {
     let nameVar,
       rnd = random(0, task.usableVarNames.length - 1),
       infoVar;
-    if (p2 == undefined) {
+    if (p2 === undefined) {
       let type = p1;
       nameVar = task.usableVarNames[rnd];
       infoVar = storeVarInfo(nameVar, type);
@@ -107,10 +117,10 @@ function inlineSyntax(str) {
 
   function storeVarInfo(name, type, key) {
     let typeArray = [];
-    if (key == undefined) {
+    if (key === undefined) {
       let keys = Object.keys(task.varNames);
       for (let i = 0; i < keys.length; i++) {
-        if (task.varNames[keys[i]] == name) {
+        if (task.varNames[keys[i]] === name) {
           key = keys[i][0];
         }
       }
@@ -120,7 +130,7 @@ function inlineSyntax(str) {
       for (let i = 0; i < tmpArr.length; i++) {
         typeArray.push(dataTypes[tmpArr[i]]);
       }
-    } else if (type != undefined && type.length == 1) {
+    } else if (type != undefined && type.length === 1) {
       typeArray = dataTypes[type];
     } else {
       typeArray = "random";
@@ -142,26 +152,25 @@ function inlineSyntax(str) {
     };
   };
 
-  function getProperty(arr, key) {
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i].key == key) {
-        return arr[i].name;
-      };
-    };
-  };
-
   function getUsedVar(arr, key) {
     for (let i = 0; i < arr.length; i++) {
-      if (arr[i].key == key) {
+      if (arr[i].key === key) {
         return arr[i];
       };
     };
   };
 
   function getSpecificVarTypes(arr, type) {
+    let names = {
+      N: 'number',
+      A: 'array',
+      O: 'object'
+    };
+
+    
     let tmp = [];
     arr.forEach(function (entry) {
-      if (entry.type == type) {
+      if (entry.type === names[type]) {
         tmp.push(entry);
       };
     });
@@ -197,15 +206,14 @@ function inlineSyntax(str) {
   jScript = jScript.replace(
     /\$used_λ(\w+)|\$(used_V)/g,
     (match, p1, p2, offset, string) => {
-      let nameVar,
-        tmpArr,
-        rnd = random(0, task.usableVarNames.length - 1);
+      let nameVar, tmpArr;
       if (p2 == undefined) {
         let type = p1;
         tmpArr = getSpecificVarTypes(task.usedVarNames, type);
       } else {
         tmpArr = task.usedVarNames;
-      }
+      };
+      rnd = _.random(0, tmpArr.length - 1);
       nameVar = tmpArr[rnd]["name"];
       return nameVar;
     }
