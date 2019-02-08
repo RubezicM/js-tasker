@@ -49,6 +49,11 @@ let assignments = [
         };
     };
     console.log($c);
+    `,`
+    var $a_λN = $num;
+    var $b_λN = $num;
+    var $c_λN = $num;
+    $var_$used_λN = 5;
     `
     
 
@@ -56,8 +61,8 @@ let assignments = [
 
 
 
-let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
+// let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
 
-// let pickTask = (index = assignments.length - 1) => assignments[index];
+let pickTask = (index = assignments.length - 1) => assignments[index];
 
 module.exports = { pickTask };

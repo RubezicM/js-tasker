@@ -59,10 +59,10 @@ function inlineSyntax(str) {
     };
 
     return nameVar;
-  }
+  };
 
   function redeclareVars(match, p1, p2, offset, string) {
-    if (match === "$rdc_") {
+    if (match === "$var_") {
       return _.random(0, 1) === 1 ? "var " : "";
     } else {
       let typeOfVar = dataTypes[p1];
@@ -200,7 +200,7 @@ function inlineSyntax(str) {
     }
   );
 
-  jScript = jScript.replace(/\$rdc_λ(.)|\$rdc_/g, redeclareVars);
+  jScript = jScript.replace(/\$var_λ(.)|\$var_/g, redeclareVars);
 
   jScript = jScript.replace(/\$(num+)/g, (match, p1, offset, string) => {
     return _.random(0, 10);
