@@ -1,14 +1,15 @@
 const { variableNames, dataTypes } = require("./main-object");
 const _ = require('lodash');
 
-// let str = `
-// var $a_λN = $num;
-//   var $b_λN = $num;
-//   var $c_λN = $num;
-//   console.log($used_λN);
-// `
-// inlineSyntax(str);
+////////////////////// helpers /////////////////////////////
 
+function getObjKeyValuesInArray(obj, keys) {
+  let arr = [];
+  for (let i = 0; i < keys.length; i++) {
+    arr.push(obj[keys[i]]);
+  }
+  return arr;
+};
 
 function inlineSyntax(str) {
 
@@ -34,7 +35,7 @@ function inlineSyntax(str) {
     return arr;
   };
 
-  let index = random(0, variableNamesLocal.length - 1);
+  let index = _.random(0, variableNamesLocal.length - 1);
   let task = new Challenge(variableNamesLocal[index]);
   task.usableVarNames = task.getKeyNames(task.varNames);
 
@@ -72,19 +73,19 @@ function inlineSyntax(str) {
 
   function redeclareVars(match, p1, p2, offset, string) {
     if (match === "$rdc_") {
-      return random(0, 1) === 1 ? "var " : "";
+      return _.random(0, 1) === 1 ? "var " : "";
     } else {
       let typeOfVar = dataTypes[p1];
       let arrayOfType = getSpecificVarTypes(task.usedVarNames, typeOfVar);
-      let rnd = random(0, arrayOfType.length - 1);
+      let rnd = _.random(0, arrayOfType.length - 1);
       let nameVar = arrayOfType[rnd].name;
-      return random(0, 1) === 1 ? "var " + nameVar : nameVar;
+      return _.random(0, 1) === 1 ? "var " + nameVar : nameVar;
     };
   };
 
   function declareRandomVars(match, p1, p2, offset, string) {
     let nameVar,
-      rnd = random(0, task.usableVarNames.length - 1),
+      rnd = _.random(0, task.usableVarNames.length - 1),
       infoVar;
     if (p2 === undefined) {
       let type = p1;
@@ -97,21 +98,6 @@ function inlineSyntax(str) {
     checkAndAddToUsedKeys(infoVar);
     return nameVar;
   };
-
-
-  ////////////////////// helpers /////////////////////////////
-
-  function random(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  }
-
-  function getObjKeyValuesInArray(obj, keys) {
-    let arr = [];
-    for (let i = 0; i < keys.length; i++) {
-      arr.push(obj[keys[i]]);
-    }
-    return arr;
-  }
 
   //////////////////////// Storing variable info inside an global object ///////////////////////////
 
@@ -167,7 +153,7 @@ function inlineSyntax(str) {
       O: 'object'
     };
 
-    
+
     let tmp = [];
     arr.forEach(function (entry) {
       if (entry.type === names[type]) {
@@ -177,9 +163,8 @@ function inlineSyntax(str) {
     return tmp;
   };
 
-  //////////////////////////////////////////////////////
+  /////////////////////////////  assigment  /////////////////////////
 
-  // assigment 
   let jScript = str;
 
   jScript = jScript.replace(/\$\b(\w)\b/g, replaceVarNames);
@@ -222,7 +207,7 @@ function inlineSyntax(str) {
   jScript = jScript.replace(/\$rdc_λ(.)|\$rdc_/g, redeclareVars);
 
   jScript = jScript.replace(/\$(num+)/g, (match, p1, offset, string) => {
-    return random(0, 15);
+    return _.random(0, 10);
     // Todo - build an global array filled with random numbers.
     // Add chance for negative values
   });
@@ -248,6 +233,6 @@ function inlineSyntax(str) {
     function: jScriptOriginal,
     result: finalFunction()
   };
-}
+};
 
 module.exports = { inlineSyntax };
