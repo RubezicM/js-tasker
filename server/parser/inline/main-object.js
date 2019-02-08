@@ -1,4 +1,3 @@
-
 let variableNames = [
   {
     a: "lorem",
@@ -33,38 +32,7 @@ let dataTypes = {
   B: "boolean"
 };
 
-// Constructors
-
-// let Challenge = function(varNames) {
-//   this.varNames = varNames;
-//   this.usedVarNames = [];
-// };
-
-// Challenge.prototype.getKeyNames = function(keysArr) {
-//   let keyNames = Object.keys(keysArr);
-//   return getObjKeyValuesInArray(keysArr, keyNames);
-// };
-// function getObjKeyValuesInArray(obj, keys) {
-//   var arr = [];
-//   for (var i = 0; i < keys.length; i++) {
-//     arr.push(obj[keys[i]]);
-//   }
-//   return arr;
-// }
-
-// let index = random(0, variableNames.length - 1);
-// var task = new Challenge(variableNames[index]);
-// task.usableVarNames = task.getKeyNames(task.varNames);
-
-// function random(min, max) {
-//   return Math.floor(Math.random() * (max - min + 1) + min);
-// }
-
-// console.log('radi');
-
-
 module.exports = {
-  // task,
   dataTypes,
   variableNames
 };
