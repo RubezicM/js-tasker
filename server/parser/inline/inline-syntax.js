@@ -165,9 +165,9 @@ function inlineSyntax(str) {
 
   jScript = jScript.replace(/\$\b(\w)\b/g, replaceVarNames);
 
-  jScript = jScript.replace(/\$\b(\w{1})_λ(\w+)\b/g, replaceVarNames);
+  jScript = jScript.replace(/\$\b(\w{1})_º(\w+)\b/g, replaceVarNames);
 
-  jScript = jScript.replace(/\$rnd_λ(\w+)|\$(rnd_V)/g, declareRandomVars);
+  jScript = jScript.replace(/\$rnd_º(\w+)|\$(rnd_V)/g, declareRandomVars);
 
   jScript = jScript.replace(
     /\$\b(\w{1})\b|\b\.\$(\w{1})\b/g,
@@ -185,7 +185,7 @@ function inlineSyntax(str) {
   );
 
   jScript = jScript.replace(
-    /\$used_λ(\w+)|\$(used_V)/g,
+    /\$used_º(\w+)|\$(used_V)/g,
     (match, p1, p2, offset, string) => {
       let nameVar, tmpArr;
       if (p2 == undefined) {
@@ -200,7 +200,7 @@ function inlineSyntax(str) {
     }
   );
 
-  jScript = jScript.replace(/\$var_λ(.)|\$var_/g, redeclareVars);
+  jScript = jScript.replace(/\$var_º(.)|\$var_/g, redeclareVars);
 
   jScript = jScript.replace(/\$(num+)/g, (match, p1, offset, string) => {
     return _.random(0, 10);

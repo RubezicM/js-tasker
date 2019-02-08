@@ -2,63 +2,62 @@ const _ = require('lodash');
 
 let assignments = [
     `
-    var $a_λN = $num;
-    var $b_λN = $num;
-    var $c_λN = $num;
-    console.log($used_λN + $used_λN); // +0
+    var $a_ºN = $num;
+    var $b_ºN = $num;
+    var $c_ºN = $num;
+    console.log($used_ºN + $used_ºN); // +0
     `, `
-    var $a_λN = $num;   
-    var $b_λN = $num;   // # r0
-    var $c_λN = $num;   // # r0
-    console.log($used_λN);
+    var $a_ºN = $num;   
+    var $b_ºN = $num;   // # r0
+    var $c_ºN = $num;   // # r0
+    console.log($used_ºN);
     `, `
-    var $a_λS = 'a';
-    var $b_λS = 'b';
-    var $c_λS = 'c';
-    console.log($used_λS + $used_λS);
+    var $a_ºS = 'a';
+    var $b_ºS = 'b';
+    var $c_ºS = 'c';
+    console.log($used_ºS + $used_ºS);
     `,
     `
-    var $a_λA = ['a', '1']; // []
-    var $b_λA = ['b', '2']; // []
-    var $c_λA = ['c', '3']; // []
-    console.log($used_λA + $used_λA);
+    var $a_ºA = ['a', '1']; // []
+    var $b_ºA = ['b', '2']; // []
+    var $c_ºA = ['c', '3']; // []
+    console.log($used_ºA + $used_ºA);
     `,
     `
-    var $a_λA = ['a', '1']; // []
-    var $b_λA = ['b', '2']; // []
-    var $c_λA = ['c', '3']; // []
-    console.log($used_λA.concat($used_λA));
+    var $a_ºA = ['a', '1']; // []
+    var $b_ºA = ['b', '2']; // []
+    var $c_ºA = ['c', '3']; // []
+    console.log($used_ºA.concat($used_ºA));
     `,`
-    var $a_λO = {   // # b3-0
-        $b_λK: 'x',
-        $c_λK: 'y'
+    var $a_ºO = {   // # b3-0
+        $b_ºK: 'x',
+        $c_ºK: 'y'
     };
-    var $d_λO = {   // # b3-0
-        $b_λK: 1,
-        $c_λK: 2
+    var $d_ºO = {   // # b3-0
+        $b_ºK: 1,
+        $c_ºK: 2
     };
-    console.log($used_λO.$used_λK);
+    console.log($used_ºO.$used_ºK);
     `,`
-    var $a_λN = $num;
-    var $b_λN = $num;
+    var $a_ºN = $num;
+    var $b_ºN = $num;
     var $c = 0;
-    for (i = 0; i < $used_λN; ++i) {
+    for (i = 0; i < $used_ºN; ++i) {
         ++$c;
-        if (i === $used_λN - 2) {
+        if (i === $used_ºN - 2) {
             $c += 1;
         };
     };
     console.log($c);
     `,`
-    var $a_λN = $num;
-    var $b_λN = $num;
-    var $c_λN = $num;
-    $var_$used_λN = 5;
+    var $a_ºN = $num;
+    var $b_ºN = $num;
+    var $c_ºN = $num;
+    $var_$used_ºN = 5;
     `
     
 
 ];
-
 
 
 // let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
