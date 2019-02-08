@@ -204,8 +204,7 @@ function inlineSyntax(str) {
   jScript = jScript.replace(
     /\$rnd_λ(\w+)|\$(rnd_V)/g,
     declareRandomVars
-  );
-
+  )
   jScript = jScript.replace(
     /\$\b(\w{1})\b|\b\.\$(\w{1})\b/g,
     (match, p1, p2, offset, string) => {
@@ -220,7 +219,7 @@ function inlineSyntax(str) {
       return p2 === undefined ? nameVar : "." + nameVar;
     }
   );
-
+  
   // Assigning random variable names to all kinds of data-types. Usually, these types of variables do not go to log function, but can be used to manipulate outcomes of such. We have limited capacity at referencing them but it can be done.
   /* Keywords :
  *$rnd_λ[specific-data-type] === choosing random variable name that is not used and assigning it a specific value/data type (string,number,boolean,object..)
@@ -244,6 +243,7 @@ function inlineSyntax(str) {
       return nameVar;
     }
   );
+  
 
   // Redeclaring already used variables. We choose random USED variable, and we declare it's new value. We can reference the variables we used by it's KEY or by it's DATA-TYPE. Program chooses whether to add the "var" keyword or not, it's completely random.
 

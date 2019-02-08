@@ -1,5 +1,5 @@
-var converter = function(ass) {
-  var PIXEL_RATIO = (function() {
+var converter = function (ass) {
+  var PIXEL_RATIO = (function () {
     var ctx = document.createElement("canvas").getContext("2d"),
       dpr = window.devicePixelRatio || 1,
       bsr =
@@ -12,7 +12,7 @@ var converter = function(ass) {
 
     return dpr / bsr;
   })();
-  createHiDPICanvas = function(w, h, ratio) {
+  createHiDPICanvas = function (w, h, ratio) {
     if (!ratio) {
       ratio = PIXEL_RATIO;
     }
@@ -29,10 +29,10 @@ var converter = function(ass) {
   let config = {
     image: {
       lineHeight: 17,
-      font:"1.1rem Inconsolata"
+      font: "1.1rem Inconsolata"
     }
   }
-  
+
   let colors = {
     light: {
       varFunction: "#0000ff",
@@ -55,7 +55,7 @@ var converter = function(ass) {
     }
   };
   let theme;
-  
+
   let loadTheme = option => {
     if (option === "light") {
       theme = colors.light;
@@ -63,16 +63,11 @@ var converter = function(ass) {
       theme = colors.dark;
     }
   };
-  
-  
+
+
   // This is call for specific theme... It can be a call by an user
   loadTheme("light");
-  var str = `var kme = 23;var kme1 = 32;var kme2 = 12;
-    var kme = 23;var kme1 = 32;var kme2 = 12;var kme = 23;var kme1 = 32;var kme2 = 12;
-    var kme = 23;var kme1 = 32;var kme2 = 12;var kme = 23;var kme1 = 32;var kme2 = 12;
-    var kme = 23;var kme1 = 32;var kme2 = 12;var kme = 23;var kme1 = 32;var kme2 = 12;
-    var kme = 23;var kme1 = 32;var kme2 = 12;
-    `;
+
   const keywords = {
     searchTerms: ["var", "function", "=", "return", "console.log"]
   };
@@ -143,7 +138,7 @@ var converter = function(ass) {
           };
           tmpArr.push(obj);
         }
-      } catch {}
+      } catch { }
     }
 
     return tmpArr;
@@ -168,11 +163,11 @@ var converter = function(ass) {
 
   // Coloring init
   colorCanvas(taskToColor);
- 
+
   // Images made from canvas
   var can = document.getElementById("task-result");
-  let img =  canvasToImage(can);
-  
+  let img = canvasToImage(can);
+
   function colorCanvas(taskArr) {
     for (var k = 0, y = 0; k < taskArr.length; k++) {
       var line = taskArr[k];
@@ -219,12 +214,12 @@ var converter = function(ass) {
             colorFillChange(ch, x, y, theme["return"]);
           } else if (strInfo[position].name === "=") {
             colorFillChange(ch, x, y, "gray");
+          } else if (strInfo[position].name === "string") {
+            colorFillChange(ch, x, y, theme.string);
           } else if (strInfo[position].name === "number") {
             colorFillChange(ch, x, y, theme.number);
           } else if (strInfo[position].name === "console.log") {
             colorFillChange(ch, x, y, theme["console.log"]);
-          } else if (strInfo[position].name === "string") {
-            colorFillChange(ch, x, y, theme.string);
           }
           x += context.measureText(ch).width;
           z++;
@@ -274,7 +269,7 @@ var converter = function(ass) {
   }
   function buildObjFromArr(arr) {
     var tmpObj = {};
-    arr.forEach(function(item) {
+    arr.forEach(function (item) {
       tmpObj[item] = {};
     });
     return tmpObj;
@@ -296,9 +291,10 @@ var converter = function(ass) {
 
   function getAllStrings(str) {
     var re = /\".*?\"/g,
+        re1 = /\'.*?\'/g
       str = str;
     tmpArr = [];
-    while ((match = re.exec(str)) != null) {
+    while ((match = re.exec(str)) != null || (match = re1.exec(str)) != null) {
       var obj = {
         name: "string",
         index: match["index"],
@@ -313,7 +309,7 @@ var converter = function(ass) {
   function removeEmptyObj(arr) {
     if (arr != undefined) {
       var tmp = JSON.stringify(
-        arr.filter(function(el) {
+        arr.filter(function (el) {
           return typeof el != "object" || Object.keys(el).length > 0;
         })
       );
