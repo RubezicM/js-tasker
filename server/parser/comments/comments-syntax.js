@@ -40,9 +40,6 @@ function commentsSyntax(assignment) {
 
     mainArray = rMethods.shuffleArrayElements(mainArray);
 
-    mainArray = rMethods.randomizeIntigers(mainArray);
-
-
     /////////// sklapanje patterna /////////////////////
     jScript = "";
     mainArray.forEach(element => {
