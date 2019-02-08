@@ -16,6 +16,7 @@ function inlineSyntax(str) {
     let keyNames = Object.keys(keysArr);
     return getObjKeyValuesInArray(keysArr, keyNames);
   };
+  
   function getObjKeyValuesInArray(obj, keys) {
     let arr = [];
     for (let i = 0; i < keys.length; i++) {

@@ -29,6 +29,7 @@ document.getElementById('start').addEventListener("click", (event) => {
             let image = converter(taskFunction);
             let gameHolder = document.getElementById('game-area');
             taskResponse = response.data.result.trim();
+            console.log(taskResponse);
             
             if(gameHolder.childElementCount > 0){
                 gameHolder.removeChild(gameHolder.firstChild);

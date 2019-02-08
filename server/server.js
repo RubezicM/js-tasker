@@ -9,6 +9,7 @@ const { authenticate } = require('./middleware/authenticate');
 const { loggedIn } = require('./middleware/loggedIn');
 const { inlineSyntax } = require('./parser/inline/inline-syntax');
 const { commentsSyntax } = require('./parser/comments/comments-syntax');
+const {pickTask} = require('./parser/tasks/basic');
 
 let users;
 getUsers().then((data) => {
@@ -157,7 +158,8 @@ app.post('/logout', authenticate, (req, res) => {
 });
 
 app.get('/parser', (req, res) => {
-    let commentsRandomization = commentsSyntax().function;
+    let assignment = pickTask(0);
+    let commentsRandomization = commentsSyntax(assignment).function;
     let task = inlineSyntax(commentsRandomization);
     res.send(task);
 });
