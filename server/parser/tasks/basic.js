@@ -73,26 +73,33 @@ let assignments = [
     function test() {
         return // # ret-O
     };`,`
-    var $a_ºA = [$num_2];
+    var $a_ºN = $num;
+
+    var a = $rndObj; // # insO_uN1
+    `,`
+    var $a_ºA = [];
     var $rnd_ºN = $num;
     var $rnd_ºN = $num;
     var $rnd_ºN = $num;
-    var $b_ºA = [$used_ºN_3]
-    $used_ºA.push($used_ºA[2]);
-    $used_V = 0;
+    var $b_ºA = [] 
+    var $c_ºA = [$arr_ºN_used1,$arr_ºN_new2]
+    var $d = [$arr_ºN_used2]
+    $c.push($d);
+    console.log($c);
      `,`
      var $a_ºN = $num;
      var $b_ºN = $num;
      var $c_ºS = 'foo';
      var $d_ºS = 'bar';
+     var $e_ºN = $num;
  
-     var a = $rndObj_1; // # insO_uN2_uS3
+     var a = $rndObj_1; // # insO_N3_uS1
      console.log(a.$used_ºK);
      `
 ];
 
 // let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
 
-let pickTask = (index = assignments.length - 1) => assignments[index];
+let pickTask = (index = assignments.length - 2) => assignments[index];
 
 module.exports = { pickTask };
