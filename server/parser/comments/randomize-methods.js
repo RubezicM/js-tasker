@@ -128,6 +128,8 @@ function insertObjects(mainArr) {
     for (let i = 0; i < mainArr.length; i++) {
         if (mainArr[i].rows) {
             let match = mainArr[i].rows.match(/insO_(\S*)/);
+            let objIndex = mainArr[i].code.match(/rndObj_([0-9])/)[1];
+            console.log(objIndex);
             if (match) {
                 let matchArr = match[1].split('_');
                 matchArr = matchArr.map((element) => {
@@ -138,12 +140,12 @@ function insertObjects(mainArr) {
                         type
                     });
                 });
-                let newObject = constructObject(matchArr);
+                let newObject = constructObject(matchArr, objIndex);
                 let indent = mainArr[i].code.match(/^ */);
                 newObject = global.indentCode(newObject, indent[0]);
 
 
-                mainArr[i].code = mainArr[i].code.replace('$rndObj;', '{');
+                mainArr[i].code = mainArr[i].code.replace(`$rndObj_${objIndex};`, '{');
                 mainArr.splice(i + 1, 0, ...newObject);
                 let jScript = '';
                 mainArr.forEach(element => {
@@ -155,7 +157,7 @@ function insertObjects(mainArr) {
     return mainArr;
 };
 
-function constructObject(matchArr) {
+function constructObject(matchArr, objIndex) {
     let keys = {
         N: '$num',
         uN: '$used_ºN',
@@ -167,15 +169,19 @@ function constructObject(matchArr) {
     for (let i = 0; i < matchArr.length; ++i) {
         let count = _.random(1, matchArr[i].number);
         for (let j = 0; j < count; ++j) {
-            let string = '    $rnd_ºK: ';
+            let keyType = matchArr[i].type.match(/[A-Z]/)[0];
+            console.log(keyType);
+            // let string = `    $rnd_ºK${objIndex}${keyType}: `;
+            let string = `    $rnd_ºK: `;
             string += keys[matchArr[i].type] + ',';
             mainString += (count - 1 === j && i === matchArr.length - 1) ? `${string}` : `${string}\n`;
         };
     };
     mainString = global.makeCodeArray(mainString);
     mainString = _.shuffle(mainString);
+    console.log(mainString);
     mainString[mainString.length - 1].code = mainString[mainString.length - 1].code.replace(',', '');
-    mainString.push({code: '};', rows: null, inline: null, rows: null, custom: null});
+    mainString.push({ code: '};', rows: null, inline: null, rows: null, custom: null });
     return mainString;
 }
 

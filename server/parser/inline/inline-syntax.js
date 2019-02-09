@@ -257,7 +257,7 @@ function inlineSyntax(str) {
   );
 
   jScript = jScript.replace(
-    /\$used_º(\w+)|\$(used_V)/g,
+    /\$used_º(\w+)|\$(used_V.)/g,
     (match, p1, p2, offset, string) => {
       let nameVar, tmpArr;
       if (p2 == undefined) {

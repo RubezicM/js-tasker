@@ -82,7 +82,7 @@ let assignments = [
     var $rnd_ºN = $num;
     var $rnd_ºN = $num;
     var $b_ºA = [] 
-    var $c_ºA = [$arr_ºN_used4,$arr_ºN_new2]
+    var $c_ºA = [$arr_ºN_used1,$arr_ºN_new2]
     var $d = [$arr_ºN_used2]
     $c.push($d);
     console.log($c);
@@ -93,6 +93,7 @@ let assignments = [
      var $d_ºS = 'bar';
      var $e_ºN = $num;
  
+<<<<<<< HEAD
      var $f_ºO = $rndObj; // # insO_N3_uS1
      console.log($f.$used_ºK);
      `,
@@ -105,6 +106,10 @@ let assignments = [
      }
      $used_ºN = $num;
      $rnd_ºN = $num;
+=======
+     var a = $rndObj_1; // # insO_N3_uS1
+     console.log(a.$used_ºK);
+>>>>>>> a21f988286aae3d978d1d8eceadb6afa75e3ffd8
      `
 ];
 
