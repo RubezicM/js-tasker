@@ -77,13 +77,15 @@ let assignments = [
 
     var a = $rndObj; // # insO_uN1
     `,`
-    var $a_ºA = [$num_2];
+    var $a_ºA = [];
     var $rnd_ºN = $num;
     var $rnd_ºN = $num;
     var $rnd_ºN = $num;
-    var $b_ºA = [$used_ºN_3]
-    $used_ºA.push($used_ºA[2]);
-    $used_V = 0;
+    var $b_ºA = [] 
+    var $c_ºA = [$arr_ºN_used4,$arr_ºN_new2]
+    var $d = [$arr_ºN_used2]
+    $c.push($d);
+    console.log($c);
      `
 ];
 

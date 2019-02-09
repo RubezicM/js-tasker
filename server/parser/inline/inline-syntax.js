@@ -1,4 +1,7 @@
-const { variableNames, dataTypes } = require("./main-object");
+const {
+  variableNames,
+  dataTypes
+} = require("./main-object");
 const _ = require('lodash');
 
 function inlineSyntax(str) {
@@ -7,10 +10,10 @@ function inlineSyntax(str) {
   let index = _.random(0, variableNamesLocal.length - 1);
 
   let randomizeKeys = (arr) => {
-      let vals = _.shuffle(arr);
-      let keys = Object.keys(arr);
-      let tmpObj = {};
-    for(let i = 0;i < vals.length;i++){
+    let vals = _.shuffle(arr);
+    let keys = Object.keys(arr);
+    let tmpObj = {};
+    for (let i = 0; i < vals.length; i++) {
       tmpObj[keys[i]] = vals[i];
     }
     return tmpObj;
@@ -39,7 +42,7 @@ function inlineSyntax(str) {
     return arr;
   };
 
- 
+
   let task = new Challenge(variableNamesForTask);
   task.usableVarNames = task.getKeyNames(task.varNames);
   ///////////////// methods ///////////////////////////////
@@ -94,7 +97,7 @@ function inlineSyntax(str) {
     let nameVar,
       rnd = _.random(0, task.usableVarNames.length - 1),
       infoVar;
-      // console.log("p1",p1,"p2",p2);
+    // console.log("p1",p1,"p2",p2);
     if (p2 === undefined) {
       let type = p1;
       nameVar = task.usableVarNames[rnd];
@@ -204,48 +207,100 @@ function inlineSyntax(str) {
       return p2 === undefined ? nameVar : "." + nameVar;
     }
   );
- // [broj random stringova, broj random brojeva, broj random iskoriscenih promenljivi odredjenog tipa*]
- jScript = jScript.replace(
-  /\[(\$\w{3})_(.)\]/g,
-  (match, p1, p2,p3, offset, string) => {
-    //let strNames = ["foo","bar","tar","bet","ket","krk","kme"];
-    let numberOfData = p2,
-        tmpArr;
-    if(p1 === "$num"){
-      let tmpStr = '[';
-      for(let i = 0;i < numberOfData;i++){
-        let el = _.random(0,20);
-        if(i === 0){
-          tmpStr += el;
-        } else {
-          tmpStr += "," + el;
+  // [broj random stringova, broj random brojeva, broj random iskoriscenih promenljivi odredjenog tipa*]
+  //  jScript = jScript.replace(
+  //   /\[?\$\w+º(\w{1})_(\w+)\]?/g,
+  //   (match, p1, p2, offset, string) => {
+  //     //let strNames = ["foo","bar","tar","bet","ket","krk","kme"];
+  //     console.log(p1,p2)
+  //     let numberOfData = p2,
+  //         tmpArr;
+  //     // if(p1 === "N"){
+  //     //   let tmpStr = '';
+  //     //   for(let i = 0;i < numberOfData;i++){
+  //     //     let el = _.random(0,20);
+  //     //     if(i === 0){
+  //     //       tmpStr += el;
+  //     //     } else {
+  //     //       tmpStr += "," + el;
+  //     //     }
+  //     //   }
+  //     //   return tmpStr;
+  //     // }
+  //   }
+  // );
+  jScript = jScript.replace(
+    /\[(.+)\]/g,
+    (match, p1, p2, offset, string) => {
+      //let strNames = ["foo","bar","tar","bet","ket","krk","kme"];
+      console.log(p1)
+      let tasks = p1.split(',');
+      let typeOfVar,
+          numberOfData,
+          rtrnStr = "[",
+          condition,
+          tmpArr,
+          el;
+      for (let i = 0; i < tasks.length; i++) {
+        
+        for (let y = 0; y < tasks[i].length; y++) {
+          let singleTask = tasks[i].split("_");
+          typeOfVar = singleTask[1].substring(1);
+          numberOfData = singleTask[2][singleTask[2].length - 1];
+          condition = singleTask[2].substr(0, singleTask[2].length-1);
+        }
+
+        for (let k = 0; k < numberOfData; k++) {
+          console.log("tasks",tasks[i],"i",i)
+          
+            if(condition == "used"){
+              console.log("k",k)
+              tmpArr = getSpecificVarTypes(task.usedVarNames, typeOfVar);
+              let rnd = _.random(0, tmpArr.length - 1);
+              nameVar = tmpArr[rnd]["name"];
+              
+              if(k === 0){
+                rtrnStr += nameVar;
+                
+              } else {
+                rtrnStr = rtrnStr + "," + nameVar;
+              }
+            } else if(condition == "new"){
+              if(typeOfVar == "N"){
+                el = _.random(0,20);
+              }
+                  if(i === 0){
+                    rtrnStr += el;
+                  } else {
+                    rtrnStr += "," + el;
+                  }
+            }
         }
       }
-      tmpStr += "]"
-      return tmpStr;
+      rtrnStr += "]"
+      return rtrnStr;
     }
-  }
-);
-jScript = jScript.replace(
-  /\[\$used_º(\w+)_(.)\]/g,
-  (match, p1, p2, p3,offset, string) => {
-    console.log(p1,p2,p3)
-    let typeOfVar = p1,
-        tmpArr,
-        tmpStr = "[";
-        tmpArr = getSpecificVarTypes(task.usedVarNames, typeOfVar);
-        for(var i = 0;i < tmpArr.length;i++){
-          if(i === 0){
-            tmpStr += tmpArr[i].name;
-          } else {
-            tmpStr += "," + tmpArr[i].name;
-          }
-        }
-        tmpStr += "]";
-        return tmpStr;
-  }
-);
-// To-do / Ubacivanje unikatnih iskoriscenih
+  );
+  // jScript = jScript.replace(
+  //   /\[\$used_º(\w+)_(.)\]/g,
+  //   (match, p1, p2, p3, offset, string) => {
+  //     //console.log(p1,p2,p3)
+  //     let typeOfVar = p1,
+  //       tmpArr,
+  //       tmpStr = "[";
+  //     tmpArr = getSpecificVarTypes(task.usedVarNames, typeOfVar);
+  //     for (var i = 0; i < tmpArr.length; i++) {
+  //       if (i === 0) {
+  //         tmpStr += tmpArr[i].name;
+  //       } else {
+  //         tmpStr += "," + tmpArr[i].name;
+  //       }
+  //     }
+  //     tmpStr += "]";
+  //     return tmpStr;
+  //   }
+  // );
+  // To-do / Ubacivanje unikatnih iskoriscenih
   jScript = jScript.replace(
     /\$used_º(\w+)|\$(used_V)/g,
     (match, p1, p2, offset, string) => {
@@ -260,10 +315,10 @@ jScript = jScript.replace(
       nameVar = tmpArr[rnd]["name"];
       return nameVar;
     }
-  ); 
-  
+  );
 
- 
+
+
   jScript = jScript.replace(/\$var_º(.)|\$var_/g, redeclareVars);
 
   jScript = jScript.replace(/\$(num+)/g, (match, p1, offset, string) => {
@@ -271,7 +326,7 @@ jScript = jScript.replace(
     // Todo - build an global array filled with random numbers.
     // Add chance for negative values
   });
-
+  console.log(task)
   // obradjeni patern za prikaz korisniku
   let jScriptOriginal = jScript;
   // console.log("task",task)
@@ -294,4 +349,6 @@ jScript = jScript.replace(
   };
 };
 
-module.exports = { inlineSyntax };
+module.exports = {
+  inlineSyntax
+};
