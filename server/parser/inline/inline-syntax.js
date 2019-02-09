@@ -219,8 +219,6 @@ jScript = jScript.replace(
     let typeOfVar = p1,
         tmpArr,
         tmpStr = "[";
-
-        
         tmpArr = getSpecificVarTypes(task.usedVarNames, typeOfVar);
         for(var i = 0;i < tmpArr.length;i++){
           if(i === 0){
