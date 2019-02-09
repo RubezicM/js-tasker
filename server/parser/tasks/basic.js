@@ -86,7 +86,8 @@ let assignments = [
      var $c_ºS = 'foo';
      var $d_ºS = 'bar';
  
-     var a = $rndObj; // # insO_N3_S1
+     var a = $rndObj_1; // # insO_uN2_uS3
+     console.log(a.$used_ºK);
      `
 ];
 
