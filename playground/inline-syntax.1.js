@@ -34,34 +34,30 @@ function inlineSyntax(str) {
   let usedVarTags = [];
 
   function replaceVarNames(match, p1, p2, offset, string) {
-    // let key, nameVar;
-    // let type = p2;
+    let key, nameVar;
+    let type = p2;
 
-    // let varObject = usedVarTags.filter((element) => element.key === p1)[0];
+    let varObject = usedVarTags.filter((element) => element.key === p1)[0];
 
-    // if (!varObject) {
-    //   key = p1;
-    //   let objectKeys = Object.keys(task.varNames);
-    //   let randomKey = objectKeys[_.random(0, objectKeys.length - 1)];
+    if (!varObject) {
+      key = p1;
+      let objectKeys = Object.keys(task.varNames);
+      let randomKey = objectKeys[_.random(0, objectKeys.length - 1)];
 
-    //   nameVar = task.varNames[randomKey];
-    //   usedVarTags.push({ key, nameVar });
-    //   delete task.varNames[randomKey];
+      nameVar = task.varNames[randomKey];
+      usedVarTags.push({ key, nameVar });
+      delete task.varNames[randomKey];
 
-    //   let infoVar = storeVarInfo(nameVar, type, key);
-    //   checkAndAddToUsedKeys(infoVar);
-    // } else {
-    //   key = varObject.key;
-    //   nameVar = varObject.nameVar;
-    // };
+      let infoVar = storeVarInfo(nameVar, type, key);
+      checkAndAddToUsedKeys(infoVar);
+      if (p1 === "g" || p2 === "$g") {
+        //////// ??
+      };
+    } else {
+      key = varObject.key;
+      nameVar = varObject.nameVar;
+    };
 
-    // return nameVar;
-    let key, type, nameVar, infoVar;
-    key = p1;
-    type = p2;
-    nameVar = task.varNames[key];
-    infoVar = storeVarInfo(nameVar, type, key);
-    checkAndAddToUsedKeys(infoVar);
     return nameVar;
   };
 
@@ -81,13 +77,10 @@ function inlineSyntax(str) {
     let nameVar,
       rnd = _.random(0, task.usableVarNames.length - 1),
       infoVar;
-      // console.log("p1",p1,"p2",p2);
     if (p2 === undefined) {
       let type = p1;
       nameVar = task.usableVarNames[rnd];
-      // console.log('NAMEVAR',nameVar)
       infoVar = storeVarInfo(nameVar, type);
-      // console.log("INFOVAR",infoVar)
     } else {
       nameVar = task.usableVarNames[rnd];
       infoVar = storeVarInfo(nameVar);
@@ -127,7 +120,6 @@ function inlineSyntax(str) {
   };
 
   function checkAndAddToUsedKeys(obj) {
-    // console.log("obj",obj);
     let found = task.usedVarNames.some(function (el) {
       return el.key === obj.key;
     });
@@ -191,46 +183,6 @@ function inlineSyntax(str) {
       return p2 === undefined ? nameVar : "." + nameVar;
     }
   );
- // [broj random stringova, broj random brojeva, broj random iskoriscenih promenljivi odredjenog tipa*]
- jScript = jScript.replace(
-  /\[(\$\w{3})_(.)\]/g,
-  (match, p1, p2,p3, offset, string) => {
-    //let strNames = ["foo","bar","tar","bet","ket","krk","kme"];
-    let numberOfData = p2,
-        tmpArr;
-    if(p1 === "$num"){
-      let tmpStr = '[';
-      for(let i = 0;i < numberOfData;i++){
-        let el = _.random(0,20);
-        if(i === 0){
-          tmpStr += el;
-        } else {
-          tmpStr += "," + el;
-        }
-      }
-      tmpStr += "]"
-      return tmpStr;
-    }
-  }
-);
-jScript = jScript.replace(
-  /\[\$used_º(\w+)_(.)\]/g,
-  (match, p1, p2, offset, string) => {
-    let typeOfVar = p1,
-        tmpArr,
-        tmpStr = "[";
-        tmpArr = getSpecificVarTypes(task.usedVarNames, typeOfVar);
-        for(var i = 0;i < tmpArr.length;i++){
-          if(i === 0){
-            tmpStr += tmpArr[i].name;
-          } else {
-            tmpStr += "," + tmpArr[i].name;
-          }
-        }
-        tmpStr += "]";
-        return tmpStr;
-  }
-);
 
   jScript = jScript.replace(
     /\$used_º(\w+)|\$(used_V)/g,
@@ -246,9 +198,8 @@ jScript = jScript.replace(
       nameVar = tmpArr[rnd]["name"];
       return nameVar;
     }
-  ); 
+  );
 
- 
   jScript = jScript.replace(/\$var_º(.)|\$var_/g, redeclareVars);
 
   jScript = jScript.replace(/\$(num+)/g, (match, p1, offset, string) => {
@@ -259,8 +210,8 @@ jScript = jScript.replace(
 
   // obradjeni patern za prikaz korisniku
   let jScriptOriginal = jScript;
-  // console.log("task",task)
-   jScript = 'let result = "";\n' + jScript;
+
+  jScript = 'let result = "";\n' + jScript;
 
   // dodela return-a
   jScript = jScript.replace(/console.log/g, "logResult");
@@ -268,9 +219,10 @@ jScript = jScript.replace(
                 result += params.join(" ") + '\\n';
             }
             return result;`;
+
   let finalFunction = new Function(jScript);
 
-  // console.log('function:', jScriptOriginal);
+  console.log('function:', jScriptOriginal);
   // console.log('result:', finalFunction());
 
   return {

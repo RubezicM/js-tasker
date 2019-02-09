@@ -122,72 +122,17 @@ function randomizeIfs(mainArr) {
     return mainArr;
 };
 
-////////////// insert random objects ///////////////////////////////
-
-function insertObjects(mainArr) {
-    for (let i = 0; i < mainArr.length; i++) {
-        if (mainArr[i].rows) {
-            let match = mainArr[i].rows.match(/insO_(\S*)/);
-            if (match) {
-                let matchArr = match[1].split('-');
-                matchArr = matchArr.map((element) => {
-                    console.log(element);
-                    let used = element.includes('u');
-                    let type = element.match(/[A-Z]/)[0];
-                    let number = element.match(/[0-9]/)[0];
-                    return ({
-                        number,
-                        used,
-                        type
-                    });
-                });
-                let newObject = constructObject(matchArr);
-                let indent = mainArr[i].code.match(/^ */);
-                console.log(indent[0], '*******');
-                newObject = global.indentCode(newObject, indent[0]);
-                
-
-                mainArr[i].code = mainArr[i].code.replace('$rndObj;', '{');
-                mainArr.splice(i + 1, 0, ...newObject);
-                // console.log(mainArr);
-                let jScript = '';
-                mainArr.forEach(element => {
-                    jScript += element.code + "\n";
-                });
-                console.log(jScript);
-                //console.log(newObject);
-            };
-        };
-    };
-    return mainArr;
-};
-
-function constructObject(matchArr) {
-    let mainString = '';
-    matchArr.forEach((element) => {
-        let string = '    $rnd_ºK: ';
-        if (element.used) {
-            string += `$used_º${element.type}`;
-            mainString += `${string}\n`;
-        };
-    });
-    mainString += '};';
-    // console.log(mainString);
-    mainString = global.makeCodeArray(mainString);
-    // console.log(mainString);
-    return mainString;
-}
-
 /////////// returns randomization //////////////////////
 
 function randomizeReturns(mainArr) {
     for (let i = 0; i < mainArr.length; i++) {
         if (mainArr[i].rows) {
-            let match = mainArr[i].rows.match(/ret([0-9]+)-([A-Z])/);
+            let match = mainArr[i].rows.match(/ret([0-9]+)-([a-z])-([A-Z])/);
             if (match) {
                 let returnBlock = {
                     height: parseInt(match[1]),
-                    type: match[2]
+                    fade: match[2],
+                    type: match[3]
                 };
                 mainArr = applyReturnRandomization(returnBlock, mainArr, i);
             };
@@ -198,6 +143,9 @@ function randomizeReturns(mainArr) {
 
 function applyReturnRandomization(returnBlock, mainArr, i) {
     let options = pullWholeBlock(returnBlock.type);
+    if (returnBlock.fade === "y") {
+        options.push("");
+    };
     if (returnBlock.type === "X") {
         options.push("original");
     };
@@ -347,8 +295,7 @@ module.exports = {
     randomizeVars,
     randomizeReturns,
     shuffleArrayElements,
-    addCustomInline,
-    insertObjects
+    addCustomInline
 };
 
 
