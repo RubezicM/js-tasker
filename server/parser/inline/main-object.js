@@ -8,18 +8,30 @@ let variableNames = [
     f: "consequentum",
     g: "rubor",
     h: "calor",
-    i: "bar"
+    i: "bar",
+    j: "mutat",
+    k: "officiis",
+    l: "facer",
+    m: "magna",
+    n: "semper",
+    o: "natum"
   },
   {
     a: "alfa",
     b: "beta",
     c: "gama",
     d: "delta",
-    e: "jota",
+    e: "iota",
     f: "teta",
     g: "zeta",
     h: "sigma",
-    i: "omega"
+    i: "omega",
+    j: "epsilon",
+    k: "kappa",
+    l: "eta",
+    m: "pi",
+    n: "chi",
+    o: "omicron"
   }
 ];
 let dataTypes = {

@@ -86,18 +86,16 @@ let assignments = [
     var $d = [$arr_ºN_used2]
     $c.push($d);
     console.log($c);
+     `,`
+     var $a_ºN = $num;
+     var $b_ºN = $num;
+     var $c_ºS = 'foo';
+     var $d_ºS = 'bar';
+     var $e_ºN = $num;
+ 
+     var $f_ºO = $rndObj; // # insO_N3_uS1
      `
 ];
-
-/*
-k:broj kljuceva + tip kljuceva/ # insO_uN2-N2-uS2-S2
-{
-        $rnd_ºK: $num,
-        $rnd_ºK: $used_ºN,
-        $rnd_ºK: $str,
-        $rnd_ºK: $used_ºS,
-    };
-*/
 
 // let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
 

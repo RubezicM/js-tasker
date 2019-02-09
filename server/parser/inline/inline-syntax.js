@@ -208,27 +208,6 @@ function inlineSyntax(str) {
     }
   );
   // [broj random stringova, broj random brojeva, broj random iskoriscenih promenljivi odredjenog tipa*]
-  //  jScript = jScript.replace(
-  //   /\[?\$\w+º(\w{1})_(\w+)\]?/g,
-  //   (match, p1, p2, offset, string) => {
-  //     //let strNames = ["foo","bar","tar","bet","ket","krk","kme"];
-  //     console.log(p1,p2)
-  //     let numberOfData = p2,
-  //         tmpArr;
-  //     // if(p1 === "N"){
-  //     //   let tmpStr = '';
-  //     //   for(let i = 0;i < numberOfData;i++){
-  //     //     let el = _.random(0,20);
-  //     //     if(i === 0){
-  //     //       tmpStr += el;
-  //     //     } else {
-  //     //       tmpStr += "," + el;
-  //     //     }
-  //     //   }
-  //     //   return tmpStr;
-  //     // }
-  //   }
-  // );
   jScript = jScript.replace(
     /\[(.+)\]/g,
     (match, p1, p2, offset, string) => {
@@ -329,7 +308,7 @@ function inlineSyntax(str) {
   console.log(task)
   // obradjeni patern za prikaz korisniku
   let jScriptOriginal = jScript;
-  // console.log("task",task)
+  console.log("task",task)
    jScript = 'let result = "";\n' + jScript;
 
   // dodela return-a
