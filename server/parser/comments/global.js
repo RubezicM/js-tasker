@@ -50,12 +50,9 @@ function makeCodeArrayTrim(string) {
 function indentCode(codeBlock, indent) {
     for (let i = 0; i < codeBlock.length; i++) {
         codeBlock[i].code = indent + codeBlock[i].code;
-        if (i === 0) {
-            indent = indent.slice(4);
-        }
-    }
-    return codeBlock
-}
+    };
+    return codeBlock;
+};
 
 function objectProperties(obj) {
     return Object.keys(obj)

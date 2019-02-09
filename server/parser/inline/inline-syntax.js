@@ -81,13 +81,13 @@ function inlineSyntax(str) {
     let nameVar,
       rnd = _.random(0, task.usableVarNames.length - 1),
       infoVar;
-      console.log("p1",p1,"p2",p2);
+      // console.log("p1",p1,"p2",p2);
     if (p2 === undefined) {
       let type = p1;
       nameVar = task.usableVarNames[rnd];
-      console.log('NAMEVAR',nameVar)
+      // console.log('NAMEVAR',nameVar)
       infoVar = storeVarInfo(nameVar, type);
-      console.log("INFOVAR",infoVar)
+      // console.log("INFOVAR",infoVar)
     } else {
       nameVar = task.usableVarNames[rnd];
       infoVar = storeVarInfo(nameVar);
@@ -127,7 +127,7 @@ function inlineSyntax(str) {
   };
 
   function checkAndAddToUsedKeys(obj) {
-    console.log("obj",obj);
+    // console.log("obj",obj);
     let found = task.usedVarNames.some(function (el) {
       return el.key === obj.key;
     });
@@ -261,7 +261,7 @@ jScript = jScript.replace(
 
   // obradjeni patern za prikaz korisniku
   let jScriptOriginal = jScript;
-  console.log("task",task)
+  // console.log("task",task)
    jScript = 'let result = "";\n' + jScript;
 
   // dodela return-a

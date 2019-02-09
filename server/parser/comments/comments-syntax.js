@@ -25,7 +25,9 @@ function commentsSyntax(assignment) {
 
     mainArray = rMethods.randomizeIfs(mainArray);
 
-    mainArray = rMethods.randomizeReturns(mainArray);
+    //mainArray = rMethods.randomizeReturns(mainArray);
+
+    mainArray = rMethods.insertObjects(mainArray);
 
     mainArray = rMethods.randomizeRows(mainArray);
 
@@ -62,7 +64,7 @@ function commentsSyntax(assignment) {
     let finalFunction = new Function(jScript);
 
     //prikaz rezultata i paterna za korisnika
-    // console.log(jScriptOriginal);
+    console.log(jScriptOriginal);
     // console.log(finalFunction());
 
     return {

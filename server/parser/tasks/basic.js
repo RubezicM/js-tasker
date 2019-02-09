@@ -53,24 +53,41 @@ let assignments = [
     var $a_ºN = '$num';
     var $b_ºN = $num;
     var $c_ºN = $num;
-    $var_$used_ºN = 5;
+    $used_ºN = 5;
+    console.log($usedºN);
     `, `
     function $a($b_ºP, $c_ºP) {
         console.log($used_ºP);
     };
     $a(1, 3);
-    `, `
-    function test() {
-        return // # ret0-n-O
-    };
-
-    console.log(test());
     `,`
     var $rnd_ºN = $num;
-    `
+    console.log($used_ºN);
+    `,`
+    var $rnd_ºN = $num;
+    var $rnd_ºN = $num;
+    var $a_ºA = [$num_4];
+    var $b_ºA = [$used_ºN_2];
+    console.log($b[0],$a[2]);
+    `, `
+    function test() {
+        return // # ret-O
+    };`,`
+    var $a_ºN = $num;
 
+    var a = $rndObj; // # insO_uN1
+    `
 ];
 
+/*
+k:broj kljuceva + tip kljuceva/ # insO_uN2-N2-uS2-S2
+{
+        $rnd_ºK: $num,
+        $rnd_ºK: $used_ºN,
+        $rnd_ºK: $str,
+        $rnd_ºK: $used_ºS,
+    };
+*/
 
 // let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
 
