@@ -94,6 +94,16 @@ let assignments = [
      var $e_ºN = $num;
  
      var $f_ºO = $rndObj; // # insO_N3_uS1
+     `,
+     `
+     var $g_ºN = $num;
+     var $h_ºN = $num;
+     var $k_ºN = $num;
+     var $a_ºO_º1 = {
+         $b_ºKN_º1: $num
+     }
+     $used_ºN = $num;
+     $rnd_ºN = $num;
      `
 ];
 
