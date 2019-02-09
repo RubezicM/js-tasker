@@ -4,7 +4,21 @@ const _ = require('lodash');
 function inlineSyntax(str) {
 
   let variableNamesLocal = _.cloneDeep(variableNames);
+  let index = _.random(0, variableNamesLocal.length - 1);
 
+  let randomizeKeys = (arr) => {
+      let vals = _.shuffle(arr);
+      let keys = Object.keys(arr);
+      let tmpObj = {};
+    for(let i = 0;i < vals.length;i++){
+      tmpObj[keys[i]] = vals[i];
+    }
+    return tmpObj;
+  }
+
+
+  // Shuffled object with variable names
+  let variableNamesForTask = randomizeKeys(variableNamesLocal[index]);
   /////////////// constructor //////////////////////////
 
   let Challenge = function (varNames) {
@@ -25,10 +39,9 @@ function inlineSyntax(str) {
     return arr;
   };
 
-  let index = _.random(0, variableNamesLocal.length - 1);
-  let task = new Challenge(variableNamesLocal[index]);
+ 
+  let task = new Challenge(variableNamesForTask);
   task.usableVarNames = task.getKeyNames(task.varNames);
-
   ///////////////// methods ///////////////////////////////
 
   let usedVarTags = [];
@@ -215,12 +228,11 @@ function inlineSyntax(str) {
 );
 jScript = jScript.replace(
   /\[\$used_º(\w+)_(.)\]/g,
-  (match, p1, p2, offset, string) => {
+  (match, p1, p2, p3,offset, string) => {
+    console.log(p1,p2,p3)
     let typeOfVar = p1,
         tmpArr,
         tmpStr = "[";
-
-        
         tmpArr = getSpecificVarTypes(task.usedVarNames, typeOfVar);
         for(var i = 0;i < tmpArr.length;i++){
           if(i === 0){
@@ -233,7 +245,7 @@ jScript = jScript.replace(
         return tmpStr;
   }
 );
-
+// To-do / Ubacivanje unikatnih iskoriscenih
   jScript = jScript.replace(
     /\$used_º(\w+)|\$(used_V)/g,
     (match, p1, p2, offset, string) => {
@@ -249,6 +261,7 @@ jScript = jScript.replace(
       return nameVar;
     }
   ); 
+  
 
  
   jScript = jScript.replace(/\$var_º(.)|\$var_/g, redeclareVars);

@@ -93,6 +93,9 @@ function assigment(){
             var $g = $b + $used_V;
             console.log("$g",$g);
             console.log("$b * $c",$b * $c)
+       `,
+       `var $a = [$num_5];
+        var $b = [$used_ºN_3]
        `
     ];
     
@@ -100,8 +103,8 @@ function assigment(){
         return Math.floor(Math.random() * (max - min + 1) + min);
     };
     
-    return assigments[random(0, assigments.length - 1)];
-    
+    //return assigments[random(0, assigments.length - 1)];
+    return assigments[assigments.length - 1];
 }
 
 module.exports = {
