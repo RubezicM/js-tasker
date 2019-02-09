@@ -94,6 +94,7 @@ let assignments = [
      var $e_ºN = $num;
  
      var $f_ºO = $rndObj; // # insO_N3_uS1
+     console.log($f.$used_ºK);
      `,
      `
      var $g_ºN = $num;
@@ -109,6 +110,6 @@ let assignments = [
 
 // let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
 
-let pickTask = (index = assignments.length - 1) => assignments[index];
+let pickTask = (index = assignments.length - 2) => assignments[index];
 
 module.exports = { pickTask };
