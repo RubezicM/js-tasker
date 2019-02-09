@@ -129,33 +129,26 @@ function insertObjects(mainArr) {
         if (mainArr[i].rows) {
             let match = mainArr[i].rows.match(/insO_(\S*)/);
             if (match) {
-                let matchArr = match[1].split('-');
+                let matchArr = match[1].split('_');
                 matchArr = matchArr.map((element) => {
-                    console.log(element);
-                    let used = element.includes('u');
-                    let type = element.match(/[A-Z]/)[0];
+                    let type = element.match(/u?[A-Z]/)[0];
                     let number = element.match(/[0-9]/)[0];
                     return ({
                         number,
-                        used,
                         type
                     });
                 });
                 let newObject = constructObject(matchArr);
                 let indent = mainArr[i].code.match(/^ */);
-                console.log(indent[0], '*******');
                 newObject = global.indentCode(newObject, indent[0]);
-                
+
 
                 mainArr[i].code = mainArr[i].code.replace('$rndObj;', '{');
                 mainArr.splice(i + 1, 0, ...newObject);
-                // console.log(mainArr);
                 let jScript = '';
                 mainArr.forEach(element => {
                     jScript += element.code + "\n";
                 });
-                console.log(jScript);
-                //console.log(newObject);
             };
         };
     };
@@ -163,18 +156,26 @@ function insertObjects(mainArr) {
 };
 
 function constructObject(matchArr) {
+    let keys = {
+        N: '$num',
+        uN: '$used_ºN',
+        uA: '$used_ºA',
+        uS: '$used_ºS'
+    };
+
     let mainString = '';
-    matchArr.forEach((element) => {
-        let string = '    $rnd_ºK: ';
-        if (element.used) {
-            string += `$used_º${element.type}`;
-            mainString += `${string}\n`;
+    for (let i = 0; i < matchArr.length; ++i) {
+        let count = _.random(1, matchArr[i].number);
+        for (let j = 0; j < count; ++j) {
+            let string = '    $rnd_ºK: ';
+            string += keys[matchArr[i].type] + ',';
+            mainString += (count - 1 === j && i === matchArr.length - 1) ? `${string}` : `${string}\n`;
         };
-    });
-    mainString += '};';
-    // console.log(mainString);
+    };
     mainString = global.makeCodeArray(mainString);
-    // console.log(mainString);
+    mainString = _.shuffle(mainString);
+    mainString[mainString.length - 1].code = mainString[mainString.length - 1].code.replace(',', '');
+    mainString.push({code: '};', rows: null, inline: null, rows: null, custom: null});
     return mainString;
 }
 

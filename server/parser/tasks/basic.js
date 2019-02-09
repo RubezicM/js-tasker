@@ -74,8 +74,11 @@ let assignments = [
         return // # ret-O
     };`,`
     var $a_ºN = $num;
+    var $b_ºN = $num;
+    var $c_ºS = 'foo';
+    var $d_ºS = 'bar';
 
-    var a = $rndObj; // # insO_uN1
+    var a = $rndObj; // # insO_N2_uS1
     `
 ];
 
