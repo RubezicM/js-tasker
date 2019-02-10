@@ -151,7 +151,7 @@ var converter = function (ass) {
   var canvasHeight = taskToColor.length * config.image.lineHeight + 10;
 
   // canvas init
-  var canvas = createHiDPICanvas(300, canvasHeight, 1);
+  var canvas = createHiDPICanvas(600, canvasHeight, 1);
   //canvas.setAttribute('id','code-canvas');
 
   // Appending canvas
