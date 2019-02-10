@@ -272,13 +272,12 @@ function randomizeVars(mainArr) {
         if (mainArr[i].inline) {
             let match = mainArr[i].inline.match(/var/);
             if (match) {
-                mainArr[i].code = mainArr[i].code.replace(/(var )/, (match, p1, offset, string) => {
-                    return (global.random(0, 1) === 1) ? "" : "var ";
+                mainArr[i].code = mainArr[i].code.replace(/([^\s])/, (match, p1, offset, string) => {
+                    return (global.random(0, 1) === 1) ? p1 : "var " + p1
                 });
             };
         };
     };
-    console.log(mainArr);
     return mainArr;
 };
 
