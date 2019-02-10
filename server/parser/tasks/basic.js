@@ -110,7 +110,7 @@ let assignments = [
       var $d_ºS = 'bar';
       var $e_ºN = $num;
   
-      var $f_ºO = $rndObj; // # insO_N3_uS1
+      var $f_ºO = $rndObj_1; // # insO_N3_uS1
       console.log($f.$used_ºK);
       `,
       `
