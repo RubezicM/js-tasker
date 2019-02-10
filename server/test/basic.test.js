@@ -19,9 +19,9 @@ let badWords = {
 
 describe('First test task', () => {
     for (let i = 0; i < assignments.length; ++i) {
-        if (i === 9) {
-            ++i;
-        };
+        // if (i === 9) {
+        //     continue;
+        // };
         for (let j = 0; j < 100; j++) {
             console.log('index', i);
             //console.log('Index: -', i, '- Current working task: ', assignments[i], 'End of task.');
