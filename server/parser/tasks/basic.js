@@ -73,7 +73,7 @@ let assignments = [
     };`,`
     var $a_ºN = $num;
 
-    var a = $rndObj; // # insO_uN1
+    var a = $rndObj_1; // # insO_uN1
     `,`
     var $a_ºA = ["str",23,"broj","12",$arr_ºN_new2,"str",$arr_ºN_new6];
     var $rnd_ºN = $num;
@@ -136,4 +136,4 @@ let pickTask = (index = assignments.length - 1) => assignments[index];
 
 pickTask = (index = 0) => assignments[index];
 
-module.exports = { pickTask };
+module.exports = { pickTask, assignments };

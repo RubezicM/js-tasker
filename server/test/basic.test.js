@@ -2,10 +2,10 @@ const expect = require('expect');
 
 const { inlineSyntax } = require('../parser/inline/inline-syntax');
 const { commentsSyntax } = require('../parser/comments/comments-syntax');
-const { pickTestTask } = require('./basic-tts');
+const { pickTask, assignments } = require('../parser/tasks/basic');
 
 let startTest = (taskIndex) => {
-    let assignment = pickTestTask(taskIndex);
+    let assignment = pickTask(taskIndex);
     let commentsRandomization = commentsSyntax(assignment).function;
     return inlineSyntax(commentsRandomization);
 };
@@ -18,8 +18,9 @@ let badWords = {
 };
 
 describe('First test task', () => {
-    for (i = 0; i < 0; ++i) {
-        let testString = startTest(0);
+    for (i = 0; i < assignments.length; ++i) {
+        console.log('Index: -', i, '- Current working task: ', assignments[i], 'End of task.');
+        let testString = startTest(i);
 
         it('does not have "undefined" in it.', () => {
             expect(testString).toEqual(expect.not.stringContaining(badWords.undefined));
