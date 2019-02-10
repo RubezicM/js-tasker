@@ -282,7 +282,7 @@ function inlineSyntax(str) {
     }
   );
 
-  jScript = jScript.replace(/\$var_º(.)|\$var_/g, redeclareVars);
+  //jScript = jScript.replace(/\$var_º(.)|\$var_/g, redeclareVars);
 
   jScript = jScript.replace(/\$(num+)/g, (match, p1, offset, string) => {
     return _.random(0, 10);

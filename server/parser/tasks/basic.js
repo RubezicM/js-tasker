@@ -119,6 +119,11 @@ let assignments = [
       };
       $used_ºN = $num;
       $rnd_ºN = $num;
+      `,
+      `
+      var $a_ºN = $num;
+      var $rnd_ºN = $num;
+      var $used_ºN = $num; // var
       `
 ];
 
@@ -126,6 +131,6 @@ let assignments = [
 
 let pickTask = (index = assignments.length - 1) => assignments[index];
 
-pickTask = (index = 4) => assignments[index];
+//pickTask = (index = 1) => assignments[index];
 
 module.exports = { pickTask };
