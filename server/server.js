@@ -9,7 +9,7 @@ const { authenticate } = require('./middleware/authenticate');
 const { loggedIn } = require('./middleware/loggedIn');
 const { inlineSyntax } = require('./parser/inline/inline-syntax');
 const { commentsSyntax } = require('./parser/comments/comments-syntax');
-const {pickTask} = require('./parser/tasks/basic');
+const { pickTask } = require('./parser/tasks/basic');
 
 let users;
 getUsers().then((data) => {
