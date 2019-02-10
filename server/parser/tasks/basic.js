@@ -88,23 +88,44 @@ let assignments = [
      var $d_ºS = 'bar';
      var $e_ºN = $num;
  
-     var $f_ºO = $rndObj; // # insO_N3_uS1
-     console.log($f.$used_ºK);
-     `,
-     `
-     var $g_N = $num;
-     var $h_N = $num;
-     var $k_N = $num;
-     var $a_O_1 = {
-         $b_KN_1: $num
-     }
-     $used_N = $num;
-     $rnd_N = $num;
-     `
+     var a = $rndObj_1; // # insO_N3_uS1
+     console.log(a.$used_ºK);
+     `,`
+     var $a_ºA = [];
+     var $rnd_ºN = $num;
+     var $rnd_ºN = $num;
+     var $rnd_ºN = $num;
+     var $b_ºA = [];
+     var $c_ºA = [$arr_ºN_used1,$arr_ºN_new2];
+     var $d = [$arr_ºN_used2];
+     $c.push($d);
+     console.log($c);
+      `,`
+      var $a_ºN = $num;
+      var $b_ºN = $num;
+      var $c_ºS = 'foo';
+      var $d_ºS = 'bar';
+      var $e_ºN = $num;
+  
+      var $f_ºO = $rndObj; // # insO_N3_uS1
+      console.log($f.$used_ºK);
+      `,
+      `
+      var $g_ºN = $num;
+      var $h_ºN = $num;
+      var $k_ºN = $num;
+      var $a_ºO_º1 = {
+          $a_ºKN_º1: $num
+      };
+      $used_ºN = $num;
+      $rnd_ºN = $num;
+      `
 ];
 
 // let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
 
-let pickTask = (index = 4) => assignments[index];
+let pickTask = (index = assignments.length - 1) => assignments[index];
+
+// let pickTask = (index = 1) => assignments[index];
 
 module.exports = { pickTask };

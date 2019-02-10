@@ -128,6 +128,9 @@ function insertObjects(mainArr) {
     for (let i = 0; i < mainArr.length; i++) {
         if (mainArr[i].rows) {
             let match = mainArr[i].rows.match(/insO_(\S*)/);
+            if (match === null) {
+                continue;
+            };
             let objIndex = mainArr[i].code.match(/rndObj_([0-9])/)[1];
             console.log(objIndex);
             if (match) {
