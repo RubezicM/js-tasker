@@ -2,10 +2,7 @@ const _ = require('lodash');
 
 let assignments = [
     `
-    var a = $num;
-    {
-    var a = $num; // var
-    }
+    var $a_ºN = $num;
     var $b_ºN = $num;
     var $c_ºN = $num;
     console.log($used_ºN + $used_ºN); // +0
@@ -129,6 +126,6 @@ let assignments = [
 
 let pickTask = (index = assignments.length - 1) => assignments[index];
 
-pickTask = (index = 0) => assignments[index];
+pickTask = (index = 4) => assignments[index];
 
 module.exports = { pickTask };

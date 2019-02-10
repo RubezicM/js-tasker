@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha server/test",
+    "testmon": "nodemon --exec npm test",
     "start": "node server/server.js",
     "startmon": "nodemon server/server.js"
   },
@@ -21,5 +22,9 @@
     "express": "^4.16.4",
     "express-hbs": "^2.0.1",
     "lodash": "^4.17.11"
+  },
+  "devDependencies": {
+    "expect": "^24.1.0",
+    "mocha": "^5.2.0"
   }
 }

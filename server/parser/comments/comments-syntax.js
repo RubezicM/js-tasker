@@ -61,7 +61,7 @@ function commentsSyntax(assignment) {
 
     // kreiranje funkcije
 
-    let finalFunction = new Function(jScript);
+    // let finalFunction = new Function(jScript);
 
     //prikaz rezultata i paterna za korisnika
     console.log(jScriptOriginal);
