@@ -20,9 +20,9 @@ let badWords = {
 
 describe('Test task', () => {
     for (let i = 0; i < assignments.length; ++i) {
-        if (i === 9) {
-            continue;
-        };
+        // if (i === 9) {
+        //     continue;
+        // };
         for (let j = 0; j < 10; j++) {
             console.log('index', i);
             let testStringBasic = startTest(i);
