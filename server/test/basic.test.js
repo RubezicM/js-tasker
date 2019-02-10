@@ -14,32 +14,37 @@ let badWords = {
     undefined: 'undefined',
     $: '$',
     º: 'º',
-    _: '_'
+    _: '_',
+    NaN: 'NaN'
 };
 
-describe('First test task', () => {
+describe('Test task', () => {
     for (let i = 0; i < assignments.length; ++i) {
-        // if (i === 9) {
-        //     continue;
-        // };
-        for (let j = 0; j < 100; j++) {
+        if (i === 9) {
+            continue;
+        };
+        for (let j = 0; j < 10; j++) {
             console.log('index', i);
-            //console.log('Index: -', i, '- Current working task: ', assignments[i], 'End of task.');
-            let testString = startTest(i);
+            let testStringBasic = startTest(i);
+            let testString = testStringBasic.function + testStringBasic.result;
 
-            it('does not have "undefined" in it.', () => {
+            it(`does not have "undefined" in it. Task index: ${i}`, () => {
                 expect(testString).toEqual(expect.not.stringContaining(badWords.undefined));
             });
 
-            it('does not have "$" in it.', () => {
+            it(`does not have "NaN" in it. Task index: ${i}`, () => {
+                expect(testString).toEqual(expect.not.stringContaining(badWords.NaN));
+            });
+
+            it(`does not have "$" in it. Task index: ${i}`, () => {
                 expect(testString).toEqual(expect.not.stringContaining(badWords.$));
             });
 
-            it('does not have "º" in it.', () => {
+            it(`does not have "º" in it. Task index: ${i}`, () => {
                 expect(testString).toEqual(expect.not.stringContaining(badWords.º));
             });
 
-            it('does not have "_" in it.', () => {
+            it(`does not have "_" in it. Task index: ${i}`, () => {
                 expect(testString).toEqual(expect.not.stringContaining(badWords._));
             });
         };

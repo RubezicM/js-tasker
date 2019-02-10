@@ -14,15 +14,21 @@ let badWords = {
     undefined: 'undefined',
     $: '$',
     º: 'º',
-    _: '_'
+    _: '_',
+    NaN: 'NaN'
 };
 
 describe('First test task', () => {
-    for (i = 0; i < 0; ++i) {
-        let testString = startTest(0);
+    for (i = 0; i < 1; ++i) {
+        let testStringBasic = startTest(0);
+        let testString = testStringBasic.function + testStringBasic.result;
 
         it('does not have "undefined" in it.', () => {
             expect(testString).toEqual(expect.not.stringContaining(badWords.undefined));
+        });
+
+        it('does not have "NaN" in it.', () => {
+            expect(testString).toEqual(expect.not.stringContaining(badWords.NaN));
         });
 
         it('does not have "$" in it.', () => {
