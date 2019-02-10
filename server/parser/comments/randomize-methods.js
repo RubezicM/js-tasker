@@ -278,7 +278,7 @@ function randomizeVars(mainArr) {
             };
         };
     };
-    console.log(mainArr);
+    // console.log(mainArr);
     return mainArr;
 };
 
