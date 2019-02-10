@@ -132,7 +132,7 @@ function insertObjects(mainArr) {
                 continue;
             };
             let objIndex = mainArr[i].code.match(/rndObj_([0-9])/)[1];
-            console.log(objIndex);
+            // console.log(objIndex);
             if (match) {
                 let matchArr = match[1].split('_');
                 matchArr = matchArr.map((element) => {
@@ -173,7 +173,7 @@ function constructObject(matchArr, objIndex) {
         let count = _.random(1, matchArr[i].number);
         for (let j = 0; j < count; ++j) {
             let keyType = matchArr[i].type.match(/[A-Z]/)[0];
-            console.log(keyType);
+            // console.log(keyType);
             // let string = `    $rnd_ºK${objIndex}${keyType}: `;
             let string = `    $rnd_ºK: `;
             string += keys[matchArr[i].type] + ',';
@@ -182,7 +182,7 @@ function constructObject(matchArr, objIndex) {
     };
     mainString = global.makeCodeArray(mainString);
     mainString = _.shuffle(mainString);
-    console.log(mainString);
+    // console.log(mainString);
     mainString[mainString.length - 1].code = mainString[mainString.length - 1].code.replace(',', '');
     mainString.push({ code: '};', rows: null, inline: null, rows: null, custom: null });
     return mainString;
