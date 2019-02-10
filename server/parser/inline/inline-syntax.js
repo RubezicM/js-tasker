@@ -188,6 +188,7 @@ function inlineSyntax(str) {
 
   jScript = jScript.replace(/\$\b(\w)\b/g, replaceVarNames);
 
+  //jScript = jScript.replace(/\$\b([a-zA-Z]{1})_º([a-zA-Z]+)_*º*(\d)*\b/g, replaceVarNames);
   jScript = jScript.replace(/\$\b([a-zA-Z]{1})_º([a-zA-Z]+)_*º*(\d)*\b/g, replaceVarNames);
 
   jScript = jScript.replace(/\$rnd_º([a-zA-Z]+)/g, declareRandomVars);
@@ -210,6 +211,7 @@ function inlineSyntax(str) {
   jScript = jScript.replace(
     /\[(.+)\]/g,
     (match, p1, p2, offset, string) => {
+      console.log("MATCH",p1);
       let tasks = p1.split(',');
       let typeOfVar,
           numberOfData,
@@ -218,40 +220,51 @@ function inlineSyntax(str) {
           tmpArr,
           el;
       for (let i = 0; i < tasks.length; i++) {
-        
-        for (let y = 0; y < tasks[i].length; y++) {
-          let singleTask = tasks[i].split("_");
-          typeOfVar = singleTask[1].substring(1);
-          numberOfData = singleTask[2][singleTask[2].length - 1];
-          condition = singleTask[2].substr(0, singleTask[2].length-1);
-        }
+        if(tasks[i].includes("$arr")){
 
-        for (let k = 0; k < numberOfData; k++) {
-          
-            if(condition == "used"){
-              tmpArr = getSpecificVarTypes(task.usedVarNames, typeOfVar);
-              let rnd = _.random(0, tmpArr.length - 1);
-              nameVar = tmpArr[rnd]["name"];
-              
-              if(k === 0){
-                rtrnStr += nameVar;
+          for (let y = 0; y < tasks[i].length; y++) {
+            let singleTask = tasks[i].split("_");
+            typeOfVar = singleTask[1].substring(1);
+            numberOfData = singleTask[2][singleTask[2].length - 1];
+            condition = singleTask[2].substr(0, singleTask[2].length-1);
+          }
+  
+          for (let k = 0; k < numberOfData; k++) {
+            
+              if(condition == "used"){
+                tmpArr = getSpecificVarTypes(task.usedVarNames, typeOfVar);
+                let rnd = _.random(0, tmpArr.length - 1);
+                nameVar = tmpArr[rnd]["name"];
                 
-              } else {
-                rtrnStr = rtrnStr + "," + nameVar;
+                if(k === 0){
+                  rtrnStr += nameVar;
+                  
+                } else {
+                  rtrnStr = rtrnStr + "," + nameVar;
+                }
+              } else if(condition == "new"){
+                if(typeOfVar == "N"){
+                  el = _.random(0,20);
+                }
+                    if(i === 0){
+                      rtrnStr += el;
+                    } else {
+                      rtrnStr += "," + el;
+                    }
               }
-            } else if(condition == "new"){
-              if(typeOfVar == "N"){
-                el = _.random(0,20);
-              }
-                  if(i === 0){
-                    rtrnStr += el;
-                  } else {
-                    rtrnStr += "," + el;
-                  }
-            }
-        }
+          }
+        } else {
+          if(i === 0){
+            rtrnStr += tasks[i];
+          } else {
+            rtrnStr = rtrnStr + "," + tasks[i];
+          }
+          
+        } 
+       
       }
       rtrnStr += "]"
+      console.log("STRING KOJI VRACAM",rtrnStr)
       return rtrnStr;
     }
   );
