@@ -28,6 +28,7 @@ document.getElementById('start').addEventListener("click", (event) => {
             let taskFunction = response.data.function;
             let image = converter(taskFunction);
             let gameHolder = document.getElementById('game-area');
+            console.log(taskFunction);
             taskResponse = response.data.result.trim();
             console.log(response.data.result);
             
