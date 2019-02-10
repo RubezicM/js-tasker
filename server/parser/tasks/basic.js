@@ -126,6 +126,6 @@ let assignments = [
 
 let pickTask = (index = assignments.length - 1) => assignments[index];
 
-// let pickTask = (index = 1) => assignments[index];
+pickTask = (index = 4) => assignments[index];
 
 module.exports = { pickTask };

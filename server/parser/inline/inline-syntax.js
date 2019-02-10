@@ -97,7 +97,6 @@ function inlineSyntax(str) {
   };
 
   function declareRandomVars(match, p1, p2, offset, string) {
-    console.log(p1)
     let nameVar,
       rnd = _.random(0, task.usableVarNames.length - 1),
       infoVar;
@@ -211,7 +210,6 @@ function inlineSyntax(str) {
   jScript = jScript.replace(
     /\[(.+)\]/g,
     (match, p1, p2, offset, string) => {
-      console.log("MATCH",p1);
       let tasks = p1.split(',');
       let typeOfVar,
           numberOfData,
@@ -264,7 +262,6 @@ function inlineSyntax(str) {
        
       }
       rtrnStr += "]"
-      console.log("STRING KOJI VRACAM",rtrnStr)
       return rtrnStr;
     }
   );
@@ -295,7 +292,6 @@ function inlineSyntax(str) {
   
   // obradjeni patern za prikaz korisniku
   let jScriptOriginal = jScript;
-  console.log(task)
    jScript = 'let result = "";\n' + jScript;
 
   // dodela return-a
