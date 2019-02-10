@@ -52,7 +52,7 @@ let assignments = [
     var $b_ºN = $num;
     var $c_ºN = $num;
     $used_ºN = 5;
-    console.log($usedºN);
+    console.log($used_ºN);
     `, `
     function $a($b_ºP, $c_ºP) {
         console.log($used_ºP);

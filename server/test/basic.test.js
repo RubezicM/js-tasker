@@ -18,25 +18,28 @@ let badWords = {
 };
 
 describe('First test task', () => {
-    for (i = 0; i < assignments.length; ++i) {
-        console.log('Index: -', i, '- Current working task: ', assignments[i], 'End of task.');
-        let testString = startTest(i);
+    for (let i = 0; i < assignments.length; ++i) {
+        for (let j = 0; j < 10; j++) {
+            console.log('index', i);
+            //console.log('Index: -', i, '- Current working task: ', assignments[i], 'End of task.');
+            let testString = startTest(i);
 
-        it('does not have "undefined" in it.', () => {
-            expect(testString).toEqual(expect.not.stringContaining(badWords.undefined));
-        });
+            it('does not have "undefined" in it.', () => {
+                expect(testString).toEqual(expect.not.stringContaining(badWords.undefined));
+            });
 
-        it('does not have "$" in it.', () => {
-            expect(testString).toEqual(expect.not.stringContaining(badWords.$));
-        });
+            it('does not have "$" in it.', () => {
+                expect(testString).toEqual(expect.not.stringContaining(badWords.$));
+            });
 
-        it('does not have "º" in it.', () => {
-            expect(testString).toEqual(expect.not.stringContaining(badWords.º));
-        });
+            it('does not have "º" in it.', () => {
+                expect(testString).toEqual(expect.not.stringContaining(badWords.º));
+            });
 
-        it('does not have "_" in it.', () => {
-            expect(testString).toEqual(expect.not.stringContaining(badWords._));
-        });
+            it('does not have "_" in it.', () => {
+                expect(testString).toEqual(expect.not.stringContaining(badWords._));
+            });
+        };
     };
 });
 
