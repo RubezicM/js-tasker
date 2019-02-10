@@ -21,14 +21,9 @@ let assignments = [
     var $a_ºA = ['a', '1']; // []
     var $b_ºA = ['b', '2']; // []
     var $c_ºA = ['c', '3']; // []
-    console.log($used_ºA + $used_ºA);
-    `,
-    `
-    var $a_ºA = ['a', '1']; // []
-    var $b_ºA = ['b', '2']; // []
-    var $c_ºA = ['c', '3']; // []
     console.log($used_ºA.concat($used_ºA));
-    `, `
+    `,
+     `
     var $a_ºO = {   // # b3-0
         $b_ºK: 'x',
         $c_ºK: 'y'
@@ -77,7 +72,7 @@ let assignments = [
 
     var a = $rndObj; // # insO_uN1
     `,`
-    var $a_ºA = [];
+    var $a_ºA = ["str",23,"broj","12",$arr_ºN_new2,"str",$arr_ºN_new6];
     var $rnd_ºN = $num;
     var $rnd_ºN = $num;
     var $rnd_ºN = $num;
@@ -93,28 +88,23 @@ let assignments = [
      var $d_ºS = 'bar';
      var $e_ºN = $num;
  
-<<<<<<< HEAD
      var $f_ºO = $rndObj; // # insO_N3_uS1
      console.log($f.$used_ºK);
      `,
      `
-     var $g_ºN = $num;
-     var $h_ºN = $num;
-     var $k_ºN = $num;
-     var $a_ºO_º1 = {
-         $b_ºKN_º1: $num
+     var $g_N = $num;
+     var $h_N = $num;
+     var $k_N = $num;
+     var $a_O_1 = {
+         $b_KN_1: $num
      }
-     $used_ºN = $num;
-     $rnd_ºN = $num;
-=======
-     var a = $rndObj_1; // # insO_N3_uS1
-     console.log(a.$used_ºK);
->>>>>>> a21f988286aae3d978d1d8eceadb6afa75e3ffd8
+     $used_N = $num;
+     $rnd_N = $num;
      `
 ];
 
 // let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
 
-let pickTask = (index = assignments.length - 2) => assignments[index];
+let pickTask = (index = 4) => assignments[index];
 
 module.exports = { pickTask };
