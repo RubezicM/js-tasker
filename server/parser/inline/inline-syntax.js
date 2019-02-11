@@ -315,14 +315,14 @@ function inlineSyntax(str) {
                 result += params.join(" ") + '\\n';
             }
             return result;`;
-  //let finalFunction = new Function(jScript);
+  let finalFunction = new Function(jScript);
 
   // console.log('function:', jScriptOriginal);
   // console.log('result:', finalFunction());
 
   return {
     function: jScriptOriginal,
-    //result: finalFunction()
+    result: finalFunction()
   };
 }
 
