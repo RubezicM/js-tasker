@@ -269,7 +269,6 @@ function inlineSyntax(str) {
   });
 
   jScript = jScript.replace(/\$(num+)([0-9])*/g, (match, p1,p2, offset, string) => {
-    console.log(p1,p2)
     let nameVar;
     if(p2 === undefined){
       return _.random(0, 15);
@@ -286,10 +285,8 @@ function inlineSyntax(str) {
   });
   jScript = jScript.replace(/\$(str+)([0-9])*/g, (match, p1,p2, offset, string) => {
     let strings = ["foo","bar","kme","lala","blah","prc"];
-    console.log(match)
     let nameVar;
     if(p2 === undefined){
-      console.log(strings[_.random(0, strings.length - 1)])
       return strings[_.random(0, strings.length - 1)];
     } else {
       nameVar = [];
