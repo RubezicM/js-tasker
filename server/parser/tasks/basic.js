@@ -146,7 +146,7 @@ let assignments = [
     `var $rnd_ºN = $num;
      var $used_ºN = $num; // var
      $var $used_ºN = $num;
-     var $g_ºS = $str2;
+     var $g_ºS = $num;
     `
 ];
 
