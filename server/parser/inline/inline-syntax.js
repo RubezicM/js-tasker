@@ -1,27 +1,10 @@
-const {
-  variableNames,
-  dataTypes
-} = require("./main-object");
+const { variableNames, dataTypes } = require("./main-object");
 const _ = require('lodash');
 
 function inlineSyntax(str) {
 
   let variableNamesLocal = _.cloneDeep(variableNames);
-  let index = _.random(0, variableNamesLocal.length - 1);
 
-  let randomizeKeys = (arr) => {
-    let vals = _.shuffle(arr);
-    let keys = Object.keys(arr);
-    let tmpObj = {};
-    for (let i = 0; i < vals.length; i++) {
-      tmpObj[keys[i]] = vals[i];
-    }
-    return tmpObj;
-  }
-
-
-  // Shuffled object with variable names
-  let variableNamesForTask = randomizeKeys(variableNamesLocal[index]);
   /////////////// constructor //////////////////////////
 
   let Challenge = function (varNames) {
@@ -42,45 +25,39 @@ function inlineSyntax(str) {
     return arr;
   };
 
-
-  let task = new Challenge(variableNamesForTask);
+  let index = _.random(0, variableNamesLocal.length - 1);
+  let task = new Challenge(variableNamesLocal[index]);
   task.usableVarNames = task.getKeyNames(task.varNames);
+
   ///////////////// methods ///////////////////////////////
 
   let usedVarTags = [];
 
-  function replaceVarNames(match, p1, p2,p3, offset, string) {
-    //console.log("matches",p1,p2,p3,match)
-    // let key, nameVar;
-    // let type = p2;
+  function replaceVarNames(match, p1, p2, offset, string) {
+    let key, nameVar;
+    let type = p2;
 
-    // let varObject = usedVarTags.filter((element) => element.key === p1)[0];
+    let varObject = usedVarTags.filter((element) => element.key === p1)[0];
 
-    // if (!varObject) {
-    //   key = p1;
-    //   let objectKeys = Object.keys(task.varNames);
-    //   let randomKey = objectKeys[_.random(0, objectKeys.length - 1)];
+    if (!varObject) {
+      key = p1;
+      let objectKeys = Object.keys(task.varNames);
+      let randomKey = objectKeys[_.random(0, objectKeys.length - 1)];
 
-    //   nameVar = task.varNames[randomKey];
-    //   usedVarTags.push({ key, nameVar });
-    //   delete task.varNames[randomKey];
+      nameVar = task.varNames[randomKey];
+      usedVarTags.push({ key, nameVar });
+      delete task.varNames[randomKey];
 
-    //   let infoVar = storeVarInfo(nameVar, type, key);
-    //   checkAndAddToUsedKeys(infoVar);
-    // } else {
-    //   key = varObject.key;
-    //   nameVar = varObject.nameVar;
-    // };
+      let infoVar = storeVarInfo(nameVar, type, key);
+      checkAndAddToUsedKeys(infoVar);
+      if (p1 === "g" || p2 === "$g") {
+        //////// ??
+      };
+    } else {
+      key = varObject.key;
+      nameVar = varObject.nameVar;
+    };
 
-    // return nameVar;
-    let key, type, nameVar, infoVar,member;
-    key = p1;
-    type = p2;
-    member = p3;
-    nameVar = task.varNames[key];
-    infoVar = storeVarInfo(nameVar, type, key,member);
-    //console.log(infoVar)
-    checkAndAddToUsedKeys(infoVar);
     return nameVar;
   };
 
@@ -100,16 +77,21 @@ function inlineSyntax(str) {
     let nameVar,
       rnd = _.random(0, task.usableVarNames.length - 1),
       infoVar;
+    if (p2 === undefined) {
       let type = p1;
       nameVar = task.usableVarNames[rnd];
       infoVar = storeVarInfo(nameVar, type);
+    } else {
+      nameVar = task.usableVarNames[rnd];
+      infoVar = storeVarInfo(nameVar);
+    }
     checkAndAddToUsedKeys(infoVar);
     return nameVar;
   };
 
   //////////////////////// Storing variable info inside an global object ///////////////////////////
 
-  function storeVarInfo(name, type, key, member = "not an object") {
+  function storeVarInfo(name, type, key) {
     let typeArray = [];
     if (key === undefined) {
       let keys = Object.keys(task.varNames);
@@ -133,8 +115,7 @@ function inlineSyntax(str) {
     return {
       key,
       name,
-      type: typeArray,
-      member
+      type: typeArray
     };
   };
 
@@ -167,16 +148,13 @@ function inlineSyntax(str) {
       K: "object_key",
       P: "parametar"
     };
-    let tmpObjKeys = [];
-    for(let i = 0;i<type.length;i++){
-      tmpObjKeys.push(names[type[i]]);
-    }
+
+
     let tmp = [];
     arr.forEach(function (entry) {
-      if(entry.type == tmpObjKeys){
+      if (entry.type === names[type]) {
         tmp.push(entry);
-     }
-      
+      };
     });
     return tmp;
   };
@@ -187,87 +165,27 @@ function inlineSyntax(str) {
 
   jScript = jScript.replace(/\$\b(\w)\b/g, replaceVarNames);
 
-  //jScript = jScript.replace(/\$\b([a-zA-Z]{1})_º([a-zA-Z]+)_*º*(\d)*\b/g, replaceVarNames);
-  jScript = jScript.replace(/\$\b([a-zA-Z]{1})_º([a-zA-Z]+)_*º*(\d)*\b/g, replaceVarNames);
+  jScript = jScript.replace(/\$\b(\w{1})_º(\w+)\b/g, replaceVarNames);
 
-  jScript = jScript.replace(/\$rnd_º([a-zA-Z]+)/g, declareRandomVars);
+  jScript = jScript.replace(/\$rnd_º(\w+)|\$(rnd_V)/g, declareRandomVars);
 
-  // jScript = jScript.replace(
-  //   /\$\b(\w{1})\b|\b\.\$(\w{1})\b/g,
-  //   (match, p1, p2, offset, string) => {
-  //     let key = p1 === undefined ? p2 : p1;
-  //     let nameVar;
-  //     let objVar = getUsedVar(task.usedVarNames, key);
-  //     if (objVar.type.indexOf("function") >= 0) {
-  //       nameVar = objVar.name + "()";
-  //     } else {
-  //       nameVar = objVar.name;
-  //     }
-  //     return p2 === undefined ? nameVar : "." + nameVar;
-  //   }
-  // );
-  // [broj random stringova, broj random brojeva, broj random iskoriscenih promenljivi odredjenog tipa*]
   jScript = jScript.replace(
-    /\[(.+)\]/g,
+    /\$\b(\w{1})\b|\b\.\$(\w{1})\b/g,
     (match, p1, p2, offset, string) => {
-      let tasks = p1.split(',');
-      let typeOfVar,
-          numberOfData,
-          rtrnStr = "[",
-          condition,
-          tmpArr,
-          el;
-      for (let i = 0; i < tasks.length; i++) {
-        if(tasks[i].includes("$arr")){
-
-          for (let y = 0; y < tasks[i].length; y++) {
-            let singleTask = tasks[i].split("_");
-            typeOfVar = singleTask[1].substring(1);
-            numberOfData = singleTask[2][singleTask[2].length - 1];
-            condition = singleTask[2].substr(0, singleTask[2].length-1);
-          }
-  
-          for (let k = 0; k < numberOfData; k++) {
-            
-              if(condition == "used"){
-                tmpArr = getSpecificVarTypes(task.usedVarNames, typeOfVar);
-                let rnd = _.random(0, tmpArr.length - 1);
-                nameVar = tmpArr[rnd]["name"];
-                
-                if(k === 0){
-                  rtrnStr += nameVar;
-                  
-                } else {
-                  rtrnStr = rtrnStr + "," + nameVar;
-                }
-              } else if(condition == "new"){
-                if(typeOfVar == "N"){
-                  el = _.random(0,20);
-                }
-                    if(i === 0){
-                      rtrnStr += el;
-                    } else {
-                      rtrnStr += "," + el;
-                    }
-              }
-          }
-        } else {
-          if(i === 0){
-            rtrnStr += tasks[i];
-          } else {
-            rtrnStr = rtrnStr + "," + tasks[i];
-          }
-          
-        } 
-       
+      let key = p1 === undefined ? p2 : p1;
+      let nameVar;
+      let objVar = getUsedVar(task.usedVarNames, key);
+      if (objVar.type.indexOf("function") >= 0) {
+        nameVar = objVar.name + "()";
+      } else {
+        nameVar = objVar.name;
       }
-      rtrnStr += "]"
-      return rtrnStr;
+      return p2 === undefined ? nameVar : "." + nameVar;
     }
   );
 
   jScript = jScript.replace(
-    /\$used_º(\w+)|\$(used_V.)/g,
+    /\$used_º(\w+)|\$(used_V)/g,
     (match, p1, p2, offset, string) => {
       let nameVar, tmpArr;
       if (p2 == undefined) {
@@ -282,17 +200,18 @@ function inlineSyntax(str) {
     }
   );
 
-  //jScript = jScript.replace(/\$var_º(.)|\$var_/g, redeclareVars);
+  jScript = jScript.replace(/\$var_º(.)|\$var_/g, redeclareVars);
 
   jScript = jScript.replace(/\$(num+)/g, (match, p1, offset, string) => {
     return _.random(0, 10);
     // Todo - build an global array filled with random numbers.
     // Add chance for negative values
   });
-  
+
   // obradjeni patern za prikaz korisniku
   let jScriptOriginal = jScript;
-   jScript = 'let result = "";\n' + jScript;
+
+  jScript = 'let result = "";\n' + jScript;
 
   // dodela return-a
   jScript = jScript.replace(/console.log/g, "logResult");
@@ -300,9 +219,10 @@ function inlineSyntax(str) {
                 result += params.join(" ") + '\\n';
             }
             return result;`;
+
   let finalFunction = new Function(jScript);
 
-  // console.log('function:', jScriptOriginal);
+  console.log('function:', jScriptOriginal);
   // console.log('result:', finalFunction());
 
   return {
@@ -311,6 +231,4 @@ function inlineSyntax(str) {
   };
 };
 
-module.exports = {
-  inlineSyntax
-};
+module.exports = { inlineSyntax };
