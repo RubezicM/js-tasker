@@ -139,21 +139,23 @@ let assignments = [
     var $b_ºA = [$used_ºN2];
     var $g_ºA = ["str","foo",23];
     var $c_ºA = [$num4,$used_ºN2];
-    $var $rnd_ºN = $num;
+    $var $d_ºN = $num;
     $var $used_ºN = $num;
     console.log($b[0],$c[2]);
     `,
     `var $rnd_ºN = $num;
      var $used_ºN = $num; // var
-     $var $used_ºN = $num;
-     var $g_ºS = $num;
+     var $used_ºN = $num;
+     var $a_ºN = $num;
+     var $g_ºN = $num;
+     console.log($used_ºN + $a);
     `
 ];
 
 // let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
 
-let pickTask = (index = assignments.length - 2) => assignments[index];
+let pickTask = (index = assignments.length - 1) => assignments[index];
 
-pickTask = (index = 17) => assignments[index];
+//pickTask = (index = 17) => assignments[index];
 
 module.exports = { pickTask, assignments };
