@@ -69,13 +69,6 @@ let assignments = [
     console.log($used_ºN);
     `,
   `
-    var $rnd_ºN = $num;
-    var $rnd_ºN = $num;
-    var $a_ºA = [$num_4];
-    var $b_ºA = [$used_ºN_2];
-    console.log($b[0],$a[2]);
-    `,
-  `
     function test() {
         return // # ret-O
     };`,
@@ -85,13 +78,13 @@ let assignments = [
     var a = $rndObj_1; // # insO_uN1
     `,
   `
-    var $a_ºA = ["str",23,"broj","12",$arr_ºN_new2,"str",$arr_ºN_new6];
+    var $a_ºA = ["str",23,"broj","12",$num2,"str",$num3];
     var $rnd_ºN = $num;
     var $rnd_ºN = $num;
     var $rnd_ºN = $num;
-    var $b_ºA = [] 
-    var $c_ºA = [$arr_ºN_used1,$arr_ºN_new2]
-    var $d = [$arr_ºN_used2]
+    var $b_ºA = [];
+    var $c_ºA = [$used_ºN1,$num3];
+    var $d = [$used_ºN3];
     $c.push($d);
     console.log($c);
      `,
@@ -111,8 +104,8 @@ let assignments = [
      var $rnd_ºN = $num;
      var $rnd_ºN = $num;
      var $b_ºA = [];
-     var $c_ºA = [$arr_ºN_used1,$arr_ºN_new2];
-     var $d = [$arr_ºN_used2];
+     var $c_ºA = [$used_ºN1,$num2];
+     var $d = [$used_ºN2];
      $c.push($d);
      console.log($c);
       `,
@@ -146,11 +139,11 @@ let assignments = [
     var $b_ºA = [$used_ºN2];
     var $g_ºA = ["str","foo",23];
     var $c_ºA = [$num4,$used_ºN2];
-    $var $k_ºN = $num;
+    $var $rnd_ºN = $num;
     $var $used_ºN = $num;
     console.log($b[0],$c[2]);
     `,
-    `var $a_ºN = $num;
+    `var $rnd_ºN = $num;
      var $used_ºN = $num; // var
      $var $used_ºN = $num;
      var $g_ºS = $str2;
@@ -161,6 +154,6 @@ let assignments = [
 
 let pickTask = (index = assignments.length - 2) => assignments[index];
 
-//pickTask = (index = 9) => assignments[index];
+pickTask = (index = 17) => assignments[index];
 
 module.exports = { pickTask, assignments };

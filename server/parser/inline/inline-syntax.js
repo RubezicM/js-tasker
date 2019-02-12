@@ -91,6 +91,7 @@ function inlineSyntax(str) {
   }
 
   function declareRandomVars(match, p1, p2, offset, string) {
+    console.log("randomvars", match, offset, string);
     let nameVar,
       rnd = _.random(0, task.usableVarNames.length - 1),
       infoVar;
@@ -103,7 +104,7 @@ function inlineSyntax(str) {
 
   //////////////////////// Storing variable info inside an global object ///////////////////////////
 
-  function storeVarInfo(name, type, key, member = "not an object") {
+  function storeVarInfo(name, type, key, member = null) {
     let typeArray = [];
     if (key === undefined) {
       let keys = Object.keys(task.varNames);
@@ -185,123 +186,177 @@ function inlineSyntax(str) {
     replaceVarNames
   );
 
-  jScript = jScript.replace(/\$rnd_º([a-zA-Z]+)/g, declareRandomVars);
+  //jScript = jScript.replace(/\$rnd_º([a-zA-Z]+)/g, declareRandomVars);
 
-  jScript = jScript.replace(/\[(.+)\]/g, (match, p1, p2, offset, string) => {
-    let tasks = p1.split(",");
-    let typeOfVar,
-      numberOfData,
-      rtrnStr = "[",
-      condition,
-      tmpArr,
-      el;
-    for (let i = 0; i < tasks.length; i++) {
-      if (tasks[i].includes("$arr")) {
-        for (let y = 0; y < tasks[i].length; y++) {
-          let singleTask = tasks[i].split("_");
-          typeOfVar = singleTask[1].substring(1);
-          numberOfData = singleTask[2][singleTask[2].length - 1];
-          condition = singleTask[2].substr(0, singleTask[2].length - 1);
-        }
+  // jScript = jScript.replace(/\[(.+)\]/g, (match, p1, p2, offset, string) => {
+  //   let tasks = p1.split(",");
+  //   let typeOfVar,
+  //     numberOfData,
+  //     rtrnStr = "[",
+  //     condition,
+  //     tmpArr,
+  //     el;
+  //   for (let i = 0; i < tasks.length; i++) {
+  //     if (tasks[i].includes("$arr")) {
+  //       for (let y = 0; y < tasks[i].length; y++) {
+  //         let singleTask = tasks[i].split("_");
+  //         typeOfVar = singleTask[1].substring(1);
+  //         numberOfData = singleTask[2][singleTask[2].length - 1];
+  //         condition = singleTask[2].substr(0, singleTask[2].length - 1);
+  //       }
 
-        for (let k = 0; k < numberOfData; k++) {
-          if (condition == "used") {
-            tmpArr = getSpecificVarTypes(task.usedVarNames, typeOfVar);
-            let rnd = _.random(0, tmpArr.length - 1);
-            nameVar = tmpArr[rnd]["name"];
+  //       for (let k = 0; k < numberOfData; k++) {
+  //         if (condition == "used") {
+  //           tmpArr = getSpecificVarTypes(task.usedVarNames, typeOfVar);
+  //           let rnd = _.random(0, tmpArr.length - 1);
+  //           nameVar = tmpArr[rnd]["name"];
 
-            if (k === 0) {
-              rtrnStr += nameVar;
-            } else {
-              rtrnStr = rtrnStr + "," + nameVar;
-            }
-          } else if (condition == "new") {
-            if (typeOfVar == "N") {
-              el = _.random(0, 20);
-            }
-            if (k === 0) {
-              rtrnStr += el;
-            } else {
-              rtrnStr += "," + el;
-            }
-          }
-        }
-      } else {
-        if (i === 0) {
-          rtrnStr += tasks[i];
-        } else {
-          rtrnStr = rtrnStr + "," + tasks[i];
-        }
-      }
-    }
-    rtrnStr += "]";
-    return rtrnStr;
-  });
+  //           if (k === 0) {
+  //             rtrnStr += nameVar;
+  //           } else {
+  //             rtrnStr = rtrnStr + "," + nameVar;
+  //           }
+  //         } else if (condition == "new") {
+  //           if (typeOfVar == "N") {
+  //             el = _.random(0, 20);
+  //           }
+  //           if (k === 0) {
+  //             rtrnStr += el;
+  //           } else {
+  //             rtrnStr += "," + el;
+  //           }
+  //         }
+  //       }
+  //     } else {
+  //       if (i === 0) {
+  //         rtrnStr += tasks[i];
+  //       } else {
+  //         rtrnStr = rtrnStr + "," + tasks[i];
+  //       }
+  //     }
+  //   }
+  //   rtrnStr += "]";
+  //   return rtrnStr;
+  // });
 
+  // jScript = jScript.replace(
+  //   /\$used_º([a-zA-Z])([0-9])*/g,
+  //   (match, p1, p2, offset, string) => {
+  //     let nameVar, tmpArr, type,tmp;
+  //     type = p1;
+  //     tmpArr = getSpecificVarTypes(task.usedVarNames, type);
+  //     rnd = _.random(0, tmpArr.length - 1);
+  //     if (p2 === undefined) {
+  //       nameVar = tmpArr[rnd]["name"];
+  //       return nameVar;
+  //     } else {
+  //       nameVar = [];
+  //       for(var i=0;i < p2;i++){
+  //         rnd = _.random(0, tmpArr.length - 1);
+  //         nameVar.push(tmpArr[rnd]["name"]);
+  //         tmpArr.splice(rnd,1);
+  //       }
+  //       return nameVar.join(',');
+  //     }
+  //   }
+  // );
   jScript = jScript.replace(
-    /\$used_º([a-zA-Z])([0-9])*/g,
-    (match, p1, p2, offset, string) => {
-      let nameVar, tmpArr, type,tmp;
-      type = p1;
-      tmpArr = getSpecificVarTypes(task.usedVarNames, type);
-      rnd = _.random(0, tmpArr.length - 1);
-      if (p2 === undefined) {
-        nameVar = tmpArr[rnd]["name"];
-        return nameVar;
-      } else {
-        nameVar = [];
-        for(var i=0;i < p2;i++){
-          rnd = _.random(0, tmpArr.length - 1);
-          nameVar.push(tmpArr[rnd]["name"]);
-          tmpArr.splice(rnd,1);
+    /\$used_º([a-zA-Z])([0-9])*|\$rnd_º([a-zA-Z]+)/g,
+    (match, p1, p2, p3, offset, string) => {
+      // let nameVar, tmpArr, type,tmp;
+      // type = p1;
+      // tmpArr = getSpecificVarTypes(task.usedVarNames, type);
+      // rnd = _.random(0, tmpArr.length - 1);
+      // if (p2 === undefined) {
+      //   nameVar = tmpArr[rnd]["name"];
+      //   return nameVar;
+      // } else {
+      //   nameVar = [];
+      //   for(var i=0;i < p2;i++){
+      //     rnd = _.random(0, tmpArr.length - 1);
+      //     nameVar.push(tmpArr[rnd]["name"]);
+      //     tmpArr.splice(rnd,1);
+      //   }
+      //   return nameVar.join(',');
+      // }
+      if (p3 === undefined) {
+        let nameVar, tmpArr, type, tmp;
+        type = p1;
+        tmpArr = getSpecificVarTypes(task.usedVarNames, type);
+        rnd = _.random(0, tmpArr.length - 1);
+
+        if (p2 === undefined) {
+          nameVar = tmpArr[rnd]["name"];
+          return nameVar;
+        } else {
+          nameVar = [];
+          for (var i = 0; i < p2; i++) {
+            rnd = _.random(0, tmpArr.length - 1);
+            nameVar.push(tmpArr[rnd]["name"]);
+            tmpArr.splice(rnd, 1);
+          }
+          return nameVar.join(",");
         }
-        return nameVar.join(',');
+      } else {
+        let nameVar,
+          rnd = _.random(0, task.usableVarNames.length - 1),
+          infoVar;
+        let type = p3;
+        nameVar = task.usableVarNames[rnd];
+        infoVar = storeVarInfo(nameVar, type);
+        checkAndAddToUsedKeys(infoVar);
+        return nameVar;
       }
     }
   );
-
-  jScript = jScript.replace(/\$(var )/g, (match, p1,p2, offset, string) => {
-    let chance = _.random(0,1);
+  jScript = jScript.replace(/\$(var )/g, (match, p1, p2, offset, string) => {
+    let chance = _.random(0, 1);
     return chance === 1 ? "var " : "";
-    
+
     // Todo - build an global array filled with random numbers.
     // Add chance for negative values
   });
 
-  jScript = jScript.replace(/\$(num+)([0-9])*/g, (match, p1,p2, offset, string) => {
-    let nameVar;
-    if(p2 === undefined){
-      return _.random(0, 15);
-    } else {
-      nameVar = [];
-      for(var i=0;i < p2;i++){
-        nameVar.push(_.random(0,15));
+  jScript = jScript.replace(
+    /\$(num+)([0-9])*/g,
+    (match, p1, p2, offset, string) => {
+      let nameVar;
+      if (p2 === undefined) {
+        return _.random(0, 15);
+      } else {
+        nameVar = [];
+        for (var i = 0; i < p2; i++) {
+          nameVar.push(_.random(0, 15));
+        }
+        return nameVar.join(",");
       }
-      return nameVar.join(",");
+
+      // Todo - build an global array filled with random numbers.
+      // Add chance for negative values
     }
-    
-    // Todo - build an global array filled with random numbers.
-    // Add chance for negative values
-  });
-  jScript = jScript.replace(/\$(str+)([0-9])*/g, (match, p1,p2, offset, string) => {
-    let strings = ["foo","bar","kme","lala","blah","prc"];
-    let nameVar;
-    if(p2 === undefined){
-      return strings[_.random(0, strings.length - 1)];
-    } else {
-      nameVar = [];
-      for(var i=0;i < p2;i++){
-        let rnd = _.random(0,strings.length - 1);
-        let rndStr = strings[rnd];
-        nameVar.push(rndStr);
-        strings.splice(rnd,1);
+  );
+  jScript = jScript.replace(
+    /\$(str+)([0-9])*/g,
+    (match, p1, p2, offset, string) => {
+      let strings = ["foo", "bar", "kme", "lala", "blah", "prc"];
+      let nameVar;
+      if (p2 === undefined) {
+        return strings[_.random(0, strings.length - 1)];
+      } else {
+        nameVar = [];
+        for (var i = 0; i < p2; i++) {
+          let rnd = _.random(0, strings.length - 1);
+          let rndStr = strings[rnd];
+          nameVar.push(rndStr);
+          strings.splice(rnd, 1);
+        }
+        return nameVar.join(",");
       }
-      return nameVar.join(",");
+
+      // Todo - build an global array filled with random numbers.
+      // Add chance for negative values
     }
-    
-    // Todo - build an global array filled with random numbers.
-    // Add chance for negative values
-  });
+  );
   // obradjeni patern za prikaz korisniku
   let jScriptOriginal = jScript;
   jScript = 'let result = "";\n' + jScript;
