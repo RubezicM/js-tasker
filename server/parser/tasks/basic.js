@@ -156,10 +156,11 @@ let assignments = [
         var $c = [$used_ºN, $used_ºN, $d[0], $b]; // []
         console.log($c[1]);
         `,`
-        function test() {
+        function $a_ºF() {
           console.log(11);
         };
-        test() + test(); // ()1`
+        $used_ºF() + $used_ºF(); // ()1
+        `
 ];
 
 // let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
