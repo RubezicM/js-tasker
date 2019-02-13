@@ -374,6 +374,47 @@ function randomizeFunctionCalls(mainArr) {
     return mainArr;
 };
 
+/////////////////////// randomize quotes //////////////////////////
+
+function randomizeQuotes(mainArr) {
+    mainArr = global.cloneObject(mainArr);
+
+    replaceQuotes("'");
+    replaceQuotes('"');
+
+    function replaceQuotes(quoteType) {
+        for (let i = 0; i < mainArr.length; i++) {
+            let regex2 = new RegExp(`${quoteType}([0-9]+)`);
+            if (mainArr[i].inline) {
+                let match = mainArr[i].inline.match(regex2);
+                if (match) {
+                    match = match[1].split('');
+                    match = match.map(element => parseInt(element));
+
+                    if (match) {
+                        for (let j = 0; j < Math.max(...match) + 1; j++) {
+                            if (match.indexOf(j) !== -1) {
+                                let quote = _.random(0, 1) === 0 ? ']|?[' : '';
+                                for (let k = 0; k < 2; k++) {
+                                    mainArr[i].code = mainArr[i].code.replace(quoteType, quote);
+                                };
+                            } else {
+                                for (let k = 0; k < 2; k++) {
+                                    mainArr[i].code = mainArr[i].code.replace(quoteType, '??');
+                                };
+                            };
+                        };
+                        mainArr[i].code = mainArr[i].code.replace(/\?\?/g, quoteType);
+                        mainArr[i].code = mainArr[i].code.replace(/\]\|\?\[/g, quoteType);
+                    };
+                };
+            };
+        };
+    };
+
+    return mainArr;
+};
+
 module.exports = {
     randomizeBlocks,
     randomizeIfs,
@@ -385,7 +426,8 @@ module.exports = {
     shuffleArrayElements,
     addCustomInline,
     insertObjects,
-    randomizeFunctionCalls
+    randomizeFunctionCalls,
+    randomizeQuotes
 };
 
 

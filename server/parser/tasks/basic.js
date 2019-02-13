@@ -160,6 +160,18 @@ let assignments = [
           console.log(11);
         };
         $used_ºF() + $used_ºF(); // ()1
+        `,`
+        function $b() {
+          return 5;
+        }
+        var $a = 5;
+        {
+          var $a = $b() + $b() // var ()1
+        };
+        console.log($a);
+        `,`
+        var $a = '5' + '5' + '"5"' + '5'; // '03 "0
+        console.log($a);
         `
 ];
 
