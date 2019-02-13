@@ -28,17 +28,7 @@ let assignments = [
     var $c_ºA = ['c', '3']; // []
     console.log($used_ºA.concat($used_ºA));
     `,
-  `
-    var $a_ºO = {   // # b3-0
-        $b_ºK: 'x',
-        $c_ºK: 'y'
-    };
-    var $d_ºO = {   // # b3-0
-        $b_ºK: 1,
-        $c_ºK: 2
-    };
-    console.log($used_ºO.$used_ºK);
-    `,
+
   `
     var $a_ºN = $num;
     var $b_ºN = $num;
@@ -123,8 +113,8 @@ let assignments = [
       var $g_ºN = $num;
       var $h_ºN = $num;
       var $k_ºN = $num;
-      var $a_ºO_º1 = {
-          $a_ºKN_º1: $num
+      var $a_ºO1 = {
+          $a_ºKN1: $num
       };
       $used_ºN = $num;
       $rnd_ºN = $num;
@@ -136,20 +126,86 @@ let assignments = [
       `,
   ` var $rnd_ºN = $num;
     var $rnd_ºN = $num;
-    var $b_ºA = [$used_ºN2];
+    var $b_ºA = [$used_ºNx2];
     var $g_ºA = ["str","foo",23];
-    var $c_ºA = [$num4,$used_ºN2];
+    var $c_ºA = [$num4,$used_ºNx2];
     $var $d_ºN = $num;
     $var $used_ºN = $num;
     console.log($b[0],$c[2]);
     `,
-    `var $rnd_ºN = $num;
+  `var $rnd_ºN = $num;
      var $used_ºN = $num; // var
      var $used_ºN = $num;
      var $a_ºN = $num;
      var $g_ºN = $num;
+     var $b_ºS = $str;
      console.log($used_ºN + $a);
-    `
+    `,
+  `var $a_ºO1 = {
+      $rnd_ºKN1 : $num,
+      $rnd_ºKF1 : () => {
+        console.log("hello");
+      },
+      $c_ºKF1 : () => {
+        console.log("Hey");
+      }
+
+    }
+    var $b_ºN = $num;
+    var $rnd_ºN = $num;
+    console.log($used_ºO1.N)
+    console.log($used_ºO1.F())
+    console.log($a.$c())
+    `,
+  `var $a_ºO1 = {};
+     var $rnd_ºN = $num;
+     var $b_ºO2 = {
+       $rnd_ºKN2 : $num
+     }
+     console.log($used_ºO2.N);
+    `,
+  `
+    var $h_ºN = $num;
+    var $a_ºO1 = {
+       $rnd_ºKN1: $num,
+       $rnd_ºKN1: $num,
+       $b_ºKF1: () => {
+         console.log("hello")
+       }
+    };
+    $used_ºO1.N;
+    $a.$b();
+    `,
+  `var $rnd_ºO1 = {
+      $rnd_ºKN1 : $num
+    }
+    console.log($used_ºO1.N)
+    `,`
+    var $a_ºO1 = {
+      $b_ºKS1: $str,
+      $c_ºKN1: $num,
+      $rnd_ºKN1: $num,
+      $rnd_ºKN1: $num,
+      $rnd_ºKN1: $num,
+    }
+    console.log($a.$used_ºN1);
+    `,
+  `
+    var $a_ºO1 = {   // # b3-0
+        $b_ºKS1: 'x',
+        $c_ºKS1: 'y'
+    };
+    var $d_ºO2 = {   // # b3-0
+        $b_ºKN2: 1,
+        $c_ºKN2: 2
+    };
+    console.log($used_ºO2.N);
+    `,
+  `var $a_ºN = 5;
+        var $b_ºN = 10;
+        var $d_ºA = [1, 2, 3];
+        var $c = [$used_ºN, $used_ºN, $d[0], $b]; // []
+        console.log($c[2]);`
 ];
 
 // let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];

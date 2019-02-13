@@ -1,103 +1,204 @@
 
 function assigment(){
 
-    var assigments = [
-        `var $a_λN = $num;
-        var $b_λN = $num;
-        var $c_λN = $num;
-        var $rnd_λN = $num;
-        var $rnd_λF = (function (){
-            $rdc_λN = $num;
-            $rdc_$b = $num;
-            console.log("$a", $a, "$c", $c);
-            var $rnd_V = $g()[0]();
-            $rdc_λN = $num;
-            var $rnd_λN = $num;
-            console.log("$a", $a, "$b", $b);
-            function $g_λF() {
-                $rdc_$a = $num;
-                $rdc_$b = $num;
-                console.log("$a", $a, "$b", $b);
-                return [function(){
-                    $rdc_$a = $num;
-                    $rdc_$b = $num;
-                    console.log("$a", $a, "$b", $b);
-                }]
-            }
-            return $g_λF();
-        })();`,
+    let assignments = [
         `
-       var $a_λS = "str";
-       var $b_λN = $num;
-       console.log($a + $b)
-       function $c_λF(){
-           var $a = $num;
-           var $rnd_λN = $num;
-       }
-       $c;
-       `,
-        `var $a, $b;
-       if (true) { // # if2-0 b13-0 ~ c--true--n-Math.sqrt(25)--
-           var $a = $num;
-           var $b = $num;
-       } else if (false) { // # if3-0
-           var $a = $num;
-           var $c = $num;
-           var $d = $num;
-       } else if (1) { // # if3-0
-           var $rnd_λN  = $num;
-           var $rnd_λN  = $num;
-           var $rnd_λN  = $num;
-       } else {
-           console.log("x");
-       }
-       if (true) { // # if2-1 b13-0 ~ c--true--n-Math.sqrt(25)--
-           $rdc_$a = $num; // var # p0
-           $rdc_$b = $num; // var # p0
-       } else if (false) { // # if3-1
-           var $a = 1;
-           var $b = 2;
-           var $d = 3;
-       } else if (1) { // # if3-1
-           $rdc_λN = 1;
-           $rdc_λN = 2;
-            $rdc_λN = 3;
-       } else {
-           console.log("y");
-       }`,
-        `
-      var $a_λO = {
-        $b_λNK:$num,
-        $c_λNK:$num,
-        $g_λO:{
-            $rnd_λNK:$num,
-            $h_λFK:function(){
-            $a.$b = $num;
-            return $a.$b * 2
-               }
-             }         
+          var a = $num;
+          {
+          var a = $num; // var
           }
-          
-          
-          console.log("$a.$b",$a.$b,"$a.$g",$a.$g.$h)
-       `,
-        `var $a = [$num,$num,$num]
-            $a.push($num,$num);
-            var $b = $num;
-            function $d_λF(){
-                $rdc_$b = $a[3];
+          var $b_ºN = $num;
+          var $c_ºN = $num;
+          console.log($used_ºN + $used_ºN); // +0
+          `,
+        `
+          var $a_ºN = $num;   
+          var $b_ºN = $num;   // # r0
+          var $c_ºN = $num;   // # r0
+          console.log($used_ºN);
+          `,
+        `
+          var $a_ºS = 'a';
+          var $b_ºS = 'b';
+          var $c_ºS = 'c';
+          console.log($used_ºS + $used_ºS);
+          `,
+        `
+          var $a_ºA = ['a', '1']; // []
+          var $b_ºA = ['b', '2']; // []
+          var $c_ºA = ['c', '3']; // []
+          console.log($used_ºA.concat($used_ºA));
+          `,
+      
+        `
+          var $a_ºN = $num;
+          var $b_ºN = $num;
+          var $c = 0;
+          for (i = 0; i < $used_ºN; ++i) {
+              ++$c;
+              if (i === $used_ºN - 2) {
+                  $c += 1;
+              };
+          };
+          console.log($c);
+          `,
+        `
+          var $a_ºN = '$num';
+          var $b_ºN = $num;
+          var $c_ºN = $num;
+          $used_ºN = 5;
+          console.log($used_ºN);
+          `,
+        `
+          function $a($b_ºP, $c_ºP) {
+              console.log($used_ºP);
+          };
+          $a(1, 3);
+          `,
+        `
+          var $rnd_ºN = $num;
+          console.log($used_ºN);
+          `,
+        `
+          function test() {
+              return // # ret-O
+          };`,
+        `
+          var $a_ºN = $num;
+      
+          var a = $rndObj_1; // # insO_uN1
+          `,
+        `
+          var $a_ºA = ["str",23,"broj","12",$num2,"str",$num3];
+          var $rnd_ºN = $num;
+          var $rnd_ºN = $num;
+          var $rnd_ºN = $num;
+          var $b_ºA = [];
+          var $c_ºA = [$used_ºN1,$num3];
+          var $d = [$used_ºN3];
+          $c.push($d);
+          console.log($c);
+           `,
+        `
+           var $a_ºN = $num;
+           var $b_ºN = $num;
+           var $c_ºS = 'foo';
+           var $d_ºS = 'bar';
+           var $e_ºN = $num;
+       
+           var a = $rndObj_1; // # insO_N3_uS1
+           console.log(a.$used_ºK);
+           `,
+        `
+           var $a_ºA = [];
+           var $rnd_ºN = $num;
+           var $rnd_ºN = $num;
+           var $rnd_ºN = $num;
+           var $b_ºA = [];
+           var $c_ºA = [$used_ºN1,$num2];
+           var $d = [$used_ºN2];
+           $c.push($d);
+           console.log($c);
+            `,
+        `
+            var $a_ºN = $num;
+            var $b_ºN = $num;
+            var $c_ºS = 'foo';
+            var $d_ºS = 'bar';
+            var $e_ºN = $num;
+        
+            var $f_ºO = $rndObj_1; // # insO_N3_uS1
+            console.log($f.$used_ºK);
+            `,
+        `
+            var $g_ºN = $num;
+            var $h_ºN = $num;
+            var $k_ºN = $num;
+            var $a_ºO_º1 = {
+                $a_ºKN_º1: $num
+            };
+            $used_ºN = $num;
+            $rnd_ºN = $num;
+            `,
+        `
+            var $a_ºN = $num;
+            var $rnd_ºN = $num;
+            var $used_ºN = $num; // var
+            `,
+        ` var $rnd_ºN = $num;
+          var $rnd_ºN = $num;
+          var $b_ºA = [$used_ºNx2];
+          var $g_ºA = ["str","foo",23];
+          var $c_ºA = [$num4,$used_ºNx2];
+          $var $d_ºN = $num;
+          $var $used_ºN = $num;
+          console.log($b[0],$c[2]);
+          `,
+        `var $rnd_ºN = $num;
+           var $used_ºN = $num; // var
+           var $used_ºN = $num;
+           var $a_ºN = $num;
+           var $g_ºN = $num;
+           var $b_ºS = $str;
+           console.log($used_ºN + $a);
+          `,
+        `var $a_ºO1 = {
+            $rnd_ºKN1 : $num,
+            $rnd_ºKF1 : () => {
+              console.log("hello");
+            },
+            $c_ºKF1 : () => {
+              console.log("Hey");
             }
-            $d();
-            var $c_λN = $num;
-            $rnd_V = $num;
-            var $g = $b + $used_V;
-            console.log("$g",$g);
-            console.log("$b * $c",$b * $c)
-       `,
-       `var $a = [$num_5];
-        var $b = [$used_ºN_3]
-       `
-    ];
+      
+          }
+          var $b_ºN = $num;
+          var $rnd_ºN = $num;
+          console.log($used_ºO1.N)
+          console.log($used_ºO1.F())
+          console.log($a.$c())
+          `,
+        `var $a_ºO1 = {};
+           var $rnd_ºN = $num;
+           var $b_ºO2 = {
+             $rnd_ºKN2 : $num
+           }
+           console.log($used_ºO2.N);
+          `,
+        `
+          var $h_ºN = $num;
+          var $a_ºO1 = {
+             $rnd_ºKN1: $num,
+             $rnd_ºKN1: $num,
+             $b_ºKF1: () => {
+               console.log("hello")
+             }
+          };
+          $used_ºO1.N;
+          $a.$b();
+          `,
+        `$rnd_ºO1 = {
+            $rnd_ºKN1 : $num
+          }
+          $used_ºO1.N;
+          `,
+        `
+          var $a_ºO1 = {   // # b3-0
+              $b_ºKS1: 'x',
+              $c_ºKS1: 'y'
+          };
+          var $d_ºO2 = {   // # b3-0
+              $b_ºKN2: 1,
+              $c_ºKN2: 2
+          };
+          console.log($used_ºO2.S);
+          `,
+        `var $a_ºN = 5;
+              var $b_ºN = 10;
+              var $d_ºA = [1, 2, 3];
+              var $c = [$used_ºN, $used_ºN, $d[0], $b]; // []
+              console.log($c[2]);`
+      ];
     
     function random(min, max) {
         return Math.floor(Math.random() * (max - min + 1) + min);
