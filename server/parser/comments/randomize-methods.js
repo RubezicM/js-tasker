@@ -384,9 +384,9 @@ function randomizeQuotes(mainArr) {
 
     function replaceQuotes(quoteType) {
         for (let i = 0; i < mainArr.length; i++) {
-            let regex2 = new RegExp(`${quoteType}([0-9]+)`);
+            let quoteRegex = new RegExp(`${quoteType}([0-9]+)`);
             if (mainArr[i].inline) {
-                let match = mainArr[i].inline.match(regex2);
+                let match = mainArr[i].inline.match(quoteRegex);
                 if (match) {
                     match = match[1].split('');
                     match = match.map(element => parseInt(element));
