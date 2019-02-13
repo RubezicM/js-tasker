@@ -147,13 +147,18 @@ let assignments = [
      var $used_ºN = $num; // var
      $var $used_ºN = $num;
      var $g_ºS = $str2;
+    `, ` var $rnd_ºN = $num;
+    var $rnd_ºN = $num;
+    var $b_ºA = [$used_ºN];
+    var $rnd_ºN = $num;
+    console.log($b[0],$c[2]);
     `
 ];
 
 // let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
 
-let pickTask = (index = assignments.length - 2) => assignments[index];
+let pickTask = (index = assignments.length - 1) => assignments[index];
 
-pickTask = (index = 17) => assignments[index];
+// pickTask = (index = 17) => assignments[index];
 
 module.exports = { pickTask, assignments };
