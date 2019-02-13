@@ -132,7 +132,6 @@ function insertObjects(mainArr) {
                 continue;
             };
             let objIndex = mainArr[i].code.match(/rndObj_([0-9])/)[1];
-            // console.log(objIndex);
             if (match) {
                 let matchArr = match[1].split('_');
                 matchArr = matchArr.map((element) => {
@@ -173,8 +172,6 @@ function constructObject(matchArr, objIndex) {
         let count = _.random(1, matchArr[i].number);
         for (let j = 0; j < count; ++j) {
             let keyType = matchArr[i].type.match(/[A-Z]/)[0];
-            // console.log(keyType);
-            // let string = `    $rnd_ºK${objIndex}${keyType}: `;
             let string = `    $rnd_ºK: `;
             string += keys[matchArr[i].type] + ',';
             mainString += (count - 1 === j && i === matchArr.length - 1) ? `${string}` : `${string}\n`;
@@ -182,7 +179,6 @@ function constructObject(matchArr, objIndex) {
     };
     mainString = global.makeCodeArray(mainString);
     mainString = _.shuffle(mainString);
-    // console.log(mainString);
     mainString[mainString.length - 1].code = mainString[mainString.length - 1].code.replace(',', '');
     mainString.push({ code: '};', rows: null, inline: null, rows: null, custom: null });
     return mainString;
@@ -278,9 +274,10 @@ function randomizeVars(mainArr) {
             };
         };
     };
-    // console.log(mainArr);
     return mainArr;
 };
+
+////////////////////// randomize math operators ///////////////////////////
 
 function randomizeMathOperators(mainArr) {
     mainArr = global.cloneObject(mainArr);
@@ -349,6 +346,34 @@ function shuffleArrayElements(mainArr) {
     return mainArr;
 };
 
+/////////////////////// randomize function calls //////////////////////////
+
+function randomizeFunctionCalls(mainArr) {
+    mainArr = global.cloneObject(mainArr);
+    for (let i = 0; i < mainArr.length; i++) {
+        if (mainArr[i].inline) {
+            let match = mainArr[i].inline.match(/\(\)([0-9]+)/);
+            if (match) {
+                match = match[1].split("");
+                match = match.map(element => parseInt(element));
+                if (match) {
+                    for (let j = 0; j < Math.max(...match) + 1; j++) {
+                        if (match.indexOf(j) !== -1) {
+                            mainArr[i].code = mainArr[i].code.replace(/\(\)/, (match, p1, offset, string) => {
+                                return _.random(0, 1) === 0 ? '()' : '';
+                            });
+                        } else {
+                            mainArr[i].code = mainArr[i].code.replace(/\(\)/, '??');
+                        };
+                    };
+                    mainArr[i].code = mainArr[i].code.replace(/\?\?/g, '()');
+                };
+            };
+        };
+    };
+    return mainArr;
+};
+
 module.exports = {
     randomizeBlocks,
     randomizeIfs,
@@ -359,7 +384,8 @@ module.exports = {
     randomizeReturns,
     shuffleArrayElements,
     addCustomInline,
-    insertObjects
+    insertObjects,
+    randomizeFunctionCalls
 };
 
 

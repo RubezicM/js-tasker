@@ -149,7 +149,17 @@ let assignments = [
          var $a_ºN = $num;
          var $g_ºN = $num;
          console.log($used_ºN + $a);
-        `
+        `,`
+        var $a_ºN = 5;
+        var $b_ºN = 10;
+        var $d_ºA = [1, 2, 3];
+        var $c = [$used_ºN, $used_ºN, $d[0], $b]; // []
+        console.log($c[1]);
+        `,`
+        function test() {
+          console.log(11);
+        };
+        test() + test(); // ()1`
 ];
 
 // let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
