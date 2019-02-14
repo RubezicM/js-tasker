@@ -216,15 +216,15 @@ function inlineSyntax(str) {
         group = p2;
         type = p3;
         indexFrom = offset;
-        let objectName = _.find(task.usedVarNames, ["group", group]);
-        let allPosibleKeys = getSpecificVarTypes(task.usedVarNames,type,indexFrom);
-        let filteredVarList = _.filter(allPosibleKeys, (el)=>{
+        let mainObjectName = _.find(task.usedVarNames, ["group", group]);
+        let allPosibleMembers = getSpecificVarTypes(task.usedVarNames,type,indexFrom);
+        let filteredMemberList = _.filter(allPosibleMembers, (el)=>{
               if(el.type.indexOf("object_key") != -1 && el.member === group){
                 return el;
               }
         });
-        let rnd = _.random(0, filteredVarList.length - 1);
-        return `${objectName.name}.${filteredVarList[rnd].name}`;
+        let rnd = _.random(0, filteredMemberList.length - 1);
+        return `${mainObjectName.name}.${filteredMemberList[rnd].name}`;
       }
     }
   );
@@ -235,6 +235,7 @@ function inlineSyntax(str) {
       type = p1;
       indexFrom = offset;
       tmpArr = getSpecificVarTypes(task.usedVarNames, type, indexFrom);
+      console.log(match,tmpArr)
       rnd = _.random(0, tmpArr.length - 1);
       if (p2 === undefined) {
         nameVar = tmpArr[rnd]["name"];
@@ -242,6 +243,7 @@ function inlineSyntax(str) {
       } else {
         nameVar = [];
         for (var i = 0; i < p2; i++) {
+          console.log(match,p2)
           rnd = _.random(0, tmpArr.length - 1);
           nameVar.push(tmpArr[rnd]["name"]);
           tmpArr.splice(rnd, 1);

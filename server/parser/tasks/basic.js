@@ -206,14 +206,7 @@ let assignments = [
         var $d_ºA = [1, 2, 3];
         var $c = [$used_ºN, $used_ºN, $d[0], $b]; // []
         console.log($c[2]);`,
-        `var $rnd_ºN = $num;
-        var $b_ºA = [$used_ºN2];
-        var $g_ºA = ["str","foo",23];
-        var $c_ºA = [$num4,$used_ºN2];
-        $var $d_ºN = $num;
-        $var $used_ºN = $num;
-        console.log($b[0],$c[2]);
-        `,
+        
   `var $rnd_ºN = $num;
          var $used_ºN = $num; // var
          var $used_ºN = $num;
@@ -243,7 +236,16 @@ let assignments = [
         `,`
         var $a = '5' + '5' + '"5"' + '5'; // '03 "0
         console.log($a);
-        `
+        `,
+        `var $rnd_ºN = $num;
+        var $rnd_ºN = $num;
+        var $b_ºA = [$used_ºNx2];
+        var $g_ºA = ["str","foo",23];
+        var $c_ºA = [$num4,$used_ºNx2];
+        $var $d_ºN = $num;
+        $var $used_ºN = $num;
+        console.log($b[0],$c[2]);
+        `,
 ];
 
 // let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
