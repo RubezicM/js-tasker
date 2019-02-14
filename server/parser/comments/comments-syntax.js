@@ -36,6 +36,10 @@ function commentsSyntax(assignment) {
 
     mainArray = rMethods.randomizeVars(mainArray);
 
+    mainArray = rMethods.randomizeQuotes(mainArray);
+
+    mainArray = rMethods.randomizeFunctionCalls(mainArray);
+
     mainArray = rMethods.randomizeMathOperators(mainArray);
 
     mainArray = rMethods.addCustomInline(mainArray);
