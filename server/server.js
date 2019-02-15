@@ -1,28 +1,39 @@
+require('./config/config');
+
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const hbs = require('express-hbs');
+const _ = require('lodash');
 
-const { Users, getUsers } = require('./utils/dummy_db');
+const { mongoose } = require('./db/mongoose');
+const { Todo } = require('./models/todo');
+const { User } = require('./models/user');
 const { authenticate } = require('./middleware/authenticate');
 const { loggedIn } = require('./middleware/loggedIn');
 const { inlineSyntax } = require('./parser/inline/inline-syntax');
 const { commentsSyntax } = require('./parser/comments/comments-syntax');
 const { pickTask } = require('./parser/tasks/basic');
 
-let users;
-getUsers().then((data) => {
-    users = new Users(data);
-}).catch((err) => console.log(err));
-
-const port = process.env.PORT || 3000;
-
 const app = express();
-
+const port = process.env.PORT || 3000;
 const publicPath = path.join(__dirname, '../public');
 
+app.use(bodyParser.json());
 app.use(express.static(publicPath));
+
+
+app.post('/todos', (req, res) => {
+    let todo = new Todo({
+        text: req.body.text
+    });
+    todo.save().then((doc) => {
+        res.send(doc);
+    }, (err) => {
+        res.status(400).send(err);
+    });
+});
 
 app.engine('hbs', hbs.express4({
     partialsDir: __dirname + '/views/partials'
@@ -85,77 +96,71 @@ app.get('/logout', authenticate, (req, res) => {
 ///////////////////////////////////////////////////////
 
 app.post('/users', (req, res) => {
-    let user = req.body;
-    user.token = users.createToken();
+    let body = _.pick(req.body, ['username', 'password']);
+    let user = new User(body);
 
-    if (users.addUser(user)) {
-        users.writeUsers().then((data) => {
-            res.cookie('x-auth-token', user.token);
-            return res.send(user);
-        }).catch((err) => res.status(400).res.send(err));
-    } else {
-        res.status(400).send('Username already exists!');
-    }
+    user.save().then(() => {
+        return user.generateAuthToken();
+    }).then((token) => {
+        res.cookie('x-auth-token', token);
+        return res.send(user);
+    }).catch((err) => {
+        res.status(400).send(err);
+    });
 });
 
 app.get('/users', (req, res) => {
-    res.send(users.users);
+    User.find().then((users) => {
+        res.send(users);
+    }).catch((err) => {
+        res.status(400).send(err);
+    });
 });
 
-app.delete('/users', (req, res) => {
-    let user = req.body;
-
-    if (users.removeUser(user.username)) {
-        users.writeUsers().then((data) => {
-            return res.send(user);
-        }).catch((err) => res.status(400).send(err));
-    } else {
-        res.status(404).send('User not found');
-    };
+app.delete('/users', authenticate, (req, res) => {
+    let username = req.user.username;
+    User.deleteOne({ username }).then((user) => {
+        res.send({
+            text: 'Account deleted.',
+            user
+        }).catch((err) => res.status(404).send(err));
+    });
 });
 
-app.get('/users/:id', authenticate, (req, res) => {
-    let username = req.params.id;
+app.get('/users/:username', authenticate, (req, res) => {
+    let username = req.params.username;
     if (username !== req.user.username) {
         return res.status(401).send('Not authorised to see this user');
     };
 
-    let user = users.getUser(username);
-
-    if (user) {
-        return res.send(user);
-    } else {
-        return res.status(404).send('User not found!');
-    };
+    User.findOne({ username }).then((user) => {
+        res.send(user);
+    }).catch((err) => res.status(404).send('User not found!'));
 });
 
 app.post('/login', (req, res) => {
-    let user = req.body;
+    let bodyUser = req.body;
 
-    if (users.userLogin(user)) {
-        user.token = users.createToken();
-        users.updateUser(user.username, user);
-        users.writeUsers().then((data) => {
-            res.cookie('x-auth-token', user.token);
-            return res.send(`${user.username} logged in successfully.`);
-        }).catch((err) => res.status(400).send(err));
-    } else {
-        res.status(401).send('Username or password incorrect!');
-    };
+    User.findByCredentials(bodyUser.username, bodyUser.password).then((user) => {
+        return user.generateAuthToken().then((token) => {
+            res.cookie('x-auth-token', token);
+            res.send(`${user.username} logged in successfully.`);
+        });
+    }).catch((err) => {
+        res.status(400).send(err);
+    });
 });
 
-app.post('/logout', authenticate, (req, res) => {
-    let user = req.user;
-
-    if (!user) {
-        return res.status(400).send();
-    } else {
-        users.deleteUserToken(user.username);
-        users.writeUsers().then((data) => {
-            return res.send(true);
-        }).catch((err) => err);
-    };
+app.delete('/logout', authenticate, (req, res) => {
+    req.user.removeToken(req.token).then(() => {
+        res.status(200).send();
+    }, () => {
+        res.status(400).send();
+    });
 });
+
+
+////////////////////////////////////////////////////
 
 app.get('/parser', (req, res) => {
     let assignment = pickTask();

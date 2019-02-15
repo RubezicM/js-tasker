@@ -5,7 +5,7 @@ document.getElementById('back').addEventListener("click", (event) => {
 let responseField = document.getElementById('register-response');
 
 document.getElementById('logout').addEventListener("click", (event) => {
-    axios.post('/logout')
+    axios.delete('/logout')
         .then((response) => {
             responseField.innerHTML = 'Logged out successfully';
             setTimeout(() => {

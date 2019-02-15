@@ -17,11 +17,16 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.4",
-    "express-hbs": "^2.0.1",
-    "lodash": "^4.17.11"
+    "express-hbs": "^2.0.2",
+    "jsonwebtoken": "^8.4.0",
+    "lodash": "^4.17.11",
+    "mongodb": "^3.1.13",
+    "mongoose": "^5.4.12",
+    "validator": "^10.11.0"
   },
   "devDependencies": {
     "expect": "^24.1.0",
