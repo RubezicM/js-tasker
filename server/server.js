@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const hbs = require('express-hbs');
 const _ = require('lodash');
+const bcrypt = require('bcryptjs');
 
 const { mongoose } = require('./db/mongoose');
 const { Todo } = require('./models/todo');
@@ -72,7 +73,8 @@ app.get('/main', authenticate, (req, res) => {
 app.get('/profile', authenticate, (req, res) => {
     res.render('profile.hbs', {
         user: req.user.username,
-        password: req.user.password
+        password: req.user.password,
+        email: req.user.email
     });
 });
 
@@ -96,7 +98,7 @@ app.get('/logout', authenticate, (req, res) => {
 ///////////////////////////////////////////////////////
 
 app.post('/users', (req, res) => {
-    let body = _.pick(req.body, ['username', 'password']);
+    let body = _.pick(req.body, ['username', 'password', 'email']);
     let user = new User(body);
 
     user.save().then(() => {
@@ -105,6 +107,11 @@ app.post('/users', (req, res) => {
         res.cookie('x-auth-token', token);
         return res.send(user);
     }).catch((err) => {
+        if (err.errmsg) {
+            err = err.errmsg;
+        } else if (err.message) {
+            err = err.message;
+        };
         res.status(400).send(err);
     });
 });
@@ -124,6 +131,51 @@ app.delete('/users', authenticate, (req, res) => {
             text: 'Account deleted.',
             user
         }).catch((err) => res.status(404).send(err));
+    });
+});
+
+app.patch('/users', authenticate, (req, res) => {
+    let username = req.user.username;
+    let body = _.pick(req.body, ['email', 'username']);
+
+    User.findOneAndUpdate({ username },
+        body,
+        { new: true, runValidators: true }).then((user) => {
+            if (!user) {
+                res.status(404).send('User not found!');
+            };
+            res.send(user);
+        }).catch((err) => {
+            if (err.message) {
+                err = err.message;
+            };
+            res.status(400).send(err);
+        });
+});
+
+app.patch('/users/password', authenticate, (req, res) => {
+    let username = req.user.username;
+    let body = _.pick(req.body, ['oldPassword', 'newPassword']);
+    if (body.newPassword.length < 4) {
+        return res.status(400).send('New password must be 4 characters or longer!');
+    };
+
+    User.findByCredentials(username, body.oldPassword).then((user) => {
+        bcrypt.genSalt(10, (err, salt) => {
+            bcrypt.hash(body.newPassword, salt, (err, hash) => {
+                let newPassword = hash;
+                User.findOneAndUpdate({ username },
+                    { password: newPassword },
+                    { new: true, runValidators: true }).then((user) => {
+                        user.generateAuthToken().then((token) => {
+                            res.cookie('x-auth-token', token);
+                            res.send(user);
+                        });
+                    });
+            });
+        });
+    }).catch((err) => {
+        res.status(400).send(err);
     });
 });
 

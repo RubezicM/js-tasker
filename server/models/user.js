@@ -13,6 +13,20 @@ const userSchema = new mongoose.Schema({
         unique: true,
         lowercase: true
     },
+    email: {
+        type: String,
+        required: true,
+        minlength: 3,
+        trim: true,
+        unique: true,
+        lowercase: true,
+        validate: {
+            validator: (value) => {
+                return validator.isEmail(value)
+            },
+            message: props => `${props.value} is not a valid email`
+        }
+    },
     password: {
         type: String,
         required: true,
@@ -34,7 +48,7 @@ userSchema.methods.toJSON = function () {
     let user = this;
     let userObject = user.toObject();
 
-    return _.pick(userObject, ['_id', 'username', 'password']);
+    return _.pick(userObject, ['_id', 'username', 'password', 'email']);
 };
 
 userSchema.methods.generateAuthToken = function () {
@@ -93,6 +107,7 @@ userSchema.statics.findByCredentials = function (username, password) {
 };
 
 userSchema.pre('save', function (next) {
+    console.log('radimo se');
     let user = this;
 
     if (user.isModified('password')) {
@@ -105,6 +120,26 @@ userSchema.pre('save', function (next) {
     } else {
         next();
     };
+});
+
+userSchema.pre('update', function (next) {
+
+    console.log('radimo sessss');
+
+    next();
+
+    // let user = this;
+
+    // if (user.isModified('password')) {
+    //     bcrypt.genSalt(10, (err, salt) => {
+    //         bcrypt.hash(user.password, salt, (err, hash) => {
+    //             user.password = hash;
+    //             next();
+    //         });
+    //     });
+    // } else {
+    //     next();
+    // };
 });
 
 

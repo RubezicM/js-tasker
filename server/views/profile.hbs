@@ -15,10 +15,33 @@
     <h1>Hello {{user}}!</h1>
 
     <p>Username: {{user}}</p>
-    <p>Password: {{password}}</p>
+    <p>Email: {{email}}</p>
+
+    <form action="patch" id="update-form">
+        <fieldset>
+            <legend>Update credentials</legend>
+            <label for="username">Username: </label>
+            <input type="text" name="username" id="username" placeholder="New username"><br><br>
+            <label for="email">Email: </label>
+            <input type="email" name="email" id="email" placeholder="New email"><br><br>
+            <button type="submit">Submit</button>
+        </fieldset>
+    </form>
+
+    <form action="patch" id="update-password">
+        <fieldset>
+            <legend>Change password: </legend>
+            <label for="old-password">Old password: </label>
+            <input type="password" name="old-password" id="old-password" placeholder="Old password" required><br><br>
+            <label for="new-password">New password: </label>
+            <input type="password" name="new-password" id="new-password" placeholder="New password" required><br><br>
+            <button type="submit">Submit</button>
+        </fieldset>
+    </form>
+
     <button id="delete-account">Delete Account</button>
 
-    <p id="register-response"></p>
+    <p id="update-response"></p>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/js/profile.js"></script>

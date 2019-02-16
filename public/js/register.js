@@ -3,10 +3,12 @@ document.getElementById('register-form').addEventListener('submit', (event) => {
 
     let username = document.getElementById('username');
     let password = document.getElementById('password');
+    let email = document.getElementById('email');
     let responseField = document.getElementById('register-response');
 
     axios.post('/users', {
         username: username.value,
+        email: email.value,
         password: password.value
     })
         .then((response) => {
