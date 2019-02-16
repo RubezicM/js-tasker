@@ -7,9 +7,10 @@ const cookieParser = require('cookie-parser');
 const hbs = require('express-hbs');
 const _ = require('lodash');
 const bcrypt = require('bcryptjs');
+const axios = require('axios');
 
 const { mongoose } = require('./db/mongoose');
-const { Todo } = require('./models/todo');
+const { Answer } = require('./models/answer');
 const { User } = require('./models/user');
 const { authenticate } = require('./middleware/authenticate');
 const { loggedIn } = require('./middleware/loggedIn');
@@ -23,18 +24,6 @@ const publicPath = path.join(__dirname, '../public');
 
 app.use(bodyParser.json());
 app.use(express.static(publicPath));
-
-
-app.post('/todos', (req, res) => {
-    let todo = new Todo({
-        text: req.body.text
-    });
-    todo.save().then((doc) => {
-        res.send(doc);
-    }, (err) => {
-        res.status(400).send(err);
-    });
-});
 
 app.engine('hbs', hbs.express4({
     partialsDir: __dirname + '/views/partials'
@@ -211,6 +200,41 @@ app.delete('/logout', authenticate, (req, res) => {
     });
 });
 
+////////////////////////// Answer ////////////////////////////
+
+app.post('/answer', authenticate, (req, res) => {
+    let body = _.pick(req.body, ['result']);
+    let answer = new Answer(body);
+
+    answer.save().then((answer) => {
+
+        setTimeout(() => {
+            Answer.deleteOne({ _id: answer._id }).then((answer) => {
+                console.log('Answer deleted', answer);
+            }).catch((err) => {
+                console.log('Error deleting answer', err);
+            });
+        }, 1000);
+
+        res.send(answer._id);
+    }).catch((err) => {
+        res.status(400).send(err);
+    });
+});
+
+app.get('/answer', authenticate, (req, res) => {
+    let body = _.pick(req.body, ['_id', 'result']);
+
+    Answer.findById(body._id).then((answer) => {
+        if (answer.result === body.result) {
+            res.send({correct: true});
+        } else {
+            res.send({correct: false});
+        }
+    }).catch((err) => {
+        res.status(400).send(err);
+    });
+});
 
 ////////////////////////////////////////////////////
 
