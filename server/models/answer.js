@@ -4,6 +4,10 @@ let Answer = mongoose.model('Answer', {
     result: {
         type: String,
         required: true
+    },
+    creator: {
+        type: String,
+        required: true
     }
 });
 

@@ -63,7 +63,10 @@ app.get('/profile', authenticate, (req, res) => {
     res.render('profile.hbs', {
         user: req.user.username,
         password: req.user.password,
-        email: req.user.email
+        email: req.user.email,
+        basicAttempts: req.user.score.basic.attempted,
+        basicSuccesses: req.user.score.basic.successful,
+        basicPercentage: req.user.score.basic.percentage
     });
 });
 
@@ -203,34 +206,58 @@ app.delete('/logout', authenticate, (req, res) => {
 ////////////////////////// Answer ////////////////////////////
 
 app.post('/answer', authenticate, (req, res) => {
-    let body = _.pick(req.body, ['result']);
+    let assignment = pickTask();
+    let commentsRandomization = commentsSyntax(assignment).function;
+    let task = inlineSyntax(commentsRandomization);
+
+    let body = {
+        creator: req.user.username,
+        result: task.result
+    };
     let answer = new Answer(body);
 
     answer.save().then((answer) => {
 
         setTimeout(() => {
             Answer.deleteOne({ _id: answer._id }).then((answer) => {
+                if (answer.n === 0) {
+                    return console.log('No message present. Nothing done.');
+                }
                 console.log('Answer deleted', answer);
+                User.updateScore(body.creator, false, 'basic').then((user) => {
+                    console.log('User score updated:', user.score);
+                });
             }).catch((err) => {
                 console.log('Error deleting answer', err);
             });
-        }, 1000);
 
-        res.send(answer._id);
+        }, 35000);
+
+        res.send({
+            taskID: answer._id,
+            function: task.function,
+            result: task.result
+        });
     }).catch((err) => {
         res.status(400).send(err);
     });
 });
 
-app.get('/answer', authenticate, (req, res) => {
+app.post('/answer-send', authenticate, (req, res) => {
     let body = _.pick(req.body, ['_id', 'result']);
 
-    Answer.findById(body._id).then((answer) => {
-        if (answer.result === body.result) {
-            res.send({correct: true});
+    Answer.findByIdAndDelete({ _id: body._id }).then((answer) => {
+        if (answer.result.trim() === body.result) {
+            User.updateScore(answer.creator, true, 'basic').then((user) => {
+                console.log(user.score);
+                res.send({ correct: true });
+            });
         } else {
-            res.send({correct: false});
-        }
+            User.updateScore(answer.creator, false, 'basic').then((user) => {
+                console.log(user.score);
+                res.send({ correct: false });
+            });
+        };
     }).catch((err) => {
         res.status(400).send(err);
     });

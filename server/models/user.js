@@ -32,6 +32,25 @@ const userSchema = new mongoose.Schema({
         required: true,
         minlength: 4
     },
+    score: {
+        basic: {
+            attempted: {
+                type: Number,
+                required: false,
+                default: 0
+            },
+            successful: {
+                type: Number,
+                required: false,
+                default: 0
+            },
+            percentage: {
+                type: Number,
+                required: false,
+                default: 0
+            }
+        }
+    },
     tokens: [{
         access: {
             type: String,
@@ -90,6 +109,24 @@ userSchema.statics.findByToken = function (token) {
     });
 };
 
+userSchema.statics.updateScore = function (username, correct, level) {
+    let User = this;
+
+    return User.findOne({ username }).then((user) => {
+        ++user.score[level].attempted;
+        if (correct) {
+            ++user.score[level].successful;
+        };
+        let percentage = user.score[level].successful / user.score[level].attempted * 100;
+        user.score[level].percentage = percentage.toFixed(0)
+        return user.save().then((user) => {
+            return Promise.resolve(user);
+        });
+    }).catch((err) => {
+        return Promise.reject(err);
+    });
+};
+
 userSchema.statics.findByCredentials = function (username, password) {
     let User = this;
 
@@ -107,7 +144,6 @@ userSchema.statics.findByCredentials = function (username, password) {
 };
 
 userSchema.pre('save', function (next) {
-    console.log('radimo se');
     let user = this;
 
     if (user.isModified('password')) {
@@ -121,27 +157,6 @@ userSchema.pre('save', function (next) {
         next();
     };
 });
-
-userSchema.pre('update', function (next) {
-
-    console.log('radimo sessss');
-
-    next();
-
-    // let user = this;
-
-    // if (user.isModified('password')) {
-    //     bcrypt.genSalt(10, (err, salt) => {
-    //         bcrypt.hash(user.password, salt, (err, hash) => {
-    //             user.password = hash;
-    //             next();
-    //         });
-    //     });
-    // } else {
-    //     next();
-    // };
-});
-
 
 const User = mongoose.model('User', userSchema);
 

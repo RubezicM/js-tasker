@@ -1,6 +1,7 @@
 let taskResponse = 5;
 let game = false;
 let answer = document.getElementById('answer');
+let taskID;
 answer.value = '';
 
 document.getElementById('form-game').addEventListener("submit", (event) => {
@@ -8,36 +9,40 @@ document.getElementById('form-game').addEventListener("submit", (event) => {
     if (!gameInProgress) {
         return alert('Start game first!');
     };
-
-    if (answer.value === taskResponse) {
-        alert('Correct!');
-    } else {
-        alert('Wrong!');
-    };
-
-    answer.value = '';
-
-    gameInProgress = false;
+    axios.post('/answer-send', {
+        _id: taskID,
+        result: answer.value
+    }).then((response) => {
+        if (response.data.correct) {
+            alert('Correct!');
+        } else {
+            alert('Wrong!');
+        };
+        gameInProgress = false;
+        answer.value = '';
+    }).catch((err) => {
+        document.getElementById('game-area').innerHTML = err;
+        gameInProgress = false;
+        answer.value = '';
+    });
 });
 
 document.getElementById('start').addEventListener("click", (event) => {
     gameInProgress = true;
     answer.value = '';
-    axios.get('/parser')
+    axios.post('/answer')
         .then((response) => {
             let taskFunction = response.data.function;
             let image = converter(taskFunction);
             let gameHolder = document.getElementById('game-area');
-            console.log(taskFunction);
+            taskID = response.data.taskID;
             taskResponse = response.data.result.trim();
             console.log(response.data.result);
-            
-            if(gameHolder.childElementCount > 0){
+
+            if (gameHolder.childElementCount > 0) {
                 gameHolder.removeChild(gameHolder.firstChild);
-            } 
+            };
             gameHolder.appendChild(image);
-            //  console.log(taskFunction);
-            
         })
         .catch((err) => {
             document.getElementById('game-area').innerHTML = err;

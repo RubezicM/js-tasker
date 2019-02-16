@@ -250,7 +250,7 @@ let assignments = [
 
 // let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
 
-let pickTask = (index = assignments.length - 1) => assignments[index];
+let pickTask = (index = assignments.length - 2) => assignments[index];
 
 // pickTask = (index = 17) => assignments[index];
 

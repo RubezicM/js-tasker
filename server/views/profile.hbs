@@ -17,9 +17,15 @@
     <p>Username: {{user}}</p>
     <p>Email: {{email}}</p>
 
+    <br><br>
+
+    <p>Attempts: {{basicAttempts}}</p>
+    <p>Correct answers: {{basicSuccesses}}</p>
+    <p>Success rate: {{basicPercentage}}%</p>
+
     <form action="patch" id="update-form">
         <fieldset>
-            <legend>Update credentials</legend>
+            <legend>Update login info: </legend>
             <label for="username">Username: </label>
             <input type="text" name="username" id="username" placeholder="New username"><br><br>
             <label for="email">Email: </label>
