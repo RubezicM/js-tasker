@@ -118,7 +118,7 @@ userSchema.statics.updateScore = function (username, correct, level) {
             ++user.score[level].successful;
         };
         let percentage = user.score[level].successful / user.score[level].attempted * 100;
-        user.score[level].percentage = percentage.toFixed(0)
+        user.score[level].percentage = percentage.toFixed(0);
         return user.save().then((user) => {
             return Promise.resolve(user);
         });
