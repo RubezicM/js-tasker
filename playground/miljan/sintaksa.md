@@ -80,7 +80,7 @@ var beta = 4;
 		alpha = 3
 	}
 theta();
-console.log(alpha)
+console.log(alpha) // 3
 ```
 
 
@@ -112,7 +112,7 @@ var theta = 4;
 var delta = "foo";
 var alpha = 12;
 var beta = theta + alpha;
-console.log(beta)
+console.log(beta) // 16
 ```
 
 <hr>
@@ -128,7 +128,7 @@ var $a_ºO = {
 	}
 }
 $a.$g.$h();
-console.log($a.$c)
+console.log($a.$c) 
 ```
 
 - **[$a_ºO]** - dodeljeno je ime variable iz biblioteke pod kljucem ["*a*"] i tip podataka "Objekat". **[rnd_ºKN]** ovime deklarisemo nasumice odabrano ime variable i dodeljujemo mu tipove "Number" i "Kljuc objekta". **[$c_ºKN]** deklarisemo ime variable koje je u biblioteci pod kljucem ["*c*"], i dodeljujemo mu tipove "Number" i "Kljuc objekta".  **[$h_ºFK]** dodeljujemo variabli pod kljucem ["*h*"] tip "Funkcija". Kasnije pozivamo tu funkciju i logujemo rezultat izmene.
@@ -144,6 +144,37 @@ var alpha {
 	}
 }
 alpha.gamma.sigma();
-console.log(alpha.delta)
-}
+console.log(alpha.delta) // 7
 ```
+
+<hr>
+
+*Primer 6:*
+
+```javascript
+var $rnd_ºN = $num;
+var $b_ºN = $num;
+var $a_ºA  = [$num3];
+var $c_ºA = [$used_ºNx2];
+console.log($a.concat($c));
+```
+
+* **[$num3]** -- Ovom komandom govorimo parseru da napise 3 nasumice generisana broja. Komanda radi samo za nizove.
+* **[$used_ºNx2]** -- Parser vraca 2 ["*x2*"] iskoriscene variable koje imaju tip podataka broj ["*N*"]. Takodje je karakteristicna za nizove samo.
+
+
+
+Moguci izlaz parsera :
+
+```javascript
+var gamma = 11;
+
+var beta = 13;
+
+var etta = [3,6,15];
+
+var alpha = [gamma,beta];
+
+console.log(etta.concat(alpha));  // 3,6,15,11,13;
+```
+
