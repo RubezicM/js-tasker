@@ -50,7 +50,7 @@ document.getElementById('start').addEventListener("click", (event) => {
 
 
 function timer() {
-    if (time === 25) {
+    if (time === 0) {
         clearInterval(setTime);
         time = 30;
         postAnswer('Times up! ');
