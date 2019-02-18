@@ -27,6 +27,7 @@ document.getElementById('register-form').addEventListener('submit', (event) => {
 
 function checkIfAvilable(type) {
     let value = (type === 'Username') ? usernameField.value : emailField.value;
+    let oposingType = (type === 'Username') ? 'Email' : 'Username';
 
     axios.get(`/users/check-${type.toLowerCase()}/${value}`)
         .then((response) => {
@@ -34,8 +35,10 @@ function checkIfAvilable(type) {
                 document.querySelector(`label[for='${type.toLowerCase()}']`).innerHTML = `${type}: IN USE`;
                 document.getElementById('submit').setAttribute('disabled', true);
             } else {
+                if (document.querySelector(`label[for='${oposingType.toLowerCase()}']`).innerHTML === `${oposingType}: OK`) {
+                    document.getElementById('submit').removeAttribute('disabled', false);
+                };
                 document.querySelector(`label[for='${type.toLowerCase()}']`).innerHTML = `${type}: OK`;
-                document.getElementById('submit').removeAttribute('disabled', false);
             }
         }).catch((err) => {
         });
