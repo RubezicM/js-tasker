@@ -1,7 +1,11 @@
 let taskResponse = 5;
-let game = false;
+let gameInProgress = false;
 let answer = document.getElementById('answer');
 let taskID;
+let timeField = document.getElementById('timer');
+let time = 30;
+let setTime;
+timeField.innerHTML = `Time left: ${time} seconds`;
 answer.value = '';
 
 document.getElementById('form-game').addEventListener("submit", (event) => {
@@ -9,25 +13,20 @@ document.getElementById('form-game').addEventListener("submit", (event) => {
     if (!gameInProgress) {
         return alert('Start game first!');
     };
-    axios.post('/answer-send', {
-        _id: taskID,
-        result: answer.value
-    }).then((response) => {
-        if (response.data.correct) {
-            alert('Correct!');
-        } else {
-            alert('Wrong!');
-        };
-        gameInProgress = false;
-        answer.value = '';
-    }).catch((err) => {
-        document.getElementById('game-area').innerHTML = err;
-        gameInProgress = false;
-        answer.value = '';
-    });
+
+    clearInterval(setTime);
+    time = 30;
+    postAnswer();
+    timeField.innerHTML = `Time left: ${time} seconds`;
 });
 
 document.getElementById('start').addEventListener("click", (event) => {
+    if (gameInProgress) {
+        return alert('Finish current task first.');
+    };
+
+    setTime = setInterval(timer, 1000);
+
     gameInProgress = true;
     answer.value = '';
     axios.post('/answer')
@@ -48,3 +47,35 @@ document.getElementById('start').addEventListener("click", (event) => {
             document.getElementById('game-area').innerHTML = err;
         });
 });
+
+
+function timer() {
+    if (time === 25) {
+        clearInterval(setTime);
+        time = 30;
+        postAnswer('Times up! ');
+    } else {
+        --time;
+    };
+
+    timeField.innerHTML = `Time left: ${time} seconds`;
+};
+
+function postAnswer(message = '') {
+    axios.post('/answer-send', {
+        _id: taskID,
+        result: answer.value
+    }).then((response) => {
+        if (response.data.correct) {
+            alert(`${message}Correct answer!`);
+        } else {
+            alert(`${message}Wrong answer!`);
+        };
+        gameInProgress = false;
+        answer.value = '';
+    }).catch((err) => {
+        document.getElementById('game-area').innerHTML = err;
+        gameInProgress = false;
+        answer.value = '';
+    });
+}
