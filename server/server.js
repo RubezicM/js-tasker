@@ -42,6 +42,10 @@ app.get('/', (req, res) => {
     });
 });
 
+app.get('/high-score', (req, res) => {
+    res.render('high-score.hbs');
+});
+
 app.get('/register', loggedIn, (req, res) => {
     if (req.loggedIn) {
         res.render('logged.hbs', {
@@ -290,14 +294,25 @@ app.get('/answers', authenticate, (req, res) => {
     });
 });
 
-////////////////////////////////////////////////////
+////////////////////////// High Score ////////////////////////////
 
-app.get('/parser', (req, res) => {
-    let assignment = pickTask();
-    let commentsRandomization = commentsSyntax(assignment).function;
-    let task = inlineSyntax(commentsRandomization);
-    res.send(task);
+app.get('/score', (req, res) => {
+    User.find().then((users) => {
+        users = _.sortBy(users, ['score.basic.percentage']).reverse();
+        res.send(users);
+    }).catch((err) => {
+        res.status(400).send(err);
+    });
 });
+
+////////////////////////// Old Parser ////////////////////////////
+
+// app.get('/parser', (req, res) => {
+//     let assignment = pickTask();
+//     let commentsRandomization = commentsSyntax(assignment).function;
+//     let task = inlineSyntax(commentsRandomization);
+//     res.send(task);
+// });
 
 
 /////////////////////////////////////////////////////////////
