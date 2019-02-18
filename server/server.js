@@ -126,6 +126,32 @@ app.get('/users', (req, res) => {
     });
 });
 
+app.get('/users/check-username/:username', (req, res) => {
+    User.findOne({ username: req.params.username }).then((user) => {
+        if (user) {
+            res.send('true');
+        } else {
+            res.send('false');
+        };
+
+    }).catch((err) => {
+        res.status(400).send(err);
+    });
+});
+
+app.get('/users/check-email/:email', (req, res) => {
+    User.findOne({ email: req.params.email }).then((user) => {
+        if (user) {
+            res.send('true');
+        } else {
+            res.send('false');
+        };
+
+    }).catch((err) => {
+        res.status(400).send(err);
+    });
+});
+
 app.delete('/users', authenticate, (req, res) => {
     let username = req.user.username;
     User.deleteOne({ username }).then((user) => {
@@ -304,16 +330,6 @@ app.get('/score', (req, res) => {
         res.status(400).send(err);
     });
 });
-
-////////////////////////// Old Parser ////////////////////////////
-
-// app.get('/parser', (req, res) => {
-//     let assignment = pickTask();
-//     let commentsRandomization = commentsSyntax(assignment).function;
-//     let task = inlineSyntax(commentsRandomization);
-//     res.send(task);
-// });
-
 
 /////////////////////////////////////////////////////////////
 

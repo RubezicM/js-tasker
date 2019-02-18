@@ -67,7 +67,7 @@ userSchema.methods.toJSON = function () {
     let user = this;
     let userObject = user.toObject();
 
-    return _.pick(userObject, ['_id', 'username', 'password', 'email', 'score']);
+    return _.pick(userObject, ['username', 'score']);
 };
 
 userSchema.methods.generateAuthToken = function () {
