@@ -5,6 +5,7 @@ let taskID;
 let timeField = document.getElementById('timer');
 let time = 30;
 let setTime;
+let comboField = document.getElementById('combo');
 timeField.innerHTML = `Time left: ${time} seconds`;
 answer.value = '';
 
@@ -71,6 +72,7 @@ function postAnswer(message = '') {
         } else {
             alert(`${message}Wrong answer!`);
         };
+        comboField.innerHTML = `Answers in a row: ${response.data.combo}`;
         gameInProgress = false;
         answer.value = '';
     }).catch((err) => {

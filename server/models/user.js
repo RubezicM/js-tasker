@@ -38,6 +38,18 @@ const userSchema = new mongoose.Schema({
         required: true,
         minlength: 4
     },
+    xp: {
+        type: Number,
+        default: 0
+    },
+    combo: {
+        type: Number,
+        default: 0,
+    },
+    bestCombo: {
+        type: Number,
+        default: 0
+    },
     score: {
         basic: {
             attempted: {
@@ -73,7 +85,7 @@ userSchema.methods.toJSON = function () {
     let user = this;
     let userObject = user.toObject();
 
-    return _.pick(userObject, ['username', 'score']);
+    return _.pick(userObject, ['username', 'score', 'xp', 'bestCombo']);
 };
 
 userSchema.methods.generateAuthToken = function () {
@@ -121,7 +133,13 @@ userSchema.statics.updateScore = function (username, correct, level) {
     return User.findOne({ username }).then((user) => {
         ++user.score[level].attempted;
         if (correct) {
+            ++user.combo;
+            user.xp += 10;
             ++user.score[level].successful;
+        } else {
+            user.xp += Math.floor(user.combo / 2) * 5;
+            user.bestCombo = (user.bestCombo < user.combo) ? user.combo : user.bestCombo;
+            user.combo = 0;
         };
         let percentage = user.score[level].successful / user.score[level].attempted * 100;
         user.score[level].percentage = percentage.toFixed(0);

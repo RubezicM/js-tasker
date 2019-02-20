@@ -61,7 +61,8 @@ app.get('/register', loggedIn, (req, res) => {
 app.get('/main', authenticate, (req, res) => {
     res.render('main.hbs', {
         user: req.user.username,
-        imgUrl: req.user.imageURL
+        imgUrl: req.user.imageURL,
+        combo: req.user.combo
     });
 });
 
@@ -80,7 +81,9 @@ app.get('/profile', authenticate, (req, res) => {
         basicAttempts: req.user.score.basic.attempted,
         basicSuccesses: req.user.score.basic.successful,
         basicPercentage: req.user.score.basic.percentage,
-        imgUrl: req.user.imageURL
+        imgUrl: req.user.imageURL,
+        xp: req.user.xp,
+        bestCombo: req.user.bestCombo
     });
 });
 
@@ -267,7 +270,7 @@ app.post('/answer', authenticate, (req, res) => {
                 completed: true
             }, { new: true }).then((answer) => {
                 User.updateScore(answer.creator, false, 'basic').then((user) => {
-                    console.log('Answer updated.', answer._id, answer.creator, user.score);
+                    console.log('Answer updated.', answer._id, answer.creator, user.score, user.xp, user.combo);
                 });
             }).catch((err) => {
                 console.log(err);
@@ -297,8 +300,7 @@ app.post('/answer-send', authenticate, (req, res) => {
                 correct: true
             }).then((answer) => {
                 User.updateScore(answer.creator, true, 'basic').then((user) => {
-                    console.log(user.score);
-                    res.send({ correct: true });
+                    res.send({ correct: true, combo: user.combo });
                 });
             });
         } else {
@@ -306,8 +308,7 @@ app.post('/answer-send', authenticate, (req, res) => {
                 completed: true
             }).then((answer) => {
                 User.updateScore(answer.creator, false, 'basic').then((user) => {
-                    console.log(user.score);
-                    res.send({ correct: false });
+                    res.send({ correct: false, combo: user.combo });
                 });
             });
         };
@@ -355,7 +356,9 @@ app.post('/api/images', authenticate, parser.single("image"), (req, res) => {
             basicAttempts: req.user.score.basic.attempted,
             basicSuccesses: req.user.score.basic.successful,
             basicPercentage: req.user.score.basic.percentage,
-            imgUrl: user.imageURL
+            imgUrl: user.imageURL,
+            xp: req.user.xp,
+            bestCombo: req.user.bestCombo
         });
     }).catch((err) => {
         res.status(400).send(err);
