@@ -12,7 +12,9 @@
 <body>
     {{>navigation}}
 
-    <h2>Hello, {{user}}</h2>
+    <h2>Hello, {{user}} <img src="{{imgUrl}}" alt="Profile Pic" width="72"></h2>
+
+    <img src="{{imgUrl}}" alt="Profile Pic">
 
     <h1>Profile Page</h1>
 
@@ -33,6 +35,14 @@
             <label for="email">Email: </label>
             <input type="email" name="email" id="email" placeholder="New email"><br><br>
             <button type="submit">Submit</button>
+        </fieldset>
+    </form>
+
+    <form action='/api/images' method="post" enctype="multipart/form-data">
+        <fieldset>
+            <legend>Upload picture: </legend>
+            <input type='file' name='image' /><br><br>
+            <input type="submit" value="Submit">
         </fieldset>
     </form>
 

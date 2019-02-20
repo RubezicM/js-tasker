@@ -17,6 +17,7 @@ const { loggedIn } = require('./middleware/loggedIn');
 const { inlineSyntax } = require('./parser/inline/inline-syntax');
 const { commentsSyntax } = require('./parser/comments/comments-syntax');
 const { pickTask } = require('./parser/tasks/basic');
+const { parser } = require('./middleware/parser');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -59,13 +60,15 @@ app.get('/register', loggedIn, (req, res) => {
 
 app.get('/main', authenticate, (req, res) => {
     res.render('main.hbs', {
-        user: req.user.username
+        user: req.user.username,
+        imgUrl: req.user.imageURL
     });
 });
 
 app.get('/history', authenticate, (req, res) => {
     res.render('history.hbs', {
-        user: req.user.username
+        user: req.user.username,
+        imgUrl: req.user.imageURL
     });
 });
 
@@ -76,7 +79,8 @@ app.get('/profile', authenticate, (req, res) => {
         email: req.user.email,
         basicAttempts: req.user.score.basic.attempted,
         basicSuccesses: req.user.score.basic.successful,
-        basicPercentage: req.user.score.basic.percentage
+        basicPercentage: req.user.score.basic.percentage,
+        imgUrl: req.user.imageURL
     });
 });
 
@@ -93,7 +97,9 @@ app.get('/login', loggedIn, (req, res) => {
 
 app.get('/logout', authenticate, (req, res) => {
     res.render('logout.hbs', {
-        user: req.user.username
+        user: req.user.username,
+        imgUrl: req.user.imageURL,
+        imgUrl: req.user.imageURL
     });
 });
 
@@ -326,6 +332,31 @@ app.get('/score', (req, res) => {
     User.find().then((users) => {
         users = _.sortBy(users, ['score.basic.percentage']).reverse();
         res.send(users);
+    }).catch((err) => {
+        res.status(400).send(err);
+    });
+});
+
+////////////////////////// Upload Image ////////////////////////////
+
+app.post('/api/images', authenticate, parser.single("image"), (req, res) => {
+    const image = {};
+    image.url = req.file.url;
+    image.id = req.file.public_id;
+
+    User.findOneAndUpdate({ username: req.user.username }, {
+        imageURL: image.url,
+        imageID: image.id
+    }, { new: true }).then((user) => {
+        res.render('profile.hbs', {
+            user: req.user.username,
+            password: req.user.password,
+            email: req.user.email,
+            basicAttempts: req.user.score.basic.attempted,
+            basicSuccesses: req.user.score.basic.successful,
+            basicPercentage: req.user.score.basic.percentage,
+            imgUrl: user.imageURL
+        });
     }).catch((err) => {
         res.status(400).send(err);
     });
