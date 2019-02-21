@@ -1,0 +1,9 @@
+.headline-main {
+    align-items: center;
+    padding: 3rem 0 3rem 5rem;
+    &__icon {
+        font-size: 3.5rem;
+        margin-right: 1rem;
+        color: $red-main-color
+    }
+}

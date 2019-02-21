@@ -1,3 +1,12 @@
+let proba = document.querySelector('.proba');
+
+if(proba){
+    let probaHeight = window.innerHeight - proba.offsetTop;
+
+    proba.style.minHeight = probaHeight + 'px';
+    console.log(proba.offsetTop,window.innerHeight);
+}
+
 let taskResponse = 5;
 let gameInProgress = false;
 let answer = document.getElementById('answer');
@@ -6,8 +15,8 @@ let timeField = document.getElementById('timer');
 let time = 30;
 let setTime;
 let comboField = document.getElementById('combo');
-timeField.innerHTML = `Time left: ${time} seconds`;
-answer.value = '';
+//timeField.innerHTML = `Time left: ${time} seconds`;
+//answer.value = '';
 
 document.getElementById('form-game').addEventListener("submit", (event) => {
     event.preventDefault();
@@ -81,3 +90,4 @@ function postAnswer(message = '') {
         answer.value = '';
     });
 }
+

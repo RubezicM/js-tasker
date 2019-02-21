@@ -18,20 +18,17 @@
                 <a href="localhost:3000" class="logo flex-disp"><img src="#" alt="Logo" class="logo__img">
                 <h1 class="logo__text">JS Tasker</h1></a>
             </div>
-            {{> navigation}}
-            <!-- If user is logged in show user-widget -->
-            <div class="user-widget header__user-widget flex-disp">
-                <div class="user-widget__img">
-                    <img src="{{imgUrl}}" alt="User Image">
-                </div>
-                <div class="user-widget__name">
-                    <a href="#">{{user}}</a> 
-                </div>
-                <i class="fas fa-angle-down user-widget__icon"></i>
-                <!-- Angle down -->
-            </div>
+            <nav class="nav header__nav">
+                <ul class="nav__list flex-disp">
+                    <li class="nav__item"><a href="/about" class="nav__link flex-disp"><i class="fas fa-book-open nav__icon"></i><span class="nav__text">About</span></a></li>
+                    <li class="nav__item"><a href="/main" class="nav__link flex-disp"><i class="fas fa-play nav__icon"></i><span class="nav__text">Playground</span></a></li>
+                    <li class="nav__item"><a href="/profile" class="nav__link flex-disp"><i class="fas fa-chart-bar nav__icon"></i><span class="nav__text">Profile</span></a></li>
+                </ul>
+            </nav>
+
         </header>
             <p><a href="/register">Register</a> || <a href="/main">Main</a> || <a href="/profile">Profile</a>
         || <a href="/history">History</a> || <a href="/high-score">High Score</a> ||
         <a href="/login">Login</a> || <a href="/logout">Logout</a></p>
     </div>
+

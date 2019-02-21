@@ -1,5 +1,5 @@
 .user-widget {
-
+    color: $yellow-main-color;
     align-items: center;
     &__img {
     }
@@ -7,13 +7,22 @@
     &__name {
         line-height: .4;
         margin: 0 .75rem 0 1.3rem;
-        color: $yellow-main-color;
+        font-size: 1.2rem;
     }
 
     &__icon {
-        color: $yellow-main-color;
     }
     &:hover {
         cursor: pointer;
+    }
+    &.not-logged-in {
+        color: #fff;
+
+        .user-widget__not-logged--icon {
+            font-size: 2.3rem;
+        }
+        .user-widget__icon {
+            display: none;
+        }
     }
 }

@@ -1,0 +1,15 @@
+.btn {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    box-shadow: 0 5px 1rem rgba($bg-black-medium, .4);
+    //width: 20rem;
+    &__main {
+        background-color: $red-main-color;
+        color: white;
+    }
+}

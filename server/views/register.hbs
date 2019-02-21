@@ -1,28 +1,39 @@
 {{> header}}
 
-    <h1>Register</h1>
+{{> page-headline}}
+<div class="row">
+    <div id="main" class="proba">
+        <div class="card flex-disp">
+            <h3 class="card__headline">{{title}}</h3>
+            <form action="post" id="register-form" class="form-card">
+                <div class="form-card__group"> <label for="username" class="form-card__label">Username: </label>
+                    <input type="text" class="form-card__input" name="username" id="username"
+                        placeholder="Enter username" autofocus required autocomplete="off"></div>
 
-    <form action="post" id="register-form">
-        <label for="username">Username: </label><br>
-        <input type="text" name="username" id="username" placeholder="Enter username" autofocus required
-        autocomplete="off"><br><br>
-        
+                <div class="form-card__group"><label for="email" class="form-card__label">Email: </label>
+                    <input type="email" class="form-card__input" name="email" id="email" placeholder="Enter email"
+                        required></div>
 
-        <label for="email">Email: </label><br>
-        <input type="email" name="email" id="email" placeholder="Enter email" required><br><br>
-        <label for="password">Password: </label><br>
-        <input type="password" name="password" id="password" placeholder="Enter password" required>
-        <br><br>
-        <button type="submit" id="submit">Submit</button>
-    </form>
+                <div class="form-card__group"> <label for="password" class="form-card__label">Password: </label>
+                    <input type="password" class="form-card__input" name="password" id="password"
+                        placeholder="Enter password" required></div>
 
-    <p id="register-response"></p>
+                <button type="submit" id="submit" class="btn form-card__btn btn__main">Submit</button>
+            </form>
+        </div>
 
+    </div>
+</div>
 
 
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<p id="register-response"></p>
 
-    <script src="/js/register.js"></script>
+
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script src="/js/register.js"></script>
+<script src="/js/main.js"></script>
 </body>
 
 </html>

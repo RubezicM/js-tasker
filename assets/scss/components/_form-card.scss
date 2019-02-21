@@ -1,0 +1,49 @@
+.form-card {
+    padding: 4.5rem 3rem;
+
+    &>* {
+        display: block;
+    }
+
+    &__group {
+        position: relative;
+
+        &:not(:last-child) {
+            margin-bottom: 3rem;
+        }
+    }
+
+    // &__label {
+    //     position: absolute;
+    //     left: 0;
+    //     top: 10px;
+    //     background-color: $bg-black-light;
+    //     z-index: 10;
+    //     transition: transform 150ms ease-out, font-size 150ms ease-out;
+    // }
+
+    &__input {
+        color: white;
+        caret-color: white;
+        background-color: $bg-black-light;
+        position: relative;
+        padding: 12px 0px 5px 0;
+        width: 100%;
+        outline: 0;
+        border: 0;
+        box-shadow: 0 .5px 0 0 white;
+        transition: box-shadow 150ms ease-out;
+
+        &:focus {
+            box-shadow: 0 2px 0 0 $red-main-color;
+        }
+
+        &::-webkit-input-placeholder {
+            color: transparent;
+        }
+
+    }
+    &__btn {
+        width: 100%;
+    }
+}

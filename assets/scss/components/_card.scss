@@ -1,0 +1,20 @@
+.card {
+    &.flex-disp {
+        flex-direction: column;
+    }
+    position: absolute;
+    width: 32rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    //padding: 6rem 3rem;
+    background-color: $bg-black-dark;
+    box-shadow: 0 15px 35px rgba(50,50,93,.1),0 5px 15px rgba(0,0,0,.07);
+    border-radius: 5px;
+    &__headline {
+        padding: 2rem;
+        border-bottom: 1px solid $red-main-color;
+        background-color: $yellow-main-color;
+        text-transform: uppercase;
+    }
+}

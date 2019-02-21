@@ -4,10 +4,10 @@
     margin: 0 auto;
     
     &:not(:last-child) {
-        margin-bottom: $gutter-vertical;
-        @include respond (tab-port){
-            margin-bottom: $gutter-vertical-small;
-        }
+        // margin-bottom: $gutter-vertical;
+        // @include respond (tab-port){
+        //     margin-bottom: $gutter-vertical-small;
+        // }
     }
     @include respond (tab-port){
         max-width: 50rem;
@@ -51,6 +51,10 @@
         width: calc( 3 *((100% - #{$gutter-horizontal} * 3) / 4) + #{$gutter-horizontal} * 2);
     }
     
+
+    &.bg-dark-low {
+        background-color: $bg-black-light;
+    }
     }
     
     

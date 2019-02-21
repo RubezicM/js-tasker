@@ -4,7 +4,7 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const hbs = require('express-hbs');
+;
 const _ = require('lodash');
 const bcrypt = require('bcryptjs');
 const axios = require('axios');
@@ -18,7 +18,7 @@ const { inlineSyntax } = require('./parser/inline/inline-syntax');
 const { commentsSyntax } = require('./parser/comments/comments-syntax');
 const { pickTask } = require('./parser/tasks/basic');
 const { parser } = require('./middleware/parser');
-
+const {hbs} = require('./middleware/hbs');
 const app = express();
 const port = process.env.PORT || 3000;
 const publicPath = path.join(__dirname, '../public');
@@ -51,10 +51,13 @@ app.get('/register', loggedIn, (req, res) => {
     if (req.loggedIn) {
         res.render('logged.hbs', {
             user: req.user.username,
-            message: 'registered'
+            message: 'registered',
+            title: 'Register'
         });
     } else {
-        res.render('register.hbs');
+        res.render('register.hbs',{
+            title: 'Register'
+        });
     };
 });
 
@@ -62,7 +65,8 @@ app.get('/main', authenticate, (req, res) => {
     res.render('main.hbs', {
         user: req.user.username,
         imgUrl: req.user.imageURL,
-        combo: req.user.combo
+        combo: req.user.combo,
+        title: 'Playground'
     });
 });
 
@@ -83,7 +87,8 @@ app.get('/profile', authenticate, (req, res) => {
         basicPercentage: req.user.score.basic.percentage,
         imgUrl: req.user.imageURL,
         xp: req.user.xp,
-        bestCombo: req.user.bestCombo
+        bestCombo: req.user.bestCombo,
+        title: 'Profile'
     });
 });
 
@@ -366,12 +371,11 @@ app.post('/api/images', authenticate, parser.single("image"), (req, res) => {
 });
 
 /////////////////////////////////////////////////////////////
-
 app.listen(port, () => {
     console.log(`Started listenning on port ${port}`);
 });
 
-module.exports = { app };
+module.exports = { app,hbs };
 
 
 
