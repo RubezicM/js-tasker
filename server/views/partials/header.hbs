@@ -5,33 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
     <title>Home</title>
 </head>
 
 <body>
+    <div class="row">
+        <header class="header flex-disp">
+            <div class="header__logo">
+                <a href="localhost:3000" class="logo flex-disp"><img src="#" alt="Logo" class="logo__img">
+                <h1 class="logo__text">JS Tasker</h1></a>
+            </div>
+            <nav class="nav header__nav">
+                <ul class="nav__list flex-disp">
+                    <li class="nav__item"><a href="#" class="nav__link flex-disp"><i class="fas fa-book-open nav__icon"></i><span class="nav__text">About</span></a></li>
+                    <li class="nav__item"><a href="/main" class="nav__link flex-disp"><i class="fas fa-play nav__icon"></i><span class="nav__text">Playground</span></a></li>
+                    <li class="nav__item"><a href="/profile" class="nav__link flex-disp"><i class="fas fa-chart-bar nav__icon"></i><span class="nav__text">Profile</span></a></li>
+                </ul>
+            </nav>
+            <div class="user-widget header__user-widget flex-disp">
+                <div class="user-widget__img">
+                    <img src="/img/widget-pic.png" alt="User Image">
+                </div>
+                <div class="user-widget__name">
+                    <a href="#">Miljan Rubezic</a> 
+                </div>
+                <i class="fas fa-angle-down user-widget__icon"></i>
+                <!-- Angle down -->
+            </div>
+        </header>
+            <p><a href="/register">Register</a> || <a href="/main">Main</a> || <a href="/profile">Profile</a>
+        || <a href="/history">History</a> || <a href="/high-score">High Score</a> ||
+        <a href="/login">Login</a> || <a href="/logout">Logout</a></p>
+    </div>
 
-    <header class="header">
-        <div class="logo header__logo">
-            <img src="#" alt="Logo" class="logo__img">
-        </div>
-        <nav class="nav header__nav">
-            <ul class="nav__list">
-                <li class="nav__item"><a href="#" class="nav__link">About</a></li>
-                <li class="nav__item"><a href="/main" class="nav__link">Playground</a></li>
-                <li class="nav__item"><a href="/profile" class="nav__link">Profile</a></li>
-            </ul>
-        </nav>
-        <div class="user-status header__user-status">
-            <div class="user-status__img">
-                <img src="#" alt="User Image">
-            </div>
-            <div class="user-status__name">
-                Miljan Rubezic
-            </div>
-            <!-- Angle down -->
-        </div>
-    </header>
-    <p><a href="/register">Register</a> || <a href="/main">Main</a> || <a href="/profile">Profile</a>
-    || <a href="/history">History</a> || <a href="/high-score">High Score</a> || 
-    <a href="/login">Login</a> || <a href="/logout">Logout</a></p>

@@ -12,5 +12,13 @@ html {
 }
 
 body {
-    background-color: white;
+    background-color: $bg-black-medium;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
 }

@@ -1,0 +1,28 @@
+.nav {
+
+    &__list {
+    }
+
+    &__item {
+        transition: .3s;
+        &:not(:last-child){
+            margin-right: 6.5rem;
+        }
+    }
+
+    &__link {
+        align-items: center;
+    }
+
+    &__text {
+
+    }
+    &__icon {
+        margin-right: 1.5rem;
+        font-size: 2.3rem;
+    }
+
+    &__item:hover &__icon {
+        color: $yellow-main-color;
+    }
+}

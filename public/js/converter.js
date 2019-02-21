@@ -29,7 +29,7 @@ var converter = function (ass) {
   let config = {
     image: {
       lineHeight: 17,
-      font: "1.1rem Inconsolata"
+      font: "2rem Inconsolata"
     }
   }
 
@@ -66,7 +66,7 @@ var converter = function (ass) {
 
 
   // This is call for specific theme... It can be a call by an user
-  loadTheme("light");
+  loadTheme("dark");
 
   const keywords = {
     searchTerms: ["var", "function", "=", "return", "console.log"]

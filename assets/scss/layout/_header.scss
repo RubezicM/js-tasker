@@ -1,5 +1,10 @@
 .header {
-
+    height: 12rem;
+    background-color: $bg-black-dark;
+    box-shadow: 0px 5px 2px rgba($bg-black-dark,.7);
+    padding: 0 4rem;
+    align-items: center;
+    justify-content: space-between;
     &__logo {
 
     }
@@ -8,7 +13,7 @@
 
     }
 
-    &__user-info {
-        
+    &__user-widget {
+
     }
 }

@@ -1,0 +1,19 @@
+.user-widget {
+
+    align-items: center;
+    &__img {
+    }
+
+    &__name {
+        line-height: .4;
+        margin: 0 .75rem 0 1.3rem;
+        color: $yellow-main-color;
+    }
+
+    &__icon {
+        color: $yellow-main-color;
+    }
+    &:hover {
+        cursor: pointer;
+    }
+}
