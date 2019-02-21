@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "watch-css": "nodemon -e scss -x \"npm run build-css\"",
+    "build-css": "node-sass --include-path scss assets/scss/main.scss public/css/style.css",
     "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha server/test",
     "testmon": "nodemon --exec npm test",
     "start": "node server/server.js",
@@ -33,6 +35,7 @@
   },
   "devDependencies": {
     "expect": "^24.1.0",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "node-sass": "^4.11.0"
   }
 }
