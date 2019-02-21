@@ -1,5 +1,5 @@
 .form-card {
-    padding: 4.5rem 3rem;
+    padding: 4.5rem 3rem 0 3rem;
 
     &>* {
         display: block;
@@ -12,16 +12,6 @@
             margin-bottom: 3rem;
         }
     }
-
-    // &__label {
-    //     position: absolute;
-    //     left: 0;
-    //     top: 10px;
-    //     background-color: $bg-black-light;
-    //     z-index: 10;
-    //     transition: transform 150ms ease-out, font-size 150ms ease-out;
-    // }
-
     &__input {
         color: white;
         caret-color: white;
