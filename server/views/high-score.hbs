@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>High Score</title>
+</head>
+
+<body>
+    {{>navigation}}
+
+    <h2>Hello, {{user}}</h2>
+
+    <h1>High Score</h1>
+
+
+    <table id="high-score" border="1">
+        <tr>
+            <th>Username</th>
+            <th>Success Rate</th>
+            <th>Attempts</th>
+            <th>Correct Answers</th>
+            <th>Experience</th>
+            <th>Best Combo</th>
+        </tr>
+    </table>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script src="/js/high-score.js"></script>
+</body>
+
+</html>

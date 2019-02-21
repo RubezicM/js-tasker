@@ -15,12 +15,17 @@
     <h1>Register</h1>
 
     <form action="post" id="register-form">
-        <label for="username">Username: </label>
-        <input type="text" name="username" id="username" placeholder="Enter username" autofocus required><br><br>
-        <label for="password">Password: </label>
+        <label for="username">Username: </label><br>
+        <input type="text" name="username" id="username" placeholder="Enter username" autofocus required
+        autocomplete="off"><br><br>
+        
+
+        <label for="email">Email: </label><br>
+        <input type="email" name="email" id="email" placeholder="Enter email" required><br><br>
+        <label for="password">Password: </label><br>
         <input type="password" name="password" id="password" placeholder="Enter password" required>
         <br><br>
-        <button type="submit">Submit Test</button>
+        <button type="submit" id="submit">Submit</button>
     </form>
 
     <p id="register-response"></p>

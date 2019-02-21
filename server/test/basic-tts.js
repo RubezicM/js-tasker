@@ -119,6 +119,34 @@ let assignments = [
       };
       $used_ºN = $num;
       $rnd_ºN = $num;
+      `,
+      `
+      var $h_ºN = $num;
+      var $a_ºO1 = {
+         $rnd_ºKN1: $num,
+         $rnd_ºKN1: $num,
+         $b_ºKF1: () => {
+           console.log("hello")
+         }
+      };
+      console.log($used_ºO1.N);
+      $used_ºO1.F()
+      $a.$b();
+      var $g_ºO2 = {
+        $rnd_ºKN2: $num,
+        $rnd_ºKN2: $num
+      }
+      console.log($used_ºO2.N)
+      `,
+      `
+        var $rnd_ºN = $num;
+        var $rnd_ºN = $num;
+        var $b_ºA = [$used_ºNx2];
+        var $g_ºA = ["str","foo",23];
+        var $c_ºA = [$num4,$used_ºNx2];
+        $var $d_ºN = $num;
+        $var $used_ºN = $num;
+        console.log($b[0],$c[2]);
       `
 ];
 

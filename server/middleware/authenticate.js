@@ -1,27 +1,19 @@
-const { Users, getUsers } = require('../utils/dummy_db');
-const cookieParser = require('cookie-parser');
+let { User } = require('../models/user');
 
 let authenticate = (req, res, next) => {
-    let users;
-    getUsers().then((data) => {
-        users = new Users(data);
+    let token = req.cookies['x-auth-token'];
 
-        let token = req.cookies['x-auth-token'];
-
-        if (token === undefined) {
+    User.findByToken(token).then((user) => {
+        if (!user) {
             return res.status(401).render('not-logged');
-        } else {
-            let user = users.findByToken(token);
+        };
 
-            if (user) {
-                req.user = user;
-                req.token = token;
-                next();
-            } else {
-                res.status(401).render('not-logged');
-            };
-        }
-    }).catch((err) => console.log(err));
+        req.user = user;
+        req.token = token;
+        next();
+    }).catch((e) => {
+        res.status(401).render('not-logged');
+    });
 };
 
 module.exports = { authenticate };

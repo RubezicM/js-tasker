@@ -6,18 +6,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/style.css">
-    <title>Login</title>
+    <title>Profile</title>
 </head>
 
 <body>
     {{>navigation}}
 
-    <h1>Hello {{user}}!</h1>
+    <h2>Hello, {{user}} <img src="{{imgUrl}}" alt="Profile Pic" width="72"></h2>
+
+    <img src="{{imgUrl}}" alt="Profile Pic">
+
+    <h1>Profile Page</h1>
 
     <p>Username: {{user}}</p>
-    <p>Password: {{password}}</p>
+    <p>Email: {{email}}</p>
+
+    <br><br>
+
+    <p>Attempts: {{basicAttempts}}</p>
+    <p>Correct answers: {{basicSuccesses}}</p>
+    <p>Success rate: {{basicPercentage}}%</p>
+    <p>XP: {{xp}}</p>
+    <p>Most answers in a row: {{bestCombo}}</p>
+
+    <form action="patch" id="update-form">
+        <fieldset>
+            <legend>Update login info: </legend>
+            <label for="username">Username: </label>
+            <input type="text" name="username" id="username" placeholder="New username"><br><br>
+            <label for="email">Email: </label>
+            <input type="email" name="email" id="email" placeholder="New email"><br><br>
+            <button type="submit">Submit</button>
+        </fieldset>
+    </form>
+
+    <form action='/api/images' method="post" enctype="multipart/form-data">
+        <fieldset>
+            <legend>Upload picture: </legend>
+            <input type='file' name='image' /><br><br>
+            <input type="submit" value="Submit">
+        </fieldset>
+    </form>
+
+    <form action="patch" id="update-password">
+        <fieldset>
+            <legend>Change password: </legend>
+            <label for="old-password">Old password: </label>
+            <input type="password" name="old-password" id="old-password" placeholder="Old password" required><br><br>
+            <label for="new-password">New password: </label>
+            <input type="password" name="new-password" id="new-password" placeholder="New password" required><br><br>
+            <button type="submit">Submit</button>
+        </fieldset>
+    </form>
+
+    <button id="delete-account">Delete Account</button>
+
+    <p id="update-response"></p>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/js/profile.js"></script>
 </body>
 
 </html>
