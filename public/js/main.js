@@ -1,11 +1,17 @@
-let proba = document.querySelector('.proba');
+//////// UI /////////
 
-if(proba){
-    let probaHeight = window.innerHeight - proba.offsetTop;
 
-    proba.style.minHeight = probaHeight + 'px';
-    console.log(proba.offsetTop,window.innerHeight);
+let main =document.getElementById('main');
+
+if(main){
+    let mainHeight = window.innerHeight - main.offsetTop;
+
+    main.style.minHeight = mainHeight + 'px';
+    console.log(main.offsetTop,window.innerHeight);
 }
+
+
+///////// MECHANICS //////////
 
 let taskResponse = 5;
 let gameInProgress = false;
@@ -15,8 +21,15 @@ let timeField = document.getElementById('timer');
 let time = 30;
 let setTime;
 let comboField = document.getElementById('combo');
+
 //timeField.innerHTML = `Time left: ${time} seconds`;
 //answer.value = '';
+
+///// UI FOR TIMER /////
+let timeLeft = document.getElementById('timeLeft');
+let timer;
+let stopTimer;
+
 
 document.getElementById('form-game').addEventListener("submit", (event) => {
     event.preventDefault();
@@ -35,7 +48,8 @@ document.getElementById('start').addEventListener("click", (event) => {
         return alert('Finish current task first.');
     };
 
-    setTime = setInterval(timer, 1000);
+    canvasReset();
+    startTimer(timeLeft,time);
 
     gameInProgress = true;
     answer.value = '';
@@ -59,7 +73,19 @@ document.getElementById('start').addEventListener("click", (event) => {
 });
 
 
-function timer() {
+// function timer() {
+//     if (time === 0) {
+//         clearInterval(setTime);
+//         time = 30;
+//         postAnswer('Times up! ');
+//     } else {
+//         --time;
+//     };
+
+//     timeField.innerHTML = `Time left: ${time} seconds`;
+// };
+
+function resetTimer() {
     if (time === 0) {
         clearInterval(setTime);
         time = 30;
@@ -70,7 +96,6 @@ function timer() {
 
     timeField.innerHTML = `Time left: ${time} seconds`;
 };
-
 function postAnswer(message = '') {
     axios.post('/answer-send', {
         _id: taskID,

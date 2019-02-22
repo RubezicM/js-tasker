@@ -19,9 +19,3 @@
     @include border-gradient($yellow-main-color,$red-main-color,2px)
 }
 
-.proba {
-    background-clip: padding-box;
-    border: solid 2px transparent;
-    position: relative;
-    @include border-gradient($yellow-main-color,$red-main-color,2px)
-}

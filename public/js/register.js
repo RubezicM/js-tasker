@@ -1,7 +1,7 @@
 let usernameField = document.getElementById('username');
 let passwordField = document.getElementById('password');
 let emailField = document.getElementById('email');
-let responseField = document.getElementById('register-response');
+let responseField = document.getElementById('form-response');
 
 usernameField.addEventListener('keyup', checkIfAvilable.bind(this, 'Username'));
 emailField.addEventListener('keyup', checkIfAvilable.bind(this, 'Email'));

@@ -1,27 +1,53 @@
+{{> header}}
+{{> page-headline}}
+{{!-- <h2>Hello, {{user}} <img src="{{imgUrl}}" alt="Profile Pic" width="72"></h2> --}}
 
-    {{> header}}
-        {{> page-headline}}
-    <h2>Hello, {{user}} <img src="{{imgUrl}}" alt="Profile Pic" width="72"></h2>
+<div class="row">
+    <div id="main" class="main">
+        <div class="main__side-bar">
+            <div class="user-widget--small">
+                <div class="user-widget header__user-widget flex-disp">
+                    <div class="user-widget__img">
+                        <img src="{{imgUrl}}" alt="User Image">
+                    </div>
+                    <div class="user-widget__name">
+                        <a href="#">{{user}}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="user-stats">
+                <ul class="primary-list">
+                    <li>Experience: <span class="primary-color-txt font-size-medium">{{xp}}</span></li>
+                    <li>Highest in a row <span class="primary-color-txt font-size-medium">{{combo}}</span></li>
+                    <li>Total tasks <span class="primary-color-txt font-size-medium">{{basicAttempts}}</span></li>
+                    <li>Success percentage <span class="secondary-color-txt font-size-medium">{{basicPercentage}}</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="timer">
+                <p id="timeLeft" class="timer__number">30</p>
+                <p id="sec">sec</p>
+                <canvas id="progress" width="160" height="160" class="timer__progress"></canvas>
+            </div>
+            <p id="combo">Answers in a row: {{combo}}</p>
+            <button id="start">Start</button>
+            <p id="timer"></p>
+        </div>
+        <div class="main__main-content">
+            <div id="game-area"></div><br>
+            <form action="post" id="form-game">
+                <input type="text" name="answer" id="answer" placeholder="Answer goes here" autocomplete="off"><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</div>
 
-    <p id="combo">Answers in a row: {{combo}}</p>
 
-    <h1>Main Page</h1>
-
-    <button id="start">Start</button>
-
-    <p id="timer"></p>
-
-    <div id="game-area"></div><br>
-    
-    <form action="post" id="form-game">
-        <input type="text" name="answer" id="answer" placeholder="Answer goes here" autocomplete="off"><br>
-        <input type="submit" value="Submit">
-    </form>
-    
-
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="/js/converter.js"></script>
-    <script src="/js/main.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/js/converter.js"></script>
+<script src="/js/timer.js"></script>
+<script src="/js/main.js"></script>
 </body>
 
 </html>

@@ -6,10 +6,18 @@
     font-size: 1.2rem;
 }
 
-.sec-color-txt {
+.secondary-color-txt {
     color: $red-main-color; 
+}
+.primary-color-txt {
+    color: $yellow-main-color;
 }
 
 .fw-600 {
     font-weight: 600;
+}
+
+
+.font-size-medium {
+    font-size: 1.7rem;
 }

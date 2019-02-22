@@ -2,7 +2,7 @@
 
 {{> page-headline}}
 <div class="row">
-    <div id="main" class="proba">
+    <div id="main">
         <div class="card flex-disp">
             <h3 class="card__headline">{{title}}</h3>
             <form action="post" id="register-form" class="form-card">
@@ -20,13 +20,14 @@
 
                 <button type="submit" id="submit" class="btn form-card__btn btn__main">Submit</button>
             </form>
-            <p class="small">Already a member? <a href="#" class="sec-color-txt fw-600">Log in</a> instead</p>
+            <p class="small">Already a member? <a href="/login" class="sec-color-txt fw-600">Log in</a> instead</p>
+            <p id="form-response">&nbsp;</p>
         </div>
     </div>
 </div>
 
 
-<p id="register-response"></p>
+
 
 
 

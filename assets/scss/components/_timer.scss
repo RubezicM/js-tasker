@@ -1,0 +1,23 @@
+.timer {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: $bg-black-light;
+    text-align: center;
+    box-shadow: 2px 3px 1rem rgba(0, 0, 0, .3);
+
+    &__progress {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: all 1s ease-in-out;
+    }
+
+    &__number {
+        padding: 60px 0 0;
+        font-size: 35px;
+        line-height: 30px;
+    }
+
+}

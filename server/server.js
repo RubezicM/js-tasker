@@ -4,7 +4,6 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-;
 const _ = require('lodash');
 const bcrypt = require('bcryptjs');
 const axios = require('axios');
@@ -18,7 +17,7 @@ const { inlineSyntax } = require('./parser/inline/inline-syntax');
 const { commentsSyntax } = require('./parser/comments/comments-syntax');
 const { pickTask } = require('./parser/tasks/basic');
 const { parser } = require('./middleware/parser');
-const {hbs} = require('./middleware/hbs');
+const {hbs} = require('./utils/hbs/hbs-helpers');
 const app = express();
 const port = process.env.PORT || 3000;
 const publicPath = path.join(__dirname, '../public');
@@ -66,14 +65,19 @@ app.get('/main', authenticate, (req, res) => {
         user: req.user.username,
         imgUrl: req.user.imageURL,
         combo: req.user.combo,
-        title: 'Playground'
+        imgUrl: req.user.imageURL,
+        title: 'Playground',
+        xp: req.user.xp,
+        basicAttempts: req.user.score.basic.attempted,
+        basicPercentage: req.user.score.basic.percentage
     });
 });
 
 app.get('/history', authenticate, (req, res) => {
     res.render('history.hbs', {
         user: req.user.username,
-        imgUrl: req.user.imageURL
+        imgUrl: req.user.imageURL,
+        title: 'history'
     });
 });
 
@@ -96,10 +100,12 @@ app.get('/login', loggedIn, (req, res) => {
     if (req.loggedIn) {
         res.render('logged.hbs', {
             user: req.user.username,
-            message: 'logged in'
+            message: 'logged in',
         });
     } else {
-        res.render('login.hbs');
+        res.render('login.hbs',{
+            title: 'Log In'
+        });
     };
 });
 
@@ -297,7 +303,6 @@ app.post('/answer', authenticate, (req, res) => {
 
 app.post('/answer-send', authenticate, (req, res) => {
     let body = _.pick(req.body, ['_id', 'result']);
-
     Answer.findOne({ _id: body._id, completed: false }).then((answer) => {
         if (answer.result.trim() === body.result) {
             Answer.findByIdAndUpdate(answer._id, {
@@ -375,7 +380,7 @@ app.listen(port, () => {
     console.log(`Started listenning on port ${port}`);
 });
 
-module.exports = { app,hbs };
+module.exports = { app };
 
 
 

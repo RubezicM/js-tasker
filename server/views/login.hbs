@@ -1,23 +1,37 @@
 {{> header}}
 
-    <h1>Login</h1>
+{{> page-headline}}
+<div class="row">
+    <div id="main">
+        <div class="card flex-disp">
+            <h3 class="card__headline">{{title}}</h3>
+            <form action="post" id="login-form" class="form-card">
+                <div class="form-card__group">
+                    <label for="username" class="form-card__label">Username: </label>
+                    <input type="text" name="username" id="username" placeholder="Enter username"
+                        class="form-card__input" autofocus required>
+                </div>
+                <div class="form-card__group">
+                    <label for="password" class="form-card__label">Password: </label>
+                    <input type="password" name="password" id="password" placeholder="Enter password"
+                        class="form-card__input" required>
+                </div>
+                <button type="submit" class="btn form-card__btn btn__main">Enter</button>
+            </form>
+            <p id="login-response">&nbsp;</p>
+        </div>
+    </div>
+</div>
 
-    <form action="post" id="login-form">
-        <label for="username">Username: </label>
-        <input type="text" name="username" id="username" placeholder="Enter username" autofocus required><br><br>
-        <label for="password">Password: </label>
-        <input type="password" name="password" id="password" placeholder="Enter password" required>
-        <br><br>
-        <button type="submit">Submit Test</button>
-    </form>
-
-    <p id="login-response"></p>
 
 
 
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-    <script src="/js/login.js"></script>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script src="/js/login.js"></script>
+<script src="/js/main.js"></script>
 </body>
 
 </html>

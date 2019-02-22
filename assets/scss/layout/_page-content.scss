@@ -1,0 +1,22 @@
+.main {
+    //height: 300px;
+    background: url("/img/pattern.png");
+    background-repeat: repeat;
+    background-clip: padding-box;
+    border: solid 2px transparent;
+    position: relative;
+    @include border-gradient($yellow-main-color,$red-main-color,2px);
+    @include clearfix;
+    &__side-bar {
+        background-color: $bg-black-medium; 
+        float: left;
+        padding: 5rem 3rem 4rem 3rem;
+
+        & .user-stats {
+            margin: 2.5rem 0;
+        }
+    }
+    &__main-content {
+        float: left;
+    }
+}

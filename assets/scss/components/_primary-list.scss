@@ -1,0 +1,33 @@
+.primary-list {
+    padding-left: 2.5rem;
+    & li {
+        position: relative;
+        padding: .6rem 0;
+        &::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            left: -25px;
+            top: 15px;
+            background-color: #3D3D3D;
+            display: block;
+            position: absolute;
+        }
+
+        &::before {
+            content:"";
+            position: absolute;
+            left: -21px;
+            border-left: 2px solid #3D3D3D;
+            height: 100%;
+            width: 1px;
+        }
+
+        &:first-child::before {
+            //top: 6px;
+        }
+    }
+
+
+}
