@@ -18,7 +18,7 @@ const { inlineSyntax } = require('./parser/inline/inline-syntax');
 const { commentsSyntax } = require('./parser/comments/comments-syntax');
 const { pickTask } = require('./parser/tasks/basic');
 const { parser } = require('./middleware/parser');
-const {hbs} = require('./middleware/hbs');
+const { hbs } = require('./middleware/hbs');
 const app = express();
 const port = process.env.PORT || 3000;
 const publicPath = path.join(__dirname, '../public');
@@ -55,7 +55,7 @@ app.get('/register', loggedIn, (req, res) => {
             title: 'Register'
         });
     } else {
-        res.render('register.hbs',{
+        res.render('register.hbs', {
             title: 'Register'
         });
     };
@@ -375,7 +375,7 @@ app.listen(port, () => {
     console.log(`Started listenning on port ${port}`);
 });
 
-module.exports = { app,hbs };
+module.exports = { app, hbs };
 
 
 
