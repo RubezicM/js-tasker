@@ -20,10 +20,26 @@
 
                 <button type="submit" id="submit" class="btn form-card__btn btn__main">Submit</button>
             </form>
+
             <p class="small">Already a member? <a href="/login" class="sec-color-txt fw-600">Log in</a> instead</p>
-            <p id="form-response">&nbsp;</p>
+            <div id="form-response" class="hidden form-popup">
+                <div class="lds-roller loader">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <span class="form-popup__message hidden"></span>
+            </div>
         </div>
     </div>
+</div>
+<div class="overlay hidden">
+
 </div>
 
 
@@ -33,6 +49,7 @@
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
+<script src="/js/UI-validation.js"></script>
 <script src="/js/register.js"></script>
 <script src="/js/main.js"></script>
 </body>

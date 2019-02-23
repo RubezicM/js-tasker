@@ -2,7 +2,7 @@
     &.flex-disp {
         flex-direction: column;
     }
-
+    z-index: 9999;
     position: absolute;
     width: 32rem;
     top: 50%;

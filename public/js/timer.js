@@ -19,7 +19,7 @@ function startTimer(div, n) {
         function updateProgress() {
             var centerX = canvas.width / 2;
             var centerY = canvas.height / 2;
-            var radius = 60;
+            var radius = 50;
             var circ = Math.PI * 2;
             var percent = i / n;
             ctx.beginPath();

@@ -1,7 +1,6 @@
 let usernameField = document.getElementById('username');
 let passwordField = document.getElementById('password');
 let emailField = document.getElementById('email');
-let responseField = document.getElementById('form-response');
 
 usernameField.addEventListener('keyup', checkIfAvilable.bind(this, 'Username'));
 emailField.addEventListener('keyup', checkIfAvilable.bind(this, 'Email'));
@@ -10,18 +9,23 @@ document.getElementById('register-form').addEventListener('submit', (event) => {
     event.preventDefault();
 
     axios.post('/users', {
-        username: usernameField.value,
-        email: emailField.value,
-        password: passwordField.value
-    })
+            username: usernameField.value,
+            email: emailField.value,
+            password: passwordField.value
+        })
         .then((response) => {
-            responseField.innerHTML = 'Registered successfully.';
-            setTimeout(() => {
-                window.location.assign('/main');
-            }, 1000);
+           toggleUI("Registered Successfuly!",2500)
+                setTimeout(() => {
+                    window.location.assign('/main');
+                }, 3500)
+          
         })
         .catch((err) => {
-            responseField.innerHTML = err.response.data;
+            let message = err.response.data;
+           toggleUI(message,2500);
+           setTimeout(() => {
+            window.location.assign('/register');
+        }, 3500)
         });
 });
 
@@ -40,6 +44,5 @@ function checkIfAvilable(type) {
                 };
                 document.querySelector(`label[for='${type.toLowerCase()}']`).innerHTML = `${type}: OK`;
             }
-        }).catch((err) => {
-        });
+        }).catch((err) => {});
 };
