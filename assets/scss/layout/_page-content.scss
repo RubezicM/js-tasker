@@ -1,22 +1,37 @@
 .main {
-    //height: 300px;
+    padding: 2rem;
     background: url("/img/pattern.png");
     background-repeat: repeat;
     background-clip: padding-box;
     border: solid 2px transparent;
     position: relative;
-    @include border-gradient($yellow-main-color,$red-main-color,2px);
+    border: 2px solid transparent;
+    border-image: linear-gradient(to right, $yellow-main-color 0%, $red-main-color 49%, $red-main-color 100%) 2 2 2 2;
+    //@include border-gradient($yellow-main-color,$red-main-color,2px);
     @include clearfix;
     &__side-bar {
+        height: 100%;
+        width: 30%;
         background-color: $bg-black-medium; 
         float: left;
-        padding: 5rem 3rem 4rem 3rem;
-
+        padding: 7.5rem 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         & .user-stats {
-            margin: 2.5rem 0;
+            margin: 5rem 0 6.5rem 0;
         }
+
+        & .timer {
+            margin-bottom: 2rem;
+        }
+        & .combo {
+            margin-bottom: 2.8rem;
+        }
+
     }
     &__main-content {
+        width: 70%;
         float: left;
     }
 }

@@ -6,7 +6,7 @@
     <div id="main" class="main">
         <div class="main__side-bar">
             <div class="user-widget--small">
-                <div class="user-widget header__user-widget flex-disp">
+                <div class="user-widget flex-disp">
                     <div class="user-widget__img">
                         <img src="{{imgUrl}}" alt="User Image">
                     </div>
@@ -18,23 +18,23 @@
             <div class="user-stats">
                 <ul class="primary-list">
                     <li>Experience: <span class="primary-color-txt font-size-medium">{{xp}}</span></li>
-                    <li>Highest in a row <span class="primary-color-txt font-size-medium">{{combo}}</span></li>
-                    <li>Total tasks <span class="primary-color-txt font-size-medium">{{basicAttempts}}</span></li>
-                    <li>Success percentage <span class="secondary-color-txt font-size-medium">{{basicPercentage}}</span>
+                    <li>Highest in a row: <span class="primary-color-txt font-size-medium">{{combo}}</span></li>
+                    <li>Total tasks: <span class="primary-color-txt font-size-medium">{{basicAttempts}}</span></li>
+                    <li>Success percentage: <span class="secondary-color-txt font-size-medium">{{basicPercentage}}%</span>
                     </li>
                 </ul>
             </div>
-            <div class="timer">
+            <p id="combo" class="combo">Answers in a row: <span class="primary-color-txt font-size-medium fw-600">{{combo}}</span></p>
+            <div class="timer main__side-bar--timer">
                 <p id="timeLeft" class="timer__number">30</p>
                 <p id="sec">sec</p>
                 <canvas id="progress" width="140" height="140" class="timer__progress"></canvas>
             </div>
-            <p id="combo">Answers in a row: {{combo}}</p>
-            <button id="start">Start</button>
-            <p id="timer"></p>
+            
+            <button id="start" class="btn btn__main btn__big">Start</button>
         </div>
         <div class="main__main-content">
-            <div id="game-area"></div><br>
+            <div id="game-area"></div>
             <form action="post" id="form-game">
                 <input type="text" name="answer" id="answer" placeholder="Answer goes here" autocomplete="off"><br>
                 <input type="submit" value="Submit">

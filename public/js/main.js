@@ -6,8 +6,7 @@ let main =document.getElementById('main');
 if(main){
     let mainHeight = window.innerHeight - main.offsetTop;
 
-    main.style.minHeight = mainHeight + 'px';
-    console.log(main.offsetTop,window.innerHeight);
+    main.style.height = mainHeight + 'px';
 }
 
 
@@ -19,7 +18,6 @@ let answer = document.getElementById('answer');
 let taskID;
 let timeField = document.getElementById('timer');
 let time = 30;
-let setTime;
 let comboField = document.getElementById('combo');
 
 //timeField.innerHTML = `Time left: ${time} seconds`;
@@ -36,11 +34,8 @@ document.getElementById('form-game').addEventListener("submit", (event) => {
     if (!gameInProgress) {
         return alert('Start game first!');
     };
-
-    clearInterval(setTime);
+    stopTimer();
     time = 30;
-    postAnswer();
-    timeField.innerHTML = `Time left: ${time} seconds`;
 });
 
 document.getElementById('start').addEventListener("click", (event) => {
@@ -49,6 +44,7 @@ document.getElementById('start').addEventListener("click", (event) => {
     };
 
     canvasReset();
+    timeLeft.innerHTML = time;
     startTimer(timeLeft,time);
 
     gameInProgress = true;
@@ -85,17 +81,15 @@ document.getElementById('start').addEventListener("click", (event) => {
 //     timeField.innerHTML = `Time left: ${time} seconds`;
 // };
 
-function resetTimer() {
-    if (time === 0) {
-        clearInterval(setTime);
-        time = 30;
-        postAnswer('Times up! ');
-    } else {
-        --time;
-    };
-
-    timeField.innerHTML = `Time left: ${time} seconds`;
-};
+// function resetTimer() {
+//     if (time === 0) {
+//         clearInterval(setTime);
+//         time = 30;
+//         postAnswer('Times up! ');
+//     } else {
+//         --time;
+//     };
+// };
 function postAnswer(message = '') {
     axios.post('/answer-send', {
         _id: taskID,

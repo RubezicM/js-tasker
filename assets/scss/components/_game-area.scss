@@ -1,0 +1,18 @@
+#game-area {
+    padding: 5rem 3rem;
+    min-height: 500px;
+    border: 2px solid transparent;
+    border-image: linear-gradient(to right, $yellow-main-color 0%, $red-main-color 49%, $red-main-color 100%) 2 2 2 2;
+    background-color: #111;
+    display: flex;
+    justify-content: center;
+
+    & img {
+        align-self: center;
+    }
+}
+
+#form-game {
+    border: solid 2px transparent;
+    border-image: linear-gradient(to right, $yellow-main-color 0%, $red-main-color 49%, $red-main-color 100%) 2 2 2 2;
+}

@@ -380,11 +380,7 @@ app.listen(port, () => {
     console.log(`Started listenning on port ${port}`);
 });
 
-<<<<<<< HEAD
 module.exports = { app };
-=======
-module.exports = { app, hbs };
->>>>>>> c43e800824cbbb07368d5083197136dcd3cc13e7
 
 
 

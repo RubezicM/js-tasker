@@ -6,13 +6,13 @@ function startTimer(div, n) {
     var i = n - 1;
     timer = setInterval(function () {
         
-        stopTimer = function () {
+        stopTimer = function (msg) {
             clearInterval(timer);
             div.innerHTML = i + 1;
             // Resets and sending data
-            div.innerHTML = '0';
+            //div.innerHTML = '0';
             time = 30;
-            postAnswer('Times up! ');
+            postAnswer();
         }
 
 
