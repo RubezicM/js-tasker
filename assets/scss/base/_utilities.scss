@@ -12,6 +12,9 @@
 .primary-color-txt {
     color: $yellow-main-color;
 }
+.tertiary-color-txt {
+    color: $green-main-color;
+}
 
 .fw-600 {
     font-weight: 600;
@@ -21,11 +24,21 @@
 .font-size-medium {
     font-size: 1.7rem;
 }
-
-
+.font-size-big {
+    font-size: 2.1rem;
+}
+.font-size-huge {
+    font-size: 6rem;
+}
+.block-disp {
+    display: block;
+}
 .show {
     display: block;
 }
 .hidden {
     display: none;
+}
+.txt-center {
+    text-align: center;
 }

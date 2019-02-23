@@ -20,14 +20,12 @@ let toggleUI = (msg, delay) => {
 let correctAnswerScreen = () => {
     let overlay = document.querySelector('.overlay');
     let gameStatus = document.querySelector('.game-status');
-    let nextGameCountdownDiv = document.querySelector('.next-game-countdown');
-
     overlay.classList.remove('hidden');
     gameStatus.classList.remove('hidden');
     gameStatus.classList.add('show');
-    gameStatus.textContent = `Correct answer!`;
+    gameStatus.innerHTML = `<i class="fas fa-check fw-600 tertiary-color-txt font-size-huge"></i><span class="block-disp font-size-big ">Correct answer!</span>`;
     setTimeout(() => {
-        let miniTimer = 4;
+        let miniTimer = 3;
         gameStatus.classList.remove('show');
         gameStatus.classList.add('hidden');
         startButton.style.display = 'block';
@@ -36,14 +34,11 @@ let correctAnswerScreen = () => {
             --miniTimer;
             if (miniTimer === 0 && gameInProgress === false) {
                 startGame();
-                nextGameCountdownDiv.textContent = 4;
+                nextGameCountdownDiv.textContent = 3;
                 nextGameCountdownDiv.style.display = 'none';
             }
-            if(gameInProgress === true){
-                nextGameCountdownDiv.textContent = 4;
-                nextGameCountdownDiv.style.display = 'none';
-            }
-            nextGameCountdownDiv.textContent = miniTimer;
+
+            nextGameCountdownDiv.innerHTML = `Next game starting in <span class="secondary-color-txt font-size-big fw-600">${miniTimer}</span>`;
         }, 1000);
     }, 1500)
 }
@@ -54,7 +49,7 @@ let wrongAnswerScreen = () => {
     overlay.classList.remove('hidden');
     gameStatus.classList.remove('hidden');
     gameStatus.classList.add('show');
-    gameStatus.textContent = `Wrong answer!`;
+    gameStatus.innerHTML = `<i class="fas fa-times fw-600 secondary-color-txt font-size-huge"></i><span class="block-disp font-size-big ">Wrong answer!</span>`;
     setTimeout(() => {
         gameStatus.classList.remove('show');
         gameStatus.classList.add('hidden');

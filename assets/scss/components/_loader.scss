@@ -40,7 +40,6 @@
   .lds-roller div:nth-child(2):after {
     top: 54px;
     left: 45px;
-    background: $yellow-main-color;
   }
   .lds-roller div:nth-child(3) {
     animation-delay: -0.108s;
@@ -56,7 +55,6 @@
   .lds-roller div:nth-child(4):after {
     top: 58px;
     left: 32px;
-    background: $yellow-main-color;
   }
   .lds-roller div:nth-child(5) {
     animation-delay: -0.18s;
@@ -72,7 +70,6 @@
   .lds-roller div:nth-child(6):after {
     top: 54px;
     left: 19px;
-    background: $yellow-main-color;
   }
   .lds-roller div:nth-child(7) {
     animation-delay: -0.252s;
@@ -87,7 +84,6 @@
   .lds-roller div:nth-child(8):after {
     top: 45px;
     left: 10px;
-    background: $yellow-main-color;
   }
   @keyframes lds-roller {
     0% {

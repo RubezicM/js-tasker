@@ -9,13 +9,23 @@
 
     &--game {
         position: absolute;
-        background: rgba(0,0,0,1);
+        background: $bg-black-dark;
+        z-index: 2;
         display: flex;
         align-items: center;
         justify-content: center;
-        
+        flex-direction: column;
         &.hidden {
             display: none;
+        }
+
+        & .btn {
+
+            margin-bottom: 2rem;
+        }
+
+        & .next-game-countdown {
+            font-size: 1.8rem;
         }
     }
 

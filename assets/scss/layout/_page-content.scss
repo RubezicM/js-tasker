@@ -5,7 +5,6 @@
     background-clip: padding-box;
     border: solid 2px transparent;
     position: relative;
-    border: 2px solid transparent;
     border-image: linear-gradient(to right, $yellow-main-color 0%, $red-main-color 49%, $red-main-color 100%) 2 2 2 2;
     //@include border-gradient($yellow-main-color,$red-main-color,2px);
     @include clearfix;
@@ -18,6 +17,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: space-between;
         & .user-stats {
             margin: 5rem 0 6.5rem 0;
         }
@@ -34,5 +34,9 @@
         position: relative;
         width: 70%;
         float: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
     }
 }

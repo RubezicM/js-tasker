@@ -28,8 +28,8 @@ var converter = function (ass) {
   };
   let config = {
     image: {
-      lineHeight: 17,
-      font: "2rem Inconsolata"
+      lineHeight: 21,
+      font: "2.2rem Inconsolata"
     }
   }
 
@@ -221,7 +221,7 @@ var converter = function (ass) {
           } else if (strInfo[position].name === "console.log") {
             colorFillChange(ch, x, y, theme["console.log"]);
           }
-          x += context.measureText(ch).width;
+          x = x+context.measureText(ch).width + 1;
           z++;
           if (z == strInfo[position]["len"]) {
             z = 0;
@@ -231,7 +231,7 @@ var converter = function (ass) {
         }
       } else {
         colorFillChange(ch, x, y, theme.resOfStr);
-        x += context.measureText(ch).width;
+        x = x + context.measureText(ch).width + 1;
       }
     }
   }
