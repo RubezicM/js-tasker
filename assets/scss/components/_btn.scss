@@ -9,9 +9,15 @@
     box-shadow: 0 5px 1rem rgba($bg-black-medium, .4);
     //width: 20rem;
     &__main {
-        background-color: $yellow-main-color;
         color: white;
+        &--yellow {
+            background-color: $yellow-main-color;
+        }
+        &--red {
+            background-color: $red-main-color;
+        }
     }
+
     &__big {
         padding: 1.5rem 6.5rem;
     }

@@ -11,8 +11,6 @@ function startTimer(div, n) {
             div.innerHTML = i + 1;
             // Resets and sending data
             //div.innerHTML = '0';
-            time = 30;
-            postAnswer();
         }
 
 
@@ -39,6 +37,7 @@ function startTimer(div, n) {
         }
         if (i < 0) {
             stopTimer();
+            postAnswer('Time is up!');
         } else {
             div.innerHTML = i--;
         }
@@ -46,7 +45,7 @@ function startTimer(div, n) {
 
 }
 
-let canvasReset = ()=>{
+let UITimerReset = ()=>{
     // Clearing the canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     timeLeft.innerHTML = time;

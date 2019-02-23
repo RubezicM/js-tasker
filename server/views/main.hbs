@@ -20,25 +20,47 @@
                     <li>Experience: <span class="primary-color-txt font-size-medium">{{xp}}</span></li>
                     <li>Highest in a row: <span class="primary-color-txt font-size-medium">{{combo}}</span></li>
                     <li>Total tasks: <span class="primary-color-txt font-size-medium">{{basicAttempts}}</span></li>
-                    <li>Success percentage: <span class="secondary-color-txt font-size-medium">{{basicPercentage}}%</span>
+                    <li>Success percentage: <span
+                            class="secondary-color-txt font-size-medium">{{basicPercentage}}%</span>
                     </li>
                 </ul>
             </div>
-            <p id="combo" class="combo">Answers in a row: <span class="primary-color-txt font-size-medium fw-600">{{combo}}</span></p>
+            <p id="combo" class="combo">Answers in a row: <span
+                    class="primary-color-txt font-size-medium fw-600">{{combo}}</span></p>
             <div class="timer main__side-bar--timer">
                 <p id="timeLeft" class="timer__number">30</p>
                 <p id="sec">sec</p>
                 <canvas id="progress" width="140" height="140" class="timer__progress"></canvas>
             </div>
-            
-            <button id="start" class="btn btn__main btn__big">Start</button>
+
+            <button id="exit" class="btn btn__main btn__main--yellow btn__big">Exit</button>
         </div>
         <div class="main__main-content">
             <div id="game-area"></div>
-            <form action="post" id="form-game">
-                <input type="text" name="answer" id="answer" placeholder="Answer goes here" autocomplete="off"><br>
-                <input type="submit" value="Submit">
+            <form action="post" id="form-game" class="answer-submit">
+                <label for="answer" class="answer-submit__question"><span>Console.log</span> statement equals to :
+                </label>
+                <div class="answer-submit__group">
+                    <input type="text" name="answer" id="answer" class="answer-submit__input"
+                        placeholder="Answer goes here" autocomplete="off">
+                    <input type="submit" value="Submit" class="answer-submit__btn btn btn__main btn__main--red">
+                </div>
             </form>
+            <div class="overlay overlay--game"><button id="start"
+                    class="btn btn__main btn__main--yellow btn__big">Start</button>
+                <div class="lds-roller loader hidden">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <p class="game-status hidden">&nbsp;</p>
+                <div class="next-game-countdown"></div>
+            </div>
         </div>
     </div>
 </div>
@@ -47,6 +69,7 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/js/converter.js"></script>
 <script src="/js/timer.js"></script>
+<script src="/js/UI-validation.js"></script>
 <script src="/js/main.js"></script>
 </body>
 

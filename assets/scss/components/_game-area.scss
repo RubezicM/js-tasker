@@ -12,7 +12,43 @@
     }
 }
 
-#form-game {
+.answer-submit {
+    padding: 3rem;
+    background-color: #111;
+    margin-top: 2rem;
     border: solid 2px transparent;
     border-image: linear-gradient(to right, $yellow-main-color 0%, $red-main-color 49%, $red-main-color 100%) 2 2 2 2;
+    @include clearfix;
+    display: flex;
+    align-items: center;
+    &__question {
+        width: 45%;
+        margin-right: 5%;
+        & span {
+            color: $red-main-color;
+            font-weight: 600;
+            font-size: 1.6rem;
+            text-transform: uppercase;
+        }
+    }
+    // & > * {
+    //     float: left;
+    // }
+
+    &__group {
+        display: flex;
+        justify-content: space-between;
+        width: 50%;
+        & * {
+            display: inline-block;
+        }
+    }
+    &__input {
+        width: 100%;
+        padding-left: 2rem;
+        font-size: 2rem;
+    }
+    &__btn {
+
+    }
 }

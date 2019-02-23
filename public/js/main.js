@@ -1,13 +1,14 @@
 //////// UI /////////
 
 
-let main =document.getElementById('main');
+let main = document.getElementById('main');
 
-if(main){
+if (main) {
     let mainHeight = window.innerHeight - main.offsetTop;
 
     main.style.height = mainHeight + 'px';
 }
+
 
 
 ///////// MECHANICS //////////
@@ -16,10 +17,11 @@ let taskResponse = 5;
 let gameInProgress = false;
 let answer = document.getElementById('answer');
 let taskID;
-let timeField = document.getElementById('timer');
 let time = 30;
 let comboField = document.getElementById('combo');
-
+let startButton = document.getElementById('start');
+let nextGameCountdownDiv = document.querySelector('.next-game-countdown');
+let nextGameCounter;
 //timeField.innerHTML = `Time left: ${time} seconds`;
 //answer.value = '';
 
@@ -36,18 +38,24 @@ document.getElementById('form-game').addEventListener("submit", (event) => {
     };
     stopTimer();
     time = 30;
+    postAnswer();
 });
 
-document.getElementById('start').addEventListener("click", (event) => {
+startButton.addEventListener("click", startGame);
+
+
+function startGame(){
     if (gameInProgress) {
         return alert('Finish current task first.');
     };
-
-    canvasReset();
-    timeLeft.innerHTML = time;
-    startTimer(timeLeft,time);
-
+    time = 30;0
     gameInProgress = true;
+    clearInterval(nextGameCounter);
+    nextGameCountdownDiv.textContent = 4;
+    nextGameCountdownDiv.style.display = 'none';
+    UITimerReset();
+    initializeTaskUI();
+    
     answer.value = '';
     axios.post('/answer')
         .then((response) => {
@@ -66,39 +74,20 @@ document.getElementById('start').addEventListener("click", (event) => {
         .catch((err) => {
             document.getElementById('game-area').innerHTML = err;
         });
-});
+}
 
-
-// function timer() {
-//     if (time === 0) {
-//         clearInterval(setTime);
-//         time = 30;
-//         postAnswer('Times up! ');
-//     } else {
-//         --time;
-//     };
-
-//     timeField.innerHTML = `Time left: ${time} seconds`;
-// };
-
-// function resetTimer() {
-//     if (time === 0) {
-//         clearInterval(setTime);
-//         time = 30;
-//         postAnswer('Times up! ');
-//     } else {
-//         --time;
-//     };
-// };
 function postAnswer(message = '') {
     axios.post('/answer-send', {
         _id: taskID,
         result: answer.value
     }).then((response) => {
         if (response.data.correct) {
-            alert(`${message}Correct answer!`);
+            correctAnswerScreen();
+            // display overlay, bring back the button
+            //alert(`${message}Correct answer!`);
         } else {
-            alert(`${message}Wrong answer!`);
+            wrongAnswerScreen();
+    //alert(`${message}Wrong answer!`);
         };
         comboField.innerHTML = `Answers in a row: ${response.data.combo}`;
         gameInProgress = false;

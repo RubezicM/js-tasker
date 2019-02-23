@@ -1,9 +1,23 @@
 .overlay {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     position: fixed;
     left: 0;
     top: 0;
     background: rgba(0,0,0,.7);
     z-index: 1;
+
+    &--game {
+        position: absolute;
+        background: rgba(0,0,0,1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        &.hidden {
+            display: none;
+        }
+    }
+
+    
 }

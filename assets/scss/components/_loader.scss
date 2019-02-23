@@ -23,7 +23,7 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #fff;
+    background: $red-main-color;
     margin: -3px 0 0 -3px;
   }
   .lds-roller div:nth-child(1) {
@@ -35,13 +35,16 @@
   }
   .lds-roller div:nth-child(2) {
     animation-delay: -0.072s;
+   
   }
   .lds-roller div:nth-child(2):after {
     top: 54px;
     left: 45px;
+    background: $yellow-main-color;
   }
   .lds-roller div:nth-child(3) {
     animation-delay: -0.108s;
+    
   }
   .lds-roller div:nth-child(3):after {
     top: 57px;
@@ -53,9 +56,11 @@
   .lds-roller div:nth-child(4):after {
     top: 58px;
     left: 32px;
+    background: $yellow-main-color;
   }
   .lds-roller div:nth-child(5) {
     animation-delay: -0.18s;
+    
   }
   .lds-roller div:nth-child(5):after {
     top: 57px;
@@ -67,6 +72,7 @@
   .lds-roller div:nth-child(6):after {
     top: 54px;
     left: 19px;
+    background: $yellow-main-color;
   }
   .lds-roller div:nth-child(7) {
     animation-delay: -0.252s;
@@ -81,6 +87,7 @@
   .lds-roller div:nth-child(8):after {
     top: 45px;
     left: 10px;
+    background: $yellow-main-color;
   }
   @keyframes lds-roller {
     0% {
