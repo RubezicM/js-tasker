@@ -3,6 +3,7 @@
     & li {
         position: relative;
         padding: .6rem 0;
+        transition: .3s all;
         &::after {
             content: '';
             width: 10px;
@@ -13,6 +14,7 @@
             background-color: #3D3D3D;
             display: block;
             position: absolute;
+            transition: .3s all;
         }
 
         &::before {
@@ -28,6 +30,16 @@
             //top: 6px;
         }
     }
+    &.side-menu {
 
+        & li:hover {
+            cursor: pointer;
+            color: $yellow-main-color;
+        }
+
+        & li:hover::after {
+            background-color: $yellow-main-color;
+        }
+    }
 
 }

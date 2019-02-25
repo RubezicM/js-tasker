@@ -1,7 +1,9 @@
 .user-widget {
     color: $yellow-main-color;
     align-items: center;
+    position: relative;
     &__img {
+        width: 7rem;
     }
 
     &__name {
@@ -14,6 +16,7 @@
     }
     &:hover {
         cursor: pointer;
+        background: $bg-black-medium;
     }
     &.not-logged-in {
         color: #fff;

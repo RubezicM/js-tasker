@@ -10,8 +10,8 @@
 
 @import "components/btn";
 @import "components/card";
-@import "components/form-card";
-@import "components/form-response";
+@import "components/custom-scroll";
+@import "components/forms";
 @import "components/game-area";
 @import "components/headline-main";
 @import "components/loader";
@@ -26,3 +26,4 @@
 @import "layout/grid";
 @import "layout/header";
 
+@import "pages/profile";

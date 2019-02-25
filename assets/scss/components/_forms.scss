@@ -1,0 +1,152 @@
+.form-card {
+    padding: 4.5rem 3rem 0 3rem;
+    z-index: 0;
+    &>* {
+        display: block;
+    }
+
+    &__group {
+        position: relative;
+        & input {
+            display: block;
+            width: 100%;
+        }
+        &:not(:last-child) {
+            margin-bottom: 3rem;
+        }
+    }
+    &__btn {
+        width: 100%;
+    }
+}
+
+#login-form {
+    padding: 4.5rem 3rem 3rem 3rem;
+}
+
+.form-popup {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: rgba(0,0,0,.8);
+    z-index: 999;
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+    &.show {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+    }
+    &__message {
+        background-color: $red-main-color;
+        padding: 1.4rem 2rem;
+        font-size: 1.9rem;
+    }
+}
+
+.form {
+
+    & input {
+        color: white;
+        caret-color: white;
+        background-color: $bg-black-light;
+        position: relative;
+        padding: 12px 0px 5px 0;
+        //width: 100%;
+        outline: 0;
+        border: 0;
+        -webkit-box-shadow: 0 .5px 0 0 white;
+                box-shadow: 0 .5px 0 0 white;
+        &:focus {
+            -webkit-box-shadow: 0 2px 0 0 $red-main-color;
+                    box-shadow: 0 2px 0 0 $red-main-color;
+        }
+
+        &::-webkit-input-placeholder {
+            color: transparent;
+        }
+        &:-ms-input-placeholder {
+            color: transparent;
+        }
+        &::-ms-input-placeholder {
+            color: transparent;
+        }
+        &::placeholder {
+            color: transparent;
+        }
+    }
+
+    & label {
+
+    }
+}
+
+.form-edit {
+    padding: 3rem 1.75rem;
+    background: $bg-black-medium;
+    width: 75%;
+    border-bottom: 2px solid transparent;
+    -o-border-image: linear-gradient(to right, $yellow-main-color 0%, $red-main-color 49%, $red-main-color 100%) 2 2 2 2;
+       border-image: -webkit-gradient(linear, left top, right top, from($yellow-main-color), color-stop(49%, $red-main-color), to($red-main-color)) 2 2 2 2;
+       border-image: linear-gradient(to right, $yellow-main-color 0%, $red-main-color 49%, $red-main-color 100%) 2 2 2 2;
+    &__group {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        &:not(:last-child){
+            margin-bottom: 2.5rem;
+        }
+
+        & input {
+            width: 25rem;
+        }
+
+        &:nth-of-type(3){
+            -webkit-box-pack: end;
+                -ms-flex-pack: end;
+                    justify-content: flex-end;
+        }
+        & input[type="submit"] {
+            -webkit-box-flex:0;
+                -ms-flex:0;
+                    flex:0;
+        }
+        &--pic {
+            
+            & input {
+                width: unset;
+            }
+        }
+    }
+    &__btn {
+        padding: 1.25rem 3.21rem;
+    }
+}
+
+.form-response {
+    text-align: center;
+}
+fieldset {
+    border: none;
+}
+
+legend {
+    font-size: 2rem;
+    margin-bottom: 1.9rem;
+    border-bottom: $red-main-color 4px solid;
+    display: block;
+}

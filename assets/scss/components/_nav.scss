@@ -4,12 +4,47 @@
     }
 
     &__item {
-        transition: .3s;
+        padding: 1.2rem 1.8rem;
+        transition: all .3s;
         &:not(:last-child){
             margin-right: 6.5rem;
         }
-    }
 
+        &--dropdown {
+            position: relative;
+            &:hover {
+                background: $bg-black-medium;
+            }
+
+            &:hover .nav__icon {
+                color: $yellow-main-color;
+            }
+        }
+    }
+    &__dropdown {
+        display: none;
+        background: $bg-black-medium;
+        width: 18rem;
+        padding: 4rem 0 4rem 3rem;
+        position: absolute;
+        left: 0;
+        top: 20px;
+        z-index: 1;
+        &--item {
+            margin-right: 0;
+            &:not(:last-child) {
+                margin-bottom: 1.5rem;
+            }
+        }
+        &--icon {
+            font-size: 1.7rem;
+            margin-right: 1.4rem;
+        }
+
+        &--item:hover &--icon {
+            color: $yellow-main-color;
+        }
+    }
     &__link {
         align-items: center;
     }
@@ -20,9 +55,13 @@
     &__icon {
         margin-right: 1.5rem;
         font-size: 2.3rem;
+        &--angle {
+            font-size: 1.5rem;
+            margin-left: 1.5rem;
+        }
     }
 
-    &__item:hover &__icon {
-        color: $yellow-main-color;
+    &__item:hover > &__icon {
+        //color: $yellow-main-color;
     }
 }

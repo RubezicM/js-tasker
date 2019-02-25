@@ -20,7 +20,7 @@
             </div>
             {{> navigation}}
             <!-- If user is logged in show user-widget -->
-            <div class="user-widget header__user-widget flex-disp">
+            <div class="user-widget header__user-widget flex-disp userWidget-has-dropdown">
                 <div class="user-widget__img">
                     <img src="{{imgUrl}}" alt="User Image">
                 </div>
@@ -28,6 +28,13 @@
                     <a href="#">{{user}}</a> 
                 </div>
                 <i class="fas fa-angle-down user-widget__icon"></i>
+                            <ul id="userWidget-dropdown" class="nav__dropdown">
+                <li class="nav__dropdown--item"><a href="#" class="nav__dropdown--link flex-disp"><i class="fas fa-edit nav__dropdown--icon"></i><span
+                            class="nav__text">Edit Profile</span></a></li>
+                <li class="nav__dropdown--item"><a href="#" class="nav__dropdown--link flex-disp"><i class="fas fa-history nav__dropdown--icon"></i><span
+                            class="nav__text">Log Out</span></a></li>
+
+            </ul>
                 <!-- Angle down -->
             </div>
         </header>

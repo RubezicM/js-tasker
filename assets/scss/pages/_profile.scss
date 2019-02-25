@@ -1,0 +1,28 @@
+.profile-page {
+
+    & .main__side-bar {
+        justify-content: unset;
+    }
+
+    & .main__main-content {
+        
+    }
+}
+
+.profile-info {
+    background: $bg-black-dark;
+    height: 100%;
+    & > *:not(:last-child){
+        margin-bottom: 5rem;
+    }
+    & > * {
+        margin: 0 auto;
+    }
+}
+
+.scroll-container {
+    background: $bg-black-dark;
+    padding: 4rem 5rem;
+    padding-right: 10rem;
+    height: 100%;
+}

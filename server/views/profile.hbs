@@ -1,57 +1,101 @@
 {{> header}}
-    {{> page-headline}}
-    <h2>Hello, {{user}} <img src="{{imgUrl}}" alt="Profile Pic" width="72"></h2>
+{{> page-headline}}
 
-    <img src="{{imgUrl}}" alt="Profile Pic">
+<div class="row">
+    <div id="main" class="main profile-page">
+        <div class="main__side-bar">
+            <div class="user-widget--small">
+                <div class="user-widget flex-disp">
+                    <div class="user-widget__img">
+                        <img src="{{imgUrl}}" alt="User Image" width="72">
+                    </div>
+                    <div class="user-widget__name">
+                        <a href="#">{{user}}</a>
+                    </div>
+                </div>
+            </div>
+            <p>Username: {{user}}</p>
+            <p>Email: {{email}}</p>
+            <ul class="primary-list side-menu">
+                <li class="selected"><a href="#">Edit profile</a> </li>
+                <li><a href="#">History</a></li>
+                <li><a href="#">Achievements</a></li>
+            </ul>
+            <p>Attempts: {{basicAttempts}}</p>
+            <p>Correct answers: {{basicSuccesses}}</p>
+            <p>Success rate: {{basicPercentage}}%</p>
+            <p>XP: {{xp}}</p>
+            <p>Most answers in a row: {{bestCombo}}</p>
+        </div>
+        <div class="main__main-content">
+            <div id="EditProfile" class="scroll-container">
+                <div class="custom-scroll profile-info">
+                    <form action="patch" id="update-form" class="form-edit form">
+                        <fieldset>
+                            <legend>Update Account info</legend>
+                            <div class="form-edit__group">
+                                <label for="username">Username: </label>
+                                <input type="text" name="username" id="username" placeholder="New username">
+                            </div>
+                            <div class="form-edit__group">
+                                <label for="email">Email: </label>
+                                <input type="email" name="email" id="email" placeholder="New email">
+                            </div>
+                            <div class="form-edit__group">
+                                <button type="submit"
+                                    class="btn btn__main btn__main--red form-edit__btn">Submit</button>
+                            </div>
+                        </fieldset>
 
 
-    <p>Username: {{user}}</p>
-    <p>Email: {{email}}</p>
+                    </form>
 
-    <br><br>
+                    <form action='/api/images' method="post" enctype="multipart/form-data" class="form-edit">
+                        <fieldset>
+                            <legend>Change Your Picture</legend>
+                            <div class="form-edit__group form-edit__group--pic">
+                                <input type='file' name='image' />
+                                <input type="submit" value="Submit" class="btn btn__main btn__main--red form-edit__btn">
+                            </div>
+                        </fieldset>
 
-    <p>Attempts: {{basicAttempts}}</p>
-    <p>Correct answers: {{basicSuccesses}}</p>
-    <p>Success rate: {{basicPercentage}}%</p>
-    <p>XP: {{xp}}</p>
-    <p>Most answers in a row: {{bestCombo}}</p>
 
-    <form action="patch" id="update-form">
-        <fieldset>
-            <legend>Update login info: </legend>
-            <label for="username">Username: </label>
-            <input type="text" name="username" id="username" placeholder="New username"><br><br>
-            <label for="email">Email: </label>
-            <input type="email" name="email" id="email" placeholder="New email"><br><br>
-            <button type="submit">Submit</button>
-        </fieldset>
-    </form>
+                    </form>
 
-    <form action='/api/images' method="post" enctype="multipart/form-data">
-        <fieldset>
-            <legend>Upload picture: </legend>
-            <input type='file' name='image' /><br><br>
-            <input type="submit" value="Submit">
-        </fieldset>
-    </form>
+                    <form action="patch" id="update-password" class="form-edit form">
+                        <fieldset>
 
-    <form action="patch" id="update-password">
-        <fieldset>
-            <legend>Change password: </legend>
-            <label for="old-password">Old password: </label>
-            <input type="password" name="old-password" id="old-password" placeholder="Old password" required><br><br>
-            <label for="new-password">New password: </label>
-            <input type="password" name="new-password" id="new-password" placeholder="New password" required><br><br>
-            <button type="submit">Submit</button>
-        </fieldset>
-    </form>
+                            <legend>
+                                Update Your Password
+                            </legend>
+                            <div class="form-edit__group"><label for="old-password">Old password: </label>
+                            <input type="password" name="old-password" id="old-password" placeholder="Old password"
+                                required></div>
+                        <div class="form-edit__group">
+                            <label for="new-password">New password: </label>
+                            <input type="password" name="new-password" id="new-password" placeholder="New password"
+                                required>
+                        </div>
+                        <div class="form-edit__group">
+                            <button type="submit" class="btn btn__main btn__main--red form-edit__btn">Submit</button>
+                        </div>
+                        </fieldset>
+                        
 
-    <button id="delete-account">Delete Account</button>
+                    </form>
+                </div>
+                <p id="update-response"></p>
 
-    <p id="update-response"></p>
+                <button id="delete-account">Delete Account</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="/js/profile.js"></script>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/js/profile.js"></script>
+<script src="/js/main.js"></script>
 </body>
 
 </html>
