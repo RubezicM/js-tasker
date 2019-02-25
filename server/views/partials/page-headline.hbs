@@ -1,24 +1,28 @@
 <div class="row bg-dark-low">
-<div class="headline-main flex-disp">
+  <div class="headline-main flex-disp">
     {{#if_eq title 'Register'}}
-      <i class="fas fa-file-signature headline-main__icon"></i>
-      <h2 class="headline-main__text">{{title}}</h2>
+    <i class="fas fa-file-signature headline-main__icon"></i>
+    <h2 class="headline-main__text">{{title}}</h2>
     {{else}}
-      {{#if_eq title 'Playground'}}
-      <i class="fas fa-play headline-main__icon"></i>
-      <h2 class="headline-main__text">{{title}}</h2>
+    {{#if_eq title 'Playground'}}
+    <i class="fas fa-play headline-main__icon"></i>
+    <h2 class="headline-main__text">{{title}}</h2>
     {{else}}
-        {{#if_eq title 'Profile'}}
-        <i class="fas fa-chart-bar headline-main__icon"></i>
-        <h2 class="headline-main__text">{{title}}</h2>
-        {{else}}
-        {{#if_eq title 'Log In'}}
-        <i class="fas fa-file-signature headline-main__icon"></i>
-        <h2 class="headline-main__text">{{title}}</h2>
-        {{/if_eq}}
+    {{#if_eq title 'Profile'}}
+    <i class="fas fa-chart-bar headline-main__icon"></i>
+    <h2 class="headline-main__text">{{title}}</h2>
+    {{else}}
+    {{#if_eq title 'Log In'}}
+    <i class="fas fa-file-signature headline-main__icon"></i>
+    <h2 class="headline-main__text">{{title}}</h2>
+    {{else}}
+    {{#if_eq title 'Highscore'}}
+    <i class="fas fa-star headline-main__icon"></i>
+    <h2 class="headline-main__text">{{title}}</h2>
     {{/if_eq}}
     {{/if_eq}}
     {{/if_eq}}
-
-</div>
+    {{/if_eq}}
+{{/if_eq}}
+  </div>
 </div>

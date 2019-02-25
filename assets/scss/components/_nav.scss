@@ -7,7 +7,7 @@
         padding: 1.2rem 1.8rem;
         transition: all .3s;
         &:not(:last-child){
-            margin-right: 6.5rem;
+            margin-right: 1.5rem;
         }
 
         &--dropdown {
@@ -61,7 +61,7 @@
         }
     }
 
-    &__item:hover > &__icon {
-        //color: $yellow-main-color;
+    &__item:hover  &__icon {
+        color: $yellow-main-color;
     }
 }

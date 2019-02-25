@@ -18,7 +18,8 @@
 @import "components/logo";
 @import "components/nav";
 @import "components/overlay";
-@import "components/primary-list";
+@import "components/lists";
+@import "components/tables";
 @import "components/timer";
 @import "components/user-widget";
 // Layouts 
@@ -26,4 +27,6 @@
 @import "layout/grid";
 @import "layout/header";
 
+
+@import "pages/highscores";
 @import "pages/profile";

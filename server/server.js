@@ -43,7 +43,9 @@ app.get('/', (req, res) => {
 });
 
 app.get('/high-score', (req, res) => {
-    res.render('high-score.hbs');
+    res.render('high-score.hbs',{
+        title: 'Highscore'
+    });
 });
 
 app.get('/register', loggedIn, (req, res) => {

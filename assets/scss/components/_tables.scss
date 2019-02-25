@@ -1,0 +1,20 @@
+.table-main {
+        text-align: center;
+        background-color: $bg-black-light;
+        font-size: 1.5rem;
+    & th,& td {
+        padding: .65rem .95rem;
+    }
+    & th {
+       // padding: .65rem .764rem;
+        background-color: $bg-black-medium;
+        border-bottom: $yellow-main-color 3px solid;
+    }
+    &__username {
+        font-weight: 800;
+    }
+
+    &__user {
+        
+    }
+}

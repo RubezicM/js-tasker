@@ -134,7 +134,7 @@ body {
     margin: 1.5rem 0 2.5rem 0; }
 
 .custom-scroll {
-  overflow-y: scroll; }
+  overflow-y: auto; }
   .custom-scroll::-webkit-scrollbar {
     width: 10px;
     position: relative; }
@@ -157,6 +157,14 @@ body {
     background-repeat: no-repeat;
     background-image: url(/img/strelica1.png);
     width: 10px; }
+
+.scroll-container {
+  background: #222;
+  padding: 4rem 5rem;
+  padding-right: 10rem;
+  height: 100%; }
+  .scroll-container > div {
+    height: 100%; }
 
 .form-card {
   padding: 4.5rem 3rem 0 3rem;
@@ -419,7 +427,7 @@ legend {
   padding: 1.2rem 1.8rem;
   transition: all .3s; }
   .nav__item:not(:last-child) {
-    margin-right: 6.5rem; }
+    margin-right: 1.5rem; }
   .nav__item--dropdown {
     position: relative; }
     .nav__item--dropdown:hover {
@@ -455,6 +463,9 @@ legend {
   .nav__icon--angle {
     font-size: 1.5rem;
     margin-left: 1.5rem; }
+
+.nav__item:hover .nav__icon {
+  color: #BC9405; }
 
 .overlay {
   width: 100%;
@@ -509,6 +520,18 @@ legend {
   .primary-list.side-menu li:hover::after {
     background-color: #BC9405; }
 
+.table-main {
+  text-align: center;
+  background-color: #28292C;
+  font-size: 1.5rem; }
+  .table-main th, .table-main td {
+    padding: .65rem .95rem; }
+  .table-main th {
+    background-color: #211a23;
+    border-bottom: #BC9405 3px solid; }
+  .table-main__username {
+    font-weight: 800; }
+
 .timer {
   position: relative;
   width: 140px;
@@ -530,7 +553,8 @@ legend {
 .user-widget {
   color: #BC9405;
   align-items: center;
-  position: relative; }
+  position: relative;
+  padding: .5rem 1.2rem; }
   .user-widget__img {
     width: 7rem; }
   .user-widget__name {
@@ -546,6 +570,9 @@ legend {
       font-size: 2.3rem; }
     .user-widget.not-logged-in .user-widget__icon {
       display: none; }
+
+.userWidget-has-dropdown .nav__dropdown--item {
+  color: #fff; }
 
 .main {
   padding: 2rem;
@@ -634,6 +661,9 @@ legend {
   .header__nav {
     margin: 0 auto; }
 
+.highscore-page .table-main {
+  margin: 7rem auto 0; }
+
 .profile-page .main__side-bar {
   justify-content: unset; }
 
@@ -644,9 +674,3 @@ legend {
     margin-bottom: 5rem; }
   .profile-info > * {
     margin: 0 auto; }
-
-.scroll-container {
-  background: #222;
-  padding: 4rem 5rem;
-  padding-right: 10rem;
-  height: 100%; }

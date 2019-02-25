@@ -1,24 +1,32 @@
 {{> header}}
 
-    <h2>Hello, {{user}}</h2>
+{{> page-headline}}
 
-    <h1>High Score</h1>
+<div class="row">
+    <div id="main" class="main scroll-container highscore-page">
+        <div class="custom-scroll">
+            <table id="high-score" border="1" class="table-main">
+                <tr>
+                    <th>Username</th>
+                    <th>Success Rate</th>
+                    <th>Attempts</th>
+                    <th>Correct Answers</th>
+                    <th>Experience</th>
+                    <th>Best Combo</th>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+</div>
 
 
-    <table id="high-score" border="1">
-        <tr>
-            <th>Username</th>
-            <th>Success Rate</th>
-            <th>Attempts</th>
-            <th>Correct Answers</th>
-            <th>Experience</th>
-            <th>Best Combo</th>
-        </tr>
-    </table>
 
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-    <script src="/js/high-score.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script src="/js/high-score.js"></script>
+<script src="/js/main.js"></script>
 </body>
 
 </html>

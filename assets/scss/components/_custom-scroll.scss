@@ -1,5 +1,5 @@
 .custom-scroll {
-    overflow-y: scroll;
+    overflow-y: auto;
 
     &::-webkit-scrollbar {
         width: 10px;
@@ -37,5 +37,16 @@
         background-repeat: no-repeat;
         background-image: url(/img/strelica1.png);
         width: 10px;
+    }
+}
+
+.scroll-container {
+    background: $bg-black-dark;
+    padding: 4rem 5rem;
+    padding-right: 10rem;
+    height: 100%;
+
+    & > div {
+        height: 100%;
     }
 }
