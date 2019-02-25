@@ -5,6 +5,7 @@
     padding: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 1px;
+    transition: all .3s;
     font-weight: 700;
     box-shadow: 0 5px 1rem rgba($bg-black-medium, .4);
     //width: 20rem;
@@ -15,6 +16,12 @@
         }
         &--red {
             background-color: $red-main-color;
+        }
+        &--black {
+           background-color: $bg-black-light;
+           &:hover {
+               background-color: $red-main-color;
+           }
         }
     }
 

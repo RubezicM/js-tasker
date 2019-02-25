@@ -14,22 +14,61 @@
                     </div>
                 </div>
             </div>
-            <p>Username: {{user}}</p>
-            <p>Email: {{email}}</p>
+
             <ul class="primary-list side-menu">
                 <li class="selected"><a href="#">Edit profile</a> </li>
                 <li><a href="#">History</a></li>
-                <li><a href="#">Achievements</a></li>
             </ul>
-            <p>Attempts: {{basicAttempts}}</p>
-            <p>Correct answers: {{basicSuccesses}}</p>
-            <p>Success rate: {{basicPercentage}}%</p>
-            <p>XP: {{xp}}</p>
-            <p>Most answers in a row: {{bestCombo}}</p>
+            <table class="table-stats">
+                <thead>
+                    <tr>
+                        <th colspan="2">User Info</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Username</td>
+                        <td>{{user}}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>{{email}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table-stats">
+                        <thead>
+                            <tr>
+                                <th colspan="2">Stats</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Attempts</td>
+                                <td>{{basicAttempts}}</td>
+                            </tr>
+                            <tr>
+                                <td>Correct Answers</td>
+                                <td>{{basicSuccesses}}</td>
+                            </tr>
+                            <tr>
+                                <td>Success rate</td>
+                                <td>{{basicPercentage}}%</td>
+                            </tr>
+                            <tr>
+                                <td>XP</td>
+                                <td>{{xp}}</td>
+                            </tr>
+                            <tr>
+                                <td>Most Answers in a row</td>
+                                <td>{{bestCombo}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
         </div>
         <div class="main__main-content">
-            <div id="EditProfile" class="scroll-container">
-                <div class="custom-scroll profile-info">
+            <div id="profilePage" class="scroll-container">
+                <div class="custom-scroll profile-info show">
                     <form action="patch" id="update-form" class="form-edit form">
                         <fieldset>
                             <legend>Update Account info</legend>
@@ -43,7 +82,7 @@
                             </div>
                             <div class="form-edit__group">
                                 <button type="submit"
-                                    class="btn btn__main btn__main--red form-edit__btn">Submit</button>
+                                    class="btn btn__main btn__main--black form-edit__btn">Submit</button>
                             </div>
                         </fieldset>
 
@@ -55,7 +94,8 @@
                             <legend>Change Your Picture</legend>
                             <div class="form-edit__group form-edit__group--pic">
                                 <input type='file' name='image' />
-                                <input type="submit" value="Submit" class="btn btn__main btn__main--red form-edit__btn">
+                                <input type="submit" value="Submit"
+                                    class="btn btn__main btn__main--black form-edit__btn">
                             </div>
                         </fieldset>
 
@@ -69,24 +109,30 @@
                                 Update Your Password
                             </legend>
                             <div class="form-edit__group"><label for="old-password">Old password: </label>
-                            <input type="password" name="old-password" id="old-password" placeholder="Old password"
-                                required></div>
-                        <div class="form-edit__group">
-                            <label for="new-password">New password: </label>
-                            <input type="password" name="new-password" id="new-password" placeholder="New password"
-                                required>
-                        </div>
-                        <div class="form-edit__group">
-                            <button type="submit" class="btn btn__main btn__main--red form-edit__btn">Submit</button>
-                        </div>
+                                <input type="password" name="old-password" id="old-password" placeholder="Old password"
+                                    required></div>
+                            <div class="form-edit__group">
+                                <label for="new-password">New password: </label>
+                                <input type="password" name="new-password" id="new-password" placeholder="New password"
+                                    required>
+                            </div>
+                            <div class="form-edit__group">
+                                <button type="submit"
+                                    class="btn btn__main btn__main--black form-edit__btn">Submit</button>
+                            </div>
                         </fieldset>
-                        
+
 
                     </form>
+                    <button id="delete-account" class="btn btn__main btn__main--black center show">Delete
+                        Account</button>
+                </div>
+                <div class="custom-scroll profile-stats show">
+                    
                 </div>
                 <p id="update-response"></p>
 
-                <button id="delete-account">Delete Account</button>
+
             </div>
         </div>
     </div>

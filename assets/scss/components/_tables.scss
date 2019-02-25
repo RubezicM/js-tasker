@@ -18,3 +18,24 @@
         
     }
 }
+
+.table-stats {
+    font-size: 1.55rem;
+    border-collapse: collapse;
+    & th, & td {
+        border: 1px solid;
+        padding: .44rem .694rem;
+    }
+    & thead th {
+        border: none!important;
+        color: $red-main-color;
+        padding: 1.15rem 0;
+        background: $bg-black-light;
+    }
+    & tbody tr td:first-child {
+        font-weight: 800;
+    }
+    & tbody tr td:last-child {
+
+    }
+}

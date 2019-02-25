@@ -2,6 +2,13 @@
 
     & .main__side-bar {
         justify-content: unset;
+        & .table-stats {
+            margin: 2.5rem 0;
+        }
+        & .side-menu {
+            align-self: baseline;
+            margin: 3rem 5rem;
+        }
     }
 
     & .main__main-content {

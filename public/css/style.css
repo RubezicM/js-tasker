@@ -84,6 +84,9 @@ body {
 .txt-center {
   text-align: center; }
 
+.center {
+  margin: 0 auto; }
+
 .padding-small {
   padding: 2.2rem; }
 
@@ -94,6 +97,7 @@ body {
   padding: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 1px;
+  transition: all .3s;
   font-weight: 700;
   box-shadow: 0 5px 1rem rgba(33, 26, 35, 0.4); }
   .btn__main {
@@ -102,6 +106,10 @@ body {
       background-color: #BC9405; }
     .btn__main--red {
       background-color: #FF5C26; }
+    .btn__main--black {
+      background-color: #28292C; }
+      .btn__main--black:hover {
+        background-color: #FF5C26; }
   .btn__big {
     padding: 1.5rem 6.5rem; }
   .btn__huge {
@@ -141,8 +149,8 @@ body {
   .custom-scroll::-webkit-scrollbar-track {
     background: #211a23; }
   .custom-scroll::-webkit-scrollbar-thumb {
-    background: #BC9405;
-    border: 1px solid black; }
+    background: #28292C;
+    border: 1px solid #BC9405; }
   .custom-scroll::-webkit-scrollbar-button:start:increment {
     height: 0; }
   .custom-scroll::-webkit-scrollbar-button:end:increment {
@@ -532,6 +540,20 @@ legend {
   .table-main__username {
     font-weight: 800; }
 
+.table-stats {
+  font-size: 1.55rem;
+  border-collapse: collapse; }
+  .table-stats th, .table-stats td {
+    border: 1px solid;
+    padding: .44rem .694rem; }
+  .table-stats thead th {
+    border: none !important;
+    color: #FF5C26;
+    padding: 1.15rem 0;
+    background: #28292C; }
+  .table-stats tbody tr td:first-child {
+    font-weight: 800; }
+
 .timer {
   position: relative;
   width: 140px;
@@ -666,6 +688,11 @@ legend {
 
 .profile-page .main__side-bar {
   justify-content: unset; }
+  .profile-page .main__side-bar .table-stats {
+    margin: 2.5rem 0; }
+  .profile-page .main__side-bar .side-menu {
+    align-self: baseline;
+    margin: 3rem 5rem; }
 
 .profile-info {
   background: #222;
