@@ -243,3 +243,159 @@ example:
             var x = 5; // ~ c--5--y-Math.sqrt(25)--
 
 In this example. Instead of 5 there can be "Math.sqrt(25)".
+
+# Inline Syntax
+
+- $ - prefix is used to get most done in inline syntax and make code valid for editors
+
+- º - sign is used to separate commands
+
+- _ - sign is used to separate commands
+
+## Variable names:
+
+### Single variable names:
+
+- $[ a-z ]
+
+    - $ - command prefix
+    - [ a-z ] - letters from "a" to "z" used to tie parser to keep randomly assign name to this variable
+
+example:
+
+            var $a = 5;
+            var c = $a + $a;
+
+In this example variable $a will be assigned random name and its value will be kept throught rest of the code. Other variable names will remain unchanged. Possible output can be:
+
+            var ipsum = 5;
+            var c = ipsum + ipsum;
+
+### Variable type:
+
+- [ variable name ]_º[ variable type ]
+    - [ variable name ]: name of the variable. Example: $a
+    - "_º" - fixed command separator
+    - [ variable type ]: this tells parser to keep this variable in a pool of its type so it could later be called. Types are: 
+        - "O" - object
+        - "N" - number
+        - "S" - string
+        - "A" - array
+        - "F" - function
+
+example: 
+
+            var $a_ºN = 5;
+            var $b_ºN = 10;
+
+Here, parser will make number type array of variables $a and $b. They can later be called with $used syntax.
+
+### Calling random variables with $used:
+
+- $used_º[ variable type ]
+
+    - "$used_º" - fixed prefix
+    - [ variable type ] - single upper case letter. It singles type of used variable in the code above from which random variable name will be pulled. Types are:
+        - "O" - object
+        - "N" - number
+        - "S" - string
+        - "A" - array
+        - "F" - function
+        - "K" - object key
+
+example: 
+
+            var $a_ºA = [1, 2];
+            var $b_ºA = [3, 4];
+            var $c = $used_ºA + $used_ºA;
+
+Here, in place of $used_ºA can appear either first or second variable above. One of the possible outputs can be:
+
+            var $a_ºA = [1, 2];
+            var $b_ºA = [3, 4];
+            var $c = $a + $a;
+
+### #used with object keys:
+
+There are two ways to call used object keys. First is to define them with: $a_ºK. In this way key will not be tied to specific object group.
+
+example: 
+
+            var object1 = {
+                $a_ºK: 1
+            };
+            var object2 = {
+                $b_º: 2
+            };
+
+            var c = '$used_ºK';
+
+Here, $used_ºK will either be name of object1's key or object2's key.
+
+If we want to tie key to specific object then we need to add number after key to mark its group.
+
+example:
+
+            var object1 = {
+                $a_ºK1: 1,
+                $b_ºK1: 2,
+            };
+            var object2 = {
+                $c_ºK2: 2
+            };
+
+            var d = object1.$used_ºK1;
+
+Here, we are calling random keys just from object1. If we want to further specify key types we can add type between.
+
+example:
+
+            var object1 = {
+                $a_ºKN1: 1,
+                $b_ºKN1: 2,
+                $c_ºKS1: 'foo'
+            };
+            var object2 = {
+                $c_ºK2: 2
+            };
+
+            var d = object1.$used_ºKN1;
+
+Here, we will be calling random number keys from object1 and ignoring all the rest.
+
+### Random variable:
+
+- $rnd_º[ variable type ]
+
+    - $rnd - fixed prefix
+    - [ variable type ] - single upper case letter. It singles type of used variable in the code above from which random variable name will be pulled. Types are:
+        - "O" - object
+        - "N" - number
+        - "S" - string
+        - "A" - array
+        - "F" - function
+        - "K" - object key 
+
+$rnd can be used insted of letters for greater randomization while writting the code. Same variable name will never appear twice in code while using this method. Variables defined in this fashion can only be called through $used syntax.
+
+example: 
+
+            var $rnd_ºS = 'ipsum';
+            var $rnd_ºS = 'lorem';
+            var $rnd = $used_ºS + " " + $used_ºS;
+
+In this example variables are type string and can only be called through $used_ºS syntax.
+
+### Insert random array:
+
+- [ array commands separated by comma ]
+    - $num[ amount of number elements ]: It tells parser to insert two random numbers in the array. $num2 will insert two random number elements to the array
+    - $used_º[ type ]x[ amount of elements]: It works same as $used command. It will randomly pick used variables of that type. "x" followed by number will tell parser how many random elements to put inside array. Same element can appear more times.
+
+example: 
+
+            var $a_ºN = 1;
+            var $b_ºN = 2;
+            var $c_ºA = ['lorem', $used_ºNx4];
+
+Here, output of array $c will have 5 elements. First one will be 'lorem' and others will be either $a or $b.

@@ -225,23 +225,15 @@ let assignments = [
     $var $d_ºN = $num;
     $var $used_ºN = $num;
     console.log($b[0],$c[2]);
-    `, `
-    var $h_ºN = $num;
-    var $a_ºO1 = {
-        $rnd_ºKN1: $num,
-        $rnd_ºKN1: $num,
-        $b_ºKF1: () => {
-          console.log("hello")
-        }
-    };
-    console.log($used_ºO1.N);
-    $used_ºO1.F()
-    $a.$b();
-    var $g_ºO2 = {
-      $rnd_ºKN2: $num,
-      $rnd_ºKN2: $num
-    }
-    console.log($used_ºO2.N)
+    `,`
+    var $a_ºN = $num;
+    var $b_ºN = $num;
+    var $c_ºS = 'foo';
+    var $d_ºS = 'bar';
+    var $e_ºN = $num;
+
+    var $f_ºO = $rndObj_1; // # insO_N3_uS1
+    console.log($f.$used_ºK);
     `, `
     var $a_ºN = 5;
     var $b_ºN = 10;
@@ -278,19 +270,47 @@ let assignments = [
     var $a = '5' + '5' + '"5"' + '5'; // '03 "0
     console.log($a);
     `, `
+    var $a = 1;
     var $rnd_ºN = $num;
     var $rnd_ºN = $num;
     var $b_ºA = [$used_ºNx2];
-    var $g_ºA = ["str","foo",23];
-    var $c_ºA = [$num4,$used_ºNx2];
-    $var $d_ºN = $num;
-    $var $used_ºN = $num;
+    var $g_ºA = ["str","foo",23,$a];
+    var $c_ºA = [$num4,$used_ºNx2,222];
+    var $d_ºN = $num; // var
+    var $used_ºN = $num; // var
     console.log($b[0],$c[2]);
     `, `
     var $a_ºN = $num; // # r0
     var $b_ºN = $num; // # r0
     var $c_ºA = [$a, $b]; // []
     console.log($c[0]);
+    `,`
+    var $h_ºN = $num;
+    var $a_ºO1 = {
+        $rnd_ºKN1: $num,
+        $rnd_ºKN1: $num,
+        $b_ºKF1: () => {
+          console.log("hello")
+        }
+    };
+    console.log($used_ºO1.N);
+    $used_ºO1.F()
+    $a.$b();
+    var $g_ºO2 = {
+      $rnd_ºKN2: $num,
+      $rnd_ºKN2: $num
+    }
+    console.log($used_ºO2.N);
+    `,`
+    var $a_ºO1 = {
+        $rnd_ºK1: $num,
+        $rnd_ºK1: $num,
+        $b_ºKF1: () => {
+          console.log("hello")
+        }
+    };
+    var $i = $a.$used_ºK1;
+    console.log($used_ºO1.F());
     `
 ];
 
