@@ -315,7 +315,7 @@ Here, in place of $used_ºA can appear either first or second variable above. On
             var $b_ºA = [3, 4];
             var $c = $a + $a;
 
-### #used with object keys:
+### $used with object keys:
 
 There are two ways to call used object keys. First is to define them with: $a_ºK. In this way key will not be tied to specific object group.
 
