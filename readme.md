@@ -252,7 +252,7 @@ In this example. Instead of 5 there can be "Math.sqrt(25)".
 
 - _ - sign is used to separate commands
 
-## Variable names:
+## Variable name and type:
 
 ### Single variable names:
 
@@ -289,6 +289,31 @@ example:
             var $b_ºN = 10;
 
 Here, parser will make number type array of variables $a and $b. They can later be called with $used syntax.
+
+### Random variable:
+
+- $rnd_º[ variable type ]
+
+    - $rnd - fixed prefix
+    - [ variable type ] - single upper case letter. It singles type of used variable in the code above from which random variable name will be pulled. Types are:
+        - "O" - object
+        - "N" - number
+        - "S" - string
+        - "A" - array
+        - "F" - function
+        - "K" - object key 
+
+$rnd can be used insted of letters for greater randomization while writting the code. Same variable name will never appear twice in code while using this method. Variables defined in this fashion can only be called through $used syntax.
+
+example: 
+
+            var $rnd_ºS = 'ipsum';
+            var $rnd_ºS = 'lorem';
+            var $rnd = $used_ºS + " " + $used_ºS;
+
+In this example variables are type string and can only be called through $used_ºS syntax.
+
+## Variable calls:
 
 ### Calling random variables with $used:
 
@@ -363,28 +388,19 @@ example:
 
 Here, we will be calling random number keys from object1 and ignoring all the rest.
 
-### Random variable:
+## Inline insertions:
 
-- $rnd_º[ variable type ]
+### Insert random number:
 
-    - $rnd - fixed prefix
-    - [ variable type ] - single upper case letter. It singles type of used variable in the code above from which random variable name will be pulled. Types are:
-        - "O" - object
-        - "N" - number
-        - "S" - string
-        - "A" - array
-        - "F" - function
-        - "K" - object key 
+- $num
 
-$rnd can be used insted of letters for greater randomization while writting the code. Same variable name will never appear twice in code while using this method. Variables defined in this fashion can only be called through $used syntax.
+    - $num - fixed command: Inserts random number in its place.
 
 example: 
 
-            var $rnd_ºS = 'ipsum';
-            var $rnd_ºS = 'lorem';
-            var $rnd = $used_ºS + " " + $used_ºS;
+            var $a = $num;
 
-In this example variables are type string and can only be called through $used_ºS syntax.
+In this example, variable $a will be given random whole intiger value.
 
 ### Insert random array:
 
