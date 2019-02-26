@@ -12,6 +12,10 @@ let time = 30;
 let comboField = document.getElementById('combo');
 let startButton = document.getElementById('start');
 let nextGameCountdownDiv = document.querySelector('.next-game-countdown');
+let xpField = document.getElementById('player-xp');
+let percentageField = document.getElementById('player-basic-percentage');
+let attemptedField = document.getElementById('player-basic-attempts');
+let bestComboField = document.getElementById('player-best-combo');
 let nextGameCounter;
 //timeField.innerHTML = `Time left: ${time} seconds`;
 //answer.value = '';
@@ -39,7 +43,7 @@ function startGame(){
     if (gameInProgress) {
         return alert('Finish current task first.');
     };
-    time = 30;0
+    time = 30;
     gameInProgress = true;
     clearInterval(nextGameCounter);
     nextGameCountdownDiv.textContent = 4;
@@ -81,6 +85,10 @@ function postAnswer(message = '') {
     //alert(`${message}Wrong answer!`);
         };
         comboField.innerHTML = `Answers in a row: ${response.data.combo}`;
+        bestComboField.innerHTML = response.data.bestCombo;
+        xpField.innerHTML = response.data.xp;
+        percentageField.innerHTML = response.data.percentage + '%';
+        attemptedField.innerHTML = response.data.attempted;
         gameInProgress = false;
         answer.value = '';
     }).catch((err) => {

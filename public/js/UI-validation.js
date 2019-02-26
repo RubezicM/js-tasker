@@ -15,7 +15,7 @@ let toggleUI = (msg, delay) => {
         displayMsg.innerHTML = msg;
 
     }, delay);
-}
+};
 
 let correctAnswerScreen = () => {
     let overlay = document.querySelector('.overlay');
@@ -29,19 +29,19 @@ let correctAnswerScreen = () => {
         gameStatus.classList.remove('show');
         gameStatus.classList.add('hidden');
         startButton.style.display = 'block';
-        nextGameCounter = setInterval(() => {
-            nextGameCountdownDiv.style.display = 'block';
-            --miniTimer;
-            if (miniTimer === 0 && gameInProgress === false) {
-                startGame();
-                nextGameCountdownDiv.textContent = 3;
-                nextGameCountdownDiv.style.display = 'none';
-            }
+        // nextGameCounter = setInterval(() => {
+        //     nextGameCountdownDiv.style.display = 'block';
+        //     --miniTimer;
+        //     if (miniTimer === 0 && gameInProgress === false) {
+        //         startGame();
+        //         nextGameCountdownDiv.textContent = 3;
+        //         nextGameCountdownDiv.style.display = 'none';
+        //     }
 
-            nextGameCountdownDiv.innerHTML = `Next game starting in <span class="secondary-color-txt font-size-big fw-600">${miniTimer}</span>`;
-        }, 1000);
-    }, 1500)
-}
+        //     nextGameCountdownDiv.innerHTML = `Next game starting in <span class="secondary-color-txt font-size-big fw-600">${miniTimer}</span>`;
+        // }, 1000);
+    }, 1500);
+};
 
 let wrongAnswerScreen = () => {
     let overlay = document.querySelector('.overlay');
@@ -54,9 +54,8 @@ let wrongAnswerScreen = () => {
         gameStatus.classList.remove('show');
         gameStatus.classList.add('hidden');
         startButton.style.display = 'block';
-    }, 1500)
-
-}
+    }, 1500);
+};
 
 
 let initializeTaskUI = () => {
@@ -72,5 +71,5 @@ let initializeTaskUI = () => {
         loader.classList.add('hidden');
         overlay.classList.add('hidden');
         startTimer(timeLeft, time);
-    }, 1500)
-}
+    }, 1500);
+};
