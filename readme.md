@@ -46,7 +46,7 @@ Once Inline parser has finished with randomization. String is validated and pars
 
 ## Inline comments randomization:
 
-### quotes randomization
+### Quotes randomization
 - [ code ] // [ quote type ][ quote appearance index ]
 
     - "//": randomization separator
@@ -62,7 +62,7 @@ this example deals with both singe and double quotes. First and last 5 inside qu
         var a = 5 + '5' + '5' + '5'; // '03 "0
 
 
-### var randomization
+### Var randomization
 - [ code ] // [ var ]
 
     - "//": randomization separator
@@ -75,7 +75,7 @@ example:
 var inside this code will either appear or not.
 
 
-### function call randomization
+### Function call randomization
 - [ code ] // ()[ call appearance index ]
 
     - "//": randomization separator
@@ -91,7 +91,7 @@ only second call will be randomized by the parser. Resulting code might look lik
         var a = functionOne() + functionTwo // ()1
 
 
-### randomize array elements
+### Randomize array elements
 - [ code ] // []
 
     - "//": randomization separator
@@ -176,7 +176,7 @@ First block "b3-0" contains 4 rows counted below from first and is in group "0".
 In this example all elements from both groups switched places to new positions. As it is random it could be that output code might look same as input.
 
 
-### if/else block randomization:
+### If/else block randomization:
 - [ code ] // # if[ block height ]-[ block group ]
 
     - "#": separator type
