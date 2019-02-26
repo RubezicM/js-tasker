@@ -1,3 +1,34 @@
+Parser code randomization project aims to give options to randomize code while keeping base code valid for code editors. Parsing is done in two main "blocks" of randomization. Comments and Inline. 
+
+Comments randomization deals with all randomization commands behind comments in a specific order as not to brake code:
+
+    randomizeBlocks
+
+    randomizeIfs
+
+    randomizeReturns
+
+    insertObjects
+
+    randomizeRows
+
+    randomizeVars
+
+    randomizeQuotes
+
+    randomizeFunctionCalls
+
+    randomizeMathOperators
+
+    addCustomInline
+
+    shuffleArrayElements
+
+In order for randomization to function properly whole code string is broken to the array of objects where one element is one line of code. Once randomization has been complete, string is made with comments removed and then sent to the Inline parser.
+
+Once Inline parser has finished with randomization. String is validated and parsing is complete.
+
+
 * Comments syntax
 
     - [ code ] // [ inline randomization ] # [ block/row randomization ] ~ [ custom code ] 
@@ -5,7 +36,7 @@
 
                     var rubor = 5 + 3; // var # r0 ~ c--66-n-Math.sqrt(9)--
 
-    - Separators separate syntax on several parts which are then used to parse the code
+    - separators separate syntax on several parts which are then used to parse the code
     - everythin before "//" is code moved forward to inline randomization parser
     - everything in between "#" and some other separator is part of block/row randomization parser
     - everything in between "~" and some other separator is custom parser randomization
@@ -13,6 +44,21 @@
         example: var x = "awesome code"; // # r0 b1-1
 
 * Inline comments randomization:
+
+    - quotes randomization
+        - [ code ] // [ quote type ][ quote appearance index ]
+        - "//": randomization separator
+        - [ quote type ]: it can be either ' or ". arks witch quote type will be cought by parser
+        - [ quote appearance index ]: containts integers which mark operator appearance in current line of code. Each number will catch both opening and closing quotes
+
+        example: 
+
+                var a = '5' + '5' + '"5"' + '5'; // '03 "0
+
+        this example deals with both singe and double quotes. First and last 5 inside quotes will have its quotes randomize to either appear or not. Only double quotes are also cought by "0 and will be randomized by parser. Resulting code might look something like this:
+
+                var a = 5 + '5' + '5' + '5'; // '03 "0
+
 
     - var randomization
         - [ code ] // [ var ]
@@ -23,7 +69,34 @@
 
                     var x = 5 + 3; // var
             
-        var u kodu ce se ili pojaviti ili ne svaki put kada stoji "var" u inline bloku
+        var inside this code will either appear or not.
+
+
+    - function call randomization
+        - [ code ] // ()[  ]
+            - "//": randomization separator
+            - "()": fixed mark
+            - [ call appearance index ]: containts integers which mark call appearance in current line of code.
+
+         example:
+        
+                var a = functionOne() + functionTwo() // ()1
+            
+        only second call will be randomized by the parser. Resulting code might look like this:
+
+                var a = functionOne() + functionTwo // ()1
+
+
+    - randomize array elements
+        - [ code ] // []
+            - "//": randomization separator
+            - "[]": fixed mark
+
+        example:
+
+                    var x = [1, 2, 3, 4]; // []
+            
+        it will randomize elements inside array in given line of code
 
     
     - Math operators randomization:
