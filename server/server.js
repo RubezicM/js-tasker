@@ -77,7 +77,8 @@ app.get('/main', authenticate, (req, res) => {
     res.render('main.hbs', {
         user: req.user.username,
         imgUrl: req.user.imageURL,
-        combo: req.user.bestCombo,
+        combo: req.user.combo,
+        bestCombo: req.user.bestCombo,
         imgUrl: req.user.imageURL,
         title: 'Playground',
         xp: req.user.xp,
