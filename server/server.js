@@ -17,7 +17,7 @@ const { inlineSyntax } = require('./parser/inline/inline-syntax');
 const { commentsSyntax } = require('./parser/comments/comments-syntax');
 const { pickTask } = require('./parser/tasks/basic');
 const { parser } = require('./middleware/parser');
-const {hbs} = require('./utils/hbs/hbs-helpers');
+const { hbs } = require('./utils/hbs/hbs-helpers');
 const app = express();
 const port = process.env.PORT || 3000;
 const publicPath = path.join(__dirname, '../public');
@@ -116,7 +116,7 @@ app.get('/login', loggedIn, (req, res) => {
             message: 'logged in',
         });
     } else {
-        res.render('login.hbs',{
+        res.render('login.hbs', {
             title: 'Log In'
         });
     };
@@ -323,7 +323,10 @@ app.post('/answer-send', authenticate, (req, res) => {
                 correct: true
             }).then((answer) => {
                 User.updateScore(answer.creator, true, 'basic').then((user) => {
-                    res.send({ correct: true, combo: user.combo });
+                    res.send({
+                        correct: true, combo: user.combo, xp: user.xp, bestCombo: user.bestCombo,
+                        attempted: user.score.basic.attempted, percentage: user.score.basic.percentage
+                    });
                 });
             });
         } else {
@@ -331,7 +334,10 @@ app.post('/answer-send', authenticate, (req, res) => {
                 completed: true
             }).then((answer) => {
                 User.updateScore(answer.creator, false, 'basic').then((user) => {
-                    res.send({ correct: false, combo: user.combo });
+                    res.send({
+                        correct: false, combo: user.combo, xp: user.xp, bestCombo: user.bestCombo,
+                        attempted: user.score.basic.attempted, percentage: user.score.basic.percentage
+                    });
                 });
             });
         };
