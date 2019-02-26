@@ -32,6 +32,7 @@ Once Inline parser has finished with randomization. String is validated and pars
 * Comments syntax
 
     - [ code ] // [ inline randomization ] # [ block/row randomization ] ~ [ custom code ] 
+    
     - Example:
 
                     var rubor = 5 + 3; // var # r0 ~ c--66-n-Math.sqrt(9)--
@@ -47,9 +48,10 @@ Once Inline parser has finished with randomization. String is validated and pars
 
     - quotes randomization
         - [ code ] // [ quote type ][ quote appearance index ]
-        - "//": randomization separator
-        - [ quote type ]: it can be either ' or ". arks witch quote type will be cought by parser
-        - [ quote appearance index ]: containts integers which mark operator appearance in current line of code. Each number will catch both opening and closing quotes
+
+            - "//": randomization separator
+            - [ quote type ]: it can be either ' or ". arks witch quote type will be cought by parser
+            - [ quote appearance index ]: containts integers which mark operator appearance in current line of code. Each number will catch both opening and closing quotes
 
         example: 
 
@@ -62,6 +64,7 @@ Once Inline parser has finished with randomization. String is validated and pars
 
     - var randomization
         - [ code ] // [ var ]
+
             - "//": randomization separator
             - "var": fixed mark
 
@@ -73,7 +76,8 @@ Once Inline parser has finished with randomization. String is validated and pars
 
 
     - function call randomization
-        - [ code ] // ()[  ]
+        - [ code ] // ()[ call appearance index ]
+
             - "//": randomization separator
             - "()": fixed mark
             - [ call appearance index ]: containts integers which mark call appearance in current line of code.
@@ -89,6 +93,7 @@ Once Inline parser has finished with randomization. String is validated and pars
 
     - randomize array elements
         - [ code ] // []
+
             - "//": randomization separator
             - "[]": fixed mark
 
@@ -101,6 +106,7 @@ Once Inline parser has finished with randomization. String is validated and pars
     
     - Math operators randomization:
         - [ code ] // +[ operator appearance index ]
+
             - "//": randomization separator
             - "+": fixed mark
             - [ operator appearance index ]: containts integers which mark operator appearance in current line of code
