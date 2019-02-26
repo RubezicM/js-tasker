@@ -14,6 +14,10 @@ document.getElementById('register-form').addEventListener('submit', (event) => {
             password: passwordField.value
         })
         .then((response) => {
+            usernameField.disabled = true;
+            passwordField.disabled = true;
+            emailField.disabled = true;
+            event.target[3].disabled = true;
            toggleUI("Registered Successfuly!",2500)
                 setTimeout(() => {
                     window.location.assign('/main');
@@ -22,6 +26,10 @@ document.getElementById('register-form').addEventListener('submit', (event) => {
         })
         .catch((err) => {
             let message = err.response.data;
+            usernameField.disabled = true;
+            passwordField.disabled = true;
+            emailField.disabled = true;
+            event.target[3].disabled = true;
            toggleUI(message,2500);
            setTimeout(() => {
             window.location.assign('/register');

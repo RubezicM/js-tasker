@@ -8,6 +8,20 @@
         & .side-menu {
             align-self: baseline;
             margin: 3rem 5rem;
+            &__link {
+                &:after {
+                    top: 11px;
+                }
+                &:before {
+                    top: 0;
+                }
+            }
+            &__link.selected {
+                color: $yellow-main-color;
+                &:after {
+                    background-color: $yellow-main-color;
+                }
+            }
         }
     }
 
@@ -15,8 +29,16 @@
         
     }
 }
-
-.profile-info {
+.tab {
+    transition: all .54s;
+    visibility: hidden;
+    opacity: 0;
+}
+.tab.active {
+    visibility: visible;
+    opacity: 1;
+}
+.profile-edit {
     background: $bg-black-dark;
     height: 100%;
     & > *:not(:last-child){
@@ -27,3 +49,6 @@
     }
 }
 
+.history {
+    background-color: $red-main-color;
+}

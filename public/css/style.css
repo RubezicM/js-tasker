@@ -442,6 +442,8 @@ legend {
       background: #211a23; }
     .nav__item--dropdown:hover .nav__icon {
       color: #BC9405; }
+  .nav__item.active .nav__icon {
+    color: #FF5C26; }
 
 .nav__dropdown {
   display: none;
@@ -619,7 +621,7 @@ legend {
     align-items: center;
     justify-content: space-between; }
     .main__side-bar .user-stats {
-      margin: 5rem 0 6.5rem 0; }
+      margin: 2rem 0 3.5rem 0; }
     .main__side-bar .timer {
       margin-bottom: 2rem; }
     .main__side-bar .combo {
@@ -682,6 +684,8 @@ legend {
   border-image: linear-gradient(to right, #BC9405 0%, #FF5C26 49%, #FF5C26 100%) 2 2 2 2; }
   .header__nav {
     margin: 0 auto; }
+  .header__edge .btn:first-child {
+    margin-right: 1.5rem; }
 
 .highscore-page .table-main {
   margin: 7rem auto 0; }
@@ -693,11 +697,31 @@ legend {
   .profile-page .main__side-bar .side-menu {
     align-self: baseline;
     margin: 3rem 5rem; }
+    .profile-page .main__side-bar .side-menu__link:after {
+      top: 11px; }
+    .profile-page .main__side-bar .side-menu__link:before {
+      top: 0; }
+    .profile-page .main__side-bar .side-menu__link.selected {
+      color: #BC9405; }
+      .profile-page .main__side-bar .side-menu__link.selected:after {
+        background-color: #BC9405; }
 
-.profile-info {
+.tab {
+  transition: all .54s;
+  visibility: hidden;
+  opacity: 0; }
+
+.tab.active {
+  visibility: visible;
+  opacity: 1; }
+
+.profile-edit {
   background: #222;
   height: 100%; }
-  .profile-info > *:not(:last-child) {
+  .profile-edit > *:not(:last-child) {
     margin-bottom: 5rem; }
-  .profile-info > * {
+  .profile-edit > * {
     margin: 0 auto; }
+
+.history {
+  background-color: #FF5C26; }

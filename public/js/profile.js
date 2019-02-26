@@ -51,7 +51,10 @@ document.getElementById('update-password').addEventListener('submit', (event) =>
     let newPassword = document.getElementById('new-password');
     let responseField = document.getElementById('update-response');
 
-    let body = { oldPassword: oldPassword.value, newPassword: newPassword.value };
+    let body = {
+        oldPassword: oldPassword.value,
+        newPassword: newPassword.value
+    };
 
     axios.patch('/users/password', body)
         .then((response) => {
@@ -64,3 +67,43 @@ document.getElementById('update-password').addEventListener('submit', (event) =>
             responseField.innerHTML = err.response.data;
         });
 });
+
+///////// TAB switching logic ////////
+
+let tabLinks = document.querySelectorAll('.side-menu__link');
+let tabs = document.querySelectorAll('.tab');
+
+for (let i = 0; i < tabLinks.length; i++) {
+    tabLinks[i].addEventListener('click', (e) => {
+        for (let y = 0; y < tabLinks.length; y++) {
+            tabLinks[y].classList.remove('selected');
+        }
+        for (let k = 0; k < tabs.length; k++) {
+            tabs[k].classList.remove('active');
+        }
+        tabLinks[i].classList.add('selected');
+        let name = tabLinks[i].children[0].id;
+        let tab = document.querySelector(`.${name}`);
+        if (i == 0) {
+            setTimeout(() => {
+                tab.nextElementSibling.style.display = "none"
+            }, 1)
+            //tab.nextElementSibling.classList.add('hidden');
+        } else {
+            setTimeout(() => {
+                tab.previousElementSibling.style.display = "none"
+            }, 1)
+            tab.previousElementSibling.classList.remove('active');
+            //tab.previousElementSibling.classList.add('hidden');
+        }
+        console.log(tab)
+        //tab.classList.remove('hidden');
+
+        setTimeout(() => {
+            tab.style.display = "block";
+            tab.classList.add('active');
+        }, 1)
+
+
+    });
+}

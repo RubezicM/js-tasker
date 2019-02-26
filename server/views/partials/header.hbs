@@ -22,6 +22,7 @@
             </div>
             {{> navigation}}
             <!-- If user is logged in show user-widget -->
+            {{#if user}}
             <div class="user-widget header__user-widget flex-disp userWidget-has-dropdown">
                 <div class="user-widget__img">
                     <img src="{{imgUrl}}" alt="User Image">
@@ -40,6 +41,12 @@
                 </ul>
                 <!-- Angle down -->
             </div>
+            {{else}}
+            <div class="header__edge">
+                <a href="/register" class="btn btn__main btn__main--red">Register</a>
+                 <a href="/login" class="btn btn__main btn__main--yellow">Log In</a>
+            </div>
+            {{/if}}
         </header>
         <p><a href="/register">Register</a> || <a href="/main">Main</a> || <a href="/profile">Profile</a>
             || <a href="/history">History</a> || <a href="/high-score">High Score</a> ||

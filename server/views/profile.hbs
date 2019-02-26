@@ -16,8 +16,8 @@
             </div>
 
             <ul class="primary-list side-menu">
-                <li class="selected"><a href="#">Edit profile</a> </li>
-                <li><a href="#">History</a></li>
+                <li class="selected side-menu__link"><a href="#" id="profile-edit">Edit profile</a> </li>
+                <li class="side-menu__link"><a href="#" id="history">History</a></li>
             </ul>
             <table class="table-stats">
                 <thead>
@@ -68,7 +68,7 @@
         </div>
         <div class="main__main-content">
             <div id="profilePage" class="scroll-container">
-                <div class="custom-scroll profile-info show">
+                <div class="custom-scroll profile-edit tab active">
                     <form action="patch" id="update-form" class="form-edit form">
                         <fieldset>
                             <legend>Update Account info</legend>
@@ -126,6 +126,9 @@
                     </form>
                     <button id="delete-account" class="btn btn__main btn__main--black center show">Delete
                         Account</button>
+                </div>
+                <div class="history custom-scroll tab">
+                    
                 </div>
                 <p id="update-response"></p>
 

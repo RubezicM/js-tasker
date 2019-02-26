@@ -20,6 +20,13 @@
                 color: $yellow-main-color;
             }
         }
+        &.active {
+
+            & .nav__icon{
+                color: $red-main-color;
+            }
+
+        }
     }
     &__dropdown {
         display: none;

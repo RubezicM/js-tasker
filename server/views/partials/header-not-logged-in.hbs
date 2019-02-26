@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
     <title>Home</title>
@@ -16,19 +17,37 @@
         <header class="header flex-disp">
             <div class="header__logo">
                 <a href="localhost:3000" class="logo flex-disp"><img src="#" alt="Logo" class="logo__img">
-                <h1 class="logo__text">JS Tasker</h1></a>
+                    <h1 class="logo__text">JS Tasker</h1>
+                </a>
             </div>
-            <nav class="nav header__nav">
-                <ul class="nav__list flex-disp">
-                    <li class="nav__item"><a href="/about" class="nav__link flex-disp"><i class="fas fa-book-open nav__icon"></i><span class="nav__text">About</span></a></li>
-                    <li class="nav__item"><a href="/main" class="nav__link flex-disp"><i class="fas fa-play nav__icon"></i><span class="nav__text">Playground</span></a></li>
-                    <li class="nav__item"><a href="/profile" class="nav__link flex-disp"><i class="fas fa-chart-bar nav__icon"></i><span class="nav__text">Profile</span></a></li>
+            {{> navigation}}
+            {{#if user}}
+            <div class="user-widget header__user-widget flex-disp userWidget-has-dropdown">
+                <div class="user-widget__img">
+                    <img src="{{imgUrl}}" alt="User Image">
+                </div>
+                <div class="user-widget__name">
+                    <a href="#">{{user}}</a>
+                </div>
+                <i class="fas fa-angle-down user-widget__icon"></i>
+                <ul id="userWidget-dropdown" class="nav__dropdown">
+                    <li class="nav__dropdown--item"><a href="#" class="nav__dropdown--link flex-disp"><i
+                                class="fas fa-edit nav__dropdown--icon"></i><span class="nav__text">Edit
+                                Profile</span></a></li>
+                    <li class="nav__dropdown--item"><a href="/logout" class="nav__dropdown--link flex-disp"><i
+                                class="fas fa-sign-out-alt nav__dropdown--icon"></i><span class="nav__text">Log
+                                Out</span></a></li>
                 </ul>
-            </nav>
-
+                <!-- Angle down -->
+            </div>
+            {{else}}
+            <div class="header__edge">
+                <a href="/register" class="btn btn__main btn__main--red">Register</a>
+                <a href="/login" class="btn btn__main btn__main--yellow">Log In</a>
+            </div>
+            {{/if}}
         </header>
-            <p><a href="/register">Register</a> || <a href="/main">Main</a> || <a href="/profile">Profile</a>
-        || <a href="/history">History</a> || <a href="/high-score">High Score</a> ||
-        <a href="/login">Login</a> || <a href="/logout">Logout</a></p>
+        <p><a href="/register">Register</a> || <a href="/main">Main</a> || <a href="/profile">Profile</a>
+            || <a href="/history">History</a> || <a href="/high-score">High Score</a> ||
+            <a href="/login">Login</a> || <a href="/logout">Logout</a></p>
     </div>
-

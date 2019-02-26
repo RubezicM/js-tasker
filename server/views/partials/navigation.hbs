@@ -2,11 +2,11 @@
     <ul class="nav__list flex-disp">
         <li class="nav__item"><a href="#" class="nav__link flex-disp"><i class="fas fa-book-open nav__icon"></i><span
                     class="nav__text">About</span></a></li>
-        <li class="nav__item"><a href="/main" class="nav__link flex-disp"><i class="fas fa-play nav__icon"></i><span
+        <li class="nav__item" data-page="main"><a href="/main" class="nav__link flex-disp"><i class="fas fa-play nav__icon"></i><span
                     class="nav__text">Playground</span></a></li>
-         <li class="nav__item"><a href="/high-score" class="nav__link flex-disp"><i class="fas fa-star nav__icon"></i><span
+         <li class="nav__item" data-page="highscore"><a href="/highscore" class="nav__link flex-disp"><i class="fas fa-star nav__icon"></i><span
                     class="nav__text">Highscores</span></a></li>
-        <li class="nav__item nav__item--dropdown profile-has-dropdown"><a href="/profile" class="nav__link flex-disp"><i
+        <li class="nav__item nav__item--dropdown profile-has-dropdown" data-page="profile"><a href="/profile" class="nav__link flex-disp"><i
                     class="fas fa-chart-bar nav__icon"></i><span class="nav__text">Profile</span><i
                     class="fas fa-angle-down nav__icon--angle"></i></a>
             <ul id="profile-dropdown" class="nav__dropdown">
@@ -14,8 +14,6 @@
                             class="nav__text">Edit Profile</span></a></li>
                 <li class="nav__dropdown--item"><a href="#" class="nav__dropdown--link flex-disp"><i class="fas fa-history nav__dropdown--icon"></i><span
                             class="nav__text">History</span></a></li>
-                <li class="nav__dropdown--item"><a href="#" class="nav__dropdown--link flex-disp"><i class="fas fa-chart-line nav__dropdown--icon"></i><span
-                            class="nav__text">Statistics</span></a></li>
 
             </ul>
         </li>

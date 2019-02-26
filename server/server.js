@@ -42,10 +42,21 @@ app.get('/', (req, res) => {
     });
 });
 
-app.get('/high-score', (req, res) => {
-    res.render('high-score.hbs',{
-        title: 'Highscore'
-    });
+app.get('/highscore',loggedIn,(req, res) => {
+    if(req.loggedIn){
+        res.render('high-score.hbs',{
+            title: 'Highscore',
+            user: req.user.username
+        })
+    } else {
+        res.render('high-score.hbs',{
+            title: "Highscore",
+            user: null
+        })
+    }
+    // res.render('high-score.hbs',{
+    //     title: 'Highscore'
+    // });
 });
 
 app.get('/register', loggedIn, (req, res) => {
