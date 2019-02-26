@@ -50,7 +50,7 @@ document.getElementById('update-password').addEventListener('submit', (event) =>
     let oldPassword = document.getElementById('old-password');
     let newPassword = document.getElementById('new-password');
     let responseField = document.getElementById('update-response');
-
+    let handler;
     let body = {
         oldPassword: oldPassword.value,
         newPassword: newPassword.value
@@ -72,38 +72,49 @@ document.getElementById('update-password').addEventListener('submit', (event) =>
 
 let tabLinks = document.querySelectorAll('.side-menu__link');
 let tabs = document.querySelectorAll('.tab');
+let loader = document.querySelector('.loader');
 
 for (let i = 0; i < tabLinks.length; i++) {
-    tabLinks[i].addEventListener('click', (e) => {
-        for (let y = 0; y < tabLinks.length; y++) {
-            tabLinks[y].classList.remove('selected');
-        }
-        for (let k = 0; k < tabs.length; k++) {
-            tabs[k].classList.remove('active');
-        }
-        tabLinks[i].classList.add('selected');
-        let name = tabLinks[i].children[0].id;
-        let tab = document.querySelector(`.${name}`);
-        if (i == 0) {
-            setTimeout(() => {
-                tab.nextElementSibling.style.display = "none"
-            }, 1)
-            //tab.nextElementSibling.classList.add('hidden');
-        } else {
-            setTimeout(() => {
-                tab.previousElementSibling.style.display = "none"
-            }, 1)
-            tab.previousElementSibling.classList.remove('active');
-            //tab.previousElementSibling.classList.add('hidden');
-        }
-        console.log(tab)
-        //tab.classList.remove('hidden');
+    tabLinks[i].addEventListener('click', toggler);
+}
 
+function toggler(event) {
+    let allBtns = document.querySelectorAll('.selected');
+    for (let y = 0; y < allBtns.length; y++) {
+        allBtns[y].classList.remove('selected');
+    }
+    event.currentTarget.classList.add('selected');
+    let name = event.currentTarget.children[0].id;
+    let tab = document.querySelector(`.${name}`);
+    let allDivs = tab.parentElement.children;
+    for(let k = 0; k < allDivs.length; k++){
+        if(allDivs[k].classList.contains('custom-scroll')){
+            allDivs[k].classList.remove('active');
+            allDivs[k].style.display = 'none';
+        }
+        
+    }
+    tab.style.display = "block";
+    showLoader().then(() => {
+        tab.classList.add('active');
+    }).then(()=>{
+        for (let i = 0; i < tabLinks.length; i++) {
+            tabLinks[i].addEventListener('click', toggler);
+        }
+    })
+    
+}
+
+function showLoader() {
+    for (var k = 0; k < tabLinks.length; k++) {
+        tabLinks[k].removeEventListener("click",toggler)
+    }
+    return new Promise((resolve, reject) => {
+        
+        loader.classList.remove('hidden');
         setTimeout(() => {
-            tab.style.display = "block";
-            tab.classList.add('active');
-        }, 1)
-
-
+            loader.classList.add('hidden');
+            resolve('Stuff worked');
+        }, 750);
     });
 }

@@ -30,7 +30,7 @@
     }
 }
 .tab {
-    transition: all .54s;
+    transition: all 1s;
     visibility: hidden;
     opacity: 0;
 }
@@ -51,4 +51,8 @@
 
 .history {
     background-color: $red-main-color;
+}
+
+#profilePage {
+    position: relative;
 }

@@ -341,7 +341,7 @@ legend {
   display: inline-block;
   position: relative;
   width: 64px;
-  height: 64px;
+  height: 64px !important;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -684,8 +684,10 @@ legend {
   border-image: linear-gradient(to right, #BC9405 0%, #FF5C26 49%, #FF5C26 100%) 2 2 2 2; }
   .header__nav {
     margin: 0 auto; }
-  .header__edge .btn:first-child {
-    margin-right: 1.5rem; }
+  .header__edge .btn {
+    font-weight: 600; }
+    .header__edge .btn:first-child {
+      margin-right: 1.5rem; }
 
 .highscore-page .table-main {
   margin: 7rem auto 0; }
@@ -707,7 +709,7 @@ legend {
         background-color: #BC9405; }
 
 .tab {
-  transition: all .54s;
+  transition: all 1s;
   visibility: hidden;
   opacity: 0; }
 
@@ -725,3 +727,6 @@ legend {
 
 .history {
   background-color: #FF5C26; }
+
+#profilePage {
+  position: relative; }
