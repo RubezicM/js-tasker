@@ -6,8 +6,6 @@ Comments randomization deals with all randomization commands behind comments in 
 
     randomizeIfs
 
-    randomizeReturns
-
     insertObjects
 
     randomizeRows

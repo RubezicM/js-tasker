@@ -54,7 +54,6 @@ let assignments = [
         return // # ret-O
     };`, `
     var $a_ºN = $num;
-
     var a = $rndObj_1; // # insO_uN1
     `, `
     var $a_ºA = ["str",23,"broj","12",$num2,"str",$num3];
@@ -72,7 +71,6 @@ let assignments = [
     var $c_ºS = 'foo';
     var $d_ºS = 'bar';
     var $e_ºN = $num;
-
     var a = $rndObj_1; // # insO_N3_uS1
     console.log(a.$used_ºK);
     `, `
@@ -91,7 +89,6 @@ let assignments = [
     var $c_ºS = 'foo';
     var $d_ºS = 'bar';
     var $e_ºN = $num;
-
     var $f_ºO = $rndObj_1; // # insO_N3_uS1
     console.log($f.$used_ºK);
     `, `
@@ -231,7 +228,6 @@ let assignments = [
     var $c_ºS = 'foo';
     var $d_ºS = 'bar';
     var $e_ºN = $num;
-
     var $f_ºO = $rndObj_1; // # insO_N3_uS1
     console.log($f.$used_ºK);
     `, `
@@ -301,22 +297,12 @@ let assignments = [
       $rnd_ºKN2: $num
     }
     console.log($used_ºO2.N);
-    `,`
-    var $a_ºO1 = {
-        $rnd_ºK1: $num,
-        $rnd_ºK1: $num,
-        $b_ºKF1: () => {
-          console.log("hello")
-        }
-    };
-    var $i = $a.$used_ºK1;
-    console.log($used_ºO1.F());
     `
 ];
 
 // let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
 
-let pickTask = (index = assignments.length - 1) => assignments[index];
+let pickTask = (index = assignments.length - 2) => assignments[index];
 
 // pickTask = (index = 17) => assignments[index];
 
