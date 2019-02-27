@@ -78,6 +78,7 @@ app.get('/main', authenticate, (req, res) => {
         user: req.user.username,
         imgUrl: req.user.imageURL,
         combo: req.user.combo,
+        bestCombo: req.user.bestCombo,
         imgUrl: req.user.imageURL,
         title: 'Playground',
         xp: req.user.xp,

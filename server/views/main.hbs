@@ -18,7 +18,7 @@
             <div class="user-stats">
                 <ul class="primary-list">
                     <li>Experience: <span class="primary-color-txt font-size-medium" id="player-xp">{{xp}}</span></li>
-                    <li>Highest in a row: <span class="primary-color-txt font-size-medium" id="player-best-combo">{{combo}}</span></li>
+                    <li>Highest in a row: <span class="primary-color-txt font-size-medium" id="player-best-combo">{{bestCombo}}</span></li>
                     <li>Total tasks: <span class="primary-color-txt font-size-medium" id="player-basic-attempts">{{basicAttempts}}</span></li>
                     <li>Success percentage: <span id="player-basic-percentage"
                             class="secondary-color-txt font-size-medium">{{basicPercentage}}%</span>
@@ -38,7 +38,7 @@
         <div class="main__main-content">
             <div id="game-area"></div>
             <form action="post" id="form-game" class="answer-submit">
-                <label for="answer" class="answer-submit__question"><span>Console.log</span> statement equals to :
+                <label for="answer" class="answer-submit__question"><span>Console.log</span> output equals to :
                 </label>
                 <div class="answer-submit__group">
                     <input type="text" name="answer" id="answer" class="answer-submit__input"

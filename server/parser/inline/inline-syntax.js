@@ -19,12 +19,12 @@ function inlineSyntax(str) {
   let variableNamesForTask = randomizeKeys(variableNamesLocal[index]);
   /////////////// constructor //////////////////////////
 
-  let Challenge = function(varNames) {
+  let Challenge = function (varNames) {
     this.varNames = varNames;
     this.usedVarNames = [];
   };
 
-  Challenge.prototype.getKeyNames = function(keysArr) {
+  Challenge.prototype.getKeyNames = function (keysArr) {
     let keyNames = Object.keys(keysArr);
     return getObjKeyValuesInArray(keysArr, keyNames);
   };
@@ -48,11 +48,11 @@ function inlineSyntax(str) {
     group = p3;
     nameVar = task.varNames[key];
     if (group.length > 0) {
-      if(type === "O"){
+      if (type === "O") {
         //console.log("aaaaaaa",offset,nameVar,type,key,group)
-        infoVar = storeVarInfo(offset, nameVar, type, key, undefined,group);
+        infoVar = storeVarInfo(offset, nameVar, type, key, undefined, group);
       } else {
-        infoVar = storeVarInfo(offset, nameVar, type, key,group, undefined);
+        infoVar = storeVarInfo(offset, nameVar, type, key, group, undefined);
       }
     } else {
       infoVar = storeVarInfo(offset, nameVar, type, key);
@@ -82,14 +82,23 @@ function inlineSyntax(str) {
     type = p1;
     member = p2;
     nameVar = task.usableVarNames[rnd];
-    
+
     if (p2.length > 0 && p1.indexOf("K") !== -1) {
+<<<<<<< HEAD
       infoVar = storeVarInfo(offset, nameVar, type, undefined,member,undefined);
     } else if(p2.length > 0 && p1.indexOf("O") !== -1) {
       //console.log("objekat")
       //console.log(offset,nameVar,type,member)
       infoVar = storeVarInfo(offset, nameVar, type, undefined,undefined,member);
       //console.log(infoVar);
+=======
+      infoVar = storeVarInfo(offset, nameVar, type, undefined, member, undefined);
+    } else if (p2.length > 0 && p1.indexOf("O") !== -1) {
+      console.log("objekat")
+      console.log(offset, nameVar, type, member)
+      infoVar = storeVarInfo(offset, nameVar, type, undefined, undefined, member);
+      console.log(infoVar);
+>>>>>>> a86117d184b98d10d97068d874865f13def25cde
     } else {
       infoVar = storeVarInfo(offset, nameVar, type);
     }
@@ -140,16 +149,16 @@ function inlineSyntax(str) {
   }
 
   function checkAndAddToUsedKeys(obj) {
-    let isFound = task.usedVarNames.some(function(el) {
-      if(el.key === obj.key && el.member === obj.member)
-      return true;
+    let isFound = task.usedVarNames.some(function (el) {
+      if (el.key === obj.key && el.member === obj.member)
+        return true;
     });
-    if(!isFound){
+    if (!isFound) {
       task.usedVarNames.push(obj);
       task.usableVarNames.splice(task.usableVarNames.indexOf(obj["name"]), 1);
     }
-      
-   
+
+
   }
 
   function getUsedVar(arr, key) {
@@ -208,7 +217,11 @@ function inlineSyntax(str) {
       tmpObjKeys.push(names[type[i]]);
     }
     let tmp = [];
+<<<<<<< HEAD
     arr.forEach( entry => {
+=======
+    arr.forEach(function (entry) {
+>>>>>>> a86117d184b98d10d97068d874865f13def25cde
       let isMember = isMemberOfArray(tmpObjKeys, entry.type);
       if (isMember && entry.startingIndex < beginFrom) {
         tmp.push(entry);
@@ -251,9 +264,8 @@ function inlineSyntax(str) {
         //console.log("MAIN OBJECT",mainObjectName);
         let rnd = _.random(0, filteredMemberList.length - 1);
         return `${mainObjectName.name}.${filteredMemberList[rnd].name}`;
-      }
-    }
-  );
+      };
+    });
   jScript = jScript.replace(
     /\$used_º([a-zA-Z])x*([0-9])*/g,
     (match, p1, p2, offset, string) => {
@@ -261,15 +273,6 @@ function inlineSyntax(str) {
       type = p1;
       indexFrom = offset;
       tmpArr = getSpecificVarTypes(task.usedVarNames, type, indexFrom);
-          if(type.length === 1){
-        let tmp = [];
-        tmpArr.forEach((item)=>{
-          if(item.type = type){
-            tmp.push(item);
-          }
-        })
-      }
-      
       rnd = _.random(0, tmpArr.length - 1);
       if (p2 === undefined) {
         console.log(tmpArr);
@@ -277,16 +280,15 @@ function inlineSyntax(str) {
         return nameVar;
       } else {
         nameVar = [];
-        for (var i = 0; i < p2; i++) {
+        for (let i = 0; i < p2; i++) {
          // console.log(match,p2)
           rnd = _.random(0, tmpArr.length - 1);
           nameVar.push(tmpArr[rnd]["name"]);
           tmpArr.splice(rnd, 1);
-        }
+        };
         return nameVar.join(",");
-      }
-    }
-  );
+      };
+    });
 
   jScript = jScript.replace(/\$(var )/g, (match, p1, p2, offset, string) => {
     let chance = _.random(0, 1);
@@ -314,7 +316,7 @@ function inlineSyntax(str) {
   jScript = jScript.replace(
     /\$(str+)([0-9])*/g,
     (match, p1, p2, offset, string) => {
-      let strings = ["foo", "bar", "kme", "lala", "blah", "prc"];
+      let strings = ["foo", "bar", "kme", "lala", "blah", "src"];
       let nameVar;
       if (p2 === undefined) {
         return '"' + strings[_.random(0, strings.length - 1)] + '"';
