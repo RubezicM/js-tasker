@@ -164,7 +164,9 @@ function constructObject(matchArr, objIndex) {
         N: '$num',
         uN: '$used_ºN',
         uA: '$used_ºA',
-        uS: '$used_ºS'
+        uS: '$used_ºS',
+        uO: '$used_ºO',
+        uF: '$used_ºF'
     };
 
     let mainString = '';

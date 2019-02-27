@@ -224,6 +224,43 @@ Resulting code gives two first if blocks swapping places while third if else was
             };
 
 
+### Object insertion
+
+- in code: $rndObj_1; // # insO_uN3_N3
+
+- in code: $rndObj_[ object index ]
+- in comments: // # insO_[ object key type ][ number of keys ]
+
+    - "$rndObj_" - fixed parser command. It will be replaced with random object
+    - [ object index ] - index of given object so it can be called later in the code
+
+    - "#" - separator type
+    - [ object key type ] - used to insert key values. It can be: 
+
+        N: for random number value
+        uN: for random used variable of number type
+        uA: random used variable of array type
+        uS: random used variable of string type
+        uO: random used variable of object type
+        uF: random used variable of function type
+
+    - [ number of keys] - used to determine maximum number of keys of given type in object. Minimum is one.
+
+example:
+
+            var b = $rndObj_1; // # insO_uN3_N2
+
+Here. We are creating random object with used 1-3 keys with values of used variables of number type and 1-2 keys with number values. Keys are outputed in format:
+
+- $rnd_ºK[ key type ][ object index]
+
+Output of one key from above example: 
+    
+        $rnd_ºKN1: 4
+
+Keys created in this fashion can later be called in code using inline syntax mentioned below.
+
+
 ## Custom code:
 
 ### Replace code with custom function:
@@ -340,51 +377,38 @@ Here, in place of $used_ºA can appear either first or second variable above. On
 
 ### $used with object keys:
 
-There are two ways to call used object keys. First is to define them with: $a_ºK. In this way key will not be tied to specific object group.
+If we want to pull random keys from object we need to define object in the following way:
+
+- [ variable name ]_ºO[ object index ]
+
+    - [ variable name ] - name of the object variable
+    - "_ºO" - fixed parser command
+    - [ object index ] - index of object
+
+And we need ot define keys as follows:
+
+- [ object key name]_ºK[ key type ]
+
+    - [ object key name] - name of object key
+    - "_ºK" - fixed parser command
+    - [ key type ] - type of object key. Single upper case letter. It can be: 
+        - "O" - object
+        - "N" - number
+        - "S" - string
+        - "A" - array
+        - "F" - function
+
 
 example: 
 
-            var object1 = {
-                $a_ºK: 1
-            };
-            var object2 = {
-                $b_º: 2
-            };
+        var $f_ºO1 = {
+            $c_ºKN1: $num,
+            $d_ºKN1: $num,
+            $e_ºKN1: $num
+        };
+        var $a = $used_ºO1.N;
 
-            var c = '$used_ºK';
-
-Here, $used_ºK will either be name of object1's key or object2's key.
-
-If we want to tie key to specific object then we need to add number after key to mark its group.
-
-example:
-
-            var object1 = {
-                $a_ºK1: 1,
-                $b_ºK1: 2,
-            };
-            var object2 = {
-                $c_ºK2: 2
-            };
-
-            var d = object1.$used_ºK1;
-
-Here, we are calling random keys just from object1. If we want to further specify key types we can add type between.
-
-example:
-
-            var object1 = {
-                $a_ºKN1: 1,
-                $b_ºKN1: 2,
-                $c_ºKS1: 'foo'
-            };
-            var object2 = {
-                $c_ºK2: 2
-            };
-
-            var d = object1.$used_ºKN1;
-
-Here, we will be calling random number keys from object1 and ignoring all the rest.
+Here, we variable $a will receive value of random key from object $f.
 
 ## Inline insertions:
 

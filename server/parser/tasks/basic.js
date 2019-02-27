@@ -270,11 +270,11 @@ let assignments = [
     $rnd_ºKS1: 'bar'
   };
   var $f_ºO2 = {
-    $rnd_ºKN2: $num,
-    $rnd_ºKN2: $num,
-    $rnd_ºKN2: $num,
+    $c_ºKN2: $num,
+    $d_ºKN2: $num,
+    $e_ºKN2: $num,
   }
-  console.log($used_ºO1.S);
+  console.log($used_ºO2.N);
   `, `
   var $a_ºN = 4;
   var $b_ºO1 = $rndObj_1; // # insO_uN3_N3
@@ -284,7 +284,7 @@ let assignments = [
 
 // let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
 
-let pickTask = (index = assignments.length - 1) => assignments[index];
+let pickTask = (index = assignments.length - 2) => assignments[index];
 
 // pickTask = (index = 17) => assignments[index];
 
