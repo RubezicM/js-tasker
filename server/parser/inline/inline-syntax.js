@@ -84,21 +84,12 @@ function inlineSyntax(str) {
     nameVar = task.usableVarNames[rnd];
 
     if (p2.length > 0 && p1.indexOf("K") !== -1) {
-<<<<<<< HEAD
       infoVar = storeVarInfo(offset, nameVar, type, undefined,member,undefined);
     } else if(p2.length > 0 && p1.indexOf("O") !== -1) {
       //console.log("objekat")
       //console.log(offset,nameVar,type,member)
       infoVar = storeVarInfo(offset, nameVar, type, undefined,undefined,member);
       //console.log(infoVar);
-=======
-      infoVar = storeVarInfo(offset, nameVar, type, undefined, member, undefined);
-    } else if (p2.length > 0 && p1.indexOf("O") !== -1) {
-      console.log("objekat")
-      console.log(offset, nameVar, type, member)
-      infoVar = storeVarInfo(offset, nameVar, type, undefined, undefined, member);
-      console.log(infoVar);
->>>>>>> a86117d184b98d10d97068d874865f13def25cde
     } else {
       infoVar = storeVarInfo(offset, nameVar, type);
     }
@@ -217,11 +208,7 @@ function inlineSyntax(str) {
       tmpObjKeys.push(names[type[i]]);
     }
     let tmp = [];
-<<<<<<< HEAD
     arr.forEach( entry => {
-=======
-    arr.forEach(function (entry) {
->>>>>>> a86117d184b98d10d97068d874865f13def25cde
       let isMember = isMemberOfArray(tmpObjKeys, entry.type);
       if (isMember && entry.startingIndex < beginFrom) {
         tmp.push(entry);
