@@ -291,6 +291,13 @@ let assignments = [
     var $b_ºN = $num; // # r0
     var $c_ºA = [$a, $b]; // []
     console.log($c[0]);
+    `,
+    `var $b_ºN = 6;
+
+    var $f_ºO1 = {
+      $rnd_ºKN1: $used_ºN,
+    };
+    console.log($used_ºO1.N);
     `
 ];
 

@@ -693,10 +693,13 @@ legend {
   margin: 7rem auto 0; }
 
 .profile-page .main__side-bar {
+  -webkit-box-pack: unset;
+  -ms-flex-pack: unset;
   justify-content: unset; }
   .profile-page .main__side-bar .table-stats {
     margin: 2.5rem 0; }
   .profile-page .main__side-bar .side-menu {
+    -ms-flex-item-align: baseline;
     align-self: baseline;
     margin: 3rem 5rem; }
     .profile-page .main__side-bar .side-menu__link:after {
@@ -709,6 +712,7 @@ legend {
         background-color: #BC9405; }
 
 .tab {
+  -webkit-transition: all 1s;
   transition: all 1s;
   visibility: hidden;
   opacity: 0; }

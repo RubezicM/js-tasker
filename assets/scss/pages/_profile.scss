@@ -1,12 +1,15 @@
 .profile-page {
 
     & .main__side-bar {
-        justify-content: unset;
+        -webkit-box-pack: unset;
+            -ms-flex-pack: unset;
+                justify-content: unset;
         & .table-stats {
             margin: 2.5rem 0;
         }
         & .side-menu {
-            align-self: baseline;
+            -ms-flex-item-align: baseline;
+                align-self: baseline;
             margin: 3rem 5rem;
             &__link {
                 &:after {
@@ -30,6 +33,7 @@
     }
 }
 .tab {
+    -webkit-transition: all 1s;
     transition: all 1s;
     visibility: hidden;
     opacity: 0;

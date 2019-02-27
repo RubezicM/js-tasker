@@ -86,10 +86,10 @@ function inlineSyntax(str) {
     if (p2.length > 0 && p1.indexOf("K") !== -1) {
       infoVar = storeVarInfo(offset, nameVar, type, undefined,member,undefined);
     } else if(p2.length > 0 && p1.indexOf("O") !== -1) {
-      console.log("objekat")
-      console.log(offset,nameVar,type,member)
+      //console.log("objekat")
+      //console.log(offset,nameVar,type,member)
       infoVar = storeVarInfo(offset, nameVar, type, undefined,undefined,member);
-      console.log(infoVar);
+      //console.log(infoVar);
     } else {
       infoVar = storeVarInfo(offset, nameVar, type);
     }
@@ -176,25 +176,49 @@ function inlineSyntax(str) {
       K: "object_key",
       P: "parametar"
     };
-
+    //console.log("tip",type)
     let tmpObjKeys = [];
     for (let i = 0; i < type.length; i++) {
       tmpObjKeys.push(names[type[i]]);
     }
     let tmp = [];
-    arr.forEach(function(entry) {
+    arr.forEach( entry => {
       let isMember = isMemberOfArray(tmpObjKeys, entry.type);
-      //console.log("VELIKA PROVERA1",isMember,tmpObjKeys,entry.type)
+      console.log("entry",entry);
+      if (isMember && entry.startingIndex < beginFrom && entry.member === null) {
+        tmp.push(entry);
+      }
+    });
+
+    return tmp;
+  }
+  function getObjectKeyValues(arr,type,beginFrom) {
+    let names = {
+      O: "object",
+      N: "number",
+      S: "string",
+      A: "array",
+      F: "function",
+      B: "boolean",
+      K: "object_key",
+      P: "parametar"
+    };
+    let tmpObjKeys = [];
+    for (let i = 0; i < type.length; i++) {
+      tmpObjKeys.push(names[type[i]]);
+    }
+    let tmp = [];
+    arr.forEach( entry => {
+      let isMember = isMemberOfArray(tmpObjKeys, entry.type);
       if (isMember && entry.startingIndex < beginFrom) {
         tmp.push(entry);
       }
     });
+
     return tmp;
   }
   let getGroupObject = (varNames, group) => {
     let kme = _.find(varNames, ["group", group]);
-    console.log("asdasdasadsasd", kme);
-    //console.log(varNames,group)
   };
   /////////////////////////////  assigment  /////////////////////////
 
@@ -217,12 +241,14 @@ function inlineSyntax(str) {
         type = p3;
         indexFrom = offset;
         let mainObjectName = _.find(task.usedVarNames, ["group", group]);
-        let allPosibleMembers = getSpecificVarTypes(task.usedVarNames,type,indexFrom);
+        let allPosibleMembers = getObjectKeyValues(task.usedVarNames,type,indexFrom);
         let filteredMemberList = _.filter(allPosibleMembers, (el)=>{
               if(el.type.indexOf("object_key") != -1 && el.member === group){
                 return el;
               }
         });
+        //console.log("SVI MEMBERI",allPosibleMembers,"'\n","FILTRIRANI MEMBERI",filteredMemberList)
+        //console.log("MAIN OBJECT",mainObjectName);
         let rnd = _.random(0, filteredMemberList.length - 1);
         return `${mainObjectName.name}.${filteredMemberList[rnd].name}`;
       }
@@ -235,15 +261,24 @@ function inlineSyntax(str) {
       type = p1;
       indexFrom = offset;
       tmpArr = getSpecificVarTypes(task.usedVarNames, type, indexFrom);
-      console.log(match,tmpArr)
+          if(type.length === 1){
+        let tmp = [];
+        tmpArr.forEach((item)=>{
+          if(item.type = type){
+            tmp.push(item);
+          }
+        })
+      }
+      
       rnd = _.random(0, tmpArr.length - 1);
       if (p2 === undefined) {
+        console.log(tmpArr);
         nameVar = tmpArr[rnd]["name"];
         return nameVar;
       } else {
         nameVar = [];
         for (var i = 0; i < p2; i++) {
-          console.log(match,p2)
+         // console.log(match,p2)
           rnd = _.random(0, tmpArr.length - 1);
           nameVar.push(tmpArr[rnd]["name"]);
           tmpArr.splice(rnd, 1);
@@ -295,7 +330,7 @@ function inlineSyntax(str) {
       }
     }
   );
-  console.log(task);
+  //console.log(task);
   // obradjeni patern za prikaz korisniku
   let jScriptOriginal = jScript;
   jScript = 'let result = "";\n' + jScript;

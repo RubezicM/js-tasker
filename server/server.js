@@ -276,6 +276,7 @@ app.delete('/logout', authenticate, (req, res) => {
 
 app.post('/answer', authenticate, (req, res) => {
     let assignment = pickTask();
+    console.log(assignment);
     let commentsRandomization = commentsSyntax(assignment).function;
     let task = inlineSyntax(commentsRandomization);
 
