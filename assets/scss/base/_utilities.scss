@@ -15,6 +15,15 @@
 .tertiary-color-txt {
     color: $green-main-color;
 }
+.secondary-color-border {
+    border-color: $red-main-color; 
+}
+.primary-color-border {
+    border-color: $yellow-main-color;
+}
+.tertiary-color-border {
+    border-color: $green-main-color;
+}
 
 .fw-600 {
     font-weight: 600;
@@ -52,4 +61,11 @@
 
 .active {
     
+}
+
+.float--left {
+    float: left;
+}
+.float--right {
+    float: right;
 }

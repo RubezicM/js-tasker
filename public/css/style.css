@@ -60,6 +60,15 @@ body {
 .tertiary-color-txt {
   color: #00BC22; }
 
+.secondary-color-border {
+  border-color: #FF5C26; }
+
+.primary-color-border {
+  border-color: #BC9405; }
+
+.tertiary-color-border {
+  border-color: #00BC22; }
+
 .fw-600 {
   font-weight: 600; }
 
@@ -89,6 +98,29 @@ body {
 
 .padding-small {
   padding: 2.2rem; }
+
+.float--left {
+  float: left; }
+
+.float--right {
+  float: right; }
+
+.accordion__button {
+  width: 100%;
+  padding: .988rem 1.453rem;
+  justify-content: space-between;
+  background-color: #28292C;
+  margin-bottom: 3.5rem; }
+
+.accordion__body {
+  background-color: #211a23;
+  padding: 2rem 0;
+  margin-bottom: 2.5rem;
+  display: none; }
+
+.accordion__button.active, .accordion__button:hover {
+  cursor: pointer;
+  background-color: #343539; }
 
 .btn {
   border: none;
@@ -168,7 +200,6 @@ body {
 
 .scroll-container {
   background: #222;
-  padding: 4rem 5rem;
   padding-right: 10rem;
   height: 100%; }
   .scroll-container > div {
@@ -556,6 +587,29 @@ legend {
   .table-stats tbody tr td:first-child {
     font-weight: 800; }
 
+.table-history {
+  margin: 0 auto;
+  width: 85%;
+  font-size: 1.55rem;
+  border-collapse: collapse; }
+  .table-history pre {
+    padding: 1.45rem 0; }
+  .table-history th, .table-history td {
+    border: 1px solid white;
+    padding: 1.13rem 1.26rem; }
+  .table-history__header {
+    padding: .53rem .75rem; }
+    .table-history__header:after {
+      content: "";
+      display: table;
+      clear: both; }
+  .table-history:not(:last-child) {
+    margin-bottom: 4rem; }
+  .table-history tbody tr td:first-child {
+    font-weight: 800;
+    color: #BC9405;
+    border: 1px solid white; }
+
 .timer {
   position: relative;
   width: 140px;
@@ -711,11 +765,18 @@ legend {
       .profile-page .main__side-bar .side-menu__link.selected:after {
         background-color: #BC9405; }
 
+.profile-page .main__main-content {
+  overflow: hidden; }
+
 .tab {
   -webkit-transition: all 1s;
   transition: all 1s;
   visibility: hidden;
-  opacity: 0; }
+  opacity: 0;
+  position: absolute;
+  left: 70px;
+  width: 80%;
+  padding: 4rem 2rem; }
 
 .tab.active {
   visibility: visible;
@@ -730,7 +791,7 @@ legend {
     margin: 0 auto; }
 
 .history {
-  background-color: #FF5C26; }
+  display: none; }
 
 #profilePage {
   position: relative; }

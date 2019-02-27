@@ -73,7 +73,7 @@ document.getElementById('update-password').addEventListener('submit', (event) =>
 let tabLinks = document.querySelectorAll('.side-menu__link');
 let tabs = document.querySelectorAll('.tab');
 let loader = document.querySelector('.loader');
-
+let accordion = document.querySelectorAll('.accordion__button')
 for (let i = 0; i < tabLinks.length; i++) {
     tabLinks[i].addEventListener('click', toggler);
 }
@@ -87,30 +87,44 @@ function toggler(event) {
     let name = event.currentTarget.children[0].id;
     let tab = document.querySelector(`.${name}`);
     let allDivs = tab.parentElement.children;
-    for(let k = 0; k < allDivs.length; k++){
-        if(allDivs[k].classList.contains('custom-scroll')){
+    for (let k = 0; k < allDivs.length; k++) {
+        if (allDivs[k].classList.contains('custom-scroll')) {
             allDivs[k].classList.remove('active');
             allDivs[k].style.display = 'none';
         }
-        
+
     }
     tab.style.display = "block";
+    accordion = document.querySelectorAll('.accordion__button');
     showLoader().then(() => {
         tab.classList.add('active');
-    }).then(()=>{
+    }).then(() => {
         for (let i = 0; i < tabLinks.length; i++) {
             tabLinks[i].addEventListener('click', toggler);
         }
     })
-    
+    if(accordion){
+        
+        for(let i = 0; i < accordion.length;i++){
+            accordion[i].addEventListener('click',function(){
+                this.classList.toggle('active');
+                let panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                  } else {
+                    panel.style.display = "block";
+                  }
+            });
+        }
+    }
 }
 
 function showLoader() {
     for (var k = 0; k < tabLinks.length; k++) {
-        tabLinks[k].removeEventListener("click",toggler)
+        tabLinks[k].removeEventListener("click", toggler)
     }
     return new Promise((resolve, reject) => {
-        
+
         loader.classList.remove('hidden');
         setTimeout(() => {
             loader.classList.add('hidden');
@@ -118,3 +132,51 @@ function showLoader() {
         }, 750);
     });
 }
+
+
+/////// HISTORY TAB /////////
+let history = document.querySelector('.history__list');
+
+
+axios.get('answers').then((response) => {
+    let tasks = response.data;
+    tasks.forEach((task) => {
+        let validation = task.correct === true ? "CORRECT" : "WRONG";
+        let txtColor = task.correct === true ? "tertiary-color-txt" : "secondary-color-txt";
+        //let borderColor = task.correct === true ? "tertiary-color-border":"secondary-color-border";
+        history.innerHTML += `
+            <div class="accordion__button flex-disp"><div>${task.createdAt}</div><div class="${txtColor}">${validation}</div><i class="fas fa-angle-double-down"></i></div>
+            <div class="accordion__body">
+                <table class="table-history">
+                    <thead>
+                    <tr>
+                    <th colspan="2" class="table-history__header">Assigment details:</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                    <td>Function:</td>
+                    <td><pre>${task.function}</pre></td>
+                    </tr>
+                    <tr>
+                    <td>Result:</td>
+                    <td>${task.result}</td>
+                    </tr>
+                    <tr>
+                    <td>Status:</td>
+                    <td><span class="${txtColor}">${validation}</span></td>
+                    </tr>
+                    <tr>
+                    <td>Date:</td>
+                    <td>${task.createdAt}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>`;
+        // `<p><pre>Function:\n${task.function}Result:${task.result}\nStatus:${task.correct}\nDate: ${task.createdAt}</pre></p><hr>`;
+    })
+}).catch((err) => {
+    history.innerHTML = err;
+});
+
+

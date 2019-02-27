@@ -39,3 +39,30 @@
 
     }
 }
+
+.table-history {
+    //min-width: 57rem;
+    & pre {
+        padding: 1.45rem 0;
+    }
+    margin: 0 auto;
+    width: 85%;
+    font-size: 1.55rem;
+    border-collapse: collapse;
+    & th, & td {
+        border: 1px solid white;
+        padding: 1.13rem 1.26rem;
+    }
+    &__header {
+        padding: .53rem .75rem;
+        @include clearfix;
+    }
+    &:not(:last-child){
+        margin-bottom: 4rem;
+    }
+    & tbody tr td:first-child {
+        font-weight: 800;
+        color: $yellow-main-color;
+        border: 1px solid white;
+    }
+}

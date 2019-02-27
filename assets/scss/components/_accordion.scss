@@ -1,0 +1,21 @@
+.accordion {
+
+    &__button {
+        width: 100%;
+        padding: .988rem 1.453rem;
+        justify-content: space-between;
+        background-color: $bg-black-light;
+        margin-bottom: 3.5rem;
+    }
+    &__body {
+        background-color: $bg-black-medium;
+        padding: 2rem 0;
+        margin-bottom: 2.5rem;
+        display: none;
+    }
+
+    &__button.active, &__button:hover {
+        cursor: pointer;
+        background-color: lighten($bg-black-light,5);
+    }
+}

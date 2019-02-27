@@ -280,15 +280,6 @@ let assignments = [
     var $b_ºN = $num; // # r0
     var $c_ºA = [$a, $b]; // []
     console.log($c[0]);
-<<<<<<< HEAD
-    `,
-    `var $b_ºN = 6;
-
-    var $f_ºO1 = {
-      $rnd_ºKN1: $used_ºN,
-    };
-    console.log($used_ºO1.N);
-=======
     `,`
     var $h_ºN = $num;
     var $a_ºO1 = {
@@ -298,21 +289,17 @@ let assignments = [
           console.log("hello")
         }
     };
-    console.log($used_ºO1.N);
     $used_ºO1.F()
-    $a.$b();
     var $g_ºO2 = {
       $rnd_ºKN2: $num,
       $rnd_ºKN2: $num
     }
     console.log($used_ºO2.N);
->>>>>>> a86117d184b98d10d97068d874865f13def25cde
     `
 ];
 
 let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
-
-// let pickTask = (index = assignments.length - 2) => assignments[index];
+ //pickTask = (index = assignments.length - 1) => assignments[index];
 
 // pickTask = (index = 17) => assignments[index];
 

@@ -1,5 +1,5 @@
 .profile-page {
-
+   
     & .main__side-bar {
         -webkit-box-pack: unset;
             -ms-flex-pack: unset;
@@ -29,7 +29,7 @@
     }
 
     & .main__main-content {
-        
+        overflow: hidden;
     }
 }
 .tab {
@@ -37,6 +37,10 @@
     transition: all 1s;
     visibility: hidden;
     opacity: 0;
+    position: absolute;
+    left: 70px;
+    width: 80%;
+    padding: 4rem 2rem;
 }
 .tab.active {
     visibility: visible;
@@ -54,7 +58,7 @@
 }
 
 .history {
-    background-color: $red-main-color;
+    display: none;
 }
 
 #profilePage {
