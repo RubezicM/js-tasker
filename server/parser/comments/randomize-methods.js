@@ -172,7 +172,7 @@ function constructObject(matchArr, objIndex) {
         let count = _.random(1, matchArr[i].number);
         for (let j = 0; j < count; ++j) {
             let keyType = matchArr[i].type.match(/[A-Z]/)[0];
-            let string = `    $rnd_ºK: `;
+            let string = `    $rnd_ºK${keyType}${objIndex}: `;
             string += keys[matchArr[i].type] + ',';
             mainString += (count - 1 === j && i === matchArr.length - 1) ? `${string}` : `${string}\n`;
         };

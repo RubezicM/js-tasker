@@ -54,7 +54,7 @@ let assignments = [
         return // # ret-O
     };`, `
     var $a_ºN = $num;
-    var a = $rndObj_1; // # insO_uN1
+    var $b_ºO1 = $rndObj_1; // # insO_uN1
     `, `
     var $a_ºA = ["str",23,"broj","12",$num2,"str",$num3];
     var $rnd_ºN = $num;
@@ -66,14 +66,6 @@ let assignments = [
     $c.push($d);
     console.log($c);
     `, `
-    var $a_ºN = $num;
-    var $b_ºN = $num;
-    var $c_ºS = 'foo';
-    var $d_ºS = 'bar';
-    var $e_ºN = $num;
-    var a = $rndObj_1; // # insO_N3_uS1
-    console.log(a.$used_ºK);
-    `, `
     var $a_ºA = [];
     var $rnd_ºN = $num;
     var $rnd_ºN = $num;
@@ -83,14 +75,6 @@ let assignments = [
     var $d = [$used_ºN2];
     $c.push($d);
     console.log($c);
-    `, `
-    var $a_ºN = $num;
-    var $b_ºN = $num;
-    var $c_ºS = 'foo';
-    var $d_ºS = 'bar';
-    var $e_ºN = $num;
-    var $f_ºO = $rndObj_1; // # insO_N3_uS1
-    console.log($f.$used_ºK);
     `, `
     var $g_ºN = $num;
     var $h_ºN = $num;
@@ -160,15 +144,6 @@ let assignments = [
     }
     console.log($used_ºO1.N)
     `, `
-      var $a_ºO1 = {
-      $b_ºKS1: $str,
-      $c_ºKN1: $num,
-      $rnd_ºKN1: $num,
-      $rnd_ºKN1: $num,
-      $rnd_ºKN1: $num,
-    }
-    console.log($a.$used_ºN1);
-    `, `
         var $a_ºO1 = {   // # b3-0
         $b_ºKS1: 'x',
         $c_ºKS1: 'y'
@@ -222,14 +197,6 @@ let assignments = [
     $var $d_ºN = $num;
     $var $used_ºN = $num;
     console.log($b[0],$c[2]);
-    `,`
-    var $a_ºN = $num;
-    var $b_ºN = $num;
-    var $c_ºS = 'foo';
-    var $d_ºS = 'bar';
-    var $e_ºN = $num;
-    var $f_ºO = $rndObj_1; // # insO_N3_uS1
-    console.log($f.$used_ºK);
     `, `
     var $a_ºN = 5;
     var $b_ºN = 10;
@@ -295,11 +262,29 @@ let assignments = [
       $rnd_ºKN2: $num
     }
     console.log($used_ºO2.N);
-    `
+    `, `
+    var $b_ºN = 4;
+    var $a_ºO1 = {
+    $rnd_ºKN1: $used_ºN,
+    $rnd_ºKS1: 'foo',
+    $rnd_ºKS1: 'bar'
+  };
+  var $f_ºO2 = {
+    $rnd_ºKN2: $num,
+    $rnd_ºKN2: $num,
+    $rnd_ºKN2: $num,
+  }
+  console.log($used_ºO1.S);
+  `, `
+  var $a_ºN = 4;
+  var $b_ºO1 = $rndObj_1; // # insO_uN3_N3
+  console.log($used_ºO1.N);
+  `
 ];
 
-let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
- //pickTask = (index = assignments.length - 1) => assignments[index];
+// let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
+
+let pickTask = (index = assignments.length - 1) => assignments[index];
 
 // pickTask = (index = 17) => assignments[index];
 
