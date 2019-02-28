@@ -60,7 +60,7 @@ function objectProperties(obj) {
 
 function random(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min)
-}
+};
 
 function shuffleArray(originalArray) {
     let array = originalArray.slice();
@@ -68,12 +68,12 @@ function shuffleArray(originalArray) {
     while (array.length !== 0) {
         randomArray.push(array.splice(random(0, array.length - 1), 1)[0]);
     }
-    return randomArray
-}
+    return randomArray;
+};
 
 function cloneObject(obj) {
     return JSON.parse(JSON.stringify(obj))
-}
+};
 
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -81,7 +81,7 @@ function shuffle(array) {
         [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
-}
+};
 
 /////////// row/block funkcije /////////////////////
 
@@ -89,9 +89,9 @@ function codeBlock(index, length, mainArr) {
     let arr = [];
     for (let i = index; i <= index + length; i++) {
         arr.push(cloneObject(mainArr[i]));
-    }
-    return arr
-}
+    };
+    return arr;
+};
 
 function ifCodeBlock(index, length, mainArr) {
     let arr = [];
@@ -103,8 +103,8 @@ function ifCodeBlock(index, length, mainArr) {
     return {
         arr: arr,
         ifElse: condition
-    }
-}
+    };
+};
 
 module.exports = {
     ifCodeBlock,
@@ -118,7 +118,7 @@ module.exports = {
     objectProperties,
     makeCodeArray,
     makeCodeArrayTrim
-}
+};
 
 
 

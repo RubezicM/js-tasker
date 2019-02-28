@@ -301,17 +301,56 @@ let assignments = [
       var $c_ºS = $str;
       console.log($used_ºS);
     `,`
-    var $a = $-2_2;
-    console.log($a);
+    var $a_ºN = $num; 
+    var $d = [];
+    var $b_ºN = '$num' + $1_2; // '0 # b1-0 r0
+    var $c_ºN = $num; // # r0
+    for (var i = $1_3; i < 5; i++) { // # b3-0
+      $used_ºN++; // # r1
+      $d.push($used_ºN); // # r1
+    };
+    console.log($d[$1]);
+    `,`
+    var $a_ºA = [$str, $str, $num, $str, $num]; // [] # r0
+    var $b = '$num'; // '0 # r0
+
+    $a.forEach(function(item, index, array) {
+
+      if (index % $2_3 && index !== 0) { // # b2-0
+        var $b = $str; // var 
+      };
+
+      $b = $b + item; // # b0-0
+
+    });
+
+    $b = $b.toString(); // # r1
+
+    console.log($b.slice(0, $1_3)); // # r1
+    `,`
+    var $a_ºA = [$str, $str]; // # b0-0
+
+    var $b_ºO1 = { // # b4-0
+      $rnd_ºKS1: false, // # r1
+      $rnd_ºKS1: true, // # r1
+      $rnd_ºKS1: $str
+    };
+
+    $a.push($used_ºO1.S); // # r0
+    $a.shift($used_ºO1.S); // # r0
+    $a.unshift($used_ºO1.S); // # r0
+    $a.pop($used_ºO1.S); // # r0
+
+    console.log($a[$1]);
     `
 ];
 
 
 
 
-let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
+// let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
 
-// let pickTask = (index = assignments.length - 1) => assignments[index];
+let pickTask = (index = assignments.length - 1) => assignments[index];
 
 // pickTask = (index = 17) => assignments[index];
 
