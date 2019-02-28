@@ -25,7 +25,7 @@ const arrays = [
 
 /////////////// global variables ////////////////////////
 
-const mathOperators = ["+", "-", "*"];
+const mathOperators = ["+", "-"];
 
 /////////// row/block funkcije /////////////////////
 
