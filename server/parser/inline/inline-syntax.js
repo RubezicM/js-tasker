@@ -54,6 +54,15 @@ function inlineSyntax(str) {
     return `"${randomString}"`;
   };
 
+  function insertRandomNumbers(match, p1, p2, p3, offset, string) {
+    if (!p2) {
+      return _.random(p1);
+    } else {
+      p2 = parseInt(p2.replace(/_/, ''));
+      return _.random(p1, p2);
+    }
+};
+
   function replaceVarNames(match, p1, p2, p3, offset, string) {
     let key, type, nameVar, infoVar, member;
     key = p1;
@@ -244,6 +253,8 @@ function inlineSyntax(str) {
   );
 
   jScript = jScript.replace(/\$str/g, insertRandomStrings);
+
+  jScript = jScript.replace(/\$(-?\d+)(_-?\d+)?/g, insertRandomNumbers);
 
   jScript = jScript.replace(/\$rnd_º([a-zA-Z]+)([0-9]*)/g, declareRandomVars);
   jScript = jScript.replace(

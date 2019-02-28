@@ -300,6 +300,9 @@ let assignments = [
       var $b_ºS = $str;
       var $c_ºS = $str;
       console.log($used_ºS);
+    `,`
+    var $a = $10_20;
+    console.log($a);
     `
 ];
 
