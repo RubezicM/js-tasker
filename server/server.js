@@ -88,10 +88,17 @@ app.get('/main', authenticate, (req, res) => {
 });
 
 app.get('/history', authenticate, (req, res) => {
-    res.render('history.hbs', {
+    res.render('profile.hbs', {
         user: req.user.username,
         imgUrl: req.user.imageURL,
-        title: 'history'
+        email: req.user.email,
+        basicAttempts: req.user.score.basic.attempted,
+        basicSuccesses: req.user.score.basic.successful,
+        basicPercentage: req.user.score.basic.percentage,
+        imgUrl: req.user.imageURL,
+        xp: req.user.xp,
+        bestCombo: req.user.bestCombo,
+        title: 'History'
     });
 });
 

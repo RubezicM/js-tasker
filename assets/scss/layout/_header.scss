@@ -7,21 +7,65 @@
     justify-content: space-between;
     position: relative;
     border: solid 2px transparent;
-    &__logo {}
+
+    @include respond(tab-port) {
+        position: unset;
+        display: block;
+    }
+    @include respond(phone){
+        padding: 0 1.5rem;
+    }
+    &__logo {
+        @include respond(tab-port) {
+            margin-top: 34px;
+        }
+    }
 
     &__nav {
         margin: 0 auto;
+        transition: all .4s;
+        @include respond(tab-port) {
+            display: flex;
+            background: url("/img/pattern.png");
+            background-repeat: repeat;
+            align-items: center;
+            justify-content: center;
+        }
     }
 
     &__edge {
+        display: flex;
+        justify-content: space-around;
+
         & .btn {
             font-weight: 600;
+
             &:first-child {
                 margin-right: 1.5rem;
-            } 
+            }
+        }
+
+        @include respond(tab-port) {
+            position: relative;
+            float: right;
+            top: -40px;
         }
     }
+
+    &__user-widget {
+        @include respond(tab-port) {
+            position: relative;
+            float: right;
+            top: -40px;
+        }
+        @include respond(phone){
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            top: -50px;
+        }
+    }
+
     border-image: linear-gradient(to right, $yellow-main-color 0%, $red-main-color 49%, $red-main-color 100%) 2 2 2 2;
     //@include border-gradient($yellow-main-color,$red-main-color,2px)
 }
-

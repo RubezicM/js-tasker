@@ -1,40 +1,50 @@
 
-///////// NAVIGATION FOR HEADER///////////
-let profileMainItemContainer = document.querySelector('.profile-has-dropdown');
-let profileDropdownContainer = document.querySelector('#profile-dropdown');
-let userWidgetMainItemContainer = document.querySelector('.userWidget-has-dropdown');
-let userWidgetDropdownContainer = document.querySelector('#userWidget-dropdown');
+// ///////// NAVIGATION FOR HEADER ~~~ Dropdowns///////////
+// let profileMainItemContainer = document.querySelector('.profile-has-dropdown');
+// let profileDropdownContainer = document.querySelector('#profile-dropdown');
+// let userWidgetMainItemContainer = document.querySelector('.userWidget-has-dropdown');
+// let userWidgetDropdownContainer = document.querySelector('#userWidget-dropdown');
 
-// setting size 
+// // setting size 
 
-let changeDropdownPosition = (()=>{
-    let profileMainH = profileMainItemContainer.offsetHeight;
-    if(userWidgetMainItemContainer){
-        let userWidgetMainH = userWidgetMainItemContainer.offsetHeight;
-        userWidgetDropdownContainer.style.top = userWidgetMainH + "px";
-    };
-    profileDropdownContainer.style.top = profileMainH + "px";
+// let changeDropdownPosition = (()=>{
+//     let profileMainH = profileMainItemContainer.offsetHeight;
+//     if(userWidgetMainItemContainer){
+//         let userWidgetMainH = userWidgetMainItemContainer.offsetHeight;
+//         userWidgetDropdownContainer.style.top = userWidgetMainH + "px";
+//     };
+//     profileDropdownContainer.style.top = profileMainH + "px";
     
-})();
+// })();
 
 
-profileMainItemContainer.addEventListener('mouseenter',(e)=>{
-    profileDropdownContainer.style.display = "block";
-});
+// profileMainItemContainer.addEventListener('mouseenter',(e)=>{
+//     profileDropdownContainer.style.display = "block";
+// });
 
-profileMainItemContainer.addEventListener('mouseleave',(e)=>{
-    profileDropdownContainer.style.display = "none";
-});
+// profileMainItemContainer.addEventListener('mouseleave',(e)=>{
+//     profileDropdownContainer.style.display = "none";
+// });
 
-if(userWidgetMainItemContainer){
-    userWidgetMainItemContainer.addEventListener('mouseenter',(e)=>{
-        userWidgetDropdownContainer.style.display = "block";
-    });
+// if(userWidgetMainItemContainer){
+//     userWidgetMainItemContainer.addEventListener('mouseenter',(e)=>{
+//         userWidgetDropdownContainer.style.display = "block";
+//     });
     
-    userWidgetMainItemContainer.addEventListener('mouseleave',(e)=>{
-        userWidgetDropdownContainer.style.display = "none";
-    });
-}
+//     userWidgetMainItemContainer.addEventListener('mouseleave',(e)=>{
+//         userWidgetDropdownContainer.style.display = "none";
+//     });
+// }
+
+//////////// RESPONSIVE NAVIGATION ////////////
+let menuButton = document.getElementById('menuToggle');
+let nav = document.querySelector('.nav');
+menuButton.addEventListener('click',function(e){
+    
+    nav.classList.toggle('opened');
+
+    this.classList.toggle('checked');
+});
 
 
 //////// UI /////////
@@ -49,19 +59,15 @@ let setHeightOfMain = (()=>{
     }
 })();
 
-//////// ACTIVE NAV ///////
-
-let url = location.href.split('/');
-let page = url[url.length - 1];
-console.log(page);
+//////// ACTIVE PAGE NAVIGATION ///////
+url;
+page;
 
 let navLinks = document.querySelectorAll(".header__nav .nav__item");
 function check(){
     for(let i = 0; i < navLinks.length; i++){
         if(navLinks[i].dataset.page){
             if(navLinks[i].dataset.page === page){
-                console.log(navLinks[i].dataset.page);
-                console.log(page)
                 navLinks[i].classList.add("active");
             }
         }

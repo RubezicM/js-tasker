@@ -4,7 +4,11 @@
     position: relative;
     padding: .5rem 1.2rem;
     &__img {
-        width: 7rem;
+        
+        @include respond(phone){
+            text-align: center;
+            margin-bottom: .54rem;
+        }
     }
 
     &__name {
@@ -32,8 +36,15 @@
 }
 
 .userWidget-has-dropdown{
-
+    position: relative;
     & .nav__dropdown--item {
         color: #fff;
+    }
+    & .nav__dropdown {
+        
+    }
+    &:hover .nav__dropdown {
+        display: block;
+        top: 45px;
     }
 }

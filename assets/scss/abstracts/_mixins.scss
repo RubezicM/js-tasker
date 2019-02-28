@@ -18,8 +18,7 @@
         margin: -$size;
         z-index: -1;
         background: #bc9405;
-        background: -moz-linear-gradient(left, $color1 0%, $color2 49%, $color2 100%);
-        background: -webkit-linear-gradient(left, $color1 0%, $color2 49%, $color2 100%);
+        background: -webkit-gradient(linear, left top, right top, from($color1), color-stop(49%, $color2), to($color2));
         background: linear-gradient(to right, $color1 0%, $color2 49%, $color2 100%);
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$color1', endColorstr='$color2', GradientType=1);
     }
@@ -27,8 +26,7 @@
 
 @mixin background-gradient($color1, $color2) {
     background: #bc9405;
-    background: -moz-linear-gradient(left, $color1 0%, $color2 49%, $color2 100%);
-    background: -webkit-linear-gradient(left, $color1 0%, $color2 49%, $color2 100%);
+    background: -webkit-gradient(linear, left top, right top, from($color1), color-stop(49%, $color2), to($color2));
     background: linear-gradient(to right, $color1 0%, $color2 49%, $color2 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$color1', endColorstr='$color2', GradientType=1);
 }
@@ -65,8 +63,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
     }
 
     @if $breakpoint==tab-port {
-        @media (max-width: 56.25em) {
-            // 900px
+        @media (max-width: 63.5em) {
+            // 1020
             @content;
         }
     }

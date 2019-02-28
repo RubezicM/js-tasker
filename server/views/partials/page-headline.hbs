@@ -19,6 +19,11 @@
     {{#if_eq title 'Highscore'}}
     <i class="fas fa-star headline-main__icon"></i>
     <h2 class="headline-main__text">{{title}}</h2>
+    {{else}}
+    {{#if_eq title 'History'}}
+    <i class="fas fa-history headline-main__icon"></i>
+    <h2 class="headline-main__text">{{title}}</h2>
+    {{/if_eq}}
     {{/if_eq}}
     {{/if_eq}}
     {{/if_eq}}

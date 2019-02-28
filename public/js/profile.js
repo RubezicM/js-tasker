@@ -73,7 +73,7 @@ document.getElementById('update-password').addEventListener('submit', (event) =>
 let tabLinks = document.querySelectorAll('.side-menu__link');
 let tabs = document.querySelectorAll('.tab');
 let loader = document.querySelector('.loader');
-let accordion = document.querySelectorAll('.accordion__button')
+let accordion = document.querySelectorAll('.accordion__button');
 for (let i = 0; i < tabLinks.length; i++) {
     tabLinks[i].addEventListener('click', toggler);
 }
@@ -82,6 +82,9 @@ function toggler(event) {
     let allBtns = document.querySelectorAll('.selected');
     for (let y = 0; y < allBtns.length; y++) {
         allBtns[y].classList.remove('selected');
+    }
+    if (event) {
+
     }
     event.currentTarget.classList.add('selected');
     let name = event.currentTarget.children[0].id;
@@ -92,7 +95,6 @@ function toggler(event) {
             allDivs[k].classList.remove('active');
             allDivs[k].style.display = 'none';
         }
-
     }
     tab.style.display = "block";
     accordion = document.querySelectorAll('.accordion__button');
@@ -103,17 +105,16 @@ function toggler(event) {
             tabLinks[i].addEventListener('click', toggler);
         }
     })
-    if(accordion){
-        
-        for(let i = 0; i < accordion.length;i++){
-            accordion[i].addEventListener('click',function(){
+    if (accordion) {
+        for (let i = 0; i < accordion.length; i++) {
+            accordion[i].addEventListener('click', function () {
                 this.classList.toggle('active');
                 let panel = this.nextElementSibling;
                 if (panel.style.display === "block") {
                     panel.style.display = "none";
-                  } else {
+                } else {
                     panel.style.display = "block";
-                  }
+                }
             });
         }
     }
@@ -180,3 +181,42 @@ axios.get('answers').then((response) => {
 });
 
 
+
+//////// DISPLAY PROFILE-EDIT OR HISTORY ////////
+
+let url = location.href.split('/');
+let page = url[url.length - 1];
+
+for (let i = 0; i < tabLinks.length; i++) {
+    tabLinks[i].classList.remove('selected');
+    if (tabLinks[i].firstElementChild.id === page) {
+        tabLinks[i].classList.add('selected');
+        var tab = document.querySelector(`.${page}`);
+        let allDivs = tab.parentElement.children;
+        
+        for (let k = 0; k < allDivs.length; k++) {
+            if (allDivs[k].classList.contains('custom-scroll')) {
+                allDivs[k].classList.remove('active');
+                allDivs[k].style.display = 'none';
+            }
+        }
+        tab.style.display = "block";
+        tab.classList.add('active');
+        if(page === "history"){
+            console.log(page);
+            let accourdionEls = [];
+            let allElements = tab.children[0].children;
+            console.log(allElements)
+            Array.from(allElements).forEach((el)=>{
+                console.log(el.id);
+            })
+            for(el of allElements){
+                console.log(el);
+            }
+            console.log(allElements)
+        }
+        console.log(tab.children[0].children)
+    }
+}
+
+console.log(accordion);

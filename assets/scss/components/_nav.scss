@@ -1,6 +1,31 @@
 .nav {
-
+    @include respond(tab-port){
+        //display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        //height: 100vh;
+        width: 100vw;
+        z-index: 999;
+        height: 0;
+    }
+    &.opened {
+        height: 100vh;
+        
+        & .nav__list {
+            display: block;
+        }
+        & .nav__exit {
+            display: block;
+        }
+    }
+    
     &__list {
+
+        @include respond(tab-port){
+            flex-direction: column;
+            display: none;
+        }
     }
 
     &__item {
@@ -19,6 +44,9 @@
             &:hover .nav__icon {
                 color: $yellow-main-color;
             }
+            &:hover .nav__dropdown {
+                display: block;
+            }
         }
         &.active {
 
@@ -26,6 +54,10 @@
                 color: $red-main-color;
             }
 
+        }
+        @include respond(tab-port){
+            margin-bottom: 4rem;
+            font-size: 2rem;
         }
     }
     &__dropdown {
@@ -35,7 +67,6 @@
         padding: 4rem 0 4rem 3rem;
         position: absolute;
         left: 0;
-        top: 20px;
         z-index: 1;
         &--item {
             margin-right: 0;
@@ -56,19 +87,40 @@
         align-items: center;
     }
 
-    &__text {
-
-    }
     &__icon {
         margin-right: 1.5rem;
         font-size: 2.3rem;
+        @include respond(tab-port){
+            font-size: 3.5rem;
+            margin-right: 5.5rem;
+        }
         &--angle {
             font-size: 1.5rem;
             margin-left: 1.5rem;
+            @include respond(tab-port){
+                display: none;
+            }
         }
     }
 
     &__item:hover  &__icon {
         color: $yellow-main-color;
+    }
+
+   
+    &__exit {
+        font-size: 3.5rem;
+        color: white;
+        display: none;
+        &:hover {
+            cursor: pointer;
+            color: $red-main-color;
+        }
+        @include respond(tab-port){
+            //display: block;
+            position: absolute;
+            top: 3.5rem;
+            right: 3.5rem;
+        }
     }
 }
