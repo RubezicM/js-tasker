@@ -324,9 +324,9 @@ let assignments = [
 
     });
 
-    $b = $b.toString(); // # r1
+    $b = $b.toString(); //
 
-    console.log($b.slice(0, $1_3)); // # r1
+    console.log($b.slice(0, $1_3)); //
     `,`
     var $a_ºA = [$str, $str]; // # b0-0
 
@@ -337,11 +337,23 @@ let assignments = [
     };
 
     $a.push($used_ºO1.S); // # r0
-    $a.shift($used_ºO1.S); // # r0
+    $a.shift($used_ºO1.S); // # r0 ~ c--shift--y-pop--
     $a.unshift($used_ºO1.S); // # r0
-    $a.pop($used_ºO1.S); // # r0
+    $a.pop($used_ºO1.S); // # r0 ~ c--pop--y-shift--
 
     console.log($a[$1]);
+    `,`
+    var $a_ºA = [$str, $num]; // []
+    var $b_ºA = [$num, $str]; // []
+    var $c_ºA = [$num, $str]; // []
+
+    $used_ºA = $used_ºA.concat($used_ºA);
+    var $d = $used_ºA.splice($1, $1_2, $used_ºA[$1]) - $used_ºA;
+
+    console.log($d[$8]);
+    `,`
+    var $a = null;
+    console.log($a);
     `
 ];
 

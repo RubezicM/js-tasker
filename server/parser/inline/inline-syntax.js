@@ -364,19 +364,29 @@ function inlineSyntax(str) {
   let jScriptOriginal = jScript;
   jScript = 'let result = "";\n' + jScript;
   // dodela return-a
-  jScript = jScript.replace(/console.log/g, "logResult");
-  jScript += `function logResult(...params) {
-                result += params.join(" ") + '\\n';
-            }
-            return result;`;
+  jScript = jScript.replace(/console.log/g, "return ");
+  // jScript += `function logResult(...params) {
+  //               result += params.join(" ") + '\\n';
+  //           }
+  //           return result;`;
+  // jScript += `function logResult(res) {
+  //   return res;
+  // };`
+
   let finalFunction = new Function(jScript);
 
-  console.log("function:", jScriptOriginal);
-  // console.log('result:', finalFunction());
+  let result = `${finalFunction()}`;
+
+  console.log('final function:', finalFunction);
+  console.log('result', result);
+
+  // if (result === '') {
+  //   result = 'undefined';
+  // };
 
   return {
     function: jScriptOriginal,
-    result: finalFunction()
+    result
   };
 };
 

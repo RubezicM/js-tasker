@@ -28,13 +28,13 @@ describe('Test task', () => {
             let testStringBasic = startTest(i);
             let testString = testStringBasic.function + testStringBasic.result;
 
-            it(`does not have "undefined" in it. Task index: ${i}`, () => {
-                expect(testString).toEqual(expect.not.stringContaining(badWords.undefined));
-            });
+            // it(`does not have "undefined" in it. Task index: ${i}`, () => {
+            //     expect(testString).toEqual(expect.not.stringContaining(badWords.undefined));
+            // });
 
-            it(`does not have "NaN" in it. Task index: ${i}`, () => {
-                expect(testString).toEqual(expect.not.stringContaining(badWords.NaN));
-            });
+            // it(`does not have "NaN" in it. Task index: ${i}`, () => {
+            //     expect(testString).toEqual(expect.not.stringContaining(badWords.NaN));
+            // });
 
             it(`does not have "$" in it. Task index: ${i}`, () => {
                 expect(testString).toEqual(expect.not.stringContaining(badWords.$));
