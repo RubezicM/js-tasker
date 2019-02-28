@@ -412,11 +412,24 @@ Here, we variable $a will receive value of random key from object $f.
 
 ## Inline insertions:
 
-### Insert random number:
+### Insert random number value:
 
 - $num
 
     - $num - fixed command: Inserts random number in its place.
+
+example: 
+
+            var $a = $num;
+
+In this example, variable $a will be given random whole intiger value.
+
+### Insert random number with border values:
+
+- $[ first value ]_[ second value ]
+
+    - $ - fixed parser command.
+    - [ first value ] - positive or negative intiger. If there is no second number parser will provide random number from 0 to this value
 
 example: 
 

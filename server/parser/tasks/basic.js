@@ -301,7 +301,7 @@ let assignments = [
       var $c_ºS = $str;
       console.log($used_ºS);
     `,`
-    var $a = $10_20;
+    var $a = $-2_2;
     console.log($a);
     `
 ];

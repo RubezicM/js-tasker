@@ -55,13 +55,15 @@ function inlineSyntax(str) {
   };
 
   function insertRandomNumbers(match, p1, p2, p3, offset, string) {
+    console.log(p1);
+    console.log(p2);
     if (!p2) {
-      return _.random(p1);
+      return _.random(0, p1);
     } else {
-      p2 = parseInt(p2.replace(/_/, ''));
+      p2 = parseInt(p2.replace(/_/g, ''));
       return _.random(p1, p2);
     }
-};
+  };
 
   function replaceVarNames(match, p1, p2, p3, offset, string) {
     let key, type, nameVar, infoVar, member;
@@ -82,17 +84,17 @@ function inlineSyntax(str) {
     return nameVar;
   };
 
-  function redeclareVars(match, p1, p2, offset, string) {
-    if (match === "$var_") {
-      return _.random(0, 1) === 1 ? "var " : "";
-    } else {
-      let typeOfVar = dataTypes[p1];
-      let arrayOfType = getSpecificVarTypes(task.usedVarNames, typeOfVar);
-      let rnd = _.random(0, arrayOfType.length - 1);
-      let nameVar = arrayOfType[rnd].name;
-      return _.random(0, 1) === 1 ? "var " + nameVar : nameVar;
-    }
-  }
+  // function redeclareVars(match, p1, p2, offset, string) {
+  //   if (match === "$var_") {
+  //     return _.random(0, 1) === 1 ? "var " : "";
+  //   } else {
+  //     let typeOfVar = dataTypes[p1];
+  //     let arrayOfType = getSpecificVarTypes(task.usedVarNames, typeOfVar);
+  //     let rnd = _.random(0, arrayOfType.length - 1);
+  //     let nameVar = arrayOfType[rnd].name;
+  //     return _.random(0, 1) === 1 ? "var " + nameVar : nameVar;
+  //   }
+  // };
 
   function declareRandomVars(match, p1, p2, offset, string) {
     let nameVar,
@@ -116,7 +118,7 @@ function inlineSyntax(str) {
     }
     checkAndAddToUsedKeys(infoVar);
     return nameVar;
-  }
+  };
 
   //////////////////////// Storing variable info inside an global object ///////////////////////////
 
@@ -136,19 +138,19 @@ function inlineSyntax(str) {
           key = keys[i][0];
         }
       }
-    }
+    };
     if (type !== undefined && type.length > 1) {
       let tmpArr = type.split("");
       for (let i = 0; i < tmpArr.length; i++) {
         typeArray.push(dataTypes[tmpArr[i]]);
-      }
+      };
     } else if (type !== undefined && type.length === 1) {
       //console.log("dsadsasdadsadasadsdas",offset,name,type,key,member,group)
       typeArray = dataTypes[type];
       //console.log("stavracamo",typeArray)
     } else {
       typeArray = "random";
-    }
+    };
 
     return {
       startingIndex: offset,
@@ -158,7 +160,7 @@ function inlineSyntax(str) {
       member,
       group
     };
-  }
+  };
 
   function checkAndAddToUsedKeys(obj) {
     let isFound = task.usedVarNames.some(function (el) {
@@ -168,10 +170,10 @@ function inlineSyntax(str) {
     if (!isFound) {
       task.usedVarNames.push(obj);
       task.usableVarNames.splice(task.usableVarNames.indexOf(obj["name"]), 1);
-    }
+    };
 
 
-  }
+  };
 
   function getUsedVar(arr, key) {
     for (let i = 0; i < arr.length; i++) {
@@ -179,13 +181,15 @@ function inlineSyntax(str) {
         return arr[i];
       }
     }
-  }
+  };
+
   function isMemberOfArray(checker, container) {
     for (var i = 0; i < checker.length; i++) {
       if (container.indexOf(checker[i]) === -1) return false;
     }
     return true;
-  }
+  };
+
   function getSpecificVarTypes(arr, type, beginFrom) {
     let names = {
       O: "object",
@@ -197,22 +201,25 @@ function inlineSyntax(str) {
       K: "object_key",
       P: "parametar"
     };
+
     //console.log("tip",type)
     let tmpObjKeys = [];
     for (let i = 0; i < type.length; i++) {
       tmpObjKeys.push(names[type[i]]);
-    }
+    };
+
     let tmp = [];
+
     arr.forEach(entry => {
       let isMember = isMemberOfArray(tmpObjKeys, entry.type);
       console.log("entry", entry);
       if (isMember && entry.startingIndex < beginFrom && entry.member === null) {
         tmp.push(entry);
-      }
+      };
     });
 
     return tmp;
-  }
+  };
   function getObjectKeyValues(arr, type, beginFrom) {
     let names = {
       O: "object",
@@ -224,26 +231,32 @@ function inlineSyntax(str) {
       K: "object_key",
       P: "parametar"
     };
+
     let tmpObjKeys = [];
     for (let i = 0; i < type.length; i++) {
       tmpObjKeys.push(names[type[i]]);
-    }
+    };
+
     let tmp = [];
     arr.forEach(entry => {
       let isMember = isMemberOfArray(tmpObjKeys, entry.type);
       if (isMember && entry.startingIndex < beginFrom) {
         tmp.push(entry);
-      }
+      };
     });
 
     return tmp;
-  }
+  };
+
   let getGroupObject = (varNames, group) => {
     let kme = _.find(varNames, ["group", group]);
   };
+
   /////////////////////////////  assigment  /////////////////////////
 
   let jScript = str;
+
+  jScript = jScript.replace(/\$(-?\d+)(_-?\d+)?/g, insertRandomNumbers);
 
   jScript = jScript.replace(/\$\b(\w)\b/g, replaceVarNames);
 
@@ -254,9 +267,8 @@ function inlineSyntax(str) {
 
   jScript = jScript.replace(/\$str/g, insertRandomStrings);
 
-  jScript = jScript.replace(/\$(-?\d+)(_-?\d+)?/g, insertRandomNumbers);
-
   jScript = jScript.replace(/\$rnd_º([a-zA-Z]+)([0-9]*)/g, declareRandomVars);
+
   jScript = jScript.replace(
     /\$used_º([a-zA-Z]{1})([0-9]).([a-zA-Z])/g,
     (match, p1, p2, p3, offset) => {
@@ -278,6 +290,7 @@ function inlineSyntax(str) {
         return `${mainObjectName.name}.${filteredMemberList[rnd].name}`;
       };
     });
+
   jScript = jScript.replace(
     /\$used_º([a-zA-Z])x*([0-9])*/g,
     (match, p1, p2, offset, string) => {
@@ -325,6 +338,7 @@ function inlineSyntax(str) {
       }
     }
   );
+
   jScript = jScript.replace(
     /\$(str+)([0-9])*/g,
     (match, p1, p2, offset, string) => {
@@ -344,6 +358,7 @@ function inlineSyntax(str) {
       }
     }
   );
+
   //console.log(task);
   // obradjeni patern za prikaz korisniku
   let jScriptOriginal = jScript;
@@ -363,7 +378,7 @@ function inlineSyntax(str) {
     function: jScriptOriginal,
     result: finalFunction()
   };
-}
+};
 
 module.exports = {
   inlineSyntax
