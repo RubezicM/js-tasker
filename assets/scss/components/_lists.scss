@@ -2,15 +2,15 @@
     padding-left: 2.5rem;
     & li {
         position: relative;
-        padding: .6rem 0;
+        padding: 1rem 0;
         transition: .3s all;
         &::after {
             content: '';
-            width: 10px;
-            height: 10px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
-            left: -25px;
-            top: 15px;
+            left: -27px;
+            top: 17px;
             background-color: #3D3D3D;
             display: block;
             position: absolute;

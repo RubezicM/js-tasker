@@ -4,6 +4,10 @@
         -webkit-box-pack: unset;
             -ms-flex-pack: unset;
                 justify-content: unset;
+                @include respond(tab-port){
+                    flex-direction: row;
+                    justify-content: space-between;
+                }
         & .table-stats {
             margin: 2.5rem 0;
         }
@@ -17,24 +21,38 @@
         & .side-menu {
             -ms-flex-item-align: baseline;
                 align-self: baseline;
+                font-size: 1.8rem;
             margin: 3rem 5rem;
+            @include respond(tab-port){
+                margin: 0;
+            }
             &__link {
                 &:after {
-                    top: 11px;
+                    top: 15px;
                 }
                 &:before {
                     top: 0;
                 }
+                @include respond(tab-port){
+                    float: left;
+                    position: unset;
+                    margin-left: 1.5rem;
+                    background: $yellow-main-color;
+                    color: $bg-black-dark;
+                    padding: 1.2rem 1.6rem;
+                }
             }
             &__link.selected {
                 color: $yellow-main-color;
+                @include respond(tab-port){
+                    background: $green-main-color;
+                    color: white;
+                }
                 &:after {
                     background-color: $yellow-main-color;
                 }
             }
-            @include respond(tab-port){
-                
-            }
+           
         }
     }
 
@@ -54,6 +72,7 @@
     @include respond(tab-port){
         position: unset;
         width: 100%;
+        padding: 2rem;
     }
 }
 .tab.active {
@@ -71,10 +90,63 @@
     }
 }
 
-.history {
-    display: none;
-}
+.stats {
 
+    & .table-stats {
+        margin: 5rem auto;
+    }
+    &__header {
+        width: 100%;
+        margin-bottom: 1.9rem;
+        border-bottom: white 1px solid;
+        @include background-gradient($yellow-main-color,$red-main-color);
+        & h3 {
+            padding: 1.3rem .76rem;
+            font-size: 2rem;
+            
+           
+            display: inline-block;
+            
+        }
+    
+    }
+    &__wrapper {
+        margin: 5rem auto;
+    }
+    &__list {
+
+    }
+    &__list-item {
+        padding: 1.23rem .95rem;
+        width: 100%;
+        background: $bg-black-light;
+        margin-bottom: 1.9rem;
+        font-size: 1.7rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        & > * {
+            display: inline-block;
+        }
+    }
+
+    &__list-heading {
+        color: white;
+        padding: 1rem;
+        
+    }
+    &__meat {
+        display: inline-block;
+        background: $bg-black-medium;
+        padding: 1rem;
+    }
+}
+.history{
+
+    &__list {
+        margin-top: 4rem;
+    }
+}
 #profilePage {
     position: relative;
     @include respond(tab-port){

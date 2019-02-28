@@ -16,12 +16,19 @@
             </div>
 
             <ul class="primary-list side-menu">
-                <li class="selected side-menu__link"><a href="#" id="profile">Edit profile</a> </li>
+                <li class="side-menu__link"><a href="#" id="profile">Edit Profile</a></li>
                 <li class="side-menu__link"><a href="#" id="history">History</a></li>
+                <li class="side-menu__link"><a href="#" id="stats">Stats</a></li>
             </ul>
-            <div class="stats">
 
-                <table class="table-stats">
+
+
+        </div>
+        <div class="main__main-content">
+            <div id="profilePage" class="scroll-container">
+                <div class="stats tab custom-scroll">
+
+                    {{!-- <table class="table-stats">
                     <thead>
                         <tr>
                             <th colspan="2">User Info</th>
@@ -37,45 +44,77 @@
                             <td>{{email}}</td>
                         </tr>
                     </tbody>
-                </table>
-
-
-
-                <table class="table-stats">
-                    <thead>
-                        <tr>
-                            <th colspan="2">Stats</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Attempts</td>
-                            <td>{{basicAttempts}}</td>
-                        </tr>
-                        <tr>
-                            <td>Correct Answers</td>
-                            <td>{{basicSuccesses}}</td>
-                        </tr>
-                        <tr>
-                            <td>Success rate</td>
-                            <td>{{basicPercentage}}%</td>
-                        </tr>
-                        <tr>
-                            <td>XP</td>
-                            <td>{{xp}}</td>
-                        </tr>
-                        <tr>
-                            <td>Most Answers in a row</td>
-                            <td>{{bestCombo}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-
-        </div>
-        <div class="main__main-content">
-            <div id="profilePage" class="scroll-container">
+                </table> --}}
+                    <div class="stats__wrapper">
+                        <div class="stats__header">
+                            <h3>User Info</h3>
+                        </div>
+                        <ul class="stats__list">
+                            <li class="stats__list-item">
+                                <div class="stats__list-heading">Username :</div><span class="stats__meat">{{user}}</span>
+                            </li>
+                            <li class="stats__list-item">
+                                <div class="stats__list-heading">E-mail :</div><span
+                                    class="stats__meat">{{email}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="stats__wrapper">
+                        <div class="stats__header">
+                            <h3>Stats</h3>
+                        </div>
+                        <ul class="stats__list">
+                            <li class="stats__list-item">
+                                <div class="stats__list-heading">Attempts :</div><span class="stats__meat">{{basicAttempts}}</span>
+                            </li>
+                            <li class="stats__list-item">
+                                <div class="stats__list-heading">Correct Answers :</div><span
+                                    class="stats__meat">{{basicSuccesses}}</span>
+                            </li>
+                             <li class="stats__list-item">
+                                <div class="stats__list-heading">Success rate :</div><span
+                                    class="stats__meat">{{basicPercentage}}</span>
+                            </li>
+                             <li class="stats__list-item">
+                                <div class="stats__list-heading">XP :</div><span
+                                    class="stats__meat">{{xp}}</span>
+                            </li>
+                             <li class="stats__list-item">
+                                <div class="stats__list-heading">Most Answers in a row :</div><span
+                                    class="stats__meat">{{bestCombo}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    {{!-- <table class="table-stats">
+                        <thead>
+                            <tr>
+                                <th colspan="2">Stats</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Attempts</td>
+                                <td>{{basicAttempts}}</td>
+                            </tr>
+                            <tr>
+                                <td>Correct Answers</td>
+                                <td>{{basicSuccesses}}</td>
+                            </tr>
+                            <tr>
+                                <td>Success rate</td>
+                                <td>{{basicPercentage}}%</td>
+                            </tr>
+                            <tr>
+                                <td>XP</td>
+                                <td>{{xp}}</td>
+                            </tr>
+                            <tr>
+                                <td>Most Answers in a row</td>
+                                <td>{{bestCombo}}</td>
+                            </tr>
+                        </tbody>
+                    </table> --}}
+                </div>
                 <div class="custom-scroll profile tab active">
                     <form action="patch" id="update-form" class="form-edit form">
                         <fieldset>
@@ -102,8 +141,8 @@
                             <legend>Change Your Picture</legend>
                             <div class="form-edit__group form-edit__group--pic">
                                 <input type='file' name='image' />
-                                <input type="submit" value="Submit"
-                                    class="btn btn__main btn__main--black form-edit__btn">
+                                <button type="submit" value="Submit"
+                                    class="btn btn__main btn__main--black form-edit__btn">Submit</button>
                             </div>
                         </fieldset>
 

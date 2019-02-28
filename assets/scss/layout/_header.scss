@@ -12,6 +12,12 @@
         position: unset;
         display: block;
     }
+    @media (max-width:43.75em) {
+        top: -60px;
+        flex-direction: column;
+        height: 14rem;
+
+}   
     @include respond(phone){
         padding: 0 1.5rem;
     }
@@ -39,7 +45,9 @@
 
         & .btn {
             font-weight: 600;
-
+            @media (max-width:43.75em) {
+                padding: .75rem;
+        }
             &:first-child {
                 margin-right: 1.5rem;
             }
@@ -49,6 +57,12 @@
             position: relative;
             float: right;
             top: -40px;
+        }
+        @media (max-width:43.75em) {
+                margin-top: 1.4rem;
+                position: unset;
+                float: none;
+                justify-content: center;
         }
     }
 

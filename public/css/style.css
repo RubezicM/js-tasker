@@ -116,7 +116,8 @@ body {
   background-color: #211a23;
   padding: 2rem 0;
   margin-bottom: 2.5rem;
-  display: none; }
+  display: none;
+  margin-top: -3.6rem; }
 
 .accordion__button.active, .accordion__button:hover {
   cursor: pointer;
@@ -174,7 +175,8 @@ body {
     margin: 1.5rem 0 2.5rem 0; }
 
 .custom-scroll {
-  overflow-y: auto; }
+  overflow-y: auto;
+  padding-right: 33px; }
   .custom-scroll::-webkit-scrollbar {
     width: 10px;
     position: relative; }
@@ -275,6 +277,7 @@ body {
   background: #211a23;
   width: 75%;
   border-bottom: 2px solid transparent;
+  font-size: 1.8rem;
   -o-border-image: linear-gradient(to right, #BC9405 0%, #FF5C26 49%, #FF5C26 100%) 2 2 2 2;
   border-image: -webkit-gradient(linear, left top, right top, from(#BC9405), color-stop(49%, #FF5C26), to(#FF5C26)) 2 2 2 2;
   border-image: linear-gradient(to right, #BC9405 0%, #FF5C26 49%, #FF5C26 100%) 2 2 2 2; }
@@ -294,7 +297,11 @@ body {
     .form-edit__group:not(:last-child) {
       margin-bottom: 2.5rem; }
     .form-edit__group input {
-      width: 25rem; }
+      width: 25rem;
+      font-size: 1.8rem; }
+      @media (max-width: 63.5em) {
+        .form-edit__group input {
+          width: 35rem; } }
     .form-edit__group:nth-of-type(3) {
       -webkit-box-pack: end;
       -ms-flex-pack: end;
@@ -625,15 +632,15 @@ legend {
   padding-left: 2.5rem; }
   .primary-list li {
     position: relative;
-    padding: .6rem 0;
+    padding: 1rem 0;
     transition: .3s all; }
     .primary-list li::after {
       content: '';
-      width: 10px;
-      height: 10px;
+      width: 14px;
+      height: 14px;
       border-radius: 50%;
-      left: -25px;
-      top: 15px;
+      left: -27px;
+      top: 17px;
       background-color: #3D3D3D;
       display: block;
       position: absolute;
@@ -664,7 +671,7 @@ legend {
     font-weight: 800; }
 
 .table-stats {
-  font-size: 1.55rem;
+  font-size: 2rem;
   border-collapse: collapse; }
   .table-stats th, .table-stats td {
     border: 1px solid;
@@ -730,7 +737,7 @@ legend {
   .user-widget__name {
     line-height: .4;
     margin: 0 .75rem 0 1.3rem;
-    font-size: 1.2rem; }
+    font-size: 1.6rem; }
   .user-widget:hover {
     cursor: pointer;
     background: #211a23; }
@@ -804,7 +811,7 @@ legend {
   @media (max-width: 63.5em) {
     .row {
       max-width: 50rem;
-      padding: 0 3rem;
+      padding: 0 1.5rem;
       max-width: 114rem; } }
   .row:after {
     content: "";
@@ -850,6 +857,11 @@ legend {
     .header {
       position: unset;
       display: block; } }
+  @media (max-width: 43.75em) {
+    .header {
+      top: -60px;
+      flex-direction: column;
+      height: 14rem; } }
   @media (max-width: 37.5em) {
     .header {
       padding: 0 1.5rem; } }
@@ -871,6 +883,9 @@ legend {
     justify-content: space-around; }
     .header__edge .btn {
       font-weight: 600; }
+      @media (max-width: 43.75em) {
+        .header__edge .btn {
+          padding: .75rem; } }
       .header__edge .btn:first-child {
         margin-right: 1.5rem; }
     @media (max-width: 63.5em) {
@@ -878,6 +893,12 @@ legend {
         position: relative;
         float: right;
         top: -40px; } }
+    @media (max-width: 43.75em) {
+      .header__edge {
+        margin-top: 1.4rem;
+        position: unset;
+        float: none;
+        justify-content: center; } }
   @media (max-width: 63.5em) {
     .header__user-widget {
       position: relative;
@@ -897,6 +918,10 @@ legend {
   -webkit-box-pack: unset;
   -ms-flex-pack: unset;
   justify-content: unset; }
+  @media (max-width: 63.5em) {
+    .profile-page .main__side-bar {
+      flex-direction: row;
+      justify-content: space-between; } }
   .profile-page .main__side-bar .table-stats {
     margin: 2.5rem 0; }
   @media (max-width: 63.5em) {
@@ -907,13 +932,29 @@ legend {
   .profile-page .main__side-bar .side-menu {
     -ms-flex-item-align: baseline;
     align-self: baseline;
+    font-size: 1.8rem;
     margin: 3rem 5rem; }
+    @media (max-width: 63.5em) {
+      .profile-page .main__side-bar .side-menu {
+        margin: 0; } }
     .profile-page .main__side-bar .side-menu__link:after {
-      top: 11px; }
+      top: 15px; }
     .profile-page .main__side-bar .side-menu__link:before {
       top: 0; }
+    @media (max-width: 63.5em) {
+      .profile-page .main__side-bar .side-menu__link {
+        float: left;
+        position: unset;
+        margin-left: 1.5rem;
+        background: #BC9405;
+        color: #222;
+        padding: 1.2rem 1.6rem; } }
     .profile-page .main__side-bar .side-menu__link.selected {
       color: #BC9405; }
+      @media (max-width: 63.5em) {
+        .profile-page .main__side-bar .side-menu__link.selected {
+          background: #00BC22;
+          color: white; } }
       .profile-page .main__side-bar .side-menu__link.selected:after {
         background-color: #BC9405; }
 
@@ -932,7 +973,8 @@ legend {
   @media (max-width: 63.5em) {
     .tab {
       position: unset;
-      width: 100%; } }
+      width: 100%;
+      padding: 2rem; } }
 
 .tab.active {
   visibility: visible;
@@ -946,8 +988,48 @@ legend {
   .profile > * {
     margin: 0 auto; }
 
-.history {
-  display: none; }
+.stats .table-stats {
+  margin: 5rem auto; }
+
+.stats__header {
+  width: 100%;
+  margin-bottom: 1.9rem;
+  border-bottom: white 1px solid;
+  background: #bc9405;
+  background: -webkit-gradient(linear, left top, right top, from(#BC9405), color-stop(49%, #FF5C26), to(#FF5C26));
+  background: linear-gradient(to right, #BC9405 0%, #FF5C26 49%, #FF5C26 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$color1', endColorstr='$color2', GradientType=1); }
+  .stats__header h3 {
+    padding: 1.3rem .76rem;
+    font-size: 2rem;
+    display: inline-block; }
+
+.stats__wrapper {
+  margin: 5rem auto; }
+
+.stats__list-item {
+  padding: 1.23rem .95rem;
+  width: 100%;
+  background: #28292C;
+  margin-bottom: 1.9rem;
+  font-size: 1.7rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  .stats__list-item > * {
+    display: inline-block; }
+
+.stats__list-heading {
+  color: white;
+  padding: 1rem; }
+
+.stats__meat {
+  display: inline-block;
+  background: #211a23;
+  padding: 1rem; }
+
+.history__list {
+  margin-top: 4rem; }
 
 #profilePage {
   position: relative; }

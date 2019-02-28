@@ -279,12 +279,16 @@ let assignments = [
   var $a_ºN = 4;
   var $b_ºO1 = $rndObj_1; // # insO_uN3_N3
   console.log($used_ºO1.N);
+  `,
+  `
+   var $a = [false,true,NaN,undefined,null,this];
+   console.log($a);
   `
 ];
 
 // let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
 
-let pickTask = (index = assignments.length - 2) => assignments[index];
+let pickTask = (index = assignments.length - 1) => assignments[index];
 
 // pickTask = (index = 17) => assignments[index];
 

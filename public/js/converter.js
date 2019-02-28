@@ -51,7 +51,8 @@ var converter = function (ass) {
       number: "#7EEF7C",
       "console.log": "#E83607",
       string: "#F7A70D",
-      resOfStr: "#9cdcfe"
+      resOfStr: "#9cdcfe",
+      drkBlue: "#2A4478"
     }
   };
   let theme;
@@ -69,7 +70,7 @@ var converter = function (ass) {
   loadTheme("dark");
 
   const keywords = {
-    searchTerms: ["var", "function", "=", "return", "console.log"]
+    searchTerms: ["var", "function", "=", "return", "console.log","false","true","null","NaN","this","undefined"]
   };
 
 
@@ -87,14 +88,16 @@ var converter = function (ass) {
     for (const key in obj) {
       if (key == "var") {
         obj[key]["regExp"] = new RegExp("[\\W]?\\b(var)\\s\\b", "g");
-      } else if (key == "function") {
+      } else if (key === "function") {
         obj[key]["regExp"] = new RegExp("[\\W]?(function)\\b", "g");
-      } else if (key == "return") {
+      } else if (key === "return") {
         obj[key]["regExp"] = new RegExp("[\\W]?(return)\\b", "g");
-      } else if (key == "=") {
+      } else if (key === "=") {
         obj[key]["regExp"] = new RegExp("(=)", "g");
-      } else if (key == "console.log") {
+      } else if (key === "console.log") {
         obj[key]["regExp"] = new RegExp("[\\W]?\\b(console.log)\\b", "g");
+      } else if (key === "true" || key === "false" || key === "NaN" || key === "null"){
+        obj[key]["regExp"] = new RegExp("[\\W]?\\b(false|true|NaN|null|this|undefined)\\b", "g");
       }
     }
   }
@@ -220,6 +223,8 @@ var converter = function (ass) {
             colorFillChange(ch, x, y, theme.number);
           } else if (strInfo[position].name === "console.log") {
             colorFillChange(ch, x, y, theme["console.log"]);
+          } else if (strInfo[position].name === "true" || strInfo[position].name === "false" || strInfo[position].name === "this" || strInfo[position].name === "NaN" || strInfo[position].name === "null" || strInfo[position].name === "undefined"){
+            colorFillChange(ch,x,y,theme.drkBlue)
           }
           x = x+context.measureText(ch).width + 1;
           z++;
