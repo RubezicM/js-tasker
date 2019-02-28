@@ -8,6 +8,10 @@
     border-image: linear-gradient(to right, $yellow-main-color 0%, $red-main-color 49%, $red-main-color 100%) 2 2 2 2;
     //@include border-gradient($yellow-main-color,$red-main-color,2px);
     @include clearfix;
+
+    @include respond(tab-port){
+        height: 100%!important;
+    }
     &__side-bar {
         height: 100%;
         width: 30%;
@@ -18,6 +22,11 @@
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
+        @include respond(tab-port){
+            float: none;
+            width: 100%;
+            padding: 1.5rem;
+        }
         & .user-stats {
             margin: 2rem 0 3.5rem 0;
         }
@@ -38,5 +47,9 @@
         flex-direction: column;
         justify-content: space-between;
         height: 100%;
+        @include respond(tab-port){
+            float: none;
+            width: 100%;
+        }
     }
 }

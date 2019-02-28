@@ -278,6 +278,9 @@ body {
   -o-border-image: linear-gradient(to right, #BC9405 0%, #FF5C26 49%, #FF5C26 100%) 2 2 2 2;
   border-image: -webkit-gradient(linear, left top, right top, from(#BC9405), color-stop(49%, #FF5C26), to(#FF5C26)) 2 2 2 2;
   border-image: linear-gradient(to right, #BC9405 0%, #FF5C26 49%, #FF5C26 100%) 2 2 2 2; }
+  @media (max-width: 63.5em) {
+    .form-edit {
+      width: 90%; } }
   .form-edit__group {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -505,7 +508,7 @@ legend {
 
 @media (max-width: 63.5em) {
   .nav {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
@@ -758,6 +761,9 @@ legend {
     content: "";
     display: table;
     clear: both; }
+  @media (max-width: 63.5em) {
+    .main {
+      height: 100% !important; } }
   .main__side-bar {
     height: 100%;
     width: 30%;
@@ -768,6 +774,11 @@ legend {
     flex-direction: column;
     align-items: center;
     justify-content: space-between; }
+    @media (max-width: 63.5em) {
+      .main__side-bar {
+        float: none;
+        width: 100%;
+        padding: 1.5rem; } }
     .main__side-bar .user-stats {
       margin: 2rem 0 3.5rem 0; }
     .main__side-bar .timer {
@@ -782,6 +793,10 @@ legend {
     flex-direction: column;
     justify-content: space-between;
     height: 100%; }
+    @media (max-width: 63.5em) {
+      .main__main-content {
+        float: none;
+        width: 100%; } }
 
 .row {
   max-width: 114rem;
@@ -884,6 +899,11 @@ legend {
   justify-content: unset; }
   .profile-page .main__side-bar .table-stats {
     margin: 2.5rem 0; }
+  @media (max-width: 63.5em) {
+    .profile-page .main__side-bar .stats {
+      width: 100%;
+      display: flex;
+      justify-content: space-around; } }
   .profile-page .main__side-bar .side-menu {
     -ms-flex-item-align: baseline;
     align-self: baseline;
@@ -909,17 +929,21 @@ legend {
   left: 70px;
   width: 80%;
   padding: 4rem 2rem; }
+  @media (max-width: 63.5em) {
+    .tab {
+      position: unset;
+      width: 100%; } }
 
 .tab.active {
   visibility: visible;
   opacity: 1; }
 
-.profile-edit {
+.profile {
   background: #222;
   height: 100%; }
-  .profile-edit > *:not(:last-child) {
+  .profile > *:not(:last-child) {
     margin-bottom: 5rem; }
-  .profile-edit > * {
+  .profile > * {
     margin: 0 auto; }
 
 .history {
@@ -927,3 +951,6 @@ legend {
 
 #profilePage {
   position: relative; }
+  @media (max-width: 63.5em) {
+    #profilePage {
+      padding: 0; } }

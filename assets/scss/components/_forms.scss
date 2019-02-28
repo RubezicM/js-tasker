@@ -94,6 +94,9 @@
     background: $bg-black-medium;
     width: 75%;
     border-bottom: 2px solid transparent;
+    @include respond(tab-port){
+        width: 90%;
+    }
     -o-border-image: linear-gradient(to right, $yellow-main-color 0%, $red-main-color 49%, $red-main-color 100%) 2 2 2 2;
        border-image: -webkit-gradient(linear, left top, right top, from($yellow-main-color), color-stop(49%, $red-main-color), to($red-main-color)) 2 2 2 2;
        border-image: linear-gradient(to right, $yellow-main-color 0%, $red-main-color 49%, $red-main-color 100%) 2 2 2 2;
