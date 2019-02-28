@@ -193,7 +193,6 @@ for (let i = 0; i < tabLinks.length; i++) {
         tabLinks[i].classList.add('selected');
         var tab = document.querySelector(`.${page}`);
         let allDivs = tab.parentElement.children;
-        
         for (let k = 0; k < allDivs.length; k++) {
             if (allDivs[k].classList.contains('custom-scroll')) {
                 allDivs[k].classList.remove('active');
