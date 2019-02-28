@@ -34,6 +34,7 @@ let variableNames = [
     o: "omicron"
   }
 ];
+
 let dataTypes = {
   O: "object",
   N: "number",
@@ -45,7 +46,12 @@ let dataTypes = {
   P: "parametar"
 };
 
+let randomStrings = ['foo', 'bar', 'baz', 'qux', 'quux', 'corge',
+  'uier', 'grault', 'garply', 'waldo', 'fred', 'plugh', 'thud',
+  'mos', 'henk', 'def'];
+
 module.exports = {
   dataTypes,
-  variableNames
+  variableNames,
+  randomStrings
 };

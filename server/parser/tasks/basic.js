@@ -247,7 +247,7 @@ let assignments = [
     var $b_ºN = $num; // # r0
     var $c_ºA = [$a, $b]; // []
     console.log($c[0]);
-    `,`
+    `, `
     var $h_ºN = $num;
     var $a_ºO1 = {
         $rnd_ºKN1: $num,
@@ -279,12 +279,36 @@ let assignments = [
   var $a_ºN = 4;
   var $b_ºO1 = $rndObj_1; // # insO_uN3_N3
   console.log($used_ºO1.N);
-  `
+  `, `
+  var $a = $num; // # r0
+  var $b = []; // # r0
+  for (var i = $num - $num; i < $a; i++) {
+      if (i % 2 === 0) {
+        $b.push(i);
+      };
+  };
+  console.log($b[1]);
+    `, `
+    var $a_ºN = $num; // # r0
+    var $b_ºN = $num; // # r0
+    var $c_ºN = $num; // # r0
+    var $d_ºA = [$used_ºNx2, $num]; // []
+    $used_ºA.push($used_ºN);
+    console.log($d[$d.length - $num]);
+    `,`
+      var $a_ºS = $str;
+      var $b_ºS = $str;
+      var $c_ºS = $str;
+      console.log($used_ºS);
+    `
 ];
+
+
+
 
 // let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
 
-let pickTask = (index = assignments.length - 2) => assignments[index];
+let pickTask = (index = assignments.length - 1) => assignments[index];
 
 // pickTask = (index = 17) => assignments[index];
 

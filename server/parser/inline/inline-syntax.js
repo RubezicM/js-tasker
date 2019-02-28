@@ -1,9 +1,10 @@
-const { variableNames, dataTypes } = require("./main-object");
+const { variableNames, dataTypes, randomStrings } = require("./main-object");
 const _ = require("lodash");
 
 function inlineSyntax(str) {
   let variableNamesLocal = _.cloneDeep(variableNames);
   let index = _.random(0, variableNamesLocal.length - 1);
+  let randomStringNames = _.cloneDeep(randomStrings);
 
   let randomizeKeys = arr => {
     let vals = _.shuffle(arr);
@@ -35,11 +36,19 @@ function inlineSyntax(str) {
       arr.push(obj[keys[i]]);
     }
     return arr;
-  }
+  };
+
+
 
   let task = new Challenge(variableNamesForTask);
   task.usableVarNames = task.getKeyNames(task.varNames);
+
   ///////////////// methods ///////////////////////////////
+
+  function insertRandomStrings(match, p1, p2, p3, offset, string) {
+    let randomString = randomStringNames.splice(_.random(0, randomStringNames.length - 1), 1);
+    return `"${randomString}"`;
+  };
 
   function replaceVarNames(match, p1, p2, p3, offset, string) {
     let key, type, nameVar, infoVar, member;
@@ -49,7 +58,6 @@ function inlineSyntax(str) {
     nameVar = task.varNames[key];
     if (group.length > 0) {
       if (type === "O") {
-        //console.log("aaaaaaa",offset,nameVar,type,key,group)
         infoVar = storeVarInfo(offset, nameVar, type, key, undefined, group);
       } else {
         infoVar = storeVarInfo(offset, nameVar, type, key, group, undefined);
@@ -59,7 +67,7 @@ function inlineSyntax(str) {
     }
     checkAndAddToUsedKeys(infoVar);
     return nameVar;
-  }
+  };
 
   function redeclareVars(match, p1, p2, offset, string) {
     if (match === "$var_") {
@@ -84,11 +92,11 @@ function inlineSyntax(str) {
     nameVar = task.usableVarNames[rnd];
 
     if (p2.length > 0 && p1.indexOf("K") !== -1) {
-      infoVar = storeVarInfo(offset, nameVar, type, undefined,member,undefined);
-    } else if(p2.length > 0 && p1.indexOf("O") !== -1) {
+      infoVar = storeVarInfo(offset, nameVar, type, undefined, member, undefined);
+    } else if (p2.length > 0 && p1.indexOf("O") !== -1) {
       //console.log("objekat")
       //console.log(offset,nameVar,type,member)
-      infoVar = storeVarInfo(offset, nameVar, type, undefined,undefined,member);
+      infoVar = storeVarInfo(offset, nameVar, type, undefined, undefined, member);
       //console.log(infoVar);
     } else {
       infoVar = storeVarInfo(offset, nameVar, type);
@@ -182,9 +190,9 @@ function inlineSyntax(str) {
       tmpObjKeys.push(names[type[i]]);
     }
     let tmp = [];
-    arr.forEach( entry => {
+    arr.forEach(entry => {
       let isMember = isMemberOfArray(tmpObjKeys, entry.type);
-      console.log("entry",entry);
+      console.log("entry", entry);
       if (isMember && entry.startingIndex < beginFrom && entry.member === null) {
         tmp.push(entry);
       }
@@ -192,7 +200,7 @@ function inlineSyntax(str) {
 
     return tmp;
   }
-  function getObjectKeyValues(arr,type,beginFrom) {
+  function getObjectKeyValues(arr, type, beginFrom) {
     let names = {
       O: "object",
       N: "number",
@@ -208,7 +216,7 @@ function inlineSyntax(str) {
       tmpObjKeys.push(names[type[i]]);
     }
     let tmp = [];
-    arr.forEach( entry => {
+    arr.forEach(entry => {
       let isMember = isMemberOfArray(tmpObjKeys, entry.type);
       if (isMember && entry.startingIndex < beginFrom) {
         tmp.push(entry);
@@ -231,6 +239,8 @@ function inlineSyntax(str) {
     replaceVarNames
   );
 
+  jScript = jScript.replace(/\$str/g, insertRandomStrings);
+
   jScript = jScript.replace(/\$rnd_º([a-zA-Z]+)([0-9]*)/g, declareRandomVars);
   jScript = jScript.replace(
     /\$used_º([a-zA-Z]{1})([0-9]).([a-zA-Z])/g,
@@ -241,11 +251,11 @@ function inlineSyntax(str) {
         type = p3;
         indexFrom = offset;
         let mainObjectName = _.find(task.usedVarNames, ["group", group]);
-        let allPosibleMembers = getObjectKeyValues(task.usedVarNames,type,indexFrom);
-        let filteredMemberList = _.filter(allPosibleMembers, (el)=>{
-              if(el.type.indexOf("object_key") != -1 && el.member === group){
-                return el;
-              }
+        let allPosibleMembers = getObjectKeyValues(task.usedVarNames, type, indexFrom);
+        let filteredMemberList = _.filter(allPosibleMembers, (el) => {
+          if (el.type.indexOf("object_key") != -1 && el.member === group) {
+            return el;
+          }
         });
         //console.log("SVI MEMBERI",allPosibleMembers,"'\n","FILTRIRANI MEMBERI",filteredMemberList)
         //console.log("MAIN OBJECT",mainObjectName);
@@ -262,13 +272,13 @@ function inlineSyntax(str) {
       tmpArr = getSpecificVarTypes(task.usedVarNames, type, indexFrom);
       rnd = _.random(0, tmpArr.length - 1);
       if (p2 === undefined) {
-        console.log(tmpArr);
+        // console.log(tmpArr);
         nameVar = tmpArr[rnd]["name"];
         return nameVar;
       } else {
         nameVar = [];
         for (let i = 0; i < p2; i++) {
-         // console.log(match,p2)
+          // console.log(match,p2)
           rnd = _.random(0, tmpArr.length - 1);
           nameVar.push(tmpArr[rnd]["name"]);
           tmpArr.splice(rnd, 1);
@@ -290,11 +300,11 @@ function inlineSyntax(str) {
     (match, p1, p2, offset, string) => {
       let nameVar;
       if (p2 === undefined) {
-        return _.random(0, 15);
+        return _.random(0, 10);
       } else {
         nameVar = [];
         for (var i = 0; i < p2; i++) {
-          nameVar.push(_.random(0, 15));
+          nameVar.push(_.random(0, 10));
         }
         return nameVar.join(",");
       }
