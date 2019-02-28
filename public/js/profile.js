@@ -202,20 +202,6 @@ for (let i = 0; i < tabLinks.length; i++) {
         }
         tab.style.display = "block";
         tab.classList.add('active');
-        if(page === "history"){
-            console.log(page);
-            let accourdionEls = [];
-            let allElements = tab.children[0].children;
-            console.log(allElements)
-            Array.from(allElements).forEach((el)=>{
-                console.log(el.id);
-            })
-            for(el of allElements){
-                console.log(el);
-            }
-            console.log(allElements)
-        }
-        console.log(tab.children[0].children)
     }
 }
 
