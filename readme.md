@@ -429,7 +429,9 @@ In this example, variable $a will be given random whole intiger value.
 - $[ first value ]_[ second value ]
 
     - $ - fixed parser command.
-    - [ first value ] - positive or negative intiger. If there is no second number parser will provide random number from 0 to this value
+    - [ first value ] - positive or negative intiger. If there is no second number parser will provide random number from 0 to this value.
+    - _ - fixed parser command: used only if we want to add second border top value
+    - [ second value ] - positive or negative intiger. Used as a top border value. It is included.
 
 example: 
 
@@ -440,7 +442,7 @@ In this example, variable $a will be given random whole intiger value.
 ### Insert random array:
 
 - [ array commands separated by comma ]
-    - $num[ amount of number elements ]: It tells parser to insert two random numbers in the array. $num2 will insert two random number elements to the array
+    - $num[ amount of number elements ]: It tells parser to insert two random numbers in the array. $num2 will insert two random number elements to the array.
     - $used_º[ type ]x[ amount of elements]: It works same as $used command. It will randomly pick used variables of that type. "x" followed by number will tell parser how many random elements to put inside array. Same element can appear more times.
 
 example: 
