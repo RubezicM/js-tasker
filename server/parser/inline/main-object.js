@@ -5,12 +5,12 @@ let variableNames = [
     c: "dolor",
     d: "sit",
     e: "amet",
-    f: "consequentum",
+    f: "cons",
     g: "rubor",
     h: "calor",
     i: "bar",
     j: "mutat",
-    k: "officiis",
+    k: "offi",
     l: "facer",
     m: "magna",
     n: "semper",
@@ -26,14 +26,15 @@ let variableNames = [
     g: "zeta",
     h: "sigma",
     i: "omega",
-    j: "epsilon",
+    j: "epsi",
     k: "kappa",
     l: "eta",
     m: "pi",
     n: "chi",
-    o: "omicron"
+    o: "omi"
   }
 ];
+
 let dataTypes = {
   O: "object",
   N: "number",
@@ -45,7 +46,12 @@ let dataTypes = {
   P: "parametar"
 };
 
+let randomStrings = ['foo', 'bar', 'baz', 'qux', 'quux', 'corge',
+  'uier', 'grault', 'garply', 'waldo', 'fred', 'plugh', 'thud',
+  'mos', 'henk', 'def'];
+
 module.exports = {
   dataTypes,
-  variableNames
+  variableNames,
+  randomStrings
 };

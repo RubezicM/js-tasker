@@ -412,7 +412,7 @@ Here, we variable $a will receive value of random key from object $f.
 
 ## Inline insertions:
 
-### Insert random number:
+### Insert random number value:
 
 - $num
 
@@ -424,10 +424,25 @@ example:
 
 In this example, variable $a will be given random whole intiger value.
 
+### Insert random number with border values:
+
+- $[ first value ]_[ second value ]
+
+    - $ - fixed parser command.
+    - [ first value ] - positive or negative intiger. If there is no second number parser will provide random number from 0 to this value.
+    - _ - fixed parser command: used only if we want to add second border top value
+    - [ second value ] - positive or negative intiger. Used as a top border value. It is included.
+
+example: 
+
+            var $a = $num;
+
+In this example, variable $a will be given random whole intiger value.
+
 ### Insert random array:
 
 - [ array commands separated by comma ]
-    - $num[ amount of number elements ]: It tells parser to insert two random numbers in the array. $num2 will insert two random number elements to the array
+    - $num[ amount of number elements ]: It tells parser to insert two random numbers in the array. $num2 will insert two random number elements to the array.
     - $used_º[ type ]x[ amount of elements]: It works same as $used command. It will randomly pick used variables of that type. "x" followed by number will tell parser how many random elements to put inside array. Same element can appear more times.
 
 example: 
@@ -437,3 +452,18 @@ example:
             var $c_ºA = ['lorem', $used_ºNx4];
 
 Here, output of array $c will have 5 elements. First one will be 'lorem' and others will be either $a or $b.
+
+### Insert random string:
+
+- $str
+    - $str - fixed parser command. All instances of this string will be replaced with "foo", "bar", "baz" and so forth randomly. No same string value will appear unless all of names have been used. 
+
+example: 
+
+
+            var $a_ºS = $str;
+            var $b_ºS = $str;
+            var $c_ºS = $str;
+            console.log($used_ºS);
+
+In this example all variables will randomly be assigned strings. Console log will pick one of them randomly as they have all been classified as string above. 

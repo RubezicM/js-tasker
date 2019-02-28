@@ -25,7 +25,7 @@ const arrays = [
 
 /////////////// global variables ////////////////////////
 
-const mathOperators = ["+", "-", "*"];
+const mathOperators = ["+", "-"];
 
 /////////// row/block funkcije /////////////////////
 
@@ -338,9 +338,11 @@ function shuffleArrayElements(mainArr) {
     for (let i = 0; i < mainArr.length; i++) {
         if (mainArr[i].inline && mainArr[i].inline.match(/\[\]/)) {
             mainArr[i].code = mainArr[i].code.replace(/\[(.*)\]/g, (match, p1, offset, string) => {
-                let arr = p1.split(" ,");
-                global.shuffle(arr);
-                arr = arr.map(element => element.trim());
+                let arr = p1.split(",");
+                arr = _.shuffle(arr);
+                for (let i = 1; i < arr.length; i++) {
+                    arr[i] = " " + arr[i];
+                };
                 return "[" + arr.join() + "]";
             });
         };

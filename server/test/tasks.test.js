@@ -23,13 +23,13 @@ describe('First test task', () => {
         let testStringBasic = startTest(0);
         let testString = testStringBasic.function + testStringBasic.result;
 
-        it('does not have "undefined" in it.', () => {
-            expect(testString).toEqual(expect.not.stringContaining(badWords.undefined));
-        });
+        // it('does not have "undefined" in it.', () => {
+        //     expect(testString).toEqual(expect.not.stringContaining(badWords.undefined));
+        // });
 
-        it('does not have "NaN" in it.', () => {
-            expect(testString).toEqual(expect.not.stringContaining(badWords.NaN));
-        });
+        // it('does not have "NaN" in it.', () => {
+        //     expect(testString).toEqual(expect.not.stringContaining(badWords.NaN));
+        // });
 
         it('does not have "$" in it.', () => {
             expect(testString).toEqual(expect.not.stringContaining(badWords.$));

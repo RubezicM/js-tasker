@@ -247,7 +247,7 @@ let assignments = [
     var $b_ºN = $num; // # r0
     var $c_ºA = [$a, $b]; // []
     console.log($c[0]);
-    `,`
+    `, `
     var $h_ºN = $num;
     var $a_ºO1 = {
         $rnd_ºKN1: $num,
@@ -279,12 +279,105 @@ let assignments = [
   var $a_ºN = 4;
   var $b_ºO1 = $rndObj_1; // # insO_uN3_N3
   console.log($used_ºO1.N);
-  `,
-  `
-   var $a = [false,true,NaN,undefined,null,this];
-   console.log($a);
-  `
+  `, `
+  var $a = $num; // # r0
+  var $b = []; // # r0
+  for (var i = $num - $num; i < $a; i++) {
+      if (i % 2 === 0) {
+        $b.push(i);
+      };
+  };
+  console.log($b[1]);
+    `, `
+    var $a_ºN = $num; // # r0
+    var $b_ºN = $num; // # r0
+    var $c_ºN = $num; // # r0
+    var $d_ºA = [$used_ºNx2, $num]; // []
+    $used_ºA.push($used_ºN);
+    console.log($d[$d.length - $num]);
+    `,`
+      var $a_ºS = $str;
+      var $b_ºS = $str;
+      var $c_ºS = $str;
+      console.log($used_ºS);
+    `,`
+    var $a_ºN = $num; 
+    var $d = [];
+    var $b_ºN = '$num' + $1_2; // '0 # b1-0 r0
+    var $c_ºN = $num; // # r0
+    for (var i = $1_3; i < 5; i++) { // # b3-0
+      $used_ºN++; // # r1
+      $d.push($used_ºN); // # r1
+    };
+    console.log($d[$1]);
+    `,`
+    var $a_ºA = [$str, $str, $num, $str, $num]; // [] # r0
+    var $b = '$num'; // '0 # r0
+
+    $a.forEach(function(item, index, array) {
+
+      if (index % $2_3 && index !== 0) { // # b2-0
+        var $b = $str; // var 
+      };
+
+      $b = $b + item; // # b0-0
+
+    });
+
+    $b = $b.toString(); //
+
+    console.log($b.slice(0, $1_3)); //
+    `,`
+    var $a_ºA = [$str, $str]; // # b0-0
+
+    var $b_ºO1 = { // # b4-0
+      $rnd_ºKS1: false, // # r1
+      $rnd_ºKS1: true, // # r1
+      $rnd_ºKS1: $str
+    };
+
+    $a.push($used_ºO1.S); // # r0
+    $a.shift($used_ºO1.S); // # r0 ~ c--shift--y-pop--
+    $a.unshift($used_ºO1.S); // # r0
+    $a.pop($used_ºO1.S); // # r0 ~ c--pop--y-shift--
+
+    console.log($a[$1]);
+    `,`
+    var $a_ºA = [$str, $num]; // []
+    var $b_ºA = [$num, $str]; // []
+    var $c_ºA = [$num, $str]; // []
+
+    $used_ºA = $used_ºA.concat($used_ºA);
+    var $d = $used_ºA.splice($1, $1_2, $used_ºA[$1]) - $used_ºA;
+
+    console.log($d[$8]);
+    `,`
+    var $a = [$str, $str, $num, $str]; // []
+
+    $a.reverse();
+
+    var $b_ºO1 = {
+      $c_ºKS1: $num, // # b0-0
+      $d_ºKS1: $a[$3], // # b0-0
+      $rnd_ºKF1: function () { // # b3-0
+          this.$c++;
+          return this.$c + this.$d; // +0
+      },
+      $rnd_ºKF1: function () { // # b2-0
+        return $a.push(this.$d[0]) // +0
+      },
+    };
+
+    $used_ºO1.F(); // # r0
+    
+    $used_ºO1.F(); // # r0
+
+    console.log($used_ºO1.S); // # r0
+    `
 ];
+
+
+
 
 // let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
 
