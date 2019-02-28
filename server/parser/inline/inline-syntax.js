@@ -46,6 +46,10 @@ function inlineSyntax(str) {
   ///////////////// methods ///////////////////////////////
 
   function insertRandomStrings(match, p1, p2, p3, offset, string) {
+    if (randomStringNames.length === 0) {
+      randomStringNames = _.cloneDeep(randomStrings);
+    };
+
     let randomString = randomStringNames.splice(_.random(0, randomStringNames.length - 1), 1);
     return `"${randomString}"`;
   };
