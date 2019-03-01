@@ -709,12 +709,14 @@ legend {
 
 .timer {
   position: relative;
+  display: block;
   width: 140px;
   height: 140px;
   border-radius: 50%;
   background: #28292C;
   text-align: center;
   box-shadow: 2px 3px 1rem rgba(0, 0, 0, 0.3); }
+
   .timer__progress {
     position: absolute;
     top: 0;
@@ -772,11 +774,12 @@ legend {
     .main {
       height: 100% !important; } }
   .main__side-bar {
+    flex-wrap: wrap;
     height: 100%;
     width: 30%;
     background-color: #211a23;
     float: left;
-    padding: 6.5rem 0;
+    padding: 1rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
