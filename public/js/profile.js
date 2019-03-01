@@ -184,8 +184,7 @@ axios.get('answers').then((response) => {
 
 //////// DISPLAY PROFILE-EDIT OR HISTORY ////////
 
-let url = location.href.split('/');
-let page = url[url.length - 1];
+
 
 for (let i = 0; i < tabLinks.length; i++) {
     tabLinks[i].classList.remove('selected');

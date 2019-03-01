@@ -8,16 +8,36 @@ const _ = require('lodash');
 const bcrypt = require('bcryptjs');
 const axios = require('axios');
 
-const { mongoose } = require('./db/mongoose');
-const { Answer } = require('./models/answer');
-const { User } = require('./models/user');
-const { authenticate } = require('./middleware/authenticate');
-const { loggedIn } = require('./middleware/loggedIn');
-const { inlineSyntax } = require('./parser/inline/inline-syntax');
-const { commentsSyntax } = require('./parser/comments/comments-syntax');
-const { pickTask } = require('./parser/tasks/basic');
-const { parser } = require('./middleware/parser');
-const { hbs } = require('./utils/hbs/hbs-helpers');
+const {
+    mongoose
+} = require('./db/mongoose');
+const {
+    Answer
+} = require('./models/answer');
+const {
+    User
+} = require('./models/user');
+const {
+    authenticate
+} = require('./middleware/authenticate');
+const {
+    loggedIn
+} = require('./middleware/loggedIn');
+const {
+    inlineSyntax
+} = require('./parser/inline/inline-syntax');
+const {
+    commentsSyntax
+} = require('./parser/comments/comments-syntax');
+const {
+    pickTask
+} = require('./parser/tasks/basic');
+const {
+    parser
+} = require('./middleware/parser');
+const {
+    hbs
+} = require('./utils/hbs/hbs-helpers');
 const app = express();
 const port = process.env.PORT || 3000;
 const publicPath = path.join(__dirname, '../public');
@@ -36,20 +56,28 @@ app.use(cookieParser());
 
 /////////////////// Routes ///////////////////////
 
-app.get('/', (req, res) => {
-    res.render('home.hbs', {
-        message: 'Radi!'
-    });
+app.get('/', loggedIn, (req, res) => {
+    if (req.loggedIn) {
+        res.render('home.hbs', {
+            title: 'Home',
+            user: req.user.username
+        })
+    } else {
+        res.render('home.hbs', {
+            title: "Home",
+            user: null
+        })
+    }
 });
 
-app.get('/highscore',loggedIn,(req, res) => {
-    if(req.loggedIn){
-        res.render('high-score.hbs',{
+app.get('/highscore', loggedIn, (req, res) => {
+    if (req.loggedIn) {
+        res.render('high-score.hbs', {
             title: 'Highscore',
             user: req.user.username
         })
     } else {
-        res.render('high-score.hbs',{
+        res.render('high-score.hbs', {
             title: "Highscore",
             user: null
         })
@@ -168,7 +196,9 @@ app.get('/users', (req, res) => {
 });
 
 app.get('/users/check-username/:username', (req, res) => {
-    User.findOne({ username: req.params.username }).then((user) => {
+    User.findOne({
+        username: req.params.username
+    }).then((user) => {
         if (user) {
             res.send('true');
         } else {
@@ -181,7 +211,9 @@ app.get('/users/check-username/:username', (req, res) => {
 });
 
 app.get('/users/check-email/:email', (req, res) => {
-    User.findOne({ email: req.params.email }).then((user) => {
+    User.findOne({
+        email: req.params.email
+    }).then((user) => {
         if (user) {
             res.send('true');
         } else {
@@ -195,7 +227,9 @@ app.get('/users/check-email/:email', (req, res) => {
 
 app.delete('/users', authenticate, (req, res) => {
     let username = req.user.username;
-    User.deleteOne({ username }).then((user) => {
+    User.deleteOne({
+        username
+    }).then((user) => {
         res.send({
             text: 'Account deleted.',
             user
@@ -207,19 +241,23 @@ app.patch('/users', authenticate, (req, res) => {
     let username = req.user.username;
     let body = _.pick(req.body, ['email', 'username']);
 
-    User.findOneAndUpdate({ username },
-        body,
-        { new: true, runValidators: true }).then((user) => {
-            if (!user) {
-                res.status(404).send('User not found!');
-            };
-            res.send(user);
-        }).catch((err) => {
-            if (err.message) {
-                err = err.message;
-            };
-            res.status(400).send(err);
-        });
+    User.findOneAndUpdate({
+            username
+        },
+        body, {
+            new: true,
+            runValidators: true
+        }).then((user) => {
+        if (!user) {
+            res.status(404).send('User not found!');
+        };
+        res.send(user);
+    }).catch((err) => {
+        if (err.message) {
+            err = err.message;
+        };
+        res.status(400).send(err);
+    });
 });
 
 app.patch('/users/password', authenticate, (req, res) => {
@@ -233,14 +271,19 @@ app.patch('/users/password', authenticate, (req, res) => {
         bcrypt.genSalt(10, (err, salt) => {
             bcrypt.hash(body.newPassword, salt, (err, hash) => {
                 let newPassword = hash;
-                User.findOneAndUpdate({ username },
-                    { password: newPassword },
-                    { new: true, runValidators: true }).then((user) => {
-                        user.generateAuthToken().then((token) => {
-                            res.cookie('x-auth-token', token);
-                            res.send(user);
-                        });
+                User.findOneAndUpdate({
+                    username
+                }, {
+                    password: newPassword
+                }, {
+                    new: true,
+                    runValidators: true
+                }).then((user) => {
+                    user.generateAuthToken().then((token) => {
+                        res.cookie('x-auth-token', token);
+                        res.send(user);
                     });
+                });
             });
         });
     }).catch((err) => {
@@ -254,7 +297,9 @@ app.get('/users/:username', authenticate, (req, res) => {
         return res.status(401).send('Not authorised to see this user');
     };
 
-    User.findOne({ username }).then((user) => {
+    User.findOne({
+        username
+    }).then((user) => {
         res.send(user);
     }).catch((err) => res.status(404).send('User not found!'));
 });
@@ -299,9 +344,14 @@ app.post('/answer', authenticate, (req, res) => {
     answer.save().then((answer) => {
 
         setTimeout(() => {
-            Answer.findOneAndUpdate({ _id: answer._id, completed: false }, {
+            Answer.findOneAndUpdate({
+                _id: answer._id,
+                completed: false
+            }, {
                 completed: true
-            }, { new: true }).then((answer) => {
+            }, {
+                new: true
+            }).then((answer) => {
                 User.updateScore(answer.creator, false, 'basic').then((user) => {
                     console.log('Answer updated.', answer._id, answer.creator, user.score, user.xp, user.combo);
                 });
@@ -325,7 +375,11 @@ app.post('/answer', authenticate, (req, res) => {
 
 app.post('/answer-send', authenticate, (req, res) => {
     let body = _.pick(req.body, ['_id', 'result']);
-    Answer.findOne({ _id: body._id, completed: false }).then((answer) => {
+    Answer.findOne({
+        _id: body._id,
+        completed: false
+    }).then((answer) => {
+        console.log("odgovor tacan", answer.result, "\n", "body-odgovor", body.result)
         if (answer.result.trim() === body.result) {
             Answer.findByIdAndUpdate(answer._id, {
                 completed: true,
@@ -333,19 +387,27 @@ app.post('/answer-send', authenticate, (req, res) => {
             }).then((answer) => {
                 User.updateScore(answer.creator, true, 'basic').then((user) => {
                     res.send({
-                        correct: true, combo: user.combo, xp: user.xp, bestCombo: user.bestCombo,
-                        attempted: user.score.basic.attempted, percentage: user.score.basic.percentage
+                        correct: true,
+                        combo: user.combo,
+                        xp: user.xp,
+                        bestCombo: user.bestCombo,
+                        attempted: user.score.basic.attempted,
+                        percentage: user.score.basic.percentage
                     });
                 });
             });
-        } else {
+        }else {
             Answer.findByIdAndUpdate(answer._id, {
                 completed: true
             }).then((answer) => {
                 User.updateScore(answer.creator, false, 'basic').then((user) => {
                     res.send({
-                        correct: false, combo: user.combo, xp: user.xp, bestCombo: user.bestCombo,
-                        attempted: user.score.basic.attempted, percentage: user.score.basic.percentage
+                        correct: false,
+                        combo: user.combo,
+                        xp: user.xp,
+                        bestCombo: user.bestCombo,
+                        attempted: user.score.basic.attempted,
+                        percentage: user.score.basic.percentage
                     });
                 });
             });
@@ -357,7 +419,9 @@ app.post('/answer-send', authenticate, (req, res) => {
 
 app.get('/answers', authenticate, (req, res) => {
     let username = req.user.username;
-    Answer.find({ creator: username }).then((answers) => {
+    Answer.find({
+        creator: username
+    }).then((answers) => {
         let sortedAnswers = _.sortBy(answers, ['createdAt']).reverse();
         res.send(sortedAnswers);
     }).catch((err) => {
@@ -383,10 +447,14 @@ app.post('/api/images', authenticate, parser.single("image"), (req, res) => {
     image.url = req.file.url;
     image.id = req.file.public_id;
 
-    User.findOneAndUpdate({ username: req.user.username }, {
+    User.findOneAndUpdate({
+        username: req.user.username
+    }, {
         imageURL: image.url,
         imageID: image.id
-    }, { new: true }).then((user) => {
+    }, {
+        new: true
+    }).then((user) => {
         res.render('profile.hbs', {
             user: req.user.username,
             password: req.user.password,
@@ -408,8 +476,6 @@ app.listen(port, () => {
     console.log(`Started listenning on port ${port}`);
 });
 
-module.exports = { app };
-
-
-
-
+module.exports = {
+    app
+};

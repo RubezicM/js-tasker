@@ -1,7 +1,4 @@
 
-
-
-
 ///////// MECHANICS //////////
 
 let taskResponse = 5;
@@ -50,7 +47,7 @@ function startGame(){
     nextGameCountdownDiv.style.display = 'none';
     UITimerReset();
     initializeTaskUI();
-    
+
     answer.value = '';
     axios.post('/answer')
         .then((response) => {
@@ -81,7 +78,7 @@ function postAnswer(message = '') {
             // display overlay, bring back the button
             //alert(`${message}Correct answer!`);
         } else {
-            wrongAnswerScreen();
+            wrongAnswerScreen(answer.value);
     //alert(`${message}Wrong answer!`);
         };
         comboField.innerHTML = `Answers in a row: ${response.data.combo}`;
@@ -98,3 +95,8 @@ function postAnswer(message = '') {
     });
 }
 
+
+let exitBtn = document.getElementById("exit");
+exitBtn.addEventListener('click',function(e){
+    window.location.assign('/');
+});

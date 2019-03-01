@@ -4,8 +4,19 @@
     position: fixed;
     left: 0;
     top: 0;
-    background: rgba(0,0,0,.7);
+    background: rgba(0, 0, 0, .7);
     z-index: 1;
+
+    &__inner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
     &--game {
         position: absolute;
@@ -13,8 +24,9 @@
         z-index: 2;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-evenly;
         flex-direction: column;
+
         &.hidden {
             display: none;
         }
@@ -29,5 +41,43 @@
         }
     }
 
-    
+    & .game__buttons {
+        display: flex;
+
+        &>button:first-child {
+            margin-right: 2.5rem;
+        }
+    }
+
+
+    & .combo {
+        text-align: center;
+        margin-top: 5rem;
+    }
+
+    & .user-widget {
+        margin-bottom: 10rem;
+    }
+
+    & .game-status {
+        text-align: center;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: $bg-black-medium;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+    }
+
+    & .game-status.hidden {
+        display: none;
+    }
+
+    &__inner {
+        
+    }
 }

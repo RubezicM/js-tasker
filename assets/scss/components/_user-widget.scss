@@ -3,6 +3,7 @@
     align-items: center;
     position: relative;
     padding: .5rem 1.2rem;
+    height: 4.5rem;
     &__img {
         
         @include respond(phone){

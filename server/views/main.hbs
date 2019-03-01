@@ -1,75 +1,100 @@
-{{> header}}
-{{> page-headline}}
+{{!-- {{> header}}
+{{> page-headline}} --}}
 {{!-- <h2>Hello, {{user}} <img src="{{imgUrl}}" alt="Profile Pic" width="72"></h2> --}}
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="row">
-    <div id="main" class="main">
-        <div class="main__side-bar">
-            <div class="user-widget--small">
-                <div class="user-widget flex-disp">
-                    <div class="user-widget__img">
-                        <img src="{{imgUrl}}" alt="User Image">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Game</title>
+</head>
+
+<body>
+    <div class="row">
+        {{> page-headline}}
+        <div id="main" class="main game-page">
+
+            <div class="main__main-content">
+                <div id="game-area"></div>
+                <div class="timer main__side-bar--timer">
+                    <p id="timeLeft" class="timer__number">30</p>
+                    <p id="sec">sec</p>
+                    <canvas id="progress" width="140" height="140" class="timer__progress"></canvas>
+                </div>
+                <form action="post" id="form-game" class="answer-submit">
+                    <label for="answer" class="answer-submit__question"><span>Console.log</span> output equals to :
+                    </label>
+                    <div class="answer-submit__group">
+                        <input type="text" name="answer" id="answer" class="answer-submit__input"
+                            placeholder="Answer goes here" autocomplete="off">
+                        <input type="submit" value="Submit" class="answer-submit__btn btn btn__main btn__main--red">
                     </div>
-                    <div class="user-widget__name">
-                        <a href="#">{{user}}</a>
+                </form>
+
+                <div class="overlay overlay--game">
+                    <div class="overlay__side">
+                        <div class="user-widget--small">
+                            <div class="user-widget flex-disp">
+                                <div class="user-widget__img">
+                                    <img src="{{imgUrl}}" alt="User Image">
+                                </div>
+                                <div class="user-widget__name">
+                                    <a href="#">{{user}}</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="user-stats">
+                            <ul class="primary-list">
+                                <li>Experience: <span class="primary-color-txt font-size-medium"
+                                        id="player-xp">{{xp}}</span></li>
+                                <li>Highest in a row: <span class="primary-color-txt font-size-medium"
+                                        id="player-best-combo">{{bestCombo}}</span></li>
+                                <li>Total tasks: <span class="primary-color-txt font-size-medium"
+                                        id="player-basic-attempts">{{basicAttempts}}</span></li>
+                                <li>Success percentage: <span id="player-basic-percentage"
+                                        class="secondary-color-txt font-size-medium">{{basicPercentage}}%</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <p id="combo" class="combo">Answers in a row: <span
+                                class="primary-color-txt font-size-medium fw-600">{{combo}}</span></p>
+
                     </div>
+                    <div class="game__buttons">
+<button id="start" class="btn btn__main btn__main--red btn__big">Start</button>
+                    <button id="exit" class="btn btn__main btn__main--red btn__big">Exit</button>
+                    </div>
+                    
+                    <div class="lds-roller loader hidden">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="game-status hidden txt-center">&nbsp;</div>
+                    <div class="next-game-countdown">&nbsp;</div>
                 </div>
-            </div>
-            <div class="user-stats">
-                <ul class="primary-list">
-                    <li>Experience: <span class="primary-color-txt font-size-medium" id="player-xp">{{xp}}</span></li>
-                    <li>Highest in a row: <span class="primary-color-txt font-size-medium" id="player-best-combo">{{bestCombo}}</span></li>
-                    <li>Total tasks: <span class="primary-color-txt font-size-medium" id="player-basic-attempts">{{basicAttempts}}</span></li>
-                    <li>Success percentage: <span id="player-basic-percentage"
-                            class="secondary-color-txt font-size-medium">{{basicPercentage}}%</span>
-                    </li>
-                </ul>
-            </div>
-            <p id="combo" class="combo">Answers in a row: <span
-                    class="primary-color-txt font-size-medium fw-600">{{combo}}</span></p>
-            <div class="timer main__side-bar--timer">
-                <p id="timeLeft" class="timer__number">30</p>
-                <p id="sec">sec</p>
-                <canvas id="progress" width="140" height="140" class="timer__progress"></canvas>
-            </div>
-        </div>
-        <div class="main__main-content">
-            <div id="game-area"></div>
-            <form action="post" id="form-game" class="answer-submit">
-                <label for="answer" class="answer-submit__question"><span>Console.log</span> output equals to :
-                </label>
-                <div class="answer-submit__group">
-                    <input type="text" name="answer" id="answer" class="answer-submit__input"
-                        placeholder="Answer goes here" autocomplete="off">
-                    <input type="submit" value="Submit" class="answer-submit__btn btn btn__main btn__main--red">
-                </div>
-            </form>
-            <div class="overlay overlay--game"><button id="start"
-                    class="btn btn__main btn__main--red btn__big">Start</button>
-                <div class="lds-roller loader hidden">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-                <p class="game-status hidden txt-center">&nbsp;</p>
-                <div class="next-game-countdown"></div>
             </div>
         </div>
     </div>
-</div>
 
 
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="/js/converter.js"></script>
-<script src="/js/timer.js"></script>
-<script src="/js/UI-validation.js"></script>
-<script src="/js/game.js"></script>
-<script src="/js/main.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/js/converter.js"></script>
+    <script src="/js/timer.js"></script>
+    <script src="/js/UI-validation.js"></script>
+    <script src="/js/game.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 
 </html>

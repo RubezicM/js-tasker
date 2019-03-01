@@ -25,10 +25,16 @@ let correctAnswerScreen = () => {
     gameStatus.classList.add('show');
     gameStatus.innerHTML = `<i class="fas fa-check fw-600 tertiary-color-txt font-size-huge"></i><span class="block-disp font-size-big ">Correct answer!</span>`;
     setTimeout(() => {
-        let miniTimer = 3;
         gameStatus.classList.remove('show');
         gameStatus.classList.add('hidden');
         startButton.style.display = 'block';
+        startButton.nextElementSibling.style.display = 'block';
+        let allItemsContainer = startButton.parentElement.parentElement.children;
+        for (var i = 0; i < allItemsContainer.length; i++) {
+            if (!allItemsContainer[i].classList.contains('loader') && !allItemsContainer[i].classList.contains('game-status')) {
+                allItemsContainer[i].classList.remove('hidden');
+            }
+        }
         // nextGameCounter = setInterval(() => {
         //     nextGameCountdownDiv.style.display = 'block';
         //     --miniTimer;
@@ -43,17 +49,29 @@ let correctAnswerScreen = () => {
     }, 1500);
 };
 
-let wrongAnswerScreen = () => {
+let wrongAnswerScreen = (response) => {
     let overlay = document.querySelector('.overlay');
     let gameStatus = document.querySelector('.game-status');
+    let msg;
+    if(response.length === 0){
+        msg = "Time is up!"
+    } else {
+        msg = "Wrong answer!"
+    }
     overlay.classList.remove('hidden');
     gameStatus.classList.remove('hidden');
     gameStatus.classList.add('show');
-    gameStatus.innerHTML = `<i class="fas fa-times fw-600 secondary-color-txt font-size-huge"></i><span class="block-disp font-size-big ">Wrong answer!</span>`;
+    gameStatus.innerHTML = `<i class="fas fa-times fw-600 secondary-color-txt font-size-huge"></i><span class="block-disp font-size-big ">${msg}</span>`;
     setTimeout(() => {
         gameStatus.classList.remove('show');
         gameStatus.classList.add('hidden');
         startButton.style.display = 'block';
+        startButton.nextElementSibling.style.display = 'block';
+        let allItemsContainer = startButton.parentElement.parentElement.children;
+        for (var i = 0; i < allItemsContainer.length; i++) {
+            if (!allItemsContainer[i].classList.contains('loader') && !allItemsContainer[i].classList.contains('game-status')) {
+                allItemsContainer[i].classList.remove('hidden');
+            }}
     }, 1500);
 };
 
@@ -61,8 +79,15 @@ let wrongAnswerScreen = () => {
 let initializeTaskUI = () => {
     let loader = document.querySelector('.loader');
     let overlay = document.querySelector('.overlay');
-
     startButton.style.display = 'none';
+    startButton.nextElementSibling.style.display = 'none';
+    let allItemsContainer = startButton.parentElement.parentElement.children;
+    for (var i = 0; i < allItemsContainer.length; i++) {
+        if (!allItemsContainer[i].classList.contains('loader')) {
+            allItemsContainer[i].classList.add('hidden');
+        }
+    }
+    console.log(allItemsContainer)
     timeLeft.innerHTML = time;
     loader.classList.remove('hidden');
     loader.classList.add('show');

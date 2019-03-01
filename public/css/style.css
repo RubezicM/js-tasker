@@ -328,7 +328,7 @@ legend {
   display: block; }
 
 #game-area {
-  padding: 5rem 3rem;
+  padding: 3.5rem 3rem;
   min-height: 56rem;
   border: 2px solid transparent;
   border-image: linear-gradient(to right, #BC9405 0%, #FF5C26 49%, #FF5C26 100%) 2 2 2 2;
@@ -369,6 +369,9 @@ legend {
     width: 100%;
     padding-left: 2rem;
     font-size: 2rem; }
+
+.game-status i {
+  margin-right: 3rem; }
 
 #menuToggle {
   position: fixed;
@@ -507,6 +510,10 @@ legend {
   100% {
     transform: rotate(360deg); } }
 
+.loader-main {
+  position: unset;
+  transform: none; }
+
 .logo {
   justify-content: space-evenly;
   flex-direction: row; }
@@ -613,13 +620,22 @@ legend {
   top: 0;
   background: rgba(0, 0, 0, 0.7);
   z-index: 1; }
+  .overlay__inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
   .overlay--game {
     position: absolute;
     background: #222;
     z-index: 2;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-direction: column; }
     .overlay--game.hidden {
       display: none; }
@@ -627,6 +643,29 @@ legend {
       margin-bottom: 2rem; }
     .overlay--game .next-game-countdown {
       font-size: 1.8rem; }
+  .overlay .game__buttons {
+    display: flex; }
+    .overlay .game__buttons > button:first-child {
+      margin-right: 2.5rem; }
+  .overlay .combo {
+    text-align: center;
+    margin-top: 5rem; }
+  .overlay .user-widget {
+    margin-bottom: 10rem; }
+  .overlay .game-status {
+    text-align: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #211a23;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    justify-content: center;
+    align-items: center; }
+  .overlay .game-status.hidden {
+    display: none; }
 
 .primary-list {
   padding-left: 2.5rem; }
@@ -714,7 +753,8 @@ legend {
   border-radius: 50%;
   background: #28292C;
   text-align: center;
-  box-shadow: 2px 3px 1rem rgba(0, 0, 0, 0.3); }
+  box-shadow: 2px 3px 1rem rgba(0, 0, 0, 0.3);
+  margin: 0 auto; }
   .timer__progress {
     position: absolute;
     top: 0;
@@ -729,7 +769,8 @@ legend {
   color: #BC9405;
   align-items: center;
   position: relative;
-  padding: .5rem 1.2rem; }
+  padding: .5rem 1.2rem;
+  height: 4.5rem; }
   @media (max-width: 37.5em) {
     .user-widget__img {
       text-align: center;
@@ -913,6 +954,14 @@ legend {
 
 .highscore-page .table-main {
   margin: 7rem auto 0; }
+
+.game-page {
+  height: 100vh; }
+  .game-page .main__main-content {
+    width: 100%; }
+    .game-page .main__main-content .timer {
+      margin: 1.5rem auto;
+      flex-shrink: 0; }
 
 .profile-page .main__side-bar {
   -webkit-box-pack: unset;

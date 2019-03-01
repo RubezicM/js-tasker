@@ -1,0 +1,13 @@
+.game-page {
+        height: 100vh;
+
+        & .main__main-content {
+            width: 100%;
+
+            & .timer {
+                margin: 1.5rem auto;
+                flex-shrink: 0;
+            }
+        }
+
+}
