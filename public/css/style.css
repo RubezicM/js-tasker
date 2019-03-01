@@ -124,6 +124,7 @@ body {
   background-color: #343539; }
 
 .btn {
+  z-index: 900;
   display: block;
   border: none;
   outline: none;
@@ -339,6 +340,7 @@ legend {
     align-self: center; }
 
 .answer-submit {
+  z-index: 1000;
   padding: 3rem;
   background-color: #222;
   margin-top: 2rem;
@@ -630,6 +632,7 @@ legend {
     justify-content: center;
     align-items: center; }
   .overlay--game {
+    overflow: hidden;
     position: absolute;
     background: #222;
     z-index: 2;
@@ -666,6 +669,65 @@ legend {
     align-items: center; }
   .overlay .game-status.hidden {
     display: none; }
+  .overlay__pic1 {
+    z-index: 0;
+    opacity: 0.5;
+    position: absolute;
+    height: 800px;
+    width: 5000px;
+    background-size: contain;
+    background-repeat: repeat-x;
+    background-image: url("/img/test-image.png");
+    overflow: hidden;
+    animation: test 10000ms linear infinite normal; }
+  .overlay__pic2 {
+    z-index: 0;
+    opacity: 0.5;
+    position: absolute;
+    height: 800px;
+    width: 5000px;
+    background-size: contain;
+    background-repeat: repeat-x;
+    background-image: url("/img/test-image2.png");
+    animation: test2 12000ms linear infinite normal; }
+  .overlay__console {
+    position: absolute;
+    padding-bottom: 600px;
+    bottom: -60%;
+    width: 100%;
+    overflow: hidden;
+    text-shadow: 0px 2px 10px #ffae00;
+    text-align: left;
+    font-size: 20px;
+    opacity: 0.6;
+    background-color: black;
+    color: rgba(255, 255, 255, 0.562); }
+  .overlay__code {
+    text-align: start; }
+  .overlay__pointer {
+    font-weight: bolder;
+    font-size: 21px;
+    animation: pointer 600ms linear infinite normal; }
+
+@keyframes pointer {
+  0% {
+    opacity: 1; }
+  1% {
+    opacity: 0; }
+  100% {
+    opacity: 100; } }
+
+@keyframes test {
+  0% {
+    left: -1800px; }
+  100% {
+    left: -800px; } }
+
+@keyframes test2 {
+  0% {
+    left: -800px; }
+  100% {
+    left: -1800px; } }
 
 .primary-list {
   padding-left: 2.5rem; }
