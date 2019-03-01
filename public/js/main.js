@@ -116,28 +116,10 @@ if(playgroundBtn){
 
 let consoleBox = document.getElementById('code');
 
+let writeTime = 50;
+
 let string = `
-var rubor = [ "bar",  "qux", "henk",  8];
-
-    rubor.reverse();
-
-    var cons = {
-      natum: function () {
-        return rubor.push(this.dolor[0])
-      },
-      dolor: rubor[3],
-      semper: function () {
-          this.sit++;
-          return this.sit - this.dolor;
-      },
-      sit: 4,
-    };
-
-    cons.natum();
-
-    return (cons.dolor);
-
-    cons.natum();
+gg();
 *`;
 
 if (document.getElementById('hero')) {
@@ -145,7 +127,8 @@ if (document.getElementById('hero')) {
     Welcome to JS Tasker!^
     Register or Login to begin.^
     Good luck!*
-    `
+    `;
+    writeTime = 20;
 };
 
 if (document.getElementById('user-here') && !document.getElementById('start')) {
@@ -154,7 +137,8 @@ if (document.getElementById('user-here') && !document.getElementById('start')) {
     Select Playground to play.^
     Look in Profile for stats.^
     Go to Highscores to see standings.*
-    `
+    `;
+    writeTime = 15;
 };
 
 consoleBox.innerHTML = '';
@@ -166,13 +150,10 @@ function writeCode(string) {
 
         setTimeout(() => {
             addCharacter(string[i]);
-        }, i * 50);
+        }, i * writeTime);
     };
 
     function addCharacter(character) {
-        if (character === ';') {
-            character = ';<br>';
-        };
         if (character === '^') {
             character = '<br>';
         };
@@ -180,7 +161,7 @@ function writeCode(string) {
             setTimeout(() => {
                 consoleBox.innerHTML = '';
                 writeCode(string);
-            }, 1500);
+            }, 30000);
         } else {
             consoleBox.innerHTML += character;
         };
