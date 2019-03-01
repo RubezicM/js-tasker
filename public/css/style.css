@@ -329,7 +329,7 @@ legend {
 
 #game-area {
   padding: 3.5rem 3rem;
-  min-height: 56rem;
+  min-height: 50rem;
   border: 2px solid transparent;
   border-image: linear-gradient(to right, #BC9405 0%, #FF5C26 49%, #FF5C26 100%) 2 2 2 2;
   background-color: #222;
@@ -809,9 +809,6 @@ legend {
     content: "";
     display: table;
     clear: both; }
-  @media (max-width: 63.5em) {
-    .main {
-      height: 100% !important; } }
   .main__side-bar {
     height: 100%;
     width: 30%;

@@ -10,7 +10,7 @@
     @include clearfix;
 
     @include respond(tab-port){
-        height: 100%!important;
+        
     }
     &__side-bar {
         height: 100%;
