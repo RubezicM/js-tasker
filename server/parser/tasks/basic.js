@@ -353,9 +353,7 @@ let assignments = [
     console.log($d[$8]);
     `,`
     var $a = [$str, $str, $num, $str]; // []
-
     $a.reverse();
-
     var $b_ºO1 = {
       $c_ºKS1: $num, // # b0-0
       $d_ºKS1: $a[$3], // # b0-0
@@ -367,11 +365,8 @@ let assignments = [
         return $a.push(this.$d[0]) // +0
       },
     };
-
     $used_ºO1.F(); // # r0
-    
     $used_ºO1.F(); // # r0
-
     console.log($used_ºO1.S); // # r0
     `
 ];
@@ -379,9 +374,9 @@ let assignments = [
 
 
 
-// let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
+let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
 
-let pickTask = (index = assignments.length - 1) => assignments[index];
+//let pickTask = (index = assignments.length - 1) => assignments[index];
 
 // pickTask = (index = 17) => assignments[index];
 
