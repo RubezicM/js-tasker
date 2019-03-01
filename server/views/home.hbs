@@ -1,12 +1,20 @@
 {{> header}}
-    <div class="row">
-        <div id="main">
-            <p>{{message}}</p>
+<div class="row">
+    <div id="main">
+        <p>{{message}}</p>
+        <div id="hero">
+            <div class="overlay__pic1"></div>
+            <div class="overlay__pic2"></div>
+            <div class="overlay__console">
+                <span id="code" class="overlay__code">Code</span><span id="pointer" class="overlay__pointer"> _</span>
+            </div>
         </div>
     </div>
+</div>
 {{> overlay}}
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="/js/main.js"></script>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/js/main.js"></script>
 </body>
 
 </html>

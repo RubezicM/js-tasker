@@ -140,6 +140,14 @@ var rubor = [ "bar",  "qux", "henk",  8];
     cons.natum();
 *`;
 
+if (document.getElementById('hero')) {
+    string = `
+    Welcome to JS Tasker!^
+    Register or Login to begin.^
+    Good luck!*
+    `
+}
+
 consoleBox.innerHTML = '';
 
 writeCode(string);
@@ -155,6 +163,9 @@ function writeCode(string) {
     function addCharacter(character) {
         if (character === ';') {
             character = ';<br>';
+        };
+        if (character === '^') {
+            character = '<br>';
         };
         if (character === '*') {
             setTimeout(() => {

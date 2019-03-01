@@ -871,6 +871,20 @@ legend {
     display: block;
     top: 45px; }
 
+#hero {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  height: 100%; }
+
+#hero .overlay__console {
+  text-align: center;
+  margin-bottom: 10%;
+  font-size: 2em; }
+
+#hero #pointer {
+  font-size: 2em; }
+
 .main {
   padding: 2rem;
   background: url("/img/pattern.png");
