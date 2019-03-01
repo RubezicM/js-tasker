@@ -1,16 +1,23 @@
 .btn {
     z-index: 900;
     display: block;
-    border: none;
+    border: $border-main-color;
+    border-style: inset;
     outline: none;
     cursor: pointer;
     padding: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    transition: all .3s;
+    transition: all 1000ms;
     font-weight: 700;
-    box-shadow: 0 5px 1rem rgba($bg-black-medium, .4);
+    text-shadow: 1px 1px 2px black;
+    box-shadow: 2px 2px 0.5rem black;
     //width: 20rem;
+    &:hover {
+        background-color: rgb(255, 19, 19);
+        box-shadow: 2px 2px 1rem white;
+        text-shadow: 4px 4px 4px black;
+    }
     &__main {
         color: white;
         &--yellow {
