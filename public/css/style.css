@@ -685,7 +685,8 @@ legend {
     background-repeat: repeat-x;
     background-image: url("/img/test-image.png");
     overflow: hidden;
-    animation: test 10000ms linear infinite normal; }
+    animation: test 120000ms linear infinite normal;
+    transform: scale(3.5); }
   .overlay__pic2 {
     z-index: 0;
     opacity: 0.5;
@@ -695,7 +696,8 @@ legend {
     background-size: contain;
     background-repeat: repeat-x;
     background-image: url("/img/test-image2.png");
-    animation: test2 12000ms linear infinite normal; }
+    animation: test2 120000ms linear infinite normal;
+    transform: scale(3.5); }
   .overlay__console {
     position: absolute;
     padding-bottom: 600px;
@@ -708,7 +710,7 @@ legend {
     font-size: 60px;
     opacity: 0.6;
     background-color: black;
-    color: rgba(255, 255, 255, 0.562);
+    color: white;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -732,15 +734,15 @@ legend {
 
 @keyframes test {
   0% {
-    left: -1800px; }
+    left: -1600px; }
   100% {
-    left: -800px; } }
+    left: -180px; } }
 
 @keyframes test2 {
   0% {
-    left: -800px; }
+    left: -180px; }
   100% {
-    left: -1800px; } }
+    left: -1600px; } }
 
 .primary-list {
   padding-left: 2.5rem; }

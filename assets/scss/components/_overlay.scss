@@ -92,7 +92,8 @@
         background-repeat: repeat-x;
         background-image: url("/img/test-image.png");
         overflow: hidden;
-        animation: test 10000ms linear infinite normal;
+        animation: test 120000ms linear infinite normal;
+        transform: scale(3.5);
     }
     
     &__pic2 {
@@ -104,7 +105,8 @@
         background-size: contain;
         background-repeat: repeat-x;
         background-image: url("/img/test-image2.png");
-        animation: test2 12000ms linear infinite normal;
+        animation: test2 120000ms linear infinite normal;
+        transform: scale(3.5);
     }
 
     &__console {
@@ -119,7 +121,7 @@
         font-size: 60px;
         opacity: 0.6;
         background-color: black;
-        color: rgba(255, 255, 255, 0.562);
+        color: rgb(255, 255, 255);
         -webkit-touch-callout: none;
         -webkit-user-select: none; 
         -khtml-user-select: none; 
@@ -145,12 +147,12 @@
     }
     
     @keyframes test{
-        0% {left: -1800px}
-        100% {left: -800px}
+        0% {left: -1600px}
+        100% {left: -180px}
     }
     
     @keyframes test2{
-        0% {left: -800px}
-        100% {left: -1800px}
+        0% {left: -180px}
+        100% {left: -1600px}
     }
 }

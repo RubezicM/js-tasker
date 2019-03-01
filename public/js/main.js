@@ -103,11 +103,11 @@ if(playgroundBtn){
                 message.innerHTML = messages[messages.length - 1];
                 messages.pop();
             }
-        },1500);
+        },250);
         setTimeout(()=>{
             
             window.location.assign('/main');
-        },7000)
+        },1100);
         
     })
 };
