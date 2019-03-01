@@ -131,9 +131,10 @@ body {
   padding: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  transition: all .3s;
+  transition: all 1000ms;
   font-weight: 700;
-  box-shadow: 0 5px 1rem rgba(33, 26, 35, 0.4); }
+  box-shadow: 0px 0px 4px rgba(255, 255, 255, 1);
+  text-shadow: 2px 2px 2px rgb(0, 0, 0); }
   .btn__main {
     color: white; }
     .btn__main--yellow {
@@ -149,6 +150,12 @@ body {
   .btn__huge {
     padding: 2.3rem 8.5rem;
     font-size: 1.7rem; }
+
+.btn:hover {
+  
+  box-shadow: 0px 0px 15px rgba(255, 255, 255, 1);
+  text-shadow: 2px 2px 8px rgb(0, 0, 0);;
+}
 
 .card {
   z-index: 9999;
@@ -340,6 +347,7 @@ legend {
 
 .answer-submit {
   padding: 3rem;
+  z-index: 1000;
   background-color: #222;
   margin-top: 2rem;
   border: solid 2px transparent;
