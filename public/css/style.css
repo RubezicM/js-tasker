@@ -774,7 +774,6 @@ legend {
     .main {
       height: 100% !important; } }
   .main__side-bar {
-    flex-wrap: wrap;
     height: 100%;
     width: 30%;
     background-color: #211a23;
