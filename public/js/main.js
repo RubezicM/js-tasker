@@ -146,7 +146,16 @@ if (document.getElementById('hero')) {
     Register or Login to begin.^
     Good luck!*
     `
-}
+};
+
+if (document.getElementById('user-here') && !document.getElementById('start')) {
+    string = `
+    Thank you for playing with us.^
+    Select Playground to play.^
+    Look in Profile for stats.^
+    Go to Highscores to see standings.*
+    `
+};
 
 consoleBox.innerHTML = '';
 

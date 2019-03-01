@@ -879,11 +879,11 @@ legend {
 
 #hero .overlay__console {
   text-align: center;
-  margin-bottom: 10%;
-  font-size: 2em; }
+  margin-bottom: 5%;
+  font-size: 30px; }
 
 #hero #pointer {
-  font-size: 2em; }
+  font-size: 30px; }
 
 .main {
   padding: 2rem;
