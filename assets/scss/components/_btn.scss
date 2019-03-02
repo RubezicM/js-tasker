@@ -23,6 +23,11 @@
         &--yellow {
             background-color: $yellow-main-color;
         }
+        &--yellow:hover {
+            box-shadow: 2px 2px 1rem white;
+            text-shadow: 4px 4px 4px black;
+            background-color: rgb(161, 139, 13);
+        }
         &--red {
             background-color: $red-main-color;
         }

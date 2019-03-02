@@ -145,6 +145,10 @@ body {
     color: white; }
     .btn__main--yellow {
       background-color: #BC9405; }
+    .btn__main--yellow:hover {
+      box-shadow: 2px 2px 1rem white;
+      text-shadow: 4px 4px 4px black;
+      background-color: #a18b0d; }
     .btn__main--red {
       background-color: #FF5C26; }
     .btn__main--black {
@@ -524,7 +528,8 @@ legend {
 
 .logo {
   justify-content: space-evenly;
-  flex-direction: row; }
+  flex-direction: row;
+  text-shadow: 0 1px 1px #fff; }
   .logo__text {
     margin-left: 1rem; }
 
