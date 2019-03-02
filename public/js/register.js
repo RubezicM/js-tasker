@@ -20,7 +20,7 @@ document.getElementById('register-form').addEventListener('submit', (event) => {
             event.target[3].disabled = true;
            toggleUI("Registered Successfuly!",2500)
                 setTimeout(() => {
-                    window.location.assign('/main');
+                    window.location.assign('/');
                 }, 3500)
           
         })

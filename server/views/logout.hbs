@@ -1,28 +1,40 @@
 {{> header}}
 <div class="row">
-    <div>
-        <p>Logg out?</p>
-        <button id="logout">Yes</button><br><br>
-        <button id="back">No</button>
-
-        <p id="register-response"></p>
-    </div>
     <div id="main">
         <p>{{message}}</p>
         <div id="hero">
+            <div class="logut-buttons">
+                <button id="logout" class="btn btn__main btn__main--red btn__big">Yes</button>
+                <button id="back" class="btn btn__main btn__main--red btn__big">No</button>
+            </div>
+            <p id="register-response"></p>
             <div class="overlay__pic1"></div>
             <div class="overlay__pic2"></div>
             <div class="overlay__console">
                 <span id="code" class="overlay__code">Code</span><span id="pointer" class="overlay__pointer"> _</span>
             </div>
+            <div id="form-response" class="hidden form-popup">
+                <div class="lds-roller loader">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <span class="form-popup__message hidden"></span>
+            </div>
         </div>
     </div>
 </div>
+<div class="overlay hidden"></div>
 {{> overlay}}
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/js/UI-validation.js"></script>
 <script src="/js/main.js"></script>
-
 <script src="/js/logout.js"></script>
 </body>
 

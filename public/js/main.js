@@ -88,11 +88,11 @@ if(playgroundBtn){
 
 let consoleBox = document.getElementById('code');
 
-let writeTime = 50;
+let writeTime = 20;
 
 let string = `
-gg();
-*`;
+You need to write correct output of console log.^
+You can look for solutuons in History.*`;
 
 if (document.getElementById('hero')) {
     string = `
@@ -107,7 +107,7 @@ if (document.getElementById('user-here') && !document.getElementById('start')) {
     string = `
     Thank you for playing with us.^
     Select Playground to play.^
-    Look in Profile for stats.^
+    Look in Profile for stats and history.^
     Go to Highscores to see standings.*
     `;
     writeTime = 15;
