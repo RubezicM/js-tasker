@@ -70,7 +70,6 @@
     width: 80%;
     padding: 4rem 2rem;
     @include respond(tab-port){
-
         position: unset;
         width: 100%;
         padding: 2rem;
@@ -80,7 +79,7 @@
 .tab.active {
     visibility: visible;
     opacity: 1;
-}
+} 
 .profile {
     background: $bg-black-dark;
     height: 100%;
