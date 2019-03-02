@@ -899,6 +899,9 @@ legend {
   .userWidget-has-dropdown .nav__dropdown {
     z-index: 100;
     top: 45px; }
+    @media (max-width: 37.5em) {
+      .userWidget-has-dropdown .nav__dropdown {
+        left: -75px; } }
   .userWidget-has-dropdown:hover .nav__dropdown {
     display: block;
     transition: all ease 500ms;

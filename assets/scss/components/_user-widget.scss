@@ -52,6 +52,10 @@
     & .nav__dropdown {
         z-index: 100;
         top: 45px;
+
+        @include respond(phone){
+            left: -75px;
+        }
     }
     &:hover .nav__dropdown {
         display: block;
