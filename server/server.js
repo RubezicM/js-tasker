@@ -131,6 +131,21 @@ app.get('/history', authenticate, (req, res) => {
     });
 });
 
+app.get('/stats', authenticate, (req, res) => {
+    res.render('profile.hbs', {
+        user: req.user.username,
+        imgUrl: req.user.imageURL,
+        email: req.user.email,
+        basicAttempts: req.user.score.basic.attempted,
+        basicSuccesses: req.user.score.basic.successful,
+        basicPercentage: req.user.score.basic.percentage,
+        imgUrl: req.user.imageURL,
+        xp: req.user.xp,
+        bestCombo: req.user.bestCombo,
+        title: 'Stats'
+    });
+});
+
 app.get('/profile', authenticate, (req, res) => {
     res.render('profile.hbs', {
         user: req.user.username,
@@ -144,6 +159,19 @@ app.get('/profile', authenticate, (req, res) => {
         bestCombo: req.user.bestCombo,
         title: 'Profile'
     });
+});
+app.get('/about', loggedIn, (req, res) => {
+    if (req.loggedIn) {
+        res.render('about.hbs', {
+            title: 'About',
+            user: req.user.username
+        })
+    } else {
+        res.render('about.hbs', {
+            title: "About",
+            user: null
+        })
+    }
 });
 
 app.get('/login', loggedIn, (req, res) => {
@@ -440,6 +468,9 @@ app.get('/score', (req, res) => {
         res.status(400).send(err);
     });
 });
+
+////////////////////////// High Score ////////////////////////////
+
 
 ////////////////////////// Upload Image ////////////////////////////
 

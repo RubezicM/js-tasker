@@ -949,7 +949,8 @@ legend {
       .main__side-bar {
         float: none;
         width: 100%;
-        padding: 1.5rem; } }
+        padding: 1.5rem;
+        height: unset; } }
     .main__side-bar .user-stats {
       margin: 2rem 0 3.5rem 0; }
     .main__side-bar .timer {
@@ -1084,52 +1085,53 @@ legend {
     margin: 1.5rem auto;
     flex-shrink: 0; }
 
-.profile-page .main__side-bar {
-  -webkit-box-pack: unset;
-  -ms-flex-pack: unset;
-  justify-content: unset; }
-  @media (max-width: 63.5em) {
-    .profile-page .main__side-bar {
-      flex-direction: row;
-      justify-content: space-between; } }
-  .profile-page .main__side-bar .table-stats {
-    margin: 2.5rem 0; }
-  @media (max-width: 63.5em) {
-    .profile-page .main__side-bar .stats {
-      width: 100%;
-      display: flex;
-      justify-content: space-around; } }
-  .profile-page .main__side-bar .side-menu {
-    -ms-flex-item-align: baseline;
-    align-self: baseline;
-    font-size: 1.8rem;
-    margin: 3rem 5rem; }
-    @media (max-width: 63.5em) {
-      .profile-page .main__side-bar .side-menu {
-        margin: 0; } }
-    .profile-page .main__side-bar .side-menu__link:after {
-      top: 15px; }
-    .profile-page .main__side-bar .side-menu__link:before {
-      top: 0; }
-    @media (max-width: 63.5em) {
-      .profile-page .main__side-bar .side-menu__link {
-        float: left;
-        position: unset;
-        margin-left: 1.5rem;
-        background: #eebb06;
-        color: #222;
-        padding: 1.2rem 1.6rem; } }
-    .profile-page .main__side-bar .side-menu__link.selected {
-      color: #eebb06; }
-      @media (max-width: 63.5em) {
-        .profile-page .main__side-bar .side-menu__link.selected {
-          background: #00BC22;
-          color: white; } }
-      .profile-page .main__side-bar .side-menu__link.selected:after {
-        background-color: #eebb06; }
-
-.profile-page .main__main-content {
+.profile-page {
   overflow: hidden; }
+  .profile-page .main__side-bar {
+    -webkit-box-pack: unset;
+    -ms-flex-pack: unset;
+    justify-content: unset; }
+    @media (max-width: 63.5em) {
+      .profile-page .main__side-bar {
+        flex-direction: row;
+        justify-content: space-between; } }
+    .profile-page .main__side-bar .table-stats {
+      margin: 2.5rem 0; }
+    @media (max-width: 63.5em) {
+      .profile-page .main__side-bar .stats {
+        width: 100%;
+        display: flex;
+        justify-content: space-around; } }
+    .profile-page .main__side-bar .side-menu {
+      -ms-flex-item-align: baseline;
+      align-self: baseline;
+      font-size: 1.8rem;
+      margin: 3rem 5rem; }
+      @media (max-width: 63.5em) {
+        .profile-page .main__side-bar .side-menu {
+          margin: 0; } }
+      .profile-page .main__side-bar .side-menu__link:after {
+        top: 15px; }
+      .profile-page .main__side-bar .side-menu__link:before {
+        top: 0; }
+      @media (max-width: 63.5em) {
+        .profile-page .main__side-bar .side-menu__link {
+          float: left;
+          position: unset;
+          margin-left: 1.5rem;
+          background: #eebb06;
+          color: #222;
+          padding: 1.2rem 1.6rem; } }
+      .profile-page .main__side-bar .side-menu__link.selected {
+        color: #eebb06; }
+        @media (max-width: 63.5em) {
+          .profile-page .main__side-bar .side-menu__link.selected {
+            background: #00BC22;
+            color: white; } }
+        .profile-page .main__side-bar .side-menu__link.selected:after {
+          background-color: #eebb06; }
+  .profile-page .main__main-content {
+    overflow: hidden; }
 
 .tab {
   -webkit-transition: all 1s;
@@ -1144,7 +1146,8 @@ legend {
     .tab {
       position: unset;
       width: 100%;
-      padding: 2rem; } }
+      padding: 2rem;
+      padding-bottom: 90px; } }
 
 .tab.active {
   visibility: visible;
@@ -1205,4 +1208,5 @@ legend {
   position: relative; }
   @media (max-width: 63.5em) {
     #profilePage {
-      padding: 0; } }
+      padding: 0;
+      overflow: hidden; } }

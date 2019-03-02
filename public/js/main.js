@@ -121,8 +121,12 @@ if (document.getElementById('logout') && !document.getElementById('start')) {
 };
 
 consoleBox.innerHTML = '';
+if(consoleBox){
+    consoleBox.innerHTML = '';
 
-writeCode(string);
+    writeCode(string);
+}
+
 
 function writeCode(string) {
     for (let i = 0; i < string.length; i++) {

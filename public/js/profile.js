@@ -179,15 +179,15 @@ axios.get('answers').then((response) => {
 }).catch((err) => {
     history.innerHTML = err;
 });
-
-
+var url = location.href.split('/');
+var page = url[url.length - 1];
 
 //////// DISPLAY PROFILE-EDIT OR HISTORY ////////
-
-
-
+console.log(tabLinks);
 for (let i = 0; i < tabLinks.length; i++) {
+    console.log(tabLinks[i])
     tabLinks[i].classList.remove('selected');
+    
     if (tabLinks[i].firstElementChild.id === page) {
         tabLinks[i].classList.add('selected');
         var tab = document.querySelector(`.${page}`);
@@ -202,5 +202,3 @@ for (let i = 0; i < tabLinks.length; i++) {
         tab.classList.add('active');
     }
 }
-
-console.log(accordion);
