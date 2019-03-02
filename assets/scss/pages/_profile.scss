@@ -1,5 +1,5 @@
 .profile-page {
-   
+   overflow: hidden;
     & .main__side-bar {
         -webkit-box-pack: unset;
             -ms-flex-pack: unset;
@@ -70,9 +70,11 @@
     width: 80%;
     padding: 4rem 2rem;
     @include respond(tab-port){
+
         position: unset;
         width: 100%;
         padding: 2rem;
+        padding-bottom: 90px;
     }
 }
 .tab.active {
@@ -149,7 +151,9 @@
 }
 #profilePage {
     position: relative;
+    
     @include respond(tab-port){
         padding: 0;
+        overflow: hidden;
     }
 }

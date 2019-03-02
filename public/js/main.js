@@ -113,9 +113,12 @@ if (document.getElementById('user-here') && !document.getElementById('start')) {
     writeTime = 15;
 };
 
-consoleBox.innerHTML = '';
+if(consoleBox){
+    consoleBox.innerHTML = '';
 
-writeCode(string);
+    writeCode(string);
+}
+
 
 function writeCode(string) {
     for (let i = 0; i < string.length; i++) {

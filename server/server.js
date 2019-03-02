@@ -144,6 +144,19 @@ app.get('/profile', authenticate, (req, res) => {
         title: 'Profile'
     });
 });
+app.get('/about', loggedIn, (req, res) => {
+    if (req.loggedIn) {
+        res.render('about.hbs', {
+            title: 'About',
+            user: req.user.username
+        })
+    } else {
+        res.render('about.hbs', {
+            title: "About",
+            user: null
+        })
+    }
+});
 
 app.get('/login', loggedIn, (req, res) => {
     if (req.loggedIn) {
@@ -439,6 +452,9 @@ app.get('/score', (req, res) => {
         res.status(400).send(err);
     });
 });
+
+////////////////////////// High Score ////////////////////////////
+
 
 ////////////////////////// Upload Image ////////////////////////////
 
