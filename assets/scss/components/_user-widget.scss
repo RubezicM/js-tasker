@@ -42,10 +42,13 @@
         color: #fff;
     }
     & .nav__dropdown {
-        
+        z-index: 100;
+        top: 45px;
     }
     &:hover .nav__dropdown {
         display: block;
-        top: 45px;
+        transition: all ease 500ms;
+        opacity: 1;
+        transform: scale(1,1);
     }
 }
