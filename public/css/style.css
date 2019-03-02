@@ -107,7 +107,7 @@ body {
 
 .accordion__button {
   width: 100%;
-  padding: .988rem 1.453rem;
+  padding: 1.988rem 1.453rem;
   justify-content: space-between;
   background-color: #28292C;
   margin-bottom: 3.5rem; }
@@ -321,8 +321,13 @@ body {
       -webkit-box-flex: 0;
       -ms-flex: 0;
       flex: 0; }
-    .form-edit__group--pic input {
-      width: unset; }
+    .form-edit__group--pic {
+      flex-direction: column;
+      align-items: space-between; }
+      .form-edit__group--pic input {
+        width: unset; }
+      .form-edit__group--pic button {
+        align-self: flex-end; }
   .form-edit__btn {
     padding: 1.25rem 3.21rem; }
 
@@ -923,6 +928,16 @@ legend {
 #hero #pointer {
   font-size: 30px; }
 
+.transformed {
+  display: inline-block;
+  padding: .23rem .45rem;
+  transform: scale(1.15) rotate(3deg); }
+  .transformed--red {
+    background-color: #FF5C26; }
+  .transformed--yellow {
+    background-color: #eebb06;
+    color: #222; }
+
 .main {
   padding: 2rem;
   background: url("/img/pattern.png");
@@ -1210,3 +1225,16 @@ legend {
     #profilePage {
       padding: 0;
       overflow: hidden; } }
+
+.about-page {
+  padding: 4rem;
+  font-size: 1.7rem;
+  line-height: 1.4;
+  word-spacing: 3px; }
+  .about-page__headline {
+    text-align: center;
+    margin: 5rem 0; }
+  .about-page__paragraph {
+    margin: 2rem 0; }
+  .about-page .custom-scroll {
+    padding-left: 3rem; }

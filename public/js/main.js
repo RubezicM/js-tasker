@@ -119,8 +119,6 @@ if (document.getElementById('logout') && !document.getElementById('start')) {
     `;
     writeTime = 15;
 };
-
-consoleBox.innerHTML = '';
 if(consoleBox){
     consoleBox.innerHTML = '';
 

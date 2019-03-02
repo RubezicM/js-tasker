@@ -1,0 +1,25 @@
+.about-page {
+    padding: 4rem;
+    font-size: 1.7rem;
+    line-height: 1.4;
+    word-spacing: 3px;
+    &__headline {
+        text-align: center;
+        margin: 5rem 0;
+    }
+    &__paragraph {
+        margin: 2rem 0;
+    }
+    &__heroes {
+
+        &--container {
+
+        }
+    }
+    &__links {
+
+    }
+    & .custom-scroll {
+        padding-left: 3rem;
+    }
+}

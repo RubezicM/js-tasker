@@ -1,0 +1,13 @@
+.transformed {
+  
+    display: inline-block;
+    padding: .23rem .45rem;
+    transform: scale(1.15) rotate(3deg);
+    &--red {
+        background-color: $red-main-color;
+    }
+    &--yellow {
+        background-color: $yellow-main-color;
+        color: $bg-black-dark;
+    }
+}
