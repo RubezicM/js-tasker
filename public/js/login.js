@@ -5,9 +5,6 @@ document.getElementById('login-form').addEventListener('submit', (event) => {
     let username = document.getElementById('username');
     let password = document.getElementById('password');
 
-
-    console.log('username: ', username.value, 'password: ', password.value);
-
     axios.post('/login', {
             username: username.value,
             password: password.value
@@ -16,19 +13,19 @@ document.getElementById('login-form').addEventListener('submit', (event) => {
             username.disabled = true;
             password.disabled = true;
             event.target[2].disabled = true;
-            toggleUI('Logged in successfuly!',2500);
+            toggleUI('Logged in successfuly!',1000);
             setTimeout(() => {
-                window.location.assign('/main');
-            }, 3500)
+                window.location.assign('/');
+            }, 1500)
         })
         .catch((err) => {
             let userMessage = err.response.data;
             username.disabled = true;
             password.disabled = true;
             event.target[2].disabled = true;
-            toggleUI(userMessage,2500);
+            toggleUI(userMessage,1000);
             setTimeout(() => {
                 window.location.assign('/login');
-            }, 3500)
+            }, 1500)
         });
 });
