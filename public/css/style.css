@@ -1060,7 +1060,7 @@ legend {
     @media (max-width: 63.5em) {
       .header__nav {
         display: flex;
-        background: url("/img/pattern.png");
+        background: #222;
         background-repeat: repeat;
         align-items: center;
         justify-content: center; } }

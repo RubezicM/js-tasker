@@ -32,7 +32,7 @@
         transition: all .4s;
         @include respond(tab-port) {
             display: flex;
-            background: url("/img/pattern.png");
+            background: $bg-black-dark;
             background-repeat: repeat;
             align-items: center;
             justify-content: center;
