@@ -100,3 +100,17 @@ let exitBtn = document.getElementById("exit");
 exitBtn.addEventListener('click',function(e){
     window.location.assign('/');
 });
+
+
+
+let setHeightOfGameArea = (() => {
+    let gameArea = document.querySelector('.main.game-page');
+    if (gameArea) {
+        if(window.innerHeight > 845){
+            let mainHeight = window.innerHeight - main.offsetTop;
+
+            main.style.height = mainHeight + 'px';
+        }
+        
+    }
+})();

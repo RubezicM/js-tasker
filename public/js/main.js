@@ -1,40 +1,12 @@
-// ///////// NAVIGATION FOR HEADER ~~~ Dropdowns///////////
-// let profileMainItemContainer = document.querySelector('.profile-has-dropdown');
-// let profileDropdownContainer = document.querySelector('#profile-dropdown');
-// let userWidgetMainItemContainer = document.querySelector('.userWidget-has-dropdown');
-// let userWidgetDropdownContainer = document.querySelector('#userWidget-dropdown');
+window.addEventListener('resize', function(event){
+    let main = document.getElementById('main');
+    console.log(window.innerHeight);
+    if (main && !main.classList.contains("game-page")) {
+        let mainHeight = window.innerHeight - main.offsetTop;
 
-// // setting size 
-
-// let changeDropdownPosition = (()=>{
-//     let profileMainH = profileMainItemContainer.offsetHeight;
-//     if(userWidgetMainItemContainer){
-//         let userWidgetMainH = userWidgetMainItemContainer.offsetHeight;
-//         userWidgetDropdownContainer.style.top = userWidgetMainH + "px";
-//     };
-//     profileDropdownContainer.style.top = profileMainH + "px";
-
-// })();
-
-
-// profileMainItemContainer.addEventListener('mouseenter',(e)=>{
-//     profileDropdownContainer.style.display = "block";
-// });
-
-// profileMainItemContainer.addEventListener('mouseleave',(e)=>{
-//     profileDropdownContainer.style.display = "none";
-// });
-
-// if(userWidgetMainItemContainer){
-//     userWidgetMainItemContainer.addEventListener('mouseenter',(e)=>{
-//         userWidgetDropdownContainer.style.display = "block";
-//     });
-
-//     userWidgetMainItemContainer.addEventListener('mouseleave',(e)=>{
-//         userWidgetDropdownContainer.style.display = "none";
-//     });
-// }
-
+        main.style.height = mainHeight + 'px';
+    }
+  });
 //////////// RESPONSIVE NAVIGATION ////////////
 let menuButton = document.getElementById('menuToggle');
 let nav = document.querySelector('.nav');
@@ -54,7 +26,7 @@ if (menuButton) {
 let setHeightOfMain = (() => {
     let main = document.getElementById('main');
 
-    if (main) {
+    if (main && !main.classList.contains("game-page")) {
         let mainHeight = window.innerHeight - main.offsetTop;
 
         main.style.height = mainHeight + 'px';
@@ -70,7 +42,7 @@ let setHeightOfMain = (() => {
 
 let navLinks = document.querySelectorAll(".header__nav .nav__item");
 
-function check() {
+function checkActivePage() {
     for (let i = 0; i < navLinks.length; i++) {
         if (navLinks[i].dataset.page) {
             if (navLinks[i].dataset.page === pageLink) {
@@ -81,7 +53,7 @@ function check() {
     }
 }
 
-check();
+checkActivePage();
 
 
 let playgroundBtn = document.getElementById("playgroundBtn");

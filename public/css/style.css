@@ -346,7 +346,7 @@ legend {
     align-self: center; }
 
 .answer-submit {
-  z-index: 1000;
+  z-index: 1;
   padding: 3rem;
   background-color: #222;
   margin-top: 2rem;
@@ -1044,13 +1044,11 @@ legend {
 .highscore-page .table-main {
   margin: 7rem auto 0; }
 
-.game-page {
-  height: 100vh; }
-  .game-page .main__main-content {
-    width: 100%; }
-    .game-page .main__main-content .timer {
-      margin: 1.5rem auto;
-      flex-shrink: 0; }
+.game-page .main__main-content {
+  width: 100%; }
+  .game-page .main__main-content .timer {
+    margin: 1.5rem auto;
+    flex-shrink: 0; }
 
 .profile-page .main__side-bar {
   -webkit-box-pack: unset;
