@@ -113,6 +113,13 @@ if (document.getElementById('user-here') && !document.getElementById('start')) {
     writeTime = 15;
 };
 
+if (document.getElementById('logout') && !document.getElementById('start')) {
+    string = `
+    Log out?*
+    `;
+    writeTime = 15;
+};
+
 consoleBox.innerHTML = '';
 
 writeCode(string);

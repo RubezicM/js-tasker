@@ -1,19 +1,29 @@
 {{> header}}
+<div class="row">
+    <div>
+        <p>Logg out?</p>
+        <button id="logout">Yes</button><br><br>
+        <button id="back">No</button>
 
-    <h1>Logged in as {{user}} <img src="{{imgUrl}}" alt="Profile Pic" width="72"></h1>
+        <p id="register-response"></p>
+    </div>
+    <div id="main">
+        <p>{{message}}</p>
+        <div id="hero">
+            <div class="overlay__pic1"></div>
+            <div class="overlay__pic2"></div>
+            <div class="overlay__console">
+                <span id="code" class="overlay__code">Code</span><span id="pointer" class="overlay__pointer"> _</span>
+            </div>
+        </div>
+    </div>
+</div>
+{{> overlay}}
 
-    <p>Logg out?</p>
-    <button id="logout">Yes</button><br><br>
-    <button id="back">No</button>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/js/main.js"></script>
 
-
-    <p id="register-response"></p>
-
-
-
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
-    <script src="/js/logout.js"></script>
+<script src="/js/logout.js"></script>
 </body>
 
 </html>
