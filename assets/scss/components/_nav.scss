@@ -1,4 +1,8 @@
 .nav {
+    font-size: 1.5rem;
+    text-shadow: 0 1px 1px #fff;
+    font-weight: 500;
+
     @include respond(tab-port){
         //display: none;
         position: fixed;
@@ -9,6 +13,7 @@
         z-index: 999;
         height: 0;
     }
+
     &.opened {
         height: 100vh;
         
@@ -29,8 +34,9 @@
     }
 
     &__item {
+        z-index: 100;
         padding: 1.2rem 1.8rem;
-        transition: all .3s;
+        transition: all ease .5s;
         &:not(:last-child){
             margin-right: 1.5rem;
         }
@@ -38,7 +44,7 @@
         &--dropdown {
             position: relative;
             &:hover {
-                background: $bg-black-medium;
+                background: $bg-black-dark;
             }
 
             &:hover .nav__icon {
@@ -46,6 +52,9 @@
             }
             &:hover .nav__dropdown {
                 display: block;
+                transition: all ease 500ms;
+                opacity: 1;
+                transform: scale(1,1);
             }
         }
         &.active {
@@ -61,26 +70,35 @@
         }
     }
     &__dropdown {
-        display: none;
-        background: $bg-black-medium;
+        transition: all ease 500ms;
+        transform: scale(0,1);
+        opacity: 0;
+        background: $bg-black-dark;
         width: 18rem;
         padding: 4rem 0 4rem 3rem;
         position: absolute;
         left: 0;
-        z-index: 1;
         &--item {
+            transition: all ease 500ms;
             margin-right: 0;
             &:not(:last-child) {
                 margin-bottom: 1.5rem;
             }
         }
         &--icon {
+            transition: all ease 500ms;
             font-size: 1.7rem;
             margin-right: 1.4rem;
         }
 
         &--item:hover &--icon {
+            transition: all ease 500ms;
             color: $yellow-main-color;
+        }
+
+        &--item:hover > a {
+            transition: all ease 500ms;
+            text-shadow: 0 1px 2px $yellow-main-color;
         }
     }
     &__link {
@@ -88,6 +106,7 @@
     }
 
     &__icon {
+        transition: all ease 500ms;
         margin-right: 1.5rem;
         font-size: 2.3rem;
         @include respond(tab-port){
@@ -103,11 +122,16 @@
         }
     }
 
+    &__item:hover > a {
+        transition: all ease 500ms;
+        text-shadow: 0 1px 2px $yellow-main-color;
+    }
+
     &__item:hover  &__icon {
+        transition: all ease 500ms;
         color: $yellow-main-color;
     }
 
-   
     &__exit {
         font-size: 3.5rem;
         color: white;

@@ -60,7 +60,8 @@ app.get('/', loggedIn, (req, res) => {
     if (req.loggedIn) {
         res.render('home.hbs', {
             title: 'Home',
-            user: req.user.username
+            user: req.user.username,
+            imgUrl: req.user.imageURL
         })
     } else {
         res.render('home.hbs', {

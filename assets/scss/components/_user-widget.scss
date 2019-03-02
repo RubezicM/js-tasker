@@ -1,10 +1,16 @@
 .user-widget {
+    transition: all ease 500ms;
     color: $yellow-main-color;
     align-items: center;
     position: relative;
+    text-shadow: 0 0px 1px #fff;
     padding: .5rem 1.2rem;
     height: 4.5rem;
     &__img {
+        height: 7rem;
+        width: 7rem;
+        border-radius: 50%;
+        overflow: hidden;
         
         @include respond(phone){
             text-align: center;
@@ -22,7 +28,9 @@
     }
     &:hover {
         cursor: pointer;
-        background: $bg-black-medium;
+        color: #fff;
+        text-shadow: 0 0 1px $yellow-main-color;
+        transition: all ease 500ms;
     }
     &.not-logged-in {
         color: #fff;
@@ -42,10 +50,17 @@
         color: #fff;
     }
     & .nav__dropdown {
-        
+        z-index: 100;
+        top: 45px;
+
+        @include respond(phone){
+            left: -75px;
+        }
     }
     &:hover .nav__dropdown {
         display: block;
-        top: 45px;
+        transition: all ease 500ms;
+        opacity: 1;
+        transform: scale(1,1);
     }
 }
