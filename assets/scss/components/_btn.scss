@@ -18,6 +18,9 @@
         box-shadow: 2px 2px 1rem white;
         text-shadow: 4px 4px 4px black;
     }
+    &:focus {
+        animation: focus1 1000ms ease-in infinite alternate;
+    }
     &__main {
         color: white;
         &--yellow {
@@ -54,4 +57,9 @@
     display: flex;
     justify-content: space-around;
     position: relative;
+}
+
+@keyframes focus1 {
+    0% {transform: scale(1);}
+    100% {transform: scale(1.1);}
 }

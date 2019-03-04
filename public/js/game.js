@@ -24,7 +24,7 @@ let timer;
 let stopTimer;
 
 answerConsole.style.display = 'none';
-
+startButton.focus();
 
 document.getElementById('form-game').addEventListener("submit", (event) => {
     event.preventDefault();
@@ -51,6 +51,7 @@ function startGame(){
     nextGameCountdownDiv.style.display = 'none';
     UITimerReset();
     initializeTaskUI();
+    answer.focus();
 
     answer.value = '';
     axios.post('/answer')
@@ -94,6 +95,7 @@ function postAnswer(message = '') {
         attemptedField.innerHTML = response.data.attempted;
         gameInProgress = false;
         answer.value = '';
+        
     }).catch((err) => {
         //document.getElementById('game-area').innerHTML = err;
         gameInProgress = false;

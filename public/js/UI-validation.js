@@ -33,8 +33,9 @@ let correctAnswerScreen = () => {
         for (var i = 0; i < allItemsContainer.length; i++) {
             if (!allItemsContainer[i].classList.contains('loader') && !allItemsContainer[i].classList.contains('game-status')) {
                 allItemsContainer[i].classList.remove('hidden');
-            }
-        }
+                startButton.focus();
+            };
+        };
         // nextGameCounter = setInterval(() => {
         //     nextGameCountdownDiv.style.display = 'block';
         //     --miniTimer;
@@ -71,6 +72,7 @@ let wrongAnswerScreen = (response) => {
         for (var i = 0; i < allItemsContainer.length; i++) {
             if (!allItemsContainer[i].classList.contains('loader') && !allItemsContainer[i].classList.contains('game-status')) {
                 allItemsContainer[i].classList.remove('hidden');
+                startButton.focus();
             }}
     }, 1500);
 };
