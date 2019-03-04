@@ -17,11 +17,29 @@
 
 <body>
     <div class="row">
-        {{> page-headline}}
+        <div class="row bg-dark-low">
+            <div class="headline-main flex-disp">
+                <i class="fas fa-play headline-main__icon"></i>
+                <h2 class="headline-main__text">{{title}}</h2>
+                <div class="user-stats">
+                            <ul class="primary-list primary-list__game">
+                                <li>Experience: <span class="primary-color-txt font-size-medium"
+                                        id="player-xp">{{xp}}</span></li>
+                                <li>Highest in a row: <span class="primary-color-txt font-size-medium"
+                                        id="player-best-combo">{{bestCombo}}</span></li>
+                                <li>Total tasks: <span class="primary-color-txt font-size-medium"
+                                        id="player-basic-attempts">{{basicAttempts}}</span></li>
+                                <li>Success percentage: <span id="player-basic-percentage"
+                                        class="secondary-color-txt font-size-medium">{{basicPercentage}}%</span>
+                                </li>
+                            </ul>
+                </div>
+            </div>
+        </div>
         <div id="main" class="main game-page">
 
             <div class="main__main-content">
-                <div id="game-area"></div>
+                <div id="game-area" class="ins-shadow"></div>
                 <div class="timer main__side-bar--timer">
                     <p id="timeLeft" class="timer__number">30</p>
                     <p id="sec">sec</p>
@@ -74,7 +92,8 @@
                     </div>
 
                     <div class="overlay__console">
-                        <span id="code" class="overlay__code">Code</span><span id="pointer" class="overlay__pointer"> _</span>
+                        <span id="code" class="overlay__code">Code</span><span id="pointer" class="overlay__pointer">
+                            _</span>
                     </div>
 
                     <div class="lds-roller loader hidden">

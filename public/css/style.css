@@ -105,6 +105,11 @@ body {
 .float--right {
   float: right; }
 
+.ins-shadow {
+  -moz-box-shadow: inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow: inset 0 0 10px #000000; }
+
 .accordion__button {
   width: 100%;
   padding: 1.988rem 1.453rem;
@@ -395,6 +400,11 @@ legend {
 
 .game-status i {
   margin-right: 3rem; }
+
+.user-stats {
+  width: 85rem;
+  text-align: center;
+  overflow: hidden; }
 
 #menuToggle {
   position: fixed;
@@ -773,7 +783,22 @@ legend {
     left: -1600px; } }
 
 .primary-list {
+  display: inline-block;
   padding-left: 2.5rem; }
+  .primary-list:after {
+    content: "";
+    display: table;
+    clear: both; }
+  .primary-list__game {
+    list-style: none; }
+    .primary-list__game > li {
+      float: left; }
+      .primary-list__game > li:not(:last-child) {
+        margin-right: 1.5rem; }
+      .primary-list__game > li::before {
+        display: none; }
+      .primary-list__game > li::after {
+        display: none !important; }
   .primary-list li {
     position: relative;
     padding: 1rem 0;

@@ -69,7 +69,7 @@ function startGame(){
             answerConsole.style.display = 'flex';
         })
         .catch((err) => {
-            document.getElementById('game-area').innerHTML = err;
+            // document.getElementById('game-area').innerHTML = err;
         });
 }
 
@@ -95,7 +95,7 @@ function postAnswer(message = '') {
         gameInProgress = false;
         answer.value = '';
     }).catch((err) => {
-        document.getElementById('game-area').innerHTML = err;
+        //document.getElementById('game-area').innerHTML = err;
         gameInProgress = false;
         answer.value = '';
     });
