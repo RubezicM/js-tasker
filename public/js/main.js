@@ -1,4 +1,4 @@
-window.addEventListener('resize', function(event){
+window.addEventListener('resize', function (event) {
     let main = document.getElementById('main');
     console.log(window.innerHeight);
     if (main && !main.classList.contains("game-page")) {
@@ -6,7 +6,8 @@ window.addEventListener('resize', function(event){
 
         main.style.height = mainHeight + 'px';
     }
-  });
+});
+
 //////////// RESPONSIVE NAVIGATION ////////////
 let menuButton = document.getElementById('menuToggle');
 let nav = document.querySelector('.nav');
@@ -35,8 +36,8 @@ let setHeightOfMain = (() => {
 
 //////// ACTIVE PAGE NAVIGATION ///////
 
-    var pageUrl = location.href.split('/');
-    var pageLink = pageUrl[pageUrl.length - 1];
+var pageUrl = location.href.split('/');
+var pageLink = pageUrl[pageUrl.length - 1];
 
 
 
@@ -62,27 +63,27 @@ let playgroundBtn = document.getElementById("playgroundBtn");
 let overlayMain = document.querySelector('.overlay');
 let loaderMain = document.querySelector('.loader-main');
 let message = document.querySelector('.overlay__message');
-console.log(overlayMain,loaderMain);
+console.log(overlayMain, loaderMain);
 
-if(playgroundBtn){
-    playgroundBtn.addEventListener('click',function(e){
+if (playgroundBtn) {
+    playgroundBtn.addEventListener('click', function (e) {
         e.preventDefault();
         overlayMain.classList.remove('hidden');
         loaderMain.classList.remove('hidden');
-        let messages = ["Please wait","Refactoring","Clearing floats","Declaring globals"]
-        setInterval(()=>{
+        let messages = ["Please wait", "Refactoring", "Clearing floats", "Declaring globals"]
+        setInterval(() => {
             console.log('yes')
-            if(messages.length > 0){
-                
+            if (messages.length > 0) {
+
                 message.innerHTML = messages[messages.length - 1];
                 messages.pop();
             }
-        },250);
-        setTimeout(()=>{
-            
+        }, 250);
+        setTimeout(() => {
+
             window.location.assign('/main');
-        },1100);
-        
+        }, 1100);
+
     })
 };
 
@@ -121,7 +122,7 @@ if (document.getElementById('logout') && !document.getElementById('start')) {
     `;
     writeTime = 15;
 };
-if(consoleBox){
+if (consoleBox) {
     consoleBox.innerHTML = '';
 
     writeCode(string);

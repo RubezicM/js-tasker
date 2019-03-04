@@ -13,6 +13,7 @@ let xpField = document.getElementById('player-xp');
 let percentageField = document.getElementById('player-basic-percentage');
 let attemptedField = document.getElementById('player-basic-attempts');
 let bestComboField = document.getElementById('player-best-combo');
+let answerConsole = document.getElementById('form-game');
 let nextGameCounter;
 //timeField.innerHTML = `Time left: ${time} seconds`;
 //answer.value = '';
@@ -21,6 +22,8 @@ let nextGameCounter;
 let timeLeft = document.getElementById('timeLeft');
 let timer;
 let stopTimer;
+
+answerConsole.style.display = 'none';
 
 
 document.getElementById('form-game').addEventListener("submit", (event) => {
@@ -40,6 +43,7 @@ function startGame(){
     if (gameInProgress) {
         return alert('Finish current task first.');
     };
+    answerConsole.style.display = 'flex';
     time = 30;
     gameInProgress = true;
     clearInterval(nextGameCounter);
@@ -62,6 +66,7 @@ function startGame(){
                 gameHolder.removeChild(gameHolder.firstChild);
             };
             gameHolder.appendChild(image);
+            answerConsole.style.display = 'flex';
         })
         .catch((err) => {
             document.getElementById('game-area').innerHTML = err;
