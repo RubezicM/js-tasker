@@ -347,7 +347,8 @@ function inlineSyntax(str) {
   let jScriptOriginal = jScript;
   jScript = 'let result = "";\n' + jScript;
   // dodela return-a
-  jScript = jScript.replace(/console.log/g, "return ");
+  jScript = jScript.replace(/console.log/g, "result = ");
+  jScript += '\n return result;'
   // jScript += `function logResult(...params) {
   //               result += params.join(" ") + '\\n';
   //           }
