@@ -435,7 +435,67 @@ let assignments = [
     }
     $g($used_ºN);
     console.log($a);
+    `,
     `
+    console.log(typeof("boat" != "car"));
+    `,
+    `
+    var $a = $num;
+    var $c = $num;
+    var $b = $num;
+    var $g = $a % $c - 2;
+    console.log($g % 5);
+    `,
+    `
+    var $a = typeof( Boolean("$num") );
+    console.log($a);
+    `,
+    `
+    var $a = 0;
+    for(var i = 0; i <  3;i++){
+      $a--;
+      for(var j = 0; j <= 2; j++){
+        $a++;
+      }
+    }
+    console.log($a)
+    `,
+    `
+    const arr = [1,2,3];
+    arr[0] = 5;
+    console.log(arr[0]);
+    `,
+    `
+    var $a = 13;
+    var $c = $a % 9;
+    $a -= $c % $a;
+    console.log($a);
+    `,
+    `
+    console.log(2 + true + 3 + false);
+    `,
+    `
+    var $a = $num;
+    if($a !== $num){
+      console.log("a");
+    } else if($a > $num){
+      console.log("b");
+    }
+    `,
+    `
+    var $a = 12;
+    var $b = 7;
+    $a = $b;
+    console.log(Math.sqrt($a * $b));
+    `,
+    `
+    if(1 != "1"){
+      console.log(1);
+    } else {
+      console.log(0);
+    }
+    `
+
 
 ];
 
