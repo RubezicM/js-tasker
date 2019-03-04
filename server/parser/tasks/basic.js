@@ -434,7 +434,7 @@ let assignments = [
       $used_ºN = $num + x; // var
     }
     $g($used_ºN);
-    console.log($a);
+    console.log(null);
     `
 
 ];
@@ -444,7 +444,7 @@ let assignments = [
 
 //let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
 
-let pickTask = (index = assignments.length - 4) => assignments[index];
+let pickTask = (index = assignments.length - 1) => assignments[index];
 
 // pickTask = (index = 17) => assignments[index];
 

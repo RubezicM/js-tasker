@@ -74,6 +74,7 @@ function startGame(){
 }
 
 function postAnswer(message = '') {
+    answerConsole.style.display = 'none';
     axios.post('/answer-send', {
         _id: taskID,
         result: answer.value
