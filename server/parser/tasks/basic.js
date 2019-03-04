@@ -435,7 +435,7 @@ let assignments = [
     }
     $g($used_ºN);
     console.log($a);
-    // `,
+    `,
     `
     console.log(typeof("boat" != "car"));
     `,
@@ -504,7 +504,7 @@ let assignments = [
 
 //let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
 
-let pickTask = (index = assignments.length - 21) => assignments[index];
+let pickTask = (index = assignments.length - 1) => assignments[index];
 
 // pickTask = (index = 17) => assignments[index];
 
