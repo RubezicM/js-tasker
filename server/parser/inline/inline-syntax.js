@@ -144,7 +144,6 @@ function inlineSyntax(str) {
       group
     };
   };
-
   function checkAndAddToUsedKeys(obj) {
     let isFound = task.usedVarNames.some(function (el) {
       if (el.key === obj.key && el.member === obj.member)
@@ -157,15 +156,6 @@ function inlineSyntax(str) {
 
 
   };
-
-  function getUsedVar(arr, key) {
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i].key === key) {
-        return arr[i];
-      }
-    }
-  };
-
   function isMemberOfArray(checker, container) {
     for (var i = 0; i < checker.length; i++) {
       if (container.indexOf(checker[i]) === -1) return false;
@@ -230,11 +220,6 @@ function inlineSyntax(str) {
 
     return tmp;
   };
-
-  let getGroupObject = (varNames, group) => {
-    let kme = _.find(varNames, ["group", group]);
-  };
-
   /////////////////////////////  assigment  /////////////////////////
 
   let jScript = str;
@@ -355,7 +340,7 @@ function inlineSyntax(str) {
   // jScript += `function logResult(res) {
   //   return res;
   // };`
-  //console.log(jScript);
+  console.log(jScript);
   let finalFunction = new Function(jScript);
     console.log(finalFunction)
   let result = `${finalFunction()}`;
