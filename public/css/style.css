@@ -141,6 +141,8 @@ body {
     background-color: #ff1313;
     box-shadow: 2px 2px 1rem white;
     text-shadow: 4px 4px 4px black; }
+  .btn:focus {
+    animation: focus1 1000ms ease-in infinite alternate; }
   .btn__main {
     color: white; }
     .btn__main--yellow {
@@ -166,6 +168,12 @@ body {
   display: flex;
   justify-content: space-around;
   position: relative; }
+
+@keyframes focus1 {
+  0% {
+    transform: scale(1); }
+  100% {
+    transform: scale(1.1); } }
 
 .card {
   z-index: 9999;
