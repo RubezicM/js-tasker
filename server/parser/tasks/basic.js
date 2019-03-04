@@ -368,15 +368,93 @@ let assignments = [
     $used_ºO1.F(); // # r0
     $used_ºO1.F(); // # r0
     console.log($used_ºO1.S); // # r0
+    `,
     `
+    var $a = $num;
+    var $b = $a--;
+    console.log($b - $a);
+    `,
+    `
+    var $a = ["a","b"];
+    var $b = 0;
+    `,
+    `
+    function $a(a,b){
+      return (a > b ? a : b);
+    }
+    [x,y] = [$num,$num]
+    console.log($a(x,y))
+    `,
+
+    `
+    var $a = $num;
+    var $b = $num;
+    $a = Math.floor($b/2);
+     console.log($a);
+    `,
+    `
+    var $a = function(){
+      var $a;
+    }
+
+    if(typeof $a === typeof $a()){
+      console.log(1);
+    } else {
+      console.log(4);
+    }
+    $a();
+    `,
+    `
+    var $a = [1,4];
+    var $b = [2];
+    var $c = $a.concat($b.concat($a));
+    console.log($c.length)
+    `,
+    `
+    var $a = $num;
+    function $g(i){
+      console.log(++i + $a)
+    };
+    $g($a);
+    `,
+    `
+    var $b = 5;
+    var $g = $b * 2 * 3 - 3;
+    console.log($g % 6);
+    `,
+    `
+    var $a = $num;
+    var $b = $a++;
+    console.log($a++ - $b--);
+    `,
+    `
+    var $a_ºN = $num; 
+    var $b_ºN = $a + $num;
+    function $g_ºF(x){
+      $used_ºN = $num + x; // var
+    }
+    $g($used_ºN);
+    console.log($a);
+    // `
+    // `
+    // var $g_ºN = $num;
+    // var $a_ºO1 = {
+    //   $g_ºKN1:$num
+    //   $b_ºKF1:function(x){
+    //     return x + $num;
+    //   }
+    // } 
+    // console.log($used_ºO1.F($g);
+    // `
+
 ];
 
 
 
 
-let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
+//let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
 
-//let pickTask = (index = assignments.length - 1) => assignments[index];
+let pickTask = (index = assignments.length - 1) => assignments[index];
 
 // pickTask = (index = 17) => assignments[index];
 

@@ -71,6 +71,7 @@ document.getElementById('update-password').addEventListener('submit', (event) =>
 ///////// TAB switching logic ////////
 
 let tabLinks = document.querySelectorAll('.side-menu__link');
+let userwidgetLinks = document.querySelectorAll('.side-menu')
 let tabs = document.querySelectorAll('.tab');
 let loader = document.querySelector('.loader');
 let accordion = document.querySelectorAll('.accordion__button');
@@ -202,3 +203,5 @@ for (let i = 0; i < tabLinks.length; i++) {
         tab.classList.add('active');
     }
 }
+
+/////////

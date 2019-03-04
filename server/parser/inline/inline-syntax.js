@@ -84,18 +84,6 @@ function inlineSyntax(str) {
     return nameVar;
   };
 
-  // function redeclareVars(match, p1, p2, offset, string) {
-  //   if (match === "$var_") {
-  //     return _.random(0, 1) === 1 ? "var " : "";
-  //   } else {
-  //     let typeOfVar = dataTypes[p1];
-  //     let arrayOfType = getSpecificVarTypes(task.usedVarNames, typeOfVar);
-  //     let rnd = _.random(0, arrayOfType.length - 1);
-  //     let nameVar = arrayOfType[rnd].name;
-  //     return _.random(0, 1) === 1 ? "var " + nameVar : nameVar;
-  //   }
-  // };
-
   function declareRandomVars(match, p1, p2, offset, string) {
     let nameVar,
       rnd = _.random(0, task.usableVarNames.length - 1),
@@ -109,10 +97,7 @@ function inlineSyntax(str) {
     if (p2.length > 0 && p1.indexOf("K") !== -1) {
       infoVar = storeVarInfo(offset, nameVar, type, undefined, member, undefined);
     } else if (p2.length > 0 && p1.indexOf("O") !== -1) {
-      //console.log("objekat")
-      //console.log(offset,nameVar,type,member)
       infoVar = storeVarInfo(offset, nameVar, type, undefined, undefined, member);
-      //console.log(infoVar);
     } else {
       infoVar = storeVarInfo(offset, nameVar, type);
     }
@@ -145,9 +130,7 @@ function inlineSyntax(str) {
         typeArray.push(dataTypes[tmpArr[i]]);
       };
     } else if (type !== undefined && type.length === 1) {
-      //console.log("dsadsasdadsadasadsdas",offset,name,type,key,member,group)
       typeArray = dataTypes[type];
-      //console.log("stavracamo",typeArray)
     } else {
       typeArray = "random";
     };
@@ -372,9 +355,9 @@ function inlineSyntax(str) {
   // jScript += `function logResult(res) {
   //   return res;
   // };`
-
+  //console.log(jScript);
   let finalFunction = new Function(jScript);
-
+    console.log(finalFunction)
   let result = `${finalFunction()}`;
 
   console.log('final function:', finalFunction);
