@@ -435,17 +435,7 @@ let assignments = [
     }
     $g($used_ºN);
     console.log($a);
-    // `
-    // `
-    // var $g_ºN = $num;
-    // var $a_ºO1 = {
-    //   $g_ºKN1:$num
-    //   $b_ºKF1:function(x){
-    //     return x + $num;
-    //   }
-    // } 
-    // console.log($used_ºO1.F($g);
-    // `
+    `
 
 ];
 
