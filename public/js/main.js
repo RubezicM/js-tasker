@@ -1,6 +1,5 @@
 window.addEventListener('resize', function (event) {
     let main = document.getElementById('main');
-    console.log(window.innerHeight);
     if (main && !main.classList.contains("game-page")) {
         let mainHeight = window.innerHeight - main.offsetTop;
 
@@ -44,17 +43,14 @@ var pageLink = pageUrl[pageUrl.length - 1];
 let navLinks = document.querySelectorAll(".header__nav .nav__item");
 
 function checkActivePage() {
-    console.log(navLinks)
     for (let i = 0; i < navLinks.length; i++) {
-        console.log(navLinks[i].dataset.page)
         if (navLinks[i].dataset.page) {
             if (navLinks[i].dataset.page === pageLink) {
                 navLinks[i].classList.add("active");
-            }
-        }
-
-    }
-}
+            };
+        };
+    };
+};
 
 checkActivePage();
 
@@ -63,7 +59,6 @@ let playgroundBtn = document.getElementById("playgroundBtn");
 let overlayMain = document.querySelector('.overlay');
 let loaderMain = document.querySelector('.loader-main');
 let message = document.querySelector('.overlay__message');
-console.log(overlayMain, loaderMain);
 
 if (playgroundBtn) {
     playgroundBtn.addEventListener('click', function (e) {
@@ -72,19 +67,18 @@ if (playgroundBtn) {
         loaderMain.classList.remove('hidden');
         let messages = ["Please wait", "Refactoring", "Clearing floats", "Declaring globals"]
         setInterval(() => {
-            console.log('yes')
             if (messages.length > 0) {
 
                 message.innerHTML = messages[messages.length - 1];
                 messages.pop();
-            }
+            };
         }, 250);
         setTimeout(() => {
 
             window.location.assign('/main');
         }, 1100);
 
-    })
+    });
 };
 
 ////////////////////////////////
@@ -126,7 +120,7 @@ if (consoleBox) {
     consoleBox.innerHTML = '';
 
     writeCode(string);
-}
+};
 
 
 function writeCode(string) {

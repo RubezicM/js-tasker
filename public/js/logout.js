@@ -8,7 +8,6 @@ document.getElementById('logout').addEventListener("click", (event) => {
     axios.delete('/logout')
         .then((response) => {
             toggleUI('Logged out successfully!',1000);
-            //responseField.innerHTML = 'Logged out successfully';
             setTimeout(() => {
                 window.location.assign('/');
             }, 1500);

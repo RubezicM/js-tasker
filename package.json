@@ -27,6 +27,7 @@
     "express-hbs": "^2.0.2",
     "jsonwebtoken": "^8.4.0",
     "lodash": "^4.17.11",
+    "moment": "^2.24.0",
     "mongodb": "^3.1.13",
     "mongoose": "^5.4.12",
     "multer": "^1.4.1",

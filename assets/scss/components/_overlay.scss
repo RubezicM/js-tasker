@@ -155,3 +155,12 @@
         100% {left: -1600px}
     }
 }
+
+.links {
+    color: $link-main-color;
+    text-decoration: underline;
+
+    &:hover {
+        color: lighten($link-main-color , 35%);
+    }
+}

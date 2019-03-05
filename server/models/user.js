@@ -28,7 +28,8 @@ const userSchema = new mongoose.Schema({
         }
     },
     imageURL: {
-        type: String
+        type: String,
+        default: 'https://pngimage.net/wp-content/uploads/2018/06/no-user-image-png-3.png'
     },
     imageID: {
         type: String

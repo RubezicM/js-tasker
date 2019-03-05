@@ -1,7 +1,6 @@
 
 ///////// MECHANICS //////////
 
-let taskResponse = 5;
 let gameInProgress = false;
 let answer = document.getElementById('answer');
 let taskID;
@@ -15,8 +14,6 @@ let attemptedField = document.getElementById('player-basic-attempts');
 let bestComboField = document.getElementById('player-best-combo');
 let answerConsole = document.getElementById('form-game');
 let nextGameCounter;
-//timeField.innerHTML = `Time left: ${time} seconds`;
-//answer.value = '';
 
 ///// UI FOR TIMER /////
 let timeLeft = document.getElementById('timeLeft');
@@ -39,7 +36,7 @@ document.getElementById('form-game').addEventListener("submit", (event) => {
 startButton.addEventListener("click", startGame);
 
 
-function startGame(){
+function startGame() {
     if (gameInProgress) {
         return alert('Finish current task first.');
     };
@@ -60,8 +57,6 @@ function startGame(){
             let image = converter(taskFunction);
             let gameHolder = document.getElementById('game-area');
             taskID = response.data.taskID;
-            taskResponse = response.data.result.trim();
-            console.log(response.data.result);
 
             if (gameHolder.childElementCount > 0) {
                 gameHolder.removeChild(gameHolder.firstChild);
@@ -70,7 +65,7 @@ function startGame(){
             answerConsole.style.display = 'flex';
         })
         .catch((err) => {
-            // document.getElementById('game-area').innerHTML = err;
+            console.log(err);
         });
 }
 
@@ -82,11 +77,8 @@ function postAnswer(message = '') {
     }).then((response) => {
         if (response.data.correct) {
             correctAnswerScreen();
-            // display overlay, bring back the button
-            //alert(`${message}Correct answer!`);
         } else {
             wrongAnswerScreen(answer.value);
-    //alert(`${message}Wrong answer!`);
         };
         comboField.innerHTML = `Answers in a row: ${response.data.combo}`;
         bestComboField.innerHTML = response.data.bestCombo;
@@ -95,9 +87,8 @@ function postAnswer(message = '') {
         attemptedField.innerHTML = response.data.attempted;
         gameInProgress = false;
         answer.value = '';
-        
+
     }).catch((err) => {
-        //document.getElementById('game-area').innerHTML = err;
         gameInProgress = false;
         answer.value = '';
     });
@@ -105,7 +96,7 @@ function postAnswer(message = '') {
 
 
 let exitBtn = document.getElementById("exit");
-exitBtn.addEventListener('click',function(e){
+exitBtn.addEventListener('click', function (e) {
     window.location.assign('/');
 });
 
@@ -114,11 +105,11 @@ exitBtn.addEventListener('click',function(e){
 let setHeightOfGameArea = (() => {
     let gameArea = document.querySelector('.main.game-page');
     if (gameArea) {
-        if(window.innerHeight > 845){
+        if (window.innerHeight > 845) {
             let mainHeight = window.innerHeight - main.offsetTop;
 
             main.style.height = mainHeight + 'px';
         }
-        
+
     }
 })();

@@ -51,6 +51,6 @@ function checkIfAvilable(type) {
                     document.getElementById('submit').removeAttribute('disabled', false);
                 };
                 document.querySelector(`label[for='${type.toLowerCase()}']`).innerHTML = `${type}: OK`;
-            }
+            };
         }).catch((err) => {});
 };

@@ -36,17 +36,6 @@ let correctAnswerScreen = () => {
                 startButton.focus();
             };
         };
-        // nextGameCounter = setInterval(() => {
-        //     nextGameCountdownDiv.style.display = 'block';
-        //     --miniTimer;
-        //     if (miniTimer === 0 && gameInProgress === false) {
-        //         startGame();
-        //         nextGameCountdownDiv.textContent = 3;
-        //         nextGameCountdownDiv.style.display = 'none';
-        //     }
-
-        //     nextGameCountdownDiv.innerHTML = `Next game starting in <span class="secondary-color-txt font-size-big fw-600">${miniTimer}</span>`;
-        // }, 1000);
     }, 1500);
 };
 
@@ -58,7 +47,7 @@ let wrongAnswerScreen = (response) => {
         msg = "Time is up!"
     } else {
         msg = "Wrong answer!"
-    }
+    };
     overlay.classList.remove('hidden');
     gameStatus.classList.remove('hidden');
     gameStatus.classList.add('show');
@@ -87,9 +76,8 @@ let initializeTaskUI = () => {
     for (var i = 0; i < allItemsContainer.length; i++) {
         if (!allItemsContainer[i].classList.contains('loader')) {
             allItemsContainer[i].classList.add('hidden');
-        }
-    }
-    console.log(allItemsContainer)
+        };
+    };
     timeLeft.innerHTML = time;
     loader.classList.remove('hidden');
     loader.classList.add('show');

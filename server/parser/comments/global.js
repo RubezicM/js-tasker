@@ -1,7 +1,4 @@
-// Helper Functions
-
 function makeCodeArray(string) {
-    //string = string.replace(/\\n/g, "XXXX");
     let array = string.split(/$\n/gm);
     let custom;
     array = array.map(element => {
@@ -10,7 +7,7 @@ function makeCodeArray(string) {
             element = element.split(/~/)[0];
         } else {
             custom = null;
-        }
+        };
         let arr = element.split(/\/\/|#/);
         arr[1] = arr[1] === undefined ? null : arr[1].trim();
         arr[2] = arr[2] === undefined ? null : arr[2].trim();
@@ -19,10 +16,10 @@ function makeCodeArray(string) {
             inline: arr[1],
             rows: arr[2],
             custom
-        }
+        };
     });
-    return array
-}
+    return array;
+};
 
 function makeCodeArrayTrim(string) {
     let array = string.split(/$\n/gm);
@@ -33,7 +30,7 @@ function makeCodeArrayTrim(string) {
             element = element.split(/~/)[0];
         } else {
             custom = null;
-        }
+        };
         let arr = element.split(/\/\/|#/);
         arr[1] = arr[1] === undefined ? null : arr[1].trim();
         arr[2] = arr[2] === undefined ? null : arr[2].trim();
@@ -42,10 +39,10 @@ function makeCodeArrayTrim(string) {
             inline: arr[1],
             rows: arr[2],
             custom
-        }
+        };
     });
-    return array
-}
+    return array;
+};
 
 function indentCode(codeBlock, indent) {
     for (let i = 0; i < codeBlock.length; i++) {
@@ -55,7 +52,7 @@ function indentCode(codeBlock, indent) {
 };
 
 function objectProperties(obj) {
-    return Object.keys(obj)
+    return Object.keys(obj);
 };
 
 function random(min, max) {
@@ -67,7 +64,7 @@ function shuffleArray(originalArray) {
     let randomArray = [];
     while (array.length !== 0) {
         randomArray.push(array.splice(random(0, array.length - 1), 1)[0]);
-    }
+    };
     return randomArray;
 };
 
@@ -83,7 +80,7 @@ function shuffle(array) {
     return array;
 };
 
-/////////// row/block funkcije /////////////////////
+/////////// row/block functions /////////////////////
 
 function codeBlock(index, length, mainArr) {
     let arr = [];
