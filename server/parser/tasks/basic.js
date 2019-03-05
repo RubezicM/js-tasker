@@ -36,7 +36,7 @@ let assignments = [
     var $c = 0; // # r0
     for (i = 0; i < $used_ºN; ++i) {
         ++$c;
-        if (i === $used_ºN - 2) {
+        if (i === $used_ºN - $1_3) {
             $c += 1;
         };
     };
@@ -47,7 +47,7 @@ let assignments = [
     var $b_ºN = $num;
     var $c_ºN = $num;
 
-    $used_ºN = 5;
+    $used_ºN = $num;
 
     console.log($used_ºN);
     `, `
@@ -144,29 +144,23 @@ let assignments = [
     $used_ºO1.N;
     $a.$b();
     `, `
-      var $rnd_ºO1 = {
+    var $rnd_ºO1 = {
       $rnd_ºKN1 : $num
     };
 
     console.log($used_ºO1.N)
     `, `
-        var $a_ºO1 = {   // # b3-0
-        $b_ºKS1: 'x',
-        $c_ºKS1: 'y'
+    var $a_ºO1 = {   // # b3-0
+      $b_ºKS1: $str,
+      $c_ºKS1: $str
     };
-        var $d_ºO2 = {   // # b3-0
-        $b_ºKN2: 1,
-        $c_ºKN2: 2
+
+    var $d_ºO2 = {   // # b3-0
+      $b_ºKN2: 1,
+      $c_ºKN2: 2
     };
 
     console.log($used_ºO2.N);
-    `, `     
-    var $a_ºN = 5;
-    var $b_ºN = 10;
-    var $d_ºA = [1, 2, 3];
-    var $c = [$used_ºN, $used_ºN, $d[0], $b]; // []
-
-    console.log($c[2]);
     `, `      
     var $c_ºN = $num;
     var $a_ºN = $0_4 + --$c; // #r0
@@ -174,12 +168,12 @@ let assignments = [
 
     console.log($used_ºN + $used_ºN);
     `, `
-    var $a_ºN = 5;
-    var $b_ºN = 10;
-    var $d_ºA = [1, 2, 3];
+    var $a_ºN = $num;
+    var $b_ºN = $num;
+    var $d_ºA = [$num, $num, $num];
     var $c = [$used_ºN, $used_ºN, $d[0], $b]; // []
 
-    console.log($c[1]);
+    console.log($c[$0_2]);
     `, `
     function $b() {
       return $num;
@@ -193,7 +187,7 @@ let assignments = [
 
     console.log($a);
     `, `
-    var $a = '5' + '5' + '"5"' + '5'; // '03 "0
+    var $a = '$num' + '$num' + '"$num"' + '$num'; // '03 "0
 
     console.log($a);
     `,
@@ -207,9 +201,9 @@ let assignments = [
   
   console.log($b[0],$c[2]);
     `, `
-    var $a_ºN = 5;
-    var $b_ºN = 10;
-    var $d_ºA = [1, 2, 3];
+    var $a_ºN = $num;
+    var $b_ºN = $num;
+    var $d_ºA = [$num, $num, $num];
     var $c = [$used_ºN, $used_ºN, $d[0], $b]; // []
 
     console.log($c[2]);`, `
@@ -221,9 +215,9 @@ let assignments = [
 
     console.log($used_ºN + $a);
     `, `
-    var $a_ºN = 5;
-    var $b_ºN = 10;
-    var $d_ºA = [1, 2, 3];
+    var $a_ºN = $num;
+    var $b_ºN = $num;
+    var $d_ºA = [$num, $num, $num];
     var $c = [$used_ºN, $used_ºN, $d[0], $b]; // []
 
     console.log($c[1]);
@@ -235,9 +229,9 @@ let assignments = [
     $used_ºF() + $used_ºF(); // ()1
     `, `
     function $b() {
-      return 5;
+      return $num;
     }
-    var $a = 5;
+    var $a = $num;
     {
       var $a = $b() + $b() // var ()1
     };
@@ -285,8 +279,8 @@ let assignments = [
   var $b_ºN = 4;
   var $a_ºO1 = {
   $rnd_ºKN1: $used_ºN,
-  $rnd_ºKS1: 'foo',
-  $rnd_ºKS1: 'bar'
+  $rnd_ºKS1: $str,
+  $rnd_ºKS1: $str
   };
 
   var $f_ºO2 = {
