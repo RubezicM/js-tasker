@@ -574,6 +574,9 @@ let assignments = [
     };
 
     console.log($used_ºF($used_ºS, $used_ºS) + $used_ºF($used_ºS, $used_ºS));
+    `,
+    `
+    console.log($1_3 + true + $1_3 + false)
     `
 
 ];
@@ -584,9 +587,9 @@ let assignments = [
     // `
 
 
- let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
+ //let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
 
-// let pickTask = (index = assignments.length - 1) => assignments[index];
+ let pickTask = (index = assignments.length - 1) => assignments[index];
 
 // pickTask = (index = 17) => assignments[index];
 
