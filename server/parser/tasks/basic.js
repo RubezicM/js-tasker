@@ -575,19 +575,9 @@ let assignments = [
 
 ];
 
-<<<<<<< HEAD
-    // `
-    // var $a_ºN = $num;
-    // var $b_ºO1 = $rndObj_1; // # insO_uN1
-    // `
-
-
- //let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
-=======
  let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
->>>>>>> 05d847cfe27a2c2d8eb04109d5bd467832d14b04
 
- let pickTask = (index = assignments.length - 1) => assignments[index];
+// let pickTask = (index = assignments.length - 1) => assignments[index];
 
 // pickTask = (index = 17) => assignments[index];
 

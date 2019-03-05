@@ -2,10 +2,10 @@ var canvas = document.getElementById('progress');
 var ctx = canvas.getContext('2d');
 
 function startTimer(div, n) {
-    time--;
+    
     var i = n - 1;
     timer = setInterval(function () {
-        
+        time--;
         stopTimer = function (msg) {
             clearInterval(timer);
             div.innerHTML = i + 1;
@@ -30,12 +30,9 @@ function startTimer(div, n) {
         };
 
         updateProgress();
-        if (i < 5) {
-            // Different color
-        };
         if (i < 0) {
             stopTimer();
-            postAnswer('Time is up!');
+            postAnswer();
         } else {
             div.innerHTML = i--;
         };

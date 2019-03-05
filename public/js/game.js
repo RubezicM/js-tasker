@@ -29,7 +29,6 @@ document.getElementById('form-game').addEventListener("submit", (event) => {
         return alert('Start game first!');
     };
     stopTimer();
-    time = 30;
     postAnswer();
 });
 
@@ -49,7 +48,6 @@ function startGame() {
     UITimerReset();
     initializeTaskUI();
     answer.focus();
-
     answer.value = '';
     axios.post('/answer')
         .then((response) => {

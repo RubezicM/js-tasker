@@ -43,7 +43,8 @@ let wrongAnswerScreen = (response) => {
     let overlay = document.querySelector('.overlay');
     let gameStatus = document.querySelector('.game-status');
     let msg;
-    if(response.length === 0){
+    console.log("vreme",time);
+    if(response.length === 0 && time <= 0){
         msg = "Time is up!"
     } else {
         msg = "Wrong answer!"
