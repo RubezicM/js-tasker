@@ -143,7 +143,8 @@ axios.get('answers').then((response) => {
         let validation = task.correct === true ? "CORRECT" : "WRONG";
         let txtColor = task.correct === true ? "tertiary-color-txt" : "secondary-color-txt";
         history.innerHTML += `
-            <div class="accordion__button flex-disp"><div>${task.createdAt}</div><div class="${txtColor}">${validation}</div><i class="fas fa-angle-double-down"></i></div>
+            <div class="accordion__button flex-disp"><div>${moment(task.createdAt).format('MMMM Do YYYY, h:mm:ss a')}</div><div 
+            class="${txtColor}">${validation}</div><i class="fas fa-angle-double-down"></i></div>
             <div class="accordion__body">
                 <table class="table-history">
                     <thead>
@@ -166,12 +167,11 @@ axios.get('answers').then((response) => {
                     </tr>
                     <tr>
                     <td>Date:</td>
-                    <td>${task.createdAt}</td>
+                    <td>$${moment(task.createdAt).format('MMMM Do YYYY, h:mm:ss a')}</td>
                     </tr>
                     </tbody>
                 </table>
             </div>`;
-        // `<p><pre>Function:\n${task.function}Result:${task.result}\nStatus:${task.correct}\nDate: ${task.createdAt}</pre></p><hr>`;
     });
 }).catch((err) => {
     history.innerHTML = err;
