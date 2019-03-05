@@ -790,6 +790,12 @@ legend {
   100% {
     left: -1600px; } }
 
+.links {
+  color: #1fd6ee;
+  text-decoration: underline; }
+  .links:hover {
+    color: #c5f4fb; }
+
 .primary-list {
   display: inline-block;
   padding-left: 2.5rem; }
