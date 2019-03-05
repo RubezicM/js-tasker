@@ -915,9 +915,20 @@ legend {
     height: 7rem;
     width: 7rem;
     border-radius: 50%;
-    overflow: hidden; }
+    overflow: hidden;
+    display: flex; }
     @media (max-width: 37.5em) {
       .user-widget__img {
+        text-align: center;
+        margin-bottom: .54rem; } }
+  .user-widget__topimg {
+    height: 7rem;
+    width: 7rem;
+    border-radius: 50%;
+    display: flex;
+    overflow: hidden; }
+    @media (max-width: 37.5em) {
+      .user-widget__topimg {
         text-align: center;
         margin-bottom: .54rem; } }
   .user-widget__name {
