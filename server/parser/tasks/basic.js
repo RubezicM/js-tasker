@@ -538,12 +538,12 @@ let assignments = [
     if ($a > $b) { // # if1-0
       $a = $b;
     } else if ($a === $b) { // # if1-0
-      $b = $a + $a;
+      $b = $a + $a; // +0
     } else {
       $b = $num;
     };
 
-    console.log(Math.sqrt($a * $b));
+    console.log(Math.abs($a + $b)); // +0
     `,
     `
     $a = $num;
