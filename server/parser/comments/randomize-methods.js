@@ -7,15 +7,6 @@ const objects = [
     `{
         x: "ff"
     }`
-    /*
-    `{
-        s: "ppppp",
-        t: {
-            f: "s"
-        },
-        k: "asdasd"
-    };`,
-    */
 ];
 
 const arrays = [
@@ -27,7 +18,7 @@ const arrays = [
 
 const mathOperators = ["+", "-"];
 
-/////////// row/block funkcije /////////////////////
+/////////// row/block methods /////////////////////
 
 function noteBlocks(mainArr) {
     mainArr = global.cloneObject(mainArr);
@@ -71,7 +62,7 @@ function randomizeBlocks(mainArr) {
     return mainArr;
 };
 
-/////////// if blok funkcije /////////////////////
+/////////// if blok methods /////////////////////
 
 function noteIfs(mainArr) {
     mainArr = global.cloneObject(mainArr);
@@ -184,7 +175,7 @@ function constructObject(matchArr, objIndex) {
     mainString[mainString.length - 1].code = mainString[mainString.length - 1].code.replace(',', '');
     mainString.push({ code: '};', rows: null, inline: null, rows: null, custom: null });
     return mainString;
-}
+};
 
 /////////// returns randomization //////////////////////
 

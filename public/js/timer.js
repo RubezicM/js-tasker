@@ -9,9 +9,7 @@ function startTimer(div, n) {
         stopTimer = function (msg) {
             clearInterval(timer);
             div.innerHTML = i + 1;
-            // Resets and sending data
-            //div.innerHTML = '0';
-        }
+        };
 
 
         function updateProgress() {
@@ -27,26 +25,26 @@ function startTimer(div, n) {
                 ctx.strokeStyle = '#FF5C26';
             } else {
                 ctx.strokeStyle = '#BC9405';
-            }
+            };
             ctx.stroke();
-        }
+        };
 
         updateProgress();
         if (i < 5) {
             // Different color
-        }
+        };
         if (i < 0) {
             stopTimer();
             postAnswer('Time is up!');
         } else {
             div.innerHTML = i--;
-        }
+        };
     }, 1000);
 
-}
+};
 
 let UITimerReset = ()=>{
     // Clearing the canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     timeLeft.innerHTML = time;
-}
+};

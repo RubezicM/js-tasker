@@ -408,7 +408,7 @@ app.post('/answer-send', authenticate, (req, res) => {
         _id: body._id,
         completed: false
     }).then((answer) => {
-        console.log("odgovor tacan", answer.result, "\n", "body-odgovor", body.result)
+        console.log("Answer correct", answer.result, "\n", "body-answer", body.result)
         if (answer.result.trim() === body.result) {
             Answer.findByIdAndUpdate(answer._id, {
                 completed: true,

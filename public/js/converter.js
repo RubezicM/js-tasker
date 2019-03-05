@@ -15,7 +15,7 @@ var converter = function (ass) {
   createHiDPICanvas = function (w, h, ratio) {
     if (!ratio) {
       ratio = PIXEL_RATIO;
-    }
+    };
     var can = document.createElement("canvas");
     can.setAttribute("id", "task-result");
     can.classList.add("task");
@@ -31,7 +31,7 @@ var converter = function (ass) {
       lineHeight: 21,
       font: "2.2rem Inconsolata"
     }
-  }
+  };
 
   let colors = {
     light: {
@@ -62,7 +62,7 @@ var converter = function (ass) {
       theme = colors.light;
     } else if (option === "dark") {
       theme = colors.dark;
-    }
+    };
   };
 
 
@@ -70,7 +70,7 @@ var converter = function (ass) {
   loadTheme("dark");
 
   const keywords = {
-    searchTerms: ["var", "function", "=", "return", "console.log","false","true","null","NaN","this","undefined"]
+    searchTerms: ["var", "function", "=", "return", "console.log", "false", "true", "null", "NaN", "this", "undefined"]
   };
 
 
@@ -96,15 +96,16 @@ var converter = function (ass) {
         obj[key]["regExp"] = new RegExp("(=)", "g");
       } else if (key === "console.log") {
         obj[key]["regExp"] = new RegExp("[\\W]?\\b(console.log)\\b", "g");
-      } else if (key === "true" || key === "false" || key === "NaN" || key === "null"){
+      } else if (key === "true" || key === "false" || key === "NaN" || key === "null") {
         obj[key]["regExp"] = new RegExp("[\\W]?\\b(false|true|NaN|null|this|undefined)\\b", "g");
-      }
-    }
-  }
+      };
+    };
+  };
   function regObjInit() {
     regObj = buildObjFromArr(keywords.searchTerms);
     writeRegexValues(regObj);
-  }
+  };
+
   // Inicijacija objekta regularnih izraza
   regObjInit();
 
@@ -112,10 +113,10 @@ var converter = function (ass) {
     var tmpArr = [];
     for (const key in obj) {
       tmpArr.push(obj[key]["regExp"]);
-    }
+    };
 
     return tmpArr;
-  }
+  };
 
   // This returns ALL regex indexes within a string
   function getAllRegIndexes(str, regArr) {
@@ -133,19 +134,19 @@ var converter = function (ass) {
             index = match.index + 1;
           } else {
             index = match.index;
-          }
+          };
           var obj = {
             name: match[1],
             index: index,
             len: match[1].length
           };
           tmpArr.push(obj);
-        }
-      } catch { }
-    }
+        };
+      } catch { };
+    };
 
     return tmpArr;
-  }
+  };
 
   // Spliting assigment into array
   var taskToColor = ass.split("\n");
@@ -177,8 +178,8 @@ var converter = function (ass) {
 
       y += config.image.lineHeight;
       marker(line, 0, y);
-    }
-  }
+    };
+  };
 
   function marker(str, x, y) {
     var _arrayOfRegex = buildArrayFromObjKeys(regObj);
@@ -188,18 +189,18 @@ var converter = function (ass) {
 
     if (numbers && strInfo) {
       strInfo = strInfo.concat(numbers);
-    }
+    };
     if (strings && strInfo) {
       strInfo = strInfo.concat(strings);
-    }
+    };
 
     var indexes = [];
     for (const key in strInfo) {
       if (strInfo.hasOwnProperty(key)) {
         const element = strInfo[key];
         indexes.push(element.index);
-      }
-    }
+      };
+    };
 
     for (var i = 0, z = 0; i < str.length; i++) {
       var ch = str.charAt(i);
@@ -223,23 +224,23 @@ var converter = function (ass) {
             colorFillChange(ch, x, y, theme.number);
           } else if (strInfo[position].name === "console.log") {
             colorFillChange(ch, x, y, theme["console.log"]);
-          } else if (strInfo[position].name === "true" || strInfo[position].name === "false" || strInfo[position].name === "this" || strInfo[position].name === "NaN" || strInfo[position].name === "null" || strInfo[position].name === "undefined"){
-            colorFillChange(ch,x,y,theme.drkBlue)
-          }
-          x = x+context.measureText(ch).width + 1;
+          } else if (strInfo[position].name === "true" || strInfo[position].name === "false" || strInfo[position].name === "this" || strInfo[position].name === "NaN" || strInfo[position].name === "null" || strInfo[position].name === "undefined") {
+            colorFillChange(ch, x, y, theme.drkBlue)
+          };
+          x = x + context.measureText(ch).width + 1;
           z++;
           if (z == strInfo[position]["len"]) {
             z = 0;
             i += strInfo[position]["len"] - 1;
             break;
-          }
-        }
+          };
+        };
       } else {
         colorFillChange(ch, x, y, theme.resOfStr);
         x = x + context.measureText(ch).width + 1;
-      }
-    }
-  }
+      };
+    };
+  };
 
   function canvasToImage(canvas) {
     var image = new Image();
@@ -249,11 +250,11 @@ var converter = function (ass) {
     //container.appendChild(image);
     container.removeChild(canvas);
     return image;
-  }
+  };
   function colorFillChange(char, x, y, color) {
     context.fillStyle = color;
     context.fillText(char, x, y);
-  }
+  };
 
   function getAllIndexes(arr, val) {
     var indexes = [],
@@ -265,20 +266,20 @@ var converter = function (ass) {
           index: i,
           len: val[k].length
         });
-      }
-    }
+      };
+    };
     if (indexes.length == 0) {
       return undefined;
-    }
+    };
     return indexes;
-  }
+  };
   function buildObjFromArr(arr) {
     var tmpObj = {};
     arr.forEach(function (item) {
       tmpObj[item] = {};
     });
     return tmpObj;
-  }
+  };
   function getAllNumbers(str) {
     var re = /\d+/g,
       str = str;
@@ -290,14 +291,14 @@ var converter = function (ass) {
         len: match[0].length
       };
       tmpArr.push(obj);
-    }
+    };
     return tmpArr;
-  }
+  };
 
   function getAllStrings(str) {
     var re = /\".*?\"/g,
-        re1 = /\'.*?\'/g
-      str = str;
+      re1 = /\'.*?\'/g
+    str = str;
     tmpArr = [];
     while ((match = re.exec(str)) != null || (match = re1.exec(str)) != null) {
       var obj = {
@@ -307,9 +308,9 @@ var converter = function (ass) {
       };
 
       tmpArr.push(obj);
-    }
+    };
     return tmpArr;
-  }
+  };
 
   function removeEmptyObj(arr) {
     if (arr != undefined) {
@@ -321,8 +322,8 @@ var converter = function (ass) {
       return JSON.parse(tmp);
     } else {
       return undefined;
-    }
-  }
+    };
+  };
 
 
   return img

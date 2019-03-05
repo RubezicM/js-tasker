@@ -12,7 +12,7 @@ function inlineSyntax(str) {
     let tmpObj = {};
     for (let i = 0; i < vals.length; i++) {
       tmpObj[keys[i]] = vals[i];
-    }
+    };
     return tmpObj;
   };
 
@@ -34,11 +34,9 @@ function inlineSyntax(str) {
     let arr = [];
     for (let i = 0; i < keys.length; i++) {
       arr.push(obj[keys[i]]);
-    }
+    };
     return arr;
   };
-
-
 
   let task = new Challenge(variableNamesForTask);
   task.usableVarNames = task.getKeyNames(task.varNames);
@@ -55,14 +53,12 @@ function inlineSyntax(str) {
   };
 
   function insertRandomNumbers(match, p1, p2, p3, offset, string) {
-    console.log(p1);
-    console.log(p2);
     if (!p2) {
       return _.random(0, p1);
     } else {
       p2 = parseInt(p2.replace(/_/g, ''));
       return _.random(p1, p2);
-    }
+    };
   };
 
   function replaceVarNames(match, p1, p2, p3, offset, string) {
@@ -76,10 +72,10 @@ function inlineSyntax(str) {
         infoVar = storeVarInfo(offset, nameVar, type, key, undefined, group);
       } else {
         infoVar = storeVarInfo(offset, nameVar, type, key, group, undefined);
-      }
+      };
     } else {
       infoVar = storeVarInfo(offset, nameVar, type, key);
-    }
+    };
     checkAndAddToUsedKeys(infoVar);
     return nameVar;
   };
@@ -100,7 +96,7 @@ function inlineSyntax(str) {
       infoVar = storeVarInfo(offset, nameVar, type, undefined, undefined, member);
     } else {
       infoVar = storeVarInfo(offset, nameVar, type);
-    }
+    };
     checkAndAddToUsedKeys(infoVar);
     return nameVar;
   };
@@ -121,8 +117,8 @@ function inlineSyntax(str) {
       for (let i = 0; i < keys.length; i++) {
         if (task.varNames[keys[i]] === name) {
           key = keys[i][0];
-        }
-      }
+        };
+      };
     };
     if (type !== undefined && type.length > 1) {
       let tmpArr = type.split("");
@@ -144,6 +140,7 @@ function inlineSyntax(str) {
       group
     };
   };
+
   function checkAndAddToUsedKeys(obj) {
     let isFound = task.usedVarNames.some(function (el) {
       if (el.key === obj.key && el.member === obj.member)
@@ -153,13 +150,11 @@ function inlineSyntax(str) {
       task.usedVarNames.push(obj);
       task.usableVarNames.splice(task.usableVarNames.indexOf(obj["name"]), 1);
     };
-
-
   };
   function isMemberOfArray(checker, container) {
     for (var i = 0; i < checker.length; i++) {
       if (container.indexOf(checker[i]) === -1) return false;
-    }
+    };
     return true;
   };
 
@@ -175,7 +170,6 @@ function inlineSyntax(str) {
       P: "parametar"
     };
 
-    //console.log("tip",type)
     let tmpObjKeys = [];
     for (let i = 0; i < type.length; i++) {
       tmpObjKeys.push(names[type[i]]);
@@ -185,7 +179,6 @@ function inlineSyntax(str) {
 
     arr.forEach(entry => {
       let isMember = isMemberOfArray(tmpObjKeys, entry.type);
-      console.log("entry", entry);
       if (isMember && entry.startingIndex < beginFrom && entry.member === null) {
         tmp.push(entry);
       };
@@ -250,10 +243,8 @@ function inlineSyntax(str) {
         let filteredMemberList = _.filter(allPosibleMembers, (el) => {
           if (el.type.indexOf("object_key") != -1 && el.member === group) {
             return el;
-          }
+          };
         });
-        //console.log("SVI MEMBERI",allPosibleMembers,"'\n","FILTRIRANI MEMBERI",filteredMemberList)
-        //console.log("MAIN OBJECT",mainObjectName);
         let rnd = _.random(0, filteredMemberList.length - 1);
         return `${mainObjectName.name}.${filteredMemberList[rnd].name}`;
       };
@@ -268,13 +259,11 @@ function inlineSyntax(str) {
       tmpArr = getSpecificVarTypes(task.usedVarNames, type, indexFrom);
       rnd = _.random(0, tmpArr.length - 1);
       if (p2 === undefined) {
-        // console.log(tmpArr);
         nameVar = tmpArr[rnd]["name"];
         return nameVar;
       } else {
         nameVar = [];
         for (let i = 0; i < p2; i++) {
-          // console.log(match,p2)
           rnd = _.random(0, tmpArr.length - 1);
           nameVar.push(tmpArr[rnd]["name"]);
           tmpArr.splice(rnd, 1);
@@ -286,9 +275,6 @@ function inlineSyntax(str) {
   jScript = jScript.replace(/\$(var )/g, (match, p1, p2, offset, string) => {
     let chance = _.random(0, 1);
     return chance === 1 ? "var " : "";
-
-    // Todo - build an global array filled with random numbers.
-    // Add chance for negative values
   });
 
   jScript = jScript.replace(
@@ -301,9 +287,9 @@ function inlineSyntax(str) {
         nameVar = [];
         for (var i = 0; i < p2; i++) {
           nameVar.push(_.random(0, 10));
-        }
+        };
         return nameVar.join(",");
-      }
+      };
     }
   );
 
@@ -321,26 +307,17 @@ function inlineSyntax(str) {
           let rndStr = strings[rnd];
           nameVar.push(rndStr);
           strings.splice(rnd, 1);
-        }
+        };
         return '"' + nameVar.join(",") + '"';
-      }
+      };
     }
   );
 
-  //console.log(task);
-  // obradjeni patern za prikaz korisniku
   let jScriptOriginal = jScript;
   jScript = 'let result = "";\n' + jScript;
-  // dodela return-a
   jScript = jScript.replace(/console.log/g, "result = ");
   jScript += '\n return result;'
-  // jScript += `function logResult(...params) {
-  //               result += params.join(" ") + '\\n';
-  //           }
-  //           return result;`;
-  // jScript += `function logResult(res) {
-  //   return res;
-  // };`
+
   console.log(jScript);
   let finalFunction = new Function(jScript);
     console.log(finalFunction)
@@ -348,10 +325,6 @@ function inlineSyntax(str) {
 
   console.log('final function:', finalFunction);
   console.log('result', result);
-
-  // if (result === '') {
-  //   result = 'undefined';
-  // };
 
   return {
     function: jScriptOriginal,

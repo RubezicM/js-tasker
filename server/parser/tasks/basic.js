@@ -128,7 +128,7 @@ let assignments = [
     var $rnd_ºN = $num;
     var $b_ºO2 = {
       $rnd_ºKN2 : $num
-    }
+    };
 
     console.log($used_ºO2.N);
     `, `
@@ -137,7 +137,7 @@ let assignments = [
       $rnd_ºKN1: $num,
       $rnd_ºKN1: $num,
       $b_ºKF1: () => {
-        console.log("hello");
+        console.log($str);
       }
     };
 
@@ -577,12 +577,6 @@ let assignments = [
     `
 
 ];
-
-    // `
-    // var $a_ºN = $num;
-    // var $b_ºO1 = $rndObj_1; // # insO_uN1
-    // `
-
 
  let pickTask = (index = _.random(0, assignments.length - 1)) => assignments[index];
 

@@ -206,8 +206,8 @@ function assigment(){
     
     //return assigments[random(0, assigments.length - 1)];
     return assigments[assigments.length - 1];
-}
+};
 
 module.exports = {
     assigment
-}
+};
