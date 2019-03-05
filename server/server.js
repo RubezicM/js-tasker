@@ -8,36 +8,16 @@ const _ = require('lodash');
 const bcrypt = require('bcryptjs');
 const axios = require('axios');
 
-const {
-    mongoose
-} = require('./db/mongoose');
-const {
-    Answer
-} = require('./models/answer');
-const {
-    User
-} = require('./models/user');
-const {
-    authenticate
-} = require('./middleware/authenticate');
-const {
-    loggedIn
-} = require('./middleware/loggedIn');
-const {
-    inlineSyntax
-} = require('./parser/inline/inline-syntax');
-const {
-    commentsSyntax
-} = require('./parser/comments/comments-syntax');
-const {
-    pickTask
-} = require('./parser/tasks/basic');
-const {
-    parser
-} = require('./middleware/parser');
-const {
-    hbs
-} = require('./utils/hbs/hbs-helpers');
+const { mongoose } = require('./db/mongoose');
+const { Answer } = require('./models/answer');
+const { User } = require('./models/user');
+const { authenticate } = require('./middleware/authenticate');
+const { loggedIn } = require('./middleware/loggedIn');
+const { inlineSyntax } = require('./parser/inline/inline-syntax');
+const { commentsSyntax } = require('./parser/comments/comments-syntax');
+const { pickTask } = require('./parser/tasks/basic');
+const { parser } = require('./middleware/parser');
+const { hbs } = require('./utils/hbs/hbs-helpers');
 const app = express();
 const port = process.env.PORT || 3000;
 const publicPath = path.join(__dirname, '../public');
@@ -75,7 +55,8 @@ app.get('/highscore', loggedIn, (req, res) => {
     if (req.loggedIn) {
         res.render('high-score.hbs', {
             title: 'Highscore',
-            user: req.user.username
+            imgUrl: req.user.imageURL,
+            user: req.user.username,
         })
     } else {
         res.render('high-score.hbs', {
@@ -108,7 +89,6 @@ app.get('/main', authenticate, (req, res) => {
         imgUrl: req.user.imageURL,
         combo: req.user.combo,
         bestCombo: req.user.bestCombo,
-        imgUrl: req.user.imageURL,
         title: 'Playground',
         xp: req.user.xp,
         basicAttempts: req.user.score.basic.attempted,
@@ -164,6 +144,7 @@ app.get('/about', loggedIn, (req, res) => {
     if (req.loggedIn) {
         res.render('about.hbs', {
             title: 'About',
+            imgUrl: req.user.imageURL,
             user: req.user.username
         })
     } else {
@@ -271,22 +252,22 @@ app.patch('/users', authenticate, (req, res) => {
     let body = _.pick(req.body, ['email', 'username']);
 
     User.findOneAndUpdate({
-            username
-        },
+        username
+    },
         body, {
             new: true,
             runValidators: true
         }).then((user) => {
-        if (!user) {
-            res.status(404).send('User not found!');
-        };
-        res.send(user);
-    }).catch((err) => {
-        if (err.message) {
-            err = err.message;
-        };
-        res.status(400).send(err);
-    });
+            if (!user) {
+                res.status(404).send('User not found!');
+            };
+            res.send(user);
+        }).catch((err) => {
+            if (err.message) {
+                err = err.message;
+            };
+            res.status(400).send(err);
+        });
 });
 
 app.patch('/users/password', authenticate, (req, res) => {
@@ -303,16 +284,16 @@ app.patch('/users/password', authenticate, (req, res) => {
                 User.findOneAndUpdate({
                     username
                 }, {
-                    password: newPassword
-                }, {
-                    new: true,
-                    runValidators: true
-                }).then((user) => {
-                    user.generateAuthToken().then((token) => {
-                        res.cookie('x-auth-token', token);
-                        res.send(user);
+                        password: newPassword
+                    }, {
+                        new: true,
+                        runValidators: true
+                    }).then((user) => {
+                        user.generateAuthToken().then((token) => {
+                            res.cookie('x-auth-token', token);
+                            res.send(user);
+                        });
                     });
-                });
             });
         });
     }).catch((err) => {
@@ -377,16 +358,16 @@ app.post('/answer', authenticate, (req, res) => {
                 _id: answer._id,
                 completed: false
             }, {
-                completed: true
-            }, {
-                new: true
-            }).then((answer) => {
-                User.updateScore(answer.creator, false, 'basic').then((user) => {
-                    console.log('Answer updated.', answer._id, answer.creator, user.score, user.xp, user.combo);
+                    completed: true
+                }, {
+                    new: true
+                }).then((answer) => {
+                    User.updateScore(answer.creator, false, 'basic').then((user) => {
+                        console.log('Answer updated.', answer._id, answer.creator, user.score, user.xp, user.combo);
+                    });
+                }).catch((err) => {
+                    console.log(err);
                 });
-            }).catch((err) => {
-                console.log(err);
-            });
         }, 35000);
 
         Answer.deleteOld(req.user.username).then(() => {
@@ -425,7 +406,7 @@ app.post('/answer-send', authenticate, (req, res) => {
                     });
                 });
             });
-        }else {
+        } else {
             Answer.findByIdAndUpdate(answer._id, {
                 completed: true
             }).then((answer) => {
@@ -482,25 +463,25 @@ app.post('/api/images', authenticate, parser.single("image"), (req, res) => {
     User.findOneAndUpdate({
         username: req.user.username
     }, {
-        imageURL: image.url,
-        imageID: image.id
-    }, {
-        new: true
-    }).then((user) => {
-        res.render('profile.hbs', {
-            user: req.user.username,
-            password: req.user.password,
-            email: req.user.email,
-            basicAttempts: req.user.score.basic.attempted,
-            basicSuccesses: req.user.score.basic.successful,
-            basicPercentage: req.user.score.basic.percentage,
-            imgUrl: user.imageURL,
-            xp: req.user.xp,
-            bestCombo: req.user.bestCombo
+            imageURL: image.url,
+            imageID: image.id
+        }, {
+            new: true
+        }).then((user) => {
+            res.render('profile.hbs', {
+                user: req.user.username,
+                password: req.user.password,
+                email: req.user.email,
+                basicAttempts: req.user.score.basic.attempted,
+                basicSuccesses: req.user.score.basic.successful,
+                basicPercentage: req.user.score.basic.percentage,
+                imgUrl: user.imageURL,
+                xp: req.user.xp,
+                bestCombo: req.user.bestCombo
+            });
+        }).catch((err) => {
+            res.status(400).send(err);
         });
-    }).catch((err) => {
-        res.status(400).send(err);
-    });
 });
 
 /////////////////////////////////////////////////////////////
