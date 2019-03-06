@@ -23,13 +23,18 @@
         height: 7rem;
         width: 7rem;
         border-radius: 50%;
-        display: flex;
         overflow: hidden;
         
         @include respond(phone){
             text-align: center;
             margin-bottom: .54rem;
         }
+    }
+
+    &__topimg-img {
+        position: relative;
+        left: -25%;
+        width: 150%;
     }
 
     &__name {
