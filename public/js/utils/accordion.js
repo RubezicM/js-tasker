@@ -1,9 +1,9 @@
-setTimeout(()=>{
-    let accButtons = document.querySelectorAll('.accordion__button');
-    for(let i = 0; i < accButtons.length;i++){
-        accButtons[i].addEventListener('click',()=>{
-            accButtons[i].classList.toggle('active');
-                let panel = accButtons[i].nextElementSibling;
+
+function accordionInit(btn){
+    for(let i = 0; i < btn.length;i++){
+        btn[i].addEventListener('click',()=>{
+            btn[i].classList.toggle('active');
+                let panel = btn[i].nextElementSibling;
                 if (panel.style.maxHeight){
                     panel.style.maxHeight = null;
                   } else {
@@ -11,4 +11,4 @@ setTimeout(()=>{
                   } 
         });
     }
-},5);
+}

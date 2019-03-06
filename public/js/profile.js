@@ -176,10 +176,14 @@ axios.get('answers').then((response) => {
                     </tbody>
                 </table>
             </div>`;
-    });
+    })
+}).then(()=>{
+    let accButtons = document.querySelectorAll('.accordion__button');
+    accordionInit(accButtons);        
 }).catch((err) => {
     history.innerHTML = err;
 });
+
 var url = location.href.split('/');
 var page = url[url.length - 1];
 
