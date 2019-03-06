@@ -1,5 +1,5 @@
 setTimeout(()=>{
-    accButtons = document.querySelectorAll('.accordion__button');
+    let accButtons = document.querySelectorAll('.accordion__button');
     for(let i = 0; i < accButtons.length;i++){
         accButtons[i].addEventListener('click',()=>{
             accButtons[i].classList.toggle('active');
@@ -11,4 +11,4 @@ setTimeout(()=>{
                   } 
         });
     }
-},1);
+},5);
