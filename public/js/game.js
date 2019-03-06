@@ -65,7 +65,7 @@ function startGame() {
         .catch((err) => {
             console.log(err);
         });
-}
+};
 
 function postAnswer(message = '') {
     answerConsole.style.display = 'none';
@@ -90,24 +90,19 @@ function postAnswer(message = '') {
         gameInProgress = false;
         answer.value = '';
     });
-}
-
+};
 
 let exitBtn = document.getElementById("exit");
 exitBtn.addEventListener('click', function (e) {
     window.location.assign('/');
 });
 
-
-
 let setHeightOfGameArea = (() => {
     let gameArea = document.querySelector('.main.game-page');
     if (gameArea) {
         if (window.innerHeight > 845) {
             let mainHeight = window.innerHeight - main.offsetTop;
-
             main.style.height = mainHeight + 'px';
-        }
-
-    }
+        };
+    };
 })();

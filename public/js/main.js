@@ -71,11 +71,11 @@ if (playgroundBtn) {
                 message.innerHTML = messages[messages.length - 1];
                 messages.pop();
             };
-        }, 450);
+        }, 250);
         setTimeout(() => {
 
             window.location.assign('/main');
-        }, 3000);
+        }, 1000);
 
     });
 };

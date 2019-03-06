@@ -87,5 +87,5 @@ let initializeTaskUI = () => {
         loader.classList.add('hidden');
         overlay.classList.add('hidden');
         startTimer(timeLeft, time);
-    }, 1500);
+    }, 500);
 };

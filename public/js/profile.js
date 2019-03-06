@@ -132,7 +132,7 @@ function showLoader() {
         setTimeout(() => {
             loader.classList.add('hidden');
             resolve('Stuff worked');
-        }, 750);
+        }, 500);
     });
 };
 
@@ -171,7 +171,7 @@ axios.get('answers').then((response) => {
                     </tr>
                     <tr>
                     <td>Date:</td>
-                    <td>$${moment(task.createdAt).format('MMMM Do YYYY, h:mm:ss a')}</td>
+                    <td>${moment(task.createdAt).format('MMMM Do YYYY, h:mm:ss a')}</td>
                     </tr>
                     </tbody>
                 </table>
