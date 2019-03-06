@@ -68,7 +68,6 @@ if (playgroundBtn) {
         let messages = ["Please wait", "Refactoring", "Clearing floats", "Declaring globals"]
         setInterval(() => {
             if (messages.length > 0) {
-
                 message.innerHTML = messages[messages.length - 1];
                 messages.pop();
             };
@@ -76,7 +75,7 @@ if (playgroundBtn) {
         setTimeout(() => {
 
             window.location.assign('/main');
-        }, 1100);
+        }, 2100);
 
     });
 };

@@ -75,6 +75,10 @@ let userwidgetLinks = document.querySelectorAll('.side-menu')
 let tabs = document.querySelectorAll('.tab');
 let loader = document.querySelector('.loader');
 let accordion = document.querySelectorAll('.accordion__button');
+//// Hack ///
+
+
+
 for (let i = 0; i < tabLinks.length; i++) {
     tabLinks[i].addEventListener('click', toggler);
 };
@@ -108,11 +112,11 @@ function toggler(event) {
             accordion[i].addEventListener('click', function () {
                 this.classList.toggle('active');
                 let panel = this.nextElementSibling;
-                if (panel.style.display === "block") {
-                    panel.style.display = "none";
-                } else {
-                    panel.style.display = "block";
-                }
+                if (panel.style.maxHeight){
+                    panel.style.maxHeight = null;
+                  } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                  } 
             });
         };
     };

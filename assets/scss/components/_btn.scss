@@ -8,7 +8,7 @@
     padding: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    transition: all 1000ms;
+    transition: all .5ms;
     font-weight: 700;
     text-shadow: 1px 1px 2px black;
     box-shadow: 2px 2px 0.5rem black;
@@ -19,7 +19,7 @@
         text-shadow: 4px 4px 4px black;
     }
     &:focus {
-        animation: focus1 1000ms ease-in infinite alternate;
+        animation: focus1 500ms ease-in infinite alternate;
     }
     &__main {
         color: white;
