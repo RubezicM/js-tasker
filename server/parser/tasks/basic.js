@@ -190,8 +190,8 @@ let assignments = [
     var $a = '$num' + '$num' + '"$num"' + '$num'; // '03 "0
 
     console.log($a);
-    `,
-  `var $rnd_ºN = $num;
+    `,`
+  var $rnd_ºN = $num;
   var $rnd_ºN = $num;
   var $b_ºA = [$used_ºNx2];
   var $g_ºA = ["str","foo",23];
@@ -411,7 +411,7 @@ let assignments = [
 
     [$a_ºN, $b_ºN] = [$num, $num];
 
-    console.log($c($used_ºN, $used_ºN));
+    console.log($c($used_ºN + $used_ºN));
     `,
 
     `
