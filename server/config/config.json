@@ -1,0 +1,16 @@
+{
+    "development": {
+        "PORT": 3000,
+        "MONGODB_URI": "mongodb://localhost:27017/ParserApp",
+        "JWT_SECRET": "das9i319dfasjd-039jfd-3j"
+    },
+    "test": {
+        "PORT": 3000,
+        "MONGODB_URI": "mongodb://127.0.0.1:27017/ParserAppTest",
+        "JWT_SECRET": "aspdoj9032jd0jdkasdlckijas"
+    },
+    "production": {
+        "MONGODB_URI": "mongodb+srv://rubezic:dacshulc1@cluster0.ez01j.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+        "JWT_SECRET": "fxDRX98clCE1lNHPmUqkPxnEWwczmpAztszVYCrzlcKYDXKNI4HmvQIjP3WYXyN"
+    }
+}

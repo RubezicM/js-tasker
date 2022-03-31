@@ -122,9 +122,7 @@ var converter = function (ass) {
   function getAllRegIndexes(str, regArr) {
     var tmpArr = [];
     for (var i = 0; i < regArr.length; i++) {
-      var re = regArr[i],
-        str = str,
-        bla;
+      var re = regArr[i]
       try {
         while ((match = re.exec(str)) != null) {
           var index;
