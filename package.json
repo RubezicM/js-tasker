@@ -36,7 +36,6 @@
   },
   "devDependencies": {
     "expect": "^24.1.0",
-    "mocha": "^5.2.0",
-    "node-sass": "^4.11.0"
+    "mocha": "^5.2.0"
   }
 }
