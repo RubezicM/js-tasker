@@ -1,3 +1,5 @@
+Project that was done in collaboration with a colleague during our front-end (JS) training in comtrade. The goal was to build an automated parser that would serve questions which users had to guess the answer to. It was built in NodeJS/Express, MongoDB, JS, HTML5 Canvas, Handlebars... First "real project" i worked on. 
+
 **Parser code randomization** project aims to give options to randomize code while keeping base code valid for code editors. Parsing is done in two main "blocks" of randomization. Comments and Inline. 
 
 Comments randomization deals with all randomization commands behind comments in a specific order as not to brake code:
